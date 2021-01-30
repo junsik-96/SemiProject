@@ -12,6 +12,9 @@
 <script type="text/javascript" src="/resources/js/common/urlEncoder.js"></script>
 <c:set var="context" value="${pageContext.request.contextPath}"/> --%>
 
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
 <link rel = "stylesheet" href = "/resources/css/modern-business.css">
 <link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap.css">
 <link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap.min.css">
