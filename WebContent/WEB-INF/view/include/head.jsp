@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Shytalker</title>
 <%-- <script type="text/javascript" src="/resources/js/common/asyncResponseError.js"></script>
 <script type="text/javascript" src="/resources/js/common/urlEncoder.js"></script>
 <c:set var="context" value="${pageContext.request.contextPath}"/> --%>
