@@ -43,11 +43,11 @@
               Portfolio
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+              <a class="dropdown-item" href="portfolio-1-col">1 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-2-col">2 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-3-col">3 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-4-col">4 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-item">Single Portfolio Item</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -65,11 +65,10 @@
               Other Pages
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-              <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-              <a class="dropdown-item" href="faq.html">FAQ</a>
-              <a class="dropdown-item" href="404.html">404</a>
-              <a class="dropdown-item" href="pricing.html">Pricing Table</a>
+              <a class="dropdown-item" href="full-">Full Width Page</a>
+              <a class="dropdown-item" href="sidebarl">FAQ</a>
+              <a class="dropdown-item" href="404">404</a>
+              <a class="dropdown-item" href="pricing">Pricing Table</a>
             </div>
           </li>
         </ul>
