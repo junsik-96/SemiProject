@@ -38,10 +38,10 @@
             <a class="nav-link" href="index/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index/about">Services</a>
+            <a class="nav-link" href="index/services">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index/about">Contact</a>
+            <a class="nav-link" href="index/contact">Contact</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,14 +67,12 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Other Pages
+              	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="full-width">Full Width Page</a>
-              <a class="dropdown-item" href="sidebar">Sidebar Page</a>
-              <a class="dropdown-item" href="faq">FAQ</a>
-              <a class="dropdown-item" href="404">404</a>
-              <a class="dropdown-item" href="pricing">Pricing Table</a>
+              <a class="dropdown-item" href="full-width">대나무숲</a>
+              <a class="dropdown-item" href="sidebar">공지사항</a>
+              <a class="dropdown-item" href="faq">일기장</a>
             </div>
           </li>
         </ul>
