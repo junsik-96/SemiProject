@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ShyController
  */
-@WebServlet("/shy/*")
+@WebServlet("/index/*")
 public class ShyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,7 @@ public class ShyController extends HttpServlet {
 		
 		String[] uriArr = request.getRequestURI().split("/");
 		switch(uriArr[uriArr.length-1]) {
-		case "index" : about(request, response); 
+		case "index" : index(request, response); 
 			break;
 		case "about" : about(request, response); 
 			break;
