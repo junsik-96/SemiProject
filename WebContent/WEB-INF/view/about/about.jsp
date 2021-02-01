@@ -86,7 +86,7 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a href="index">Home</a>
       </li>
       <li class="breadcrumb-item active">About</li>
     </ol>

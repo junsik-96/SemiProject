@@ -33,7 +33,7 @@
             <a class="nav-link" href="about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="service">Services</a>
+            <a class="nav-link" href="services">Services</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="contact">Contact</a>
@@ -87,7 +87,7 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a href="index">Home</a>
       </li>
       <li class="breadcrumb-item active">Contact</li>
     </ol>

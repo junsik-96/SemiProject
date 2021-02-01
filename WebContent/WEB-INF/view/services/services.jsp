@@ -55,9 +55,9 @@
               Blog
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-              <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-              <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-              <a class="dropdown-item" href="blog-post.html">Blog Post</a>
+              <a class="dropdown-item" href="blog-home-1">Blog Home 1</a>
+              <a class="dropdown-item" href="blog-home-2">Blog Home 2</a>
+              <a class="dropdown-item" href="blog-post">Blog Post</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -86,7 +86,7 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a href="index">Home</a>
       </li>
       <li class="breadcrumb-item active">Services</li>
     </ol>

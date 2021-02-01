@@ -30,6 +30,8 @@ public class ShyController extends HttpServlet {
 		
 		String[] uriArr = request.getRequestURI().split("/");
 		switch(uriArr[uriArr.length-1]) {
+		case "index" : about(request, response); 
+			break;
 		case "about" : about(request, response); 
 			break;
 		case "services" : services(request, response); 
@@ -48,6 +50,13 @@ public class ShyController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
+	private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/index/index.jsp")
+		.forward(request, response);
+	}
+	
 	
 	private void about(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
