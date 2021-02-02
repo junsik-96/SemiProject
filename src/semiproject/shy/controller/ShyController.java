@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ShyController
  */
-@WebServlet("/index/*")
+@WebServlet("/shy/*")
 public class ShyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,13 +30,23 @@ public class ShyController extends HttpServlet {
 		
 		String[] uriArr = request.getRequestURI().split("/");
 		switch(uriArr[uriArr.length-1]) {
+		case "find" : find(request, response); 
+			break;
+		case "board" : board(request, response); 
+			break;
+		case "diary" : diary(request, response); 
+			break;
+		case "notice" : notice(request, response); 
+			break;
+		case "customerCenter" : customerCenter(request, response); 
+			break;
+		case "login" : login(request, response); 
+			break;
+		case "join" : join(request, response); 
+			break;
+		case "mypage" : mypage(request, response); 
+			break;
 		case "index" : index(request, response); 
-			break;
-		case "about" : about(request, response); 
-			break;
-		case "services" : services(request, response); 
-			break;
-		case "contact" : contact(request, response); 
 			break;
 		default : response.setStatus(404);
 		}
@@ -51,29 +61,58 @@ public class ShyController extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	private void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
+		.forward(request, response);
+	}
+	
+	
+	private void board(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/board/boardView.jsp")
+		.forward(request, response);
+	}
+	
+	private void diary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/board/diary.jsp")
+		.forward(request, response);
+	}
+	
+	private void notice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/board/notice.jsp")
+		.forward(request, response);
+	}
+	
+	private void customerCenter(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/community/customerCenter.jsp")
+		.forward(request, response);
+	}
+	
+	
+	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/member/login.jsp")
+		.forward(request, response);
+	}
+	
+	private void join(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/member/join.jsp")
+		.forward(request, response);
+	}
+	
+	private void mypage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/member/mypage.jsp")
+		.forward(request, response);
+	}
+	
 	private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/index/index.jsp")
-		.forward(request, response);
+		response.sendRedirect("/index");
 	}
-	
-	
-	private void about(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/about/about.jsp")
-		.forward(request, response);
-	}
-	
-	private void services(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/services/services.jsp")
-		.forward(request, response);
-	}
-	
-	private void contact(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/contact/contact.jsp")
-		.forward(request, response);
-	}
-
 }
