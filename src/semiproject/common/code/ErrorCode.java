@@ -2,6 +2,7 @@ package semiproject.common.code;
 
 public enum ErrorCode {
 	
+	SM02("아이디나 패스워드가 틀렸습니다.","/member/login"),
 	AUTH01("접근 권한이 없는 페이지 입니다."),
 	CD_404("존재하지 않는 경로입니다.");
 	

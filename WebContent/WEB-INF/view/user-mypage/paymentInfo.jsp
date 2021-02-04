@@ -1,28 +1,36 @@
-
-<!-- 상담사 // 상담 내역 페이지 입니다. -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 <head>
 
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>샤이토커</title>
+  <title>Shytalker</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
-
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
+<style type="text/css">
+	.btn{
+		width: 100%;
+	}
+	
+	.card-body{
+		display: flex;
+	}
+	
+	.card-body-1{
+		padding: 20px 20px 20px 20px;
+	}
+</style>
 </head>
 <body>
-
-	
-  <!-- Navigation -->
+	 <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
      <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
@@ -42,8 +50,9 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="shy/board">대나무숲</a>
+               <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+              <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -71,61 +80,87 @@
     </div>
   </nav>
   
-   <!-- Page Content -->
+<!-- Page Content -->
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">상담사
-      <small>상담내역</small>
+    <h1 class="mt-4 mb-3">MyPage
+      <small></small>
     </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="shy/index">Home</a>
+        <a href="/index">Home</a>
       </li>
-      <li class="breadcrumb-item active">상담사 마이페이지</li>
+      <li class="breadcrumb-item">
+        <a href="/member/mypage">Mypage</a>
+      </li>
+      <li class="breadcrumb-item active">결제 내역</li>
     </ol>
 
-    <!-- 담당맡은 상담 리스트들 -->
+    <!-- Content Row -->
     <div class="row">
-      <div class="couns-review-cards">
-        <div class="couns-review">
-          <h4 class="couns-name">김뚠뚠</h4>
-          <div class="couns-contents">
-            <p class="couns-body">상담내용 상담내용</p>
-          </div>
-          <div class="couns-footer">
-            <a href="#" class="btn couns-more">더 보기</a>
-          </div>
+      <!-- Sidebar Column -->
+      <div class="col-lg-3 mb-4">
+        <div class="list-group" style="text-align: center; padding-top: 1vw">
+          <a href="/member/mypage" class="list-group-item">마이페이지</a>
+          <a href="/member/user_modify" class="list-group-item">내 정보 수정</a>
+          <a href="/member/hold" class="list-group-item">찜 목록</a>
+          <a href="/member/reservation" class="list-group-item">예약내역</a>
+          <a href="/member/payment" class="list-group-item">결제내역</a>
+          <a href="/member/myboard" class="list-group-item">내 게시글</a>
         </div>
       </div>
-      <div class="couns-review-cards">
-        <div class="couns-review">
-          <h4 class="couns-name">나괴롭</h4>
-          <div class="couns-contents">
-            <p class="couns-body">상담내용 상담내용</p>
-          </div>
-          <div class="couns-footer">
-            <a href="#" class="btn couns-more">더 보기</a>
+      <!-- Content Column -->
+      <div class="col-lg-9 mb-4" style="padding-top: 1vw">
+        <h1>결제 내역</h1>
+        <hr>
+        
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">결제일 : 2021-02-02</h5>
+          <div class="card-body">
+          	<div style="width: 25%; height: 100%">
+				<img src="/resources/image/listener.jpg" style="width: 100%; height: 100%;">
+			</div>
+			<div class="card-body-1">
+				<p>상담사 : </p>
+				<p>결제 수단 : </p>
+				<p>결제 금액 : </p>
+				<p>결제 상태 : </p>
+			</div>
           </div>
         </div>
-      </div><div class="couns-review-cards">
-        <div class="couns-review">
-          <h4 class="couns-name">최고민</h4>
-          <div class="couns-contents">
-            <p class="couns-body">상담내용 상담내용</p>
-          </div>
-          <div class="couns-footer">
-            <a href="#" class="btn couns-more">더 보기</a>
+        
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">결제일 : 2021-02-01</h5>
+          <div class="card-body">
+          	<div style="width: 25%; height: 100%">
+				<img src="/resources/image/listener.jpg" style="width: 100%; height: 100%;">
+			</div>
+			<div class="card-body-1">
+				<p>상담사 : </p>
+				<p>결제 수단 : </p>
+				<p>결제 금액 : </p>
+			</div>
           </div>
         </div>
+        
+        <!-- Pagination -->
+	    <ul class="pagination justify-content-center mb-4">
+	      <li class="page-item">
+	        <a class="page-link" href="#">&larr; Older</a>
+	      </li>
+	      <li class="page-item disabled">
+	        <a class="page-link" href="#">Newer &rarr;</a>
+	      </li>
+	    </ul>
       </div>
-    </div>
-    <!-- /.row -->
-
-  </div>
-  <!-- /.container -->
-
+      
+	</div>
+</div>
+  
  <!-- Footer -->
   <footer class="py-5 bg-dark">
    <div class="container_footer">
@@ -142,10 +177,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

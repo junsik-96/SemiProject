@@ -1,29 +1,28 @@
-
-<!-- 상담사 마이페이지 // 메인 입니다. -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 <head>
 
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>샤이토커</title>
+  <title>Shytalker</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/listener_mypage.css" rel="stylesheet">
-
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
+<style type="text/css">
+	.btn{
+		width: 100%;
+	}
+</style>
 </head>
 <body>
-
-	
-  <!-- 상단 고정 바  -->
-  <!-- Navigation -->
+	 <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
      <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
@@ -43,8 +42,9 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="shy/board">대나무숲</a>
+               <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+              <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -71,62 +71,50 @@
       </div>
     </div>
   </nav>
-  <!-- 상단바 끝 -->
   
-  <!-- body 시작 -->
-  <ol class="breadcrumb">
+<!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">MyPage
+      <small></small>
+    </h1>
+
+    <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="shy/index">Home</a>
+        <a href="/index">Home</a>
       </li>
+      <li class="breadcrumb-item">
+        <a href="/member/mypage">Mypage</a>
+      </li>
+      <li class="breadcrumb-item active">내가 쓴 글</li>
     </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+      <!-- Sidebar Column -->
+      <div class="col-lg-3 mb-4">
+        <div class="list-group" style="text-align: center; padding-top: 1vw">
+          <a href="/member/mypage" class="list-group-item">마이페이지</a>
+          <a href="/member/user_modify" class="list-group-item">내 정보 수정</a>
+          <a href="/member/hold" class="list-group-item">찜 목록</a>
+          <a href="/member/reservation" class="list-group-item">예약내역</a>
+          <a href="/member/payment" class="list-group-item">결제내역</a>
+          <a href="/member/myboard" class="list-group-item">내 게시글</a>
+        </div>
+      </div>
+      <!-- Content Column -->
+      <div class="col-lg-9 mb-4" style="padding-top: 1vw">
+        <h1>내가 쓴 글</h1>
+        <hr>
+        
+      </div>
+    </div>
+    <!-- /.row -->
+</div>
+    <!-- /.row -->
   
-  <div class="list-main">
-  	<div class="list-main-header">
-  		<h1>나의사 상담사님 My Page</h1>
- 	</div>
-	
-	<div class="list-main-body">
-		<a class="go-to-couns-review" href="/shy/couns_review"><i class="fas fa-notes-medical">상담내역</i></a>
-		<a class="go-to-my-schedule" href="/shy/my_schedule"><i class="far fa-calendar-alt">나의 예약스케줄</i></a>
-		<a class="go-to-res-confirm" href="/shy/res_confirm"><i class="fas fa-clipboard-list">예약스케줄 관리</i></a>
-		<a class="go-to-reviews" href="/shy/reviews"><i class="fas fa-address-card">평가내역</i></a>
-	</div>
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>  
-
-
-
-<!-- Footer -->
+ <!-- Footer -->
   <footer class="py-5 bg-dark">
    <div class="container_footer">
    (주) 귀울임 사업자 정보 
@@ -142,9 +130,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

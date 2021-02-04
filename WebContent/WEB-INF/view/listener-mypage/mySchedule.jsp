@@ -1,42 +1,28 @@
+
+<!-- 상담사 예약스케줄 페이지 입니다. -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<%-- 모든 페이지에서 공통적으로 사용할 head를 작성한 페이지 --%>
-<!DOCTYPE html>
-<html>
+<%@ include file="/WEB-INF/view/include/head.jsp" %>
 <head>
-<meta charset="UTF-8">
-<title>Shytalker</title>
 
-<script type="text/javascript" src="/resources/js/common/asyncResponseError.js"></script>
-<script type="text/javascript" src="/resources/js/common/urlEncoder.js"></script>
-<c:set var="context" value="${pageContext.request.contextPath}"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <!-- Bootstrap core CSS -->
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-
-<link rel = "stylesheet" href = "/resources/css/modern-business.css">
-<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap.css">
-<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap.min.css">
-<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-grid.css">
-<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-grid.min.css">
-<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-rebot.css">
-<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-rebot.min.css">
-
-<script type="text/javascript" src="/resources/js/contact_me.js"></script>
-<script type="text/javascript" src="/resources/js/jqBootstrapValidation.js"></script>
-<script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-<script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
-
+  <!-- Custom styles for this template -->
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.5.1/">
 
 </head>
-
 <body>
 
-  <!-- Navigation -->
+	
+  <!-- 상단 고정 바  -->
+    <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
      <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
@@ -56,8 +42,9 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="shy/board">대나무숲</a>
+              <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+              <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -84,4 +71,72 @@
       </div>
     </div>
   </nav>
- </body>
+  
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- 페이지 제목 -->
+    <h1 class="mt-4 mb-3">상담사
+      <small>예약스케줄 확인</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index">Home</a>
+      </li>
+       <li class="breadcrumb-item active"><a href="/shy/myPageMain">상담사 마이페이지</a></li>
+    </ol>
+    
+   	
+   		<h2>캘린더</h2>
+		<br>
+		<br>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+  	</div>
+   <!-- Footer -->
+  <footer class="py-5 bg-dark">
+   <div class="container_footer">
+   (주) 귀울임 사업자 정보 
+  <pre id = "footerInfo">  		 		
+	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4
+	대표 : 홍길동 | 개인정보보호책임 : 황진이
+	사업자 등록번호 : 123-45-6789
+	통신판매업신고 : 2021-서울강남-01234호
+	전화 : 02-1234-1234
+	email : pclass@khaca.com
+    </pre>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

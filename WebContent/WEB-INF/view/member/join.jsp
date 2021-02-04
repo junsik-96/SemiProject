@@ -11,22 +11,19 @@
   <title>Shytalker</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
-  <style type="text/css">
-  	a{
-  		width: 100%;
-  	}
-  	
-  	
-  </style>
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
+<style type="text/css">
+	.btn{
+		width: 100%;
+	}
+</style>
 </head>
 <body>
 
-	
-   <!-- Navigation -->
+ <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
      <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
@@ -46,8 +43,9 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="shy/board">대나무숲</a>
+               <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+              <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -60,7 +58,7 @@
           		  <a class="nav-link" href="/shy/join">회원가입</a>
          		 </li>
          	 </c:when>
-         	 <c:otherwise>>        		
+         	 <c:otherwise>        		
          		 <li class="nav-item">
            			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
          		 </li>
@@ -98,10 +96,18 @@
     	<div style="width: 48%; height: 50%; padding-left: 2vw; padding-top: 2vw">
 	        <h2>회원가입</h2>
 	        <br>
+	        <h6>
+	        	오늘 하루는 어떠셨나요?<br><br>
+	        	자존감이 떨어지고 삶에 대한 의욕을 느끼지 못하나요?<br><br>
+	        	혹은 사람들과 대화하고 때로는 거절하는 것이 많이 힘겨우신가요?<br><br>
+	        	말 못할 이야기, 누가 볼까 두렵고 도움이 필요한 사람들을 위한 웹<br><br>
+	        	필요한 순간, ShyTalker가 당신의 편이 되어 드립니다.
+	        </h6>
+	        <br>
 	        <a class="btn btn-primary" data-toggle="modal" href="#registerModal">회원가입</a>
 	        <hr>
 	        <div style="text-align: right">
-	        	<a href="/member/login"><small>로그인 바로가기</small></a>
+	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/member/login"><small>로그인 바로가기</small></a></label>
 	        </div>
 	        
       	</div>
@@ -205,8 +211,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

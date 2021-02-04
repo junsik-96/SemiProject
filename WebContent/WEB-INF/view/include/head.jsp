@@ -15,14 +15,14 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
-
+ <link href="/resources/css/all.css" rel="stylesheet">
 <link rel = "stylesheet" href = "/resources/css/modern-business.css">
 <link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap.css">
 <link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap.min.css">
 <link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-grid.css">
 <link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-grid.min.css">
-<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-rebot.css">
-<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-rebot.min.css">
+<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-reboot.css">
+<link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap-reboot.min.css">
 
 <script type="text/javascript" src="/resources/js/contact_me.js"></script>
 <script type="text/javascript" src="/resources/js/jqBootstrapValidation.js"></script>

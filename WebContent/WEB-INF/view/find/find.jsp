@@ -9,10 +9,10 @@
   <meta name="author" content="">
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
 
 </head>
 <body>
@@ -37,8 +37,9 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="shy/board">대나무숲</a>
+              <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+               <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           <c:choose>
@@ -85,6 +86,211 @@
     </ol>
 	
 	
+	<div>'${searchlist}' 에 대한 검색 결과 입니다.</div>
+	
+	<form action="${context}/find/search">
+		
+		<div class="check_info">
+			<pre> *원하시는 항목을 선택하여 주세요. (중복선택 가능)</pre>
+		</div>
+		
+		<div class="choose_lis">
+		<div class="box_div">
+			<div class="sector_lis">상담사 유형</div>
+			<div class="box_list">
+			 	<ul class="sector_li">
+			 		<li><input type="checkbox" name="job" value="expert">전문가</li>
+			 		<li><input type="checkbox" name="job" value="doctor">의사</li>
+			 		<li><input type="checkbox" name="job" value="student">대학생</li>
+			 	</ul>
+			</div>
+		</div>
+						
+		<div class="box_div">
+		<div class="sector_lis">상담사 성별</div>
+		<div class="box_list">
+		 	<ul class="sector_li">
+		 		<li><input type="checkbox" name="sector" value="woman">여성</li>
+		 		<li><input type="checkbox" name="sector" value="man">남성</li>
+		 		<li><input type="checkbox" name="sector" value="both">상관없음</li>
+		 	</ul>
+		</div>
+		</div>
+		
+		<div class="box_div">
+		<div class="sector_lis">상담사 나이</div>
+		<div class="box_list">
+		 	<ul class="sector_li">
+		 		<li><input type="checkbox" name="sector" value="woman">20대</li>
+		 		<li><input type="checkbox" name="sector" value="man">30대</li>
+		 		<li><input type="checkbox" name="sector" value="both">40대</li>
+		 		<li><input type="checkbox" name="sector" value="both">50대</li>
+		 		<li><input type="checkbox" name="sector" value="both">상관없음</li>
+		 	</ul>
+		</div>
+		</div>
+		
+		<div class="box_div">
+			<div class="sector_lis">가격</div>
+			<div class="box_list">
+			 	<ul class="sector_li">
+			 		<li><input type="checkbox" name="price" value="service">무료</li>
+			 		<li><input type="checkbox" name="price" value="ten">~10,000원</li>
+			 		<li><input type="checkbox" name="price" value="ten_plus">10,000 ~ 30,000원</li>
+			 		<li><input type="checkbox" name="price" value="else">30,000 ~</li>
+			 	</ul>
+			</div>
+		</div>
+				
+		<div class="box_div">
+			<div class="sector_lis">분야</div>
+			<div class="box_list">
+			 	<ul class="sector_li">
+			 		<li><input type="checkbox" name="sector" value="sad">우울증</li>
+			 		<li><input type="checkbox" name="sector" value="people">인간관계</li>
+			 		<li><input type="checkbox" name="sector" value="family">가족관계</li>
+			 		<li><input type="checkbox" name="sector" value="grade">학교성적</li>
+			 		<li><input type="checkbox" name="sector" value="health">건강</li>
+			 		<li><input type="checkbox" name="sector" value="hit">폭력</li>
+			 		<li><input type="checkbox" name="sector" value="etc">기타</li>
+			 	</ul>
+			</div>
+		</div>
+		
+		</div>
+		
+		<button class="btn_search_clear" style="width: 70px">초기화</button>
+		<button class="btn_search_lis" style="width: 70px">검색</button>
+ 	</form>
+ 	
+ 	 <div class="find_row">
+      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Two</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Three</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Four</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Five</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project Six</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+            <div class="col-lg-4 col-sm-6 portfolio-item find_result">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+	<!--  page 이동 -->
+ 	<div>
+	  <ul class="pagination">
+	    <li class="page-item disabled">
+	      <a class="page-link" href="#">&laquo;</a>
+	    </li>
+	    <li class="page-item active">
+	      <a class="page-link" href="#">1</a>
+	    </li>
+	    <li class="page-item">
+	      <a class="page-link" href="#">2</a>
+	    </li>
+	    <li class="page-item">
+	      <a class="page-link" href="#">3</a>
+	    </li>
+	    <li class="page-item">
+	      <a class="page-link" href="#">4</a>
+	    </li>
+	    <li class="page-item">
+	      <a class="page-link" href="#">5</a>
+	    </li>
+	    <li class="page-item">
+	      <a class="page-link" href="#">&raquo;</a>
+	    </li>
+	  </ul>
+	</div>
 
 
 
@@ -104,8 +310,8 @@ email : pclass@khaca.com
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	
 </body>
 </html>

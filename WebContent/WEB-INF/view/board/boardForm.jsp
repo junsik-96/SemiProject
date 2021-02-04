@@ -12,10 +12,10 @@
   <title>게시판</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -32,20 +32,18 @@
           <li class="nav-item">
             <a class="nav-link" href="find">상담사 찾기</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="board">대나무숲</a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="diary">일기장</a>
           </li>
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Community
+              게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="customerCenter">고객센터</a>
+              <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+               <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -73,13 +71,21 @@
     </div>
   </nav>
 
+<%
+	if(session.getAttribute("userId") == null) {		
+		session.setAttribute("loginMsg", "게시물 작성은<br>로그인이 필요합니다.");
+		response.sendRedirect("/shy/login");
+		return;
+	}
+
+%>
 	  
 <!-- Contact Form -->
     <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
 <div>   
-    <div class="row">
+    <div class="container">
       <div class="col-lg-8 mb-4">
-        <h3>대나무숲</h3>
+        <h3>대나무숲 글쓰기</h3>
         <form name="sentMessage" id="contactForm" novalidate>
           <div class="control-group form-group">
             <div class="controls">
@@ -89,6 +95,30 @@
             </div>
           </div>
           <div class="control-group form-group">
+							<div class="controls">
+								<label>주 고민분야</label>
+                  				<select name="concern" class="form-control">
+                  					<option value="선택안함" selected>선택안함</option>
+				                    <option value="우울/불안">우울/불안</option>
+				                    <option value="가족/부부">가족/부부</option>
+				                    <option value="산후/육아">산후/육아</option>
+				                    <option value="대인관계">대인관계</option>
+				                    <option value="기타">기타</option>
+                  				</select>
+							</div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>선호 상담사 유형</label>
+                  				<select name="ingredient" class="form-control">
+				                    <option value="선택안함" selected>선택안함</option>
+				                    <option value="전문상담사">전문상담사</option>
+				                    <option value="의사">의사</option>
+				                    <option value="관련전공자">관련전공자</option>
+                  				</select>
+							</div>
+						</div>
+          <div class="control-group form-group">
             <div class="controls">
               <label>글쓰기:</label>
               <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="내용을 입력해주세요." maxlength="999" style="resize:none"></textarea>
@@ -96,21 +126,14 @@
           </div>
           <div id="success"></div>
           <!-- For success/fail messages -->
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton" style="justify-content:flex-end;">완료</button>
         </form>
       </div>
     </div>
 </div>
     <!-- /.row -->
 
-  <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; 이전</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">다음 &rarr;</a>
-          </li>
-        </ul>
+ 
         
   <!-- Footer -->
   <footer class="py-5 bg-dark">
@@ -127,7 +150,7 @@
     </div>
   </footer>
   
-   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

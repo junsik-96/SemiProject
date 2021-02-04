@@ -1,8 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
+<head>
+<style type="text/css">
+.btnnn{
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  position: inherit;
+  width:20%;
+  margin-right: 625px;
+}
+
+.total{
+	text-align: center;
+	margin-right:635px;
+}
+
+.won{
+	font-size:xx-large;
+}
+
+@Footer{
+	position:absolute;
+}
+</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>결제하기</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
+
+</head>
 <body>
-	 <!-- Navigation -->
+ <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
      <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
@@ -22,8 +60,9 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="shy/board">대나무숲</a>
+              <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+               <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -50,6 +89,42 @@
       </div>
     </div>
   </nav>
+  
+  <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">결제하기
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">결제가 진행됩니다</a>
+      </li>
+      <li class="breadcrumb-item active">정보와 수량을 확인해주세요</li>
+    </ol>
+<br>
+<br>
+<br>
+
+<p>&nbsp;</p>
+<!-- Intro Content -->
+<div class="row">
+<div class="col-lg-6"><img id="i" class="img-fluid rounded mb-4" style="display: block; margin-left: auto; margin-right: auto;" src="http://placehold.it/200x200" alt="" /></div>
+<div class="col-lg-6" style="text-align: center;">
+<h2 style="text-align: center;">&nbsp;</h2>
+<h2 style="text-align: center;">결제할 상담사 이름</h2>
+<p style="text-align: center;">결제정보 담아오기</p>
+<br /><br /><br /><br /><br /></div>
+</div>
+<!-- /.row --><hr />
+<div class="cart" style="text-align: left;">
+<h2 class="total">Total</h2>
+</div>
+<p>&nbsp;</p>
+<div class="cart" style="text-align: center;"><label class="won">₩</label></div>
+<p><br /><br /></p>
+<div class="pay" style="text-align: right;"><button id="sendMessageButton" class="btnnn" type="submit">결제하기</button></div>
+<p><br /><br /></p>
+<p><br /><br /><br /></p>
+  
 
  <!-- Footer -->
   <footer class="py-5 bg-dark">
@@ -67,8 +142,7 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

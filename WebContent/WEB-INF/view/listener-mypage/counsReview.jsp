@@ -1,28 +1,57 @@
+
+<!-- 상담사 // 상담 내역 페이지 입니다. -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 <head>
 
-  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>Shytalker</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
-<style type="text/css">
-	button{
-		width: 100%;
-	}
-</style>
+  <style type="text/css">
+  		#search-option {clear:both;}
+    
+    	#search-option > div {
+       		margin:0 auto; 
+        	margin-top: 30px; 
+        	width:auto; 
+        	height:100px;
+
+		}
+		
+		#li-search {
+			list-style:none;
+        	text-align:center;
+        	padding:0;
+        	margin:0;
+
+		}
+		
+		#div-Page {
+			max-width: 30%;
+   		 	display: flex;
+    		justify-content: space-around;
+    		margin: 30px;
+    		margin-left: 36%;		
+		
+		}
+  
+  
+  
+  
+  </style>
+
 </head>
 <body>
 
+	
  <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -43,7 +72,7 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-               <a class="dropdown-item" href="board">대나무숲</a>
+              <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
               <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
@@ -58,7 +87,7 @@
           		  <a class="nav-link" href="/shy/join">회원가입</a>
          		 </li>
          	 </c:when>
-         	 <c:otherwise>        		
+         	 <c:otherwise>>        		
          		 <li class="nav-item">
            			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
          		 </li>
@@ -72,58 +101,93 @@
       </div>
     </div>
   </nav>
-
-  <!-- Page Content -->
+  
+    <!-- Page Content -->
   <div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Login
-      <small></small>
+    <!-- 페이지 제목 -->
+    <h1 class="mt-4 mb-3">상담사
+      <small>상담내역</small>
     </h1>
-
+    
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="/index">Home</a>
+        <a href="index">Home</a>
       </li>
-      <li class="breadcrumb-item active">Login</li>
+      <li class="breadcrumb-item active"><a href="/shy/myPageMain">상담사 마이페이지</a></li>
     </ol>
-
-    <!-- Content Row -->
+    
+    <!-- 담당맡은 상담 리스트들 -->
     <div class="row">
-      <!-- Map Column -->
-        <!-- Embedded Google Map -->
-        <img src="../../resources/image/login.jpg" style="width: 50%; height: 50%">
-    	<div style="width: 48%; height: 50%; padding-left: 2vw; padding-top: 2vw">
-        <h2>로그인</h2>
-        <br>
-        <form name="sentMessage" id="contactForm" novalidate>
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>아이디</label>
-              <input type="text" class="form-control" name="id" id="id" required data-validation-required-message="Please enter your id." placeholder="아이디를 입력하세요.">
-              <p class="help-block"></p>
-            </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">김뚠뚠</h4>
+          <div class="card-body">
+            <p class="card-text">상담내용 상담내용</p>
           </div>
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>비밀번호</label>
-              <input type="password" class="form-control" name="pw" id="pw" required data-validation-required-message="Please enter your password." placeholder="비밀번호를 입력하세요.">
-            </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">더 보기</a>
           </div>
-          <div id="success"></div>
-          <!-- For success/fail messages -->
-          <button class="btn btn-primary" id="sendMessageButton" onclick="login()">로그인</button>
-        	<hr>
-        	<div style="text-align: right">
-	        	<label>아직 회원이 아니신가요? |&nbsp;&nbsp;<a href="/member/join"><small>회원가입 바로가기</small></a></label>
-	        </div>
-        </form>
+        </div>
       </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">나괴롭</h4>
+          <div class="card-body">
+            <p class="card-text">고민고민 하지마 .</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">더 보기</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h4 class="card-header">고민중</h4>
+          <div class="card-body">
+            <p class="card-text">상담상담 내용내용</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">더 보기</a>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- /.row -->
+    
+    <li id="li-search">
+        	<div id="div-Page">
+                   <div>◀</div>
+                       <div><b>1</b></div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>▶</div>
+                </div>
+            </li>
 
-  <!-- Footer -->
+            <!-- 검색 폼 영역 -->
+            <li id="li-search">
+                <div>
+                    <select id='search-option' >
+                        <option value='A'>내담자+제목</option>
+                        <option value='T'>제목</option>
+                        <option value='C'>내담자</option>
+                    </select>
+                    <input id='txt-KeyWord' />
+                    <input type='button' value='검색'/>
+                </div>
+                </li><br>
+    
+    
+    
+    
+    
+
+  </div>
+  <!-- /.container -->
+
+ <!-- Footer -->
   <footer class="py-5 bg-dark">
    <div class="container_footer">
    (주) 귀울임 사업자 정보 
@@ -141,45 +205,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	
-	<script type="text/javascript">
-		let login = () => {
-			
-			const url = '/member/loginimpl';
-			
-			let params = {};
-			params.id = id.value;
-			params.pw = pw.value;
-			
-			//post방식으로 진행
-			//헤더 설정
-			let headerObj = new Headers();
-			//form태그의 기본 content 타입인 application/x-www-form-urlencoded로
-			//content-type을 맞춰야 서버에서 편하게 getParameter로 사용할 수 있다.
-			//name=value&name=value
-			headerObj.append("content-type","application/x-www-form-urlencoded");
-			fetch(url,{
-				method : "POST",
-				headers : headerObj,
-				body : "data=" + JSON.stringify(params)
-			}).then(response => {
-				//200번대 응답코드라면
-				if(response.ok){
-					return response.text();
-				}else{
-					throw new AsyncResponseError(response.text());
-				}
-			}).then(text => {
-				if(text == 'fail'){
-					document.querySelector('.valid_info').innerHTML = '아이디나 비밀번호를 확인하세요';
-				}else if(text == 'success'){
-					location.href = "/index";
-					//document.querySelector('html').innerHTML = text;
-				}
-			}).catch((error)=>{
-				error.alertMessage();
-			})
-		}
-	</script>
+
+
 </body>
 </html>

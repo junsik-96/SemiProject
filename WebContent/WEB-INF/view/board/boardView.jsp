@@ -14,10 +14,10 @@
   <title>Modern Business - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
 
 </head>
 
@@ -43,8 +43,9 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="shy/board">대나무숲</a>
+              <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+               <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -73,37 +74,66 @@
   </nav>
 
 <div class="content">   
-    <h2 class="tit">*게시판</h2>
-    <div class="desc_board">
-      <h4 class="tit_board">제목 : ${data.board.title}</h4>
-      <div class="info" >
-          <span>게시글번호 : ${data.board.bdIdx}</span>
-          <span>등록일 : ${data.board.regDate}</span>
-          <span>작성자 : ${data.board.userId}</span>
-      </div>
-      <div class="info">
-      	<c:forEach var="file" items="${data.fileList}">
-	         <button type="button" class="btn_down-file" 
-	         onclick="downloadFile('${file.originFileName}','${file.renameFileName}','${file.savePath}')">          
-	            	${file.originFileName}   
-	         </button><br>
-         </c:forEach>
-       </div>
-      <div class="text">
-       		${data.board.content}
-      </div>
-      <div class="btn_section btn_list">
-          <button style="color:white" onclick="submitData('list')"><span>목록</span></button>
-      </div>
-      
-       <div class="btn_section btn_delete">
-        <button style="color:white"><span>삭제</span></button>
-      </div>
-      <div class="btn_section btn_modify">
-        <button style="color:white"><span>수정</span></button>
-      </div>
+	<br>
+    <h2 class="tit text-center">대나무 숲</h2>
+    <br>
+    <div class="container">
+      <table class="table table-hover">
+      	<thead>
+      		<tr>
+      			<th class="text-center">번호</th>
+      			<th class="text-center">제목</th>
+      			<th class="text-center">내용</th>
+      			<th class="text-center">작성자</th>
+      			<th class="text-center">날짜</th>
+      			<th class="text-center">조회수</th>
+      		</tr>	
+      	</thead>
+      	<tbody>
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
+      			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
+      		</tr>
+      		
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
+      			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
+      		</tr>
+      		
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
+      			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
+      		</tr>
+      	</tbody>
+      </table>
+      <hr>
+      <br>
+
+      <a style="justify-content:flex-end;" href="/shy/board/gotoForm" onclick='fn_write()' class="btn btn-primary">글쓰기</a>
+
+
+  <ul class="pagination" style="justify-content:center;">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+
+    </div>
    </div>
-</div>
 <!-- Footer -->
   <footer class="py-5 bg-dark">
    <div class="container_footer">
@@ -119,25 +149,12 @@
     </div>
   </footer>
   
-   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-<script type="text/javascript">
-   function submitData(url){
-      location.href = url;
-   } 
-   
-   function downloadFile(ofname,rfname, savePath){
-	   let params = {'ofname' : ofname,
-			   		 'rfname' : rfname,
-			   		 'savePath' : savePath};
-	   
-      location.href = '${context}' + "/board/download?" + urlEncodedForm(params);
-               
-  }
 
-</script>
+  
+   <!-- Bootstrap core JavaScript -->
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>

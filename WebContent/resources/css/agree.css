@@ -1,0 +1,129 @@
+.agree_top{
+	display:inline;
+	text-align:center;
+	font-weight:bolder;
+	color:purple;
+	font-size: 4vw;
+}
+
+.agree_top_div{
+	text-align: center;
+}
+
+.before_join_all{
+	text-align: center;
+
+}
+
+.agree_top:hover {
+	color:purple;
+}
+
+.agree_all{
+	margin-top:2%;
+	text-align: center;
+	margin-bottom: 2%;
+}
+
+.agree_all_btn, .agree_btn1, .agree_btn2, .agree_btn3, .agree_btn4{
+	border: none;
+	background-color: white;
+	cursor: pointer;
+	
+}
+
+.font_agree_all{
+	color:grey;
+	font-size: 1.8vw; 
+
+}
+
+.agree_before{
+	margin-top: 2%;
+}
+
+
+.agree_all_btn:focus {
+	border: none;
+	outline:none;
+}
+
+.agree_btn1:focus,.agree_btn2:focus,
+.agree_btn3:focus,.agree_btn4:focus  {
+	border: none;
+	outline:none;
+}
+
+.font_agree_all:focus{
+	background-color: purple;
+}
+
+
+.no_btn{
+	width:200px;
+	height: 50px;
+	background-color: lightgrey;
+	border: none;
+	
+}
+
+.ok_btn{
+	width:200px;
+	height: 50px;
+	background-color: purple;
+	color:white;
+	border: none;
+	margin-left: 3%;
+}
+
+.no_btn{
+	width:230px;
+	height: 50px;
+	background-color: lightgrey;
+	border: none;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.ok_btn{
+	width:230px;
+	height: 50px;
+	background-color: purple;
+	color:white;
+	border: none;
+	margin-left: 3%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.agree_shy,.agree_info,.agree_place,.agree_pro{
+	text-align: center;
+}
+
+.check_all{
+	margin-right: 1%;
+	width: 23px;
+	height: 23px; 
+	transform:translateY(25%);
+	border-radius: 20px;
+}
+
+.check_all:focus {
+	background-color: purple;
+}
+
+.stcheck{
+	cursor: pointer;
+}
+
+i{
+	font-size: 2.5vw;
+}
+
+.ok_btn:checked{
+	border-color: purple;
+}
+
+input.stcheck[type="checkbox"] {position: absolute; clip: rect(0,0,0,0);}
+input.stcheck[type="checkbox"] + label{color: rgba(0,0,0,0.3);}
+input.stcheck:checked[type="checkbox"] + label{ background-color: purple; color:white;  border-radius: 40px;}

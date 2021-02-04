@@ -11,10 +11,10 @@
   <title>Modern Business - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
+  <link href="/resources/css/modern-business.css" rel="stylesheet">
 
 </head>
 <body>
@@ -38,8 +38,9 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="shy/board">대나무숲</a>
+              <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+               <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -67,6 +68,67 @@
     </div>
   </nav>
   
+ <div class="content">   
+	<br>
+    <h2 class="tit text-center">공지사항</h2>
+    <br>
+    <div class="container">
+      <table class="table table-hover">
+      	<thead>
+      		<tr>
+      			<th class="text-center">번호</th>
+      			<th class="text-center">제목</th>
+      			<th class="text-center">내용</th>
+      			<th class="text-center">작성자</th>
+      			<th class="text-center">날짜</th>
+      			<th class="text-center">조회수</th>
+      		</tr>	
+      	</thead>
+      	<tbody>
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
+      			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
+      		</tr>
+      		
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
+      			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
+      		</tr>
+      		
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
+      			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
+      		</tr>
+      	</tbody>
+      </table>
+      <hr>
+      <br>
+      
+      
+
+  <ul class="pagination" style="justify-content:center;">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+
+    </div>
+   </div>
+  
    <!-- Footer -->
   <footer class="py-5 bg-dark">
    <div class="container_footer">
@@ -83,8 +145,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   
 </body>
 </html>

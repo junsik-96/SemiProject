@@ -48,6 +48,18 @@ public class ShyController extends HttpServlet {
 			break;
 		case "index" : index(request, response); 
 			break;
+		case "gotoForm" : gotoForm(request,response);
+			break;
+		case "reviews" : reviews(request, response);
+			break;	
+		case "counsReview" : counsReview(request, response);
+			break;
+		case "myPageMain" : myPageMain (request, response);
+			break;
+		case "mySchedule" : mySchedule (request, response);
+			break;
+		case "resConfirm" : resConfirm (request, response);
+			break;
 		default : response.setStatus(404);
 		}
 	
@@ -114,5 +126,42 @@ public class ShyController extends HttpServlet {
 	private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.sendRedirect("/index");
+	}
+	
+	private void reviews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/reviews.jsp")
+		.forward(request, response);
+	}
+	
+	private void resConfirm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/resConfirm.jsp")
+		.forward(request, response);
+	}
+	
+	private void counsReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/counsReview.jsp")
+		.forward(request, response);
+	}
+	
+	private void myPageMain(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/myPageMain.jsp")
+		.forward(request, response);
+	}
+	
+	private void mySchedule(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/mySchedule.jsp")
+		.forward(request, response);
+	}
+	
+	
+	private void gotoForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/board/boardForm.jsp")
+		.forward(request, response);
 	}
 }
