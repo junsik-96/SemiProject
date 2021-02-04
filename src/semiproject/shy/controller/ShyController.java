@@ -36,6 +36,8 @@ public class ShyController extends HttpServlet {
 			break;
 		case "diary" : diary(request, response); 
 			break;
+		case "diaryForm" : diaryForm(request, response);
+			break;
 		case "notice" : notice(request, response); 
 			break;
 		case "customerCenter" : customerCenter(request, response); 
@@ -60,6 +62,7 @@ public class ShyController extends HttpServlet {
 			break;
 		case "resConfirm" : resConfirm (request, response);
 			break;
+			
 		default : response.setStatus(404);
 		}
 	
@@ -89,6 +92,12 @@ public class ShyController extends HttpServlet {
 	private void diary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/board/diary.jsp")
+		.forward(request, response);
+	}
+	
+	private void diaryForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/board/diaryForm.jsp")
 		.forward(request, response);
 	}
 	

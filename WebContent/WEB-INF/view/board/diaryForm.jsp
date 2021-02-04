@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/include/head.jsp" %>
+<%@ include file="/WEB-INF/view/include/head.jsp" %><body>
 
 <head>
 
@@ -56,7 +56,7 @@
           		  <a class="nav-link" href="/shy/join">회원가입</a>
          		 </li>
          	 </c:when>
-         	 <c:otherwise>>        		
+         	 <c:otherwise>       		
          		 <li class="nav-item">
            			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
          		 </li>
@@ -85,7 +85,7 @@
 <div>   
     <div class="container">
       <div class="col-lg-8 mb-4">
-        <h3>대나무숲 글쓰기</h3>
+        <h3>일기 쓰기</h3>
         <form name="sentMessage" id="contactForm" novalidate>
           <div class="control-group form-group">
             <div class="controls">
@@ -94,30 +94,8 @@
               <p class="help-block"></p>
             </div>
           </div>
-          <div class="control-group form-group">
-							<div class="controls">
-								<label>주 고민분야</label>
-                  				<select name="concern" class="form-control">
-                  					<option value="선택안함" selected>선택안함</option>
-				                    <option value="우울/불안">우울/불안</option>
-				                    <option value="가족/부부">가족/부부</option>
-				                    <option value="산후/육아">산후/육아</option>
-				                    <option value="대인관계">대인관계</option>
-				                    <option value="기타">기타</option>
-                  				</select>
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<label>선호 상담사 유형</label>
-                  				<select name="ingredient" class="form-control">
-				                    <option value="선택안함" selected>선택안함</option>
-				                    <option value="전문상담사">전문상담사</option>
-				                    <option value="의사">의사</option>
-				                    <option value="관련전공자">관련전공자</option>
-                  				</select>
-							</div>
-						</div>
+          
+							
           <div class="control-group form-group">
             <div class="controls">
               <label>글쓰기:</label>
@@ -152,5 +130,6 @@
   
    <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

@@ -13,7 +13,7 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
-
+  <link href="/resources/css/agree.css" rel="stylesheet">
 </head>
 <body>
 	
@@ -27,7 +27,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
+            <a class="nav-link" href="/find">상담사 찾기</a>
           </li>          
           <li class="nav-item">
             <a class="nav-link" href="/shy/diary">일기장</a>
@@ -51,7 +51,7 @@
           		  <a class="nav-link" href="/shy/join">회원가입</a>
          		 </li>
          	 </c:when>
-         	 <c:otherwise>>        		
+         	 <c:otherwise>        		
          		 <li class="nav-item">
            			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
          		 </li>
@@ -77,8 +77,8 @@
       <li class="breadcrumb-item active">상담사 찾기   	
       </li>
       <li>
-      	<form action="${context}/shy/find" method="post" >
-     	 <input type="search" class="search_lis">
+      	<form action="${context}/find/search">
+     	 <input type="search" class="search_lis" name="search">
      	 <button class="search_btn"><i class="fas fa-search"></i></button>
       	</form>
       </li>
@@ -264,6 +264,7 @@
         </div>
       </div>
     </div>
+ 	
 	
 	<!--  page 이동 -->
  	<div>

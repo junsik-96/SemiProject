@@ -72,14 +72,58 @@
 
 
   <!-- 게시물 내용  -->
+<div class="content">   
+	<br>
+    <h2 class="tit text-center">일기장</h2>
+    <br>
+    <div class="container">
+      <table class="table table-hover">
+      	<thead>
+      		<tr>
+      			<th class="text-center">번호</th>
+      			<th class="text-center">제목</th>
+      			<th class="text-center">내용</th>
+      			<th class="text-center">날짜</th>
+      		</tr>	
+      	</thead>
+      	<tbody>
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">2021.02.03</td>
+      		</tr>
+      		
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">2021.02.03</td>
+      		</tr>
+      		
+      		<tr>
+      			<td class="text-center">1</td>
+      			<td class="text-center">이벤트</td>
+      			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">2021.02.03</td>
+      		</tr>
+      	</tbody>
+      </table>
+      <hr>
+      <br>
 
+      <a style="justify-content:flex-end;" href="/shy/board/diaryForm" onclick='fn_write()' class="btn btn-primary">글쓰기</a>
 
+<ul class="pagination" style="justify-content:center;">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
 
-
-
-
-
-
+    </div>
+   </div>
 
  <!-- Footer -->
   <footer class="py-5 bg-dark">

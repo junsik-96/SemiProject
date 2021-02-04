@@ -107,7 +107,7 @@
 	        <a class="btn btn-primary" data-toggle="modal" href="#registerModal">회원가입</a>
 	        <hr>
 	        <div style="text-align: right">
-	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/member/login"><small>로그인 바로가기</small></a></label>
+	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/shy/login"><small>로그인 바로가기</small></a></label>
 	        </div>
 	        
       	</div>
