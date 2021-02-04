@@ -19,6 +19,12 @@
 	.btn{
 		width: 100%;
 	}
+	
+	.valid_info{
+		display: block;
+		color: red;
+		font-size: 0.5vw;
+	}
 </style>
 </head>
 <body>
@@ -129,30 +135,46 @@
 					<div style="text-align: right; color: red">
 						<small>* 는 필수 입력 항목입니다.</small>
 					</div>
-					<form name="sentMessage" id="contactForm" novalidate>
+					<form action="${context}/member/mailauth" method="post" id="frm_join" name="sentMessage" id="contactForm" novalidate>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>* 아이디</label>
-								<input type="text" class="form-control" id="id" required data-validation-required-message="Please enter your id." placeholder="아이디를 입력하세요.">
+								<input type="text" name="id" class="form-control" id="id" required data-validation-required-message="Please enter your id." placeholder="아이디를 입력하세요.">
+								<button type="button" class="btn" onclick="idCheck()">check</button>
+								<span class="valid_info" id="id_check"></span>
 								<p class="help-block"></p>
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>* 비밀번호</label>
-								<input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password." placeholder="비밀번호를 입력하세요.">
+								<input type="password" name="pw" class="form-control" id="password" required data-validation-required-message="Please enter your password." placeholder="비밀번호를 입력하세요.">
+								<span id="pw_confirm" class="valid_info"></span>
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>* 이메일</label>
-								<input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email." placeholder="abcde@abcde.abc">
+								<input type="email" name="email" class="form-control" id="email" required data-validation-required-message="Please enter your email." placeholder="abcde@abcde.abc">
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>* 이름</label>
-								<input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name." placeholder="이름을 입력하세요.">
+								<input type="text" name="name" class="form-control" id="name" required data-validation-required-message="Please enter your name." placeholder="이름을 입력하세요.">
+							</div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>* 전화번호</label>
+								<input type="tel" name="tel" class="form-control" id="tel" required data-validation-required-message="Please enter your phone number." placeholder="연락처를 입력하세요.">
+							</div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>* 회원유형</label><br>
+								<input type="radio" name="userType" value="상담사">&nbsp;&nbsp;&nbsp;상담사<br>
+								<input type="radio" name="userType" value="일반회원">&nbsp;&nbsp;&nbsp;일반회원
 							</div>
 						</div>
 						<div class="control-group form-group">
@@ -177,7 +199,7 @@
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>선호 상담사 유형</label>
-                  				<select name="ingredient" class="form-control">
+                  				<select name="listType" class="form-control">
 				                    <option value="선택안함" selected>선택안함</option>
 				                    <option value="전문상담사">전문상담사</option>
 				                    <option value="의사">의사</option>
@@ -189,6 +211,55 @@
 	                	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 	                	<button type="submit" class="btn btn-primary">등록하기</button>
 	              	</div>
+	              	
+	              	<script type="text/javascript">
+						let idCheckFlg = false;
+						
+						let idCheck = () => {
+							//사용자가 입력한 아이디
+							//요소의 아이디 속성이 있을 경우 해당 엘리먼트를 가져다가 사용할 수 있다.
+							let userId = id.value;
+							
+							if(userId){
+								fetch("/member/idcheck?userId=" + userId,{
+									method : "GET"
+								}).then(response => response.text())
+								.then(text => {
+									if(text == 'success'){
+										idCheckFlg = true;
+										id_check.innerHTML = '사용 가능한 아이디 입니다.';
+									}else{
+										idCheckFlg = false;
+										id_check.innerHTML = '사용 불가능한 아이디 입니다.';
+										id.value="";
+									}
+								})
+							}else{
+								alert("아이디를 입력하지 않으셨습니다.");
+							}
+						}
+						
+						document.querySelector('#frm_join').addEventListener('submit',(e)=>{
+							
+							let password = pw.value;
+							let regExp = /^(?!.*[ㄱ-힣])(?=.*\W)(?=.*\d)(?=.*[a-zA-Z])(?=.{8,})/;
+							
+							if(!idCheckFlg){
+								e.preventDefault();
+								alert("아이디 중복 검사를 하지 않으셨습니다.");
+								id.focus();
+							}
+							
+							if(!(regExp.test(password))){
+								//form의 데이터 전송을 막음
+								e.preventDefault();
+								pw_confirm.innerHTML = '비밀번호는 숫자,영문자,특수문자 조합의 8글자 이상인 문자열입니다.';
+								pw.value='';
+							}
+							
+						});
+					</script>
+		
 				</form>
 				</div>
         	</div>
