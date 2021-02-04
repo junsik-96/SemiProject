@@ -44,6 +44,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
                <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+            <a class="dropdown-item" href="listenerlist">상담사 신청목록</a>
               <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>

@@ -34,10 +34,13 @@ public class MemberController extends HttpServlet {
 			break;
 		case "join" : join(request,response);
 			break;
+		case "before" : before(request,response);
+			break;
+		case "listenerjoin" : listenerJoin(request,response);
+			break;
 		default : response.setStatus(404);
 		}
-		
-		
+	
 	}
 
 	/**
@@ -57,6 +60,18 @@ public class MemberController extends HttpServlet {
 	private void join(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/member/join.jsp")
+		.forward(request, response);
+	}
+	
+	private void before(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/member/joinBeforeLis.jsp")
+		.forward(request, response);
+	}
+	
+	private void listenerJoin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/member/listener.jsp")
 		.forward(request, response);
 	}
 

@@ -16,7 +16,6 @@
 
 </head>
 <body>
-	
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -39,6 +38,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
               <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
+            <a class="dropdown-item" href="listenerlist">상담사 신청목록</a>
                <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
@@ -79,16 +79,15 @@
       <li>
       	<form action="${context}/shy/find" method="post" >
      	 <input type="search" class="search_lis">
-     	 <button class="search_btn"><i class="fas fa-search"></i></button>
+     	 <button type="button" class="search_btn"><i class="fas fa-search"></i></button>
       	</form>
       </li>
       
     </ol>
-	
-	
+    
 	<div>'${searchlist}' 에 대한 검색 결과 입니다.</div>
 	
-	<form action="${context}/find/search">
+	<form action="${context}/shy/find/select">
 		
 		<div class="check_info">
 			<pre> *원하시는 항목을 선택하여 주세요. (중복선택 가능)</pre>
@@ -296,17 +295,20 @@
 
  
   <footer class="py-5 bg-dark">
-   <div class="container_footer">
-   (주) 귀울임 사업자 정보 
-  <pre id = "footerInfo">  		 		
-(주) 귀울임 | 서울시 강남구 강남스타일로 123-4
-대표 : 홍길동 | 개인정보보호책임 : 황진이
-사업자 등록번호 : 123-45-6789
-통신판매업신고 : 2021-서울강남-01234호
-전화 : 02-1234-1234
-email : pclass@khaca.com
-    </pre>
+  
+	<div class = "shy_info">
+   (주) 귀울임 사업자 정보    
+  <div id = "footerInfo">  
+  <br>		 		
+	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
+	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
+	사업자 등록번호 : 123-45-6789<br>
+	통신판매업신고 : 2021-서울강남-01234호<br>
+	전화 : 02-1234-1234<br>
+	email : pclass@khaca.com<br>
     </div>
+	</div>
+    
   </footer>
 
   <!-- Bootstrap core JavaScript -->

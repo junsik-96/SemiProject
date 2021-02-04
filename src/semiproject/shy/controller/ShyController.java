@@ -38,6 +38,8 @@ public class ShyController extends HttpServlet {
 			break;
 		case "notice" : notice(request, response); 
 			break;
+		case "listenerlist" : listenerList (request, response);
+			break;
 		case "customerCenter" : customerCenter(request, response); 
 			break;
 		case "login" : login(request, response); 
@@ -95,6 +97,12 @@ public class ShyController extends HttpServlet {
 	private void notice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/board/notice.jsp")
+		.forward(request, response);
+	}
+	
+	private void listenerList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/board/listenerlist.jsp")
 		.forward(request, response);
 	}
 	
