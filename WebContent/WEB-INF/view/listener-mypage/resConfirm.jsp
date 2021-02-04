@@ -136,7 +136,7 @@
       <li class="breadcrumb-item">
         <a href="index">Home</a>
       </li>
-       <li class="breadcrumb-item active"><a href="/shy/myPageMain">상담사 마이페이지</a></li>
+       <li class="breadcrumb-item active"><a href="/shy/myPageMain">마이페이지</a></li>
     </ol>
     
      <!-- prject ,team member start -->

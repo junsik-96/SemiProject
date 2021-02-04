@@ -15,7 +15,31 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.5.1/">
+  <link href='/resources/fullCalendar/lib/main.css' rel='stylesheet' />
+    <script src='/resources/fullCalendar/lib/main.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+    </script>
+    <style type="text/css">
+    	.fc-col-header-cell-cushion {
+    		color: black;
+    	}
+    	
+    	.fc-daygrid-day-number{
+    		color: black;
+    	}
+    
+    
+    
+    </style>
 
 </head>
 <body>
@@ -85,11 +109,13 @@
       <li class="breadcrumb-item">
         <a href="index">Home</a>
       </li>
-       <li class="breadcrumb-item active"><a href="/shy/myPageMain">상담사 마이페이지</a></li>
+       <li class="breadcrumb-item active"><a href="/shy/myPageMain">마이페이지</a></li>
     </ol>
     
    	
-   		<h2>캘린더</h2>
+   		
+   		<div  id="calendar"> </div>
+   		
 		<br>
 		<br>
 	
