@@ -175,7 +175,7 @@
 				}
 			}).then(text => {
 				if(text == 'fail'){
-					document.querySelector('.valid_info').innerHTML = '아이디나 비밀번호를 확인하세요';
+					document.querySelector('#success').innerHTML = '아이디나 비밀번호를 확인하세요';
 				}else if(text == 'success'){
 					location.href = "/index";
 					//document.querySelector('html').innerHTML = text;

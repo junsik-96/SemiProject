@@ -1,0 +1,167 @@
+.agree_top_div{
+	text-align: center;
+}
+
+.agree_top{
+	display:inline;
+	text-align:center;
+	font-weight:bolder;
+	color:purple;
+	font-size: 4vw;
+}
+
+.agree_top:hover {
+	color:purple;
+}
+
+.container_join{
+	max-width: 700px;
+	min-width: 500px;
+	margin: 0 auto;
+	
+}
+
+.request_lis{
+	font-size: 2vw;
+	font-weight: 700;
+}
+
+.basic_lis{
+	margin-top:3%;
+	text-align:center;
+
+}
+
+.ip_uni, .ip_class, .ip_lic
+,.ip_name, .ip_gender, .ip_phone, .ip_ads
+, .ip_phone_check,.ip_sector, .ip_job, .ip_job_do{
+	width:450px;
+	height: 40px;
+}
+
+.form_lic, .form_class, .form_name
+, .form_sector, .form_gender, .form_uni, .form_phone_check
+,.form_ads, .form_job{
+	margin-bottom: 3%; 
+	float: left;
+}
+
+.form_phone{
+	float: left;
+	margin-bottom: 0%; 
+}
+
+.form_job{
+	margin-top: 3%;
+}
+
+.la_job{
+	transform:translateY(25%);
+}
+
+.form_job >*{
+	float: left;
+	margin-bottom: 2%; 
+}
+
+.la_uni, .la_class, .la_pw_re, .la_lic
+, .la_name, .la_sector, .la_gender, .la_phone, .la_ads
+, .la_phone_check, .la_job, .la_job_do{
+	width: 150px;
+	height:32px;
+}
+
+.la_sector{
+	transform:translateY(30%);
+}
+
+.check_uni, .check_class,.check_phone{
+	width:75px;
+	font-size: 13px;
+	height: 30px;
+	border: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.plus_lic, .del_lic
+,.plus_sec, .del_sec
+,.plus_job, .del_job{
+	width: 30px;
+	height: 30px;
+	border: none;
+	outline: none;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.plus_lic:hover, .del_lic:hover
+,.plus_sec:hover, .del_sec:hover
+,.plus_job:hover, .del_job:hover{
+	border: none;
+	outline: none;
+	background-color: grey;
+}
+
+.plus_lic:active, .del_lic:active
+,.plus_sec:active, .del_sec:active
+,.plus_job:active, .del_job:active{
+	background-color: grey;
+	border: none;
+	outline: none;
+}
+
+.plus_job{
+	transform:translateX(-15%);
+}
+
+.check_uni:active, .check_class:active ,
+.check_lic:active, .check_phone:active {
+	cursor:pointer;
+}
+
+
+.req_btn{
+	background-color:purple;
+	color:white;
+	height:50px;
+	width:450px;
+	outline:0;
+	border:none;
+	transform:translateX(6.5%);
+	margin-bottom: 5%;
+}
+
+
+.ip_birth_m{
+	transform:translateX(7%);
+}
+
+.ip_birth_d{
+	transform:translateX(15%);
+}
+
+.job_date1, .job_date2,
+.ip_job_do_y1, .ip_job_do_y2{
+	width:100px;
+	height: 40px;
+	margin-right: 1.6%;
+}
+
+.ip_job_do_y2{
+	margin-left: 1%;
+}
+
+.la_job, .la_job_do{
+	margin-right: 0.3%;
+}
+
+.btn_before{
+	width:439.5px;
+	height: 38px;
+	
+}
