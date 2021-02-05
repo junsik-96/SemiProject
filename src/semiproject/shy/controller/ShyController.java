@@ -34,11 +34,17 @@ public class ShyController extends HttpServlet {
 			break;
 		case "board" : board(request, response); 
 			break;
+		case "boardList" : boardList(request, response); 
+			break;
 		case "diary" : diary(request, response); 
 			break;
 		case "diaryForm" : diaryForm(request, response);
 			break;
+		case "diaryList" : diaryList(request, response); 
+			break;
 		case "notice" : notice(request, response); 
+			break;
+		case "listenerlist" : listenerList (request, response);
 			break;
 		case "customerCenter" : customerCenter(request, response); 
 			break;
@@ -82,6 +88,12 @@ public class ShyController extends HttpServlet {
 		.forward(request, response);
 	}
 	
+	private void boardList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/board/boardList.jsp")
+		.forward(request, response);
+	}
+	
 	
 	private void board(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -91,19 +103,31 @@ public class ShyController extends HttpServlet {
 	
 	private void diary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/board/diary.jsp")
+		request.getRequestDispatcher("/WEB-INF/view/diary/diary.jsp")
+		.forward(request, response);
+	}
+	
+	private void diaryList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/diary/diaryList.jsp")
 		.forward(request, response);
 	}
 	
 	private void diaryForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/board/diaryForm.jsp")
+		request.getRequestDispatcher("/WEB-INF/view/diary/diaryForm.jsp")
 		.forward(request, response);
 	}
 	
 	private void notice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/board/notice.jsp")
+		request.getRequestDispatcher("/WEB-INF/view/notice/notice.jsp")
+		.forward(request, response);
+	}
+	
+	private void listenerList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/board/listenerlist.jsp")
 		.forward(request, response);
 	}
 	

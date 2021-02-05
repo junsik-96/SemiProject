@@ -63,7 +63,9 @@ public class FindController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp") 
 		.forward(request,response); 
 		 
-	
+
 		
+	
 	}
+
 }

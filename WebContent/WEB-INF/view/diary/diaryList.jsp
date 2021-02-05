@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/include/head.jsp" %><body>
+<%@ include file="/WEB-INF/view/include/head.jsp" %>
 
 <head>
 
@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>게시판</title>
+  <title>Modern Business - Start Bootstrap Template</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,9 +18,10 @@
   <link href="/resources/css/modern-business.css" rel="stylesheet">
 
 </head>
-
 <body>
- <!-- Navigation -->
+
+
+<!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
@@ -29,13 +30,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+         <li class="nav-item">
             <a class="nav-link" href="find">상담사 찾기</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="diary">일기장</a>
           </li>
-
+                
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               게시판
@@ -43,7 +44,8 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
               <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
-               <a class="dropdown-item" href="customerCenter">고객센터</a>
+             <a class="dropdown-item" href="listenerlist">상담사 신청목록</a>
+           	  <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -56,7 +58,7 @@
           		  <a class="nav-link" href="/shy/join">회원가입</a>
          		 </li>
          	 </c:when>
-         	 <c:otherwise>       		
+         	 <c:otherwise>  		
          		 <li class="nav-item">
            			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
          		 </li>
@@ -70,66 +72,75 @@
       </div>
     </div>
   </nav>
-
-<%--
-	if(session.getAttribute("userId") == null) {		
-		session.setAttribute("loginMsg", "게시물 작성은<br>로그인이 필요합니다.");
-		response.sendRedirect("/shy/login");
-		return;
-	}
-
---%>
-	  
-<!-- Contact Form -->
-    <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
-<div>   
-    <div class="container">
-      <div class="col-lg-8 mb-4">
-        <h3>일기 쓰기</h3>
-        <form name="sentMessage" id="contactForm" novalidate>
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>제목:</label>
-              <input type="text" class="form-control" id="name" required data-validation-required-message="제목을 입력해주세요.">
-              <p class="help-block"></p>
-            </div>
-          </div>
-          
-							
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>글쓰기:</label>
-              <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="내용을 입력해주세요." maxlength="999" style="resize:none"></textarea>
-            </div>
-          </div>
-          <div id="success"></div>
-          <!-- For success/fail messages -->
-          <button type="submit" class="btn btn-primary" id="sendMessageButton" style="justify-content:flex-end;">완료</button>
-        </form>
-      </div>
-    </div>
-</div>
-    <!-- /.row -->
-
- 
-        
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-   <div class="container_footer">
-   (주) 귀울임 사업자 정보 
-  <pre id = "footerInfo">  		 		
-	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4
-	대표 : 홍길동 | 개인정보보호책임 : 황진이
-	사업자 등록번호 : 123-45-6789
-	통신판매업신고 : 2021-서울강남-01234호
-	전화 : 02-1234-1234
-	email : pclass@khaca.com
-    </pre>
-    </div>
-  </footer>
   
-   <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <div id="wrap" class="container">
+    <br><br>
+    <div id="board">
+    <h1>일기장</h1>
+        <table id="detailBoard" width="500"border="3"  bordercolor="lightgray" class="table table-hover">
+        
+            <tr>
+                <td id="title">작성일</td>
+                <td>${board.regDate}</td>
+            </tr>
+            <tr>
+                <td id="title">작성자</td>
+                <td>${board.userId}</td>
+            </tr>
+            <tr>
+                <td id="title">
+                    제 목
+                </td>
+                <td>
+                    ${board.title}
+                </td>        
+            </tr>
+            <tr>
+                <td id="title">
+                    내 용
+                </td>
+                <td>
+                    ${board.board_content}
+                </td>        
+            </tr>
+           
+    
+            <tr align="center" valign="middle">
+                <td colspan="5">
+                    <input type="button" value="수정" >
+                    <input type="button" value="삭제" >
+                    <input type="button" value=답글 >    
+                    <input type="button" value="목록" 
+                        onclick="javascript:location.href='boardView?page=${pageNum}'">            
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>    
+  
+
+   <!-- Footer -->
+  <footer class="py-5 bg-dark">
+  
+	<div class = "shy_info">
+   (주) 귀울임 사업자 정보    
+  <div id = "footerInfo">  
+  <br>		 		
+	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
+	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
+	사업자 등록번호 : 123-45-6789<br>
+	통신판매업신고 : 2021-서울강남-01234호<br>
+	전화 : 02-1234-1234<br>
+	email : pclass@khaca.com<br>
+    </div>
+	</div>
+    
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
 
 </body>
 </html>

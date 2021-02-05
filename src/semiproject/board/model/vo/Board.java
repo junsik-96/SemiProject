@@ -7,6 +7,7 @@ public class Board {
 	private int bdIdx;
 	private String userId;
 	private Date regDate;
+	private String title;
 	private String content;
 	private String field;
 	
@@ -16,6 +17,13 @@ public class Board {
 	}
 	public void setBdIdx(int bdIdx) {
 		this.bdIdx = bdIdx;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getUserId() {
 		return userId;
@@ -41,11 +49,13 @@ public class Board {
 	public void setField(String field) {
 		this.field = field;
 	}
+	
 	@Override
 	public String toString() {
-		return "Board [bdIdx=" + bdIdx + ", userId=" + userId + ", regDate=" + regDate + ", content=" + content
-				+ ", field=" + field + "]";
+		return "Board [bdIdx=" + bdIdx + ", userId=" + userId + ", title=" + title + ", regDate=" + regDate
+				+ ", content=" + content + ", field=" + field + "]";
 	}
+	
 	
 	
 }

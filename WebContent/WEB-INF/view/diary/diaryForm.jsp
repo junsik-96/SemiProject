@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/include/head.jsp" %>
+<%@ include file="/WEB-INF/view/include/head.jsp" %><body>
+
 <head>
 
   <meta charset="utf-8">
@@ -8,44 +9,42 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Shytalker</title>
+  <title>게시판</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
-<style type="text/css">
-	.btn{
-		width: 100%;
-	}
-</style>
+
 </head>
+
 <body>
-	 <!-- Navigation -->
+ <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
+      <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
+            <a class="nav-link" href="find">상담사 찾기</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="diary">일기장</a>
+          </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
+              게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-               <a class="dropdown-item" href="board">대나무숲</a>
+              <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
-            <a class="dropdown-item" href="listenerlist">상담사 신청목록</a>
-              <a class="dropdown-item" href="customerCenter">고객센터</a>
+ 				<a class="dropdown-item" href="listenerlist">상담사 신청목록</a>
+                <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -58,7 +57,7 @@
           		  <a class="nav-link" href="/shy/join">회원가입</a>
          		 </li>
          	 </c:when>
-         	 <c:otherwise>>        		
+         	 <c:otherwise>       		
          		 <li class="nav-item">
            			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
          		 </li>
@@ -72,50 +71,50 @@
       </div>
     </div>
   </nav>
-  
-<!-- Page Content -->
-  <div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">MyPage
-      <small></small>
-    </h1>
+<%--
+	if(session.getAttribute("userId") == null) {		
+		session.setAttribute("loginMsg", "게시물 작성은<br>로그인이 필요합니다.");
+		response.sendRedirect("/shy/login");
+		return;
+	}
 
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="/index">Home</a>
-      </li>
-      <li class="breadcrumb-item">
-        <a href="/member/mypage">Mypage</a>
-      </li>
-      <li class="breadcrumb-item active">내가 쓴 글</li>
-    </ol>
-
-    <!-- Content Row -->
-    <div class="row">
-      <!-- Sidebar Column -->
-      <div class="col-lg-3 mb-4">
-        <div class="list-group" style="text-align: center; padding-top: 1vw">
-          <a href="/member/mypage" class="list-group-item">마이페이지</a>
-          <a href="/member/user_modify" class="list-group-item">내 정보 수정</a>
-          <a href="/member/hold" class="list-group-item">찜 목록</a>
-          <a href="/member/reservation" class="list-group-item">예약내역</a>
-          <a href="/member/payment" class="list-group-item">결제내역</a>
-          <a href="/member/myboard" class="list-group-item">내 게시글</a>
-        </div>
-      </div>
-      <!-- Content Column -->
-      <div class="col-lg-9 mb-4" style="padding-top: 1vw">
-        <h1>내가 쓴 글</h1>
-        <hr>
-        
+--%>
+	  
+<!-- Contact Form -->
+    <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+<div>   
+    <div class="container">
+      <div class="col-lg-8 mb-4">
+        <h3>일기 쓰기</h3>
+        <form name="sentMessage" id="contactForm" novalidate>
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>제목:</label>
+              <input type="text" class="form-control" id="name" required data-validation-required-message="제목을 입력해주세요.">
+              <p class="help-block"></p>
+            </div>
+          </div>
+          
+							
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>글쓰기:</label>
+              <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="내용을 입력해주세요." maxlength="999" style="resize:none"></textarea>
+            </div>
+          </div>
+          <div id="success"></div>
+          <!-- For success/fail messages -->
+          <button type="submit" class="btn btn-primary" id="sendMessageButton" style="justify-content:flex-end;">완료</button>
+        </form>
       </div>
     </div>
-    <!-- /.row -->
 </div>
     <!-- /.row -->
-  
- <!-- Footer -->
+
+ 
+        
+  <!-- Footer -->
   <footer class="py-5 bg-dark">
    <div class="container_footer">
    (주) 귀울임 사업자 정보 
@@ -129,9 +128,8 @@
     </pre>
     </div>
   </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  
+   <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>

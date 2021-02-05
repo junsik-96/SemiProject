@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class NoticeController
+ * Servlet implementation class listenerController
  */
-@WebServlet("/notice")
-public class NoticeController extends HttpServlet {
+@WebServlet("/listenerlist/*")
+public class listenerListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NoticeController() {
+    public listenerListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +26,12 @@ public class NoticeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("WEB-INF/view/notice/notice.jsp")
-		.forward(request, response);
+
+		String[] uriArr = request.getRequestURI().split("/");
+		switch(uriArr[uriArr.length-1]) {
+		
+		default:response.setStatus(404);
+		}
 	}
 
 	/**
@@ -38,5 +41,6 @@ public class NoticeController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 
 }

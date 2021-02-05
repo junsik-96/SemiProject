@@ -70,5 +70,71 @@ public class MemberDao {
 		
 		return member;
 	}
+	
+	public Member selectMemberById(Connection conn, String userId){
+		
+		Member member = null;
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+		
+		try {
+			String query = "select * from tb_member where user_id = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, userId);
+			
+			rset = pstm.executeQuery();
+			
+			if(rset.next()) {
+				member = new Member();
+				member.setUserId(rset.getString("user_id"));
+				member.setPassword(rset.getString("password"));
+				member.setUserType(rset.getString("user_type"));
+				member.setEmail(rset.getString("email"));
+				member.setName(rset.getString("name"));
+				member.setBirth(rset.getString("birth"));
+				member.setTel(rset.getString("tel"));
+				member.setManager(rset.getInt("manager"));
+				member.setConcern(rset.getString("concern"));
+				member.setListType(rset.getString("list_type"));
+				member.setRegDate(rset.getDate("reg_date"));
+			}
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.SM01,e);
+		} finally {
+			jdt.close(rset,pstm);
+		}
+		
+		return member;
+	}
+	
+	public int insertMember(Connection conn, Member member){
+		
+		int res = 0;
+		PreparedStatement pstm = null;
+		
+		try {
+			String query = "insert into tb_member(user_id, password, email, name, tel, "
+					+ "user_type, birth, concern, list_type) "
+					+"values(?,?,?,?,?,?,?,?,?)";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, member.getUserId());
+			pstm.setString(2,member.getPassword());
+			pstm.setString(3, member.getEmail());
+			pstm.setString(4, member.getName());
+			pstm.setString(5, member.getTel());
+			pstm.setString(6, member.getUserType());
+			pstm.setString(7, member.getBirth());
+			pstm.setString(8, member.getConcern());
+			pstm.setString(9, member.getListType());;
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+		
+		return res;
+	}
 
 }

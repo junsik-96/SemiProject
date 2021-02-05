@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
-
 <head>
 
   <meta charset="utf-8">
@@ -19,30 +18,30 @@
 
 </head>
 <body>
-<!-- Navigation -->
+ <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
+     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-         <li class="nav-item">
-            <a class="nav-link" href="find">상담사 찾기</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/shy/find">상담사 찾기</a>
+          </li>          
+          <li class="nav-item">
+            <a class="nav-link" href="/shy/diary">일기장</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="diary">일기장</a>
-          </li>
-                
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              게시판
+              	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
               <a class="dropdown-item" href="board">대나무숲</a>
               <a class="dropdown-item" href="notice">공지사항</a>
-           	  <a class="dropdown-item" href="customerCenter">고객센터</a>
+            <a class="dropdown-item" href="listenerlist">상담사 신청목록</a>
+               <a class="dropdown-item" href="customerCenter">고객센터</a>
             </div>
           </li>
           
@@ -69,12 +68,10 @@
       </div>
     </div>
   </nav>
-
-
-  <!-- 게시물 내용  -->
-<div class="content">   
+  
+ <div class="content">   
 	<br>
-    <h2 class="tit text-center">일기장</h2>
+    <h2 class="tit text-center">공지사항</h2>
     <br>
     <div class="container">
       <table class="table table-hover">
@@ -83,7 +80,9 @@
       			<th class="text-center">번호</th>
       			<th class="text-center">제목</th>
       			<th class="text-center">내용</th>
+      			<th class="text-center">작성자</th>
       			<th class="text-center">날짜</th>
+      			<th class="text-center">조회수</th>
       		</tr>	
       	</thead>
       	<tbody>
@@ -91,30 +90,36 @@
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
       			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
       		</tr>
       		
       		<tr>
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
       			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
       		</tr>
       		
       		<tr>
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
+      			<td class="text-center">관리자</td>
       			<td class="text-center">2021.02.03</td>
+      			<td class="text-center">155</td>
       		</tr>
       	</tbody>
       </table>
       <hr>
       <br>
+      
+      
 
-      <a style="justify-content:flex-end;" href="/shy/board/diaryForm" onclick='fn_write()' class="btn btn-primary">글쓰기</a>
-
-<ul class="pagination" style="justify-content:center;">
+  <ul class="pagination" style="justify-content:center;">
     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -124,25 +129,28 @@
 
     </div>
    </div>
-
- <!-- Footer -->
+  
+   <!-- Footer -->
   <footer class="py-5 bg-dark">
-   <div class="container_footer">
-   (주) 귀울임 사업자 정보 
-  <pre id = "footerInfo">  		 		
-	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4
-	대표 : 홍길동 | 개인정보보호책임 : 황진이
-	사업자 등록번호 : 123-45-6789
-	통신판매업신고 : 2021-서울강남-01234호
-	전화 : 02-1234-1234
-	email : pclass@khaca.com
-    </pre>
+  
+	<div class = "shy_info">
+   (주) 귀울임 사업자 정보    
+  <div id = "footerInfo">  
+  <br>		 		
+	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
+	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
+	사업자 등록번호 : 123-45-6789<br>
+	통신판매업신고 : 2021-서울강남-01234호<br>
+	전화 : 02-1234-1234<br>
+	email : pclass@khaca.com<br>
     </div>
+	</div>
+    
   </footer>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  
 </body>
 </html>

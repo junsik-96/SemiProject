@@ -45,6 +45,18 @@ public class MemberController extends HttpServlet {
 				break;
 			case "join" : join(request,response); //회원가입
 				break;
+			case "before" : before(request,response);
+				break;
+			case "listenerjoin" : listenerJoin(request,response);
+				break;
+			case "idcheck" : confirmId(request,response);
+				break;
+			case "mailauth" : authenticateEmail(request,response);
+				break;
+			case "joinimpl" : joinImpl(request, response);
+				break;
+			case "logout" : logout(request,response);
+				break;
 			case "mypage" : myPage(request,response); //마이페이지
 				break;
 			case "user_modify" : userModify(request,response); //내정보수정
@@ -59,8 +71,7 @@ public class MemberController extends HttpServlet {
 				break;
 			default : response.setStatus(404);
 		}
-		
-		
+	
 	}
 
 	/**
@@ -102,10 +113,96 @@ public class MemberController extends HttpServlet {
 		
 	}
 	
+
+	private void before(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/member/joinBeforeLis.jsp")
+		.forward(request, response);
+	}
+	
+	private void listenerJoin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/member/listener.jsp")
+		.forward(request, response);
+	}
+		
+
 	private void join(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/member/join.jsp")
 		.forward(request, response);
+	}
+	
+
+	private void confirmId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String userId = request.getParameter("userId");
+		
+		Member member = memberService.selectMemberById(userId);
+		
+		//아이디가 있다.
+		if(member != null) {
+			//응답 body에 fail 작성
+			response.getWriter().print("fail");
+		//아이디가 없다.
+		}else {
+			//응답 body에 success 작성
+			response.getWriter().print("success");
+		}
+	}
+	
+	private void authenticateEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String userId = request.getParameter("id");
+		String password = request.getParameter("pw");
+		String email = request.getParameter("email");
+		String name = request.getParameter("name");
+		String tel = request.getParameter("tel");
+		String userType = request.getParameter("userType");
+		String birth = request.getParameter("birth");
+		String concern = request.getParameter("concern");
+		String listType = request.getParameter("listType");
+		
+		Member member = new Member();
+		member.setUserId(userId);
+		member.setPassword(password);
+		member.setEmail(email);
+		member.setName(name);
+		member.setTel(tel);
+		member.setUserType(userType);
+		member.setBirth(birth);
+		member.setConcern(concern);
+		member.setListType(listType);
+		
+		memberService.authenticateEmail(member);
+		
+		request.getSession().setAttribute("persistUser", member);
+		
+		request.setAttribute("msg", "회원가입 완료를 위한 이메일이 발송되었습니다.");
+		request.setAttribute("url", "/index");
+		request.getRequestDispatcher("/WEB-INF/view/common/result.jsp")
+		.forward(request, response);
+	}
+	
+	private void joinImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("persistUser");
+		
+		memberService.insertMember(member);
+		
+		//회원가입 정보를 삭제
+		request.getSession().removeAttribute("persistUser");
+		
+		request.setAttribute("msg", "회원가입을 축하드립니다.");
+		request.setAttribute("url", "/member/login");
+		request.getRequestDispatcher("/WEB-INF/view/common/result.jsp")
+		.forward(request, response);
+	}
+	
+	private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getSession().removeAttribute("user");
+		response.sendRedirect("/index");
 	}
 	
 	private void myPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
