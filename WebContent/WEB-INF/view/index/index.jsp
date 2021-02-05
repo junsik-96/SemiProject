@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
@@ -128,34 +129,43 @@
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">상담사 이름</h5>
+        <h5 class="card-header"> '${rank[0].listName}'<small>(${rank[0].listType})</small>
+        	<div style="float: right;"><small>예약 수 : ${rank[0].listResCnt}</small></div>
+        </h5>
+        
           <div class="card-body">
-            <p class="card-text">1등 상담사 소개</p>
+          <img src="/resources/image/홍길동.jfif" style="width: 100%; height: 80%; object-fit:cover;">
+            <p class="card-text"> 
+            <small>
+            	전문분야 : ${rank[0].listField} <br>
+            	한줄소개 : ${rank[0].listPro} 
+            </small>
+           </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">상담사 이름</h5>
+          <h5 class="card-header">예약수 2등</h5>
           <div class="card-body">
             <p class="card-text">2등 상담사 소개</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">상담사 이름</h5>
+          <h5 class="card-header">예약수 3등</h5>
           <div class="card-body">
             <p class="card-text">3등 상담사 소개</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -170,7 +180,7 @@
             <p class="card-text">1등 상담사 소개</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -181,7 +191,7 @@
             <p class="card-text">2등 상담사 소개</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -192,7 +202,7 @@
             <p class="card-text">3등 상담사 소개</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -209,7 +219,7 @@
             <p class="card-text">상담사 소개</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -220,7 +230,7 @@
             <p class="card-text">상담사 소개</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -231,7 +241,7 @@
             <p class="card-text">상담사 소개</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 개인페이지로 이동</a>
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>

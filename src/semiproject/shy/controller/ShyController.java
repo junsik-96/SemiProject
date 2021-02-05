@@ -87,6 +87,7 @@ public class ShyController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
 		.forward(request, response);
 	}
+
 	
 	private void boardList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

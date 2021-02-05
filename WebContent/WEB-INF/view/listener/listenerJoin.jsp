@@ -16,9 +16,9 @@
 	<small id="emailHelp" class="form-text text-muted">Welcome~!!</small><br>
 	</div>
 	
-    <div class="form_name">
-     <label for="exampleInputPassword1" class="la_name">이름</label>
-      <input type="text" class="ip_name" id="exampleInputPassword1" placeholder="이름을 입력하세요.">
+    <div class="form_pic">
+     <label for="exampleInputPassword1" class="la_pic">사진</label>
+      <input type="file" class="ip_pic" id="exampleInputPassword1">
     </div>
     
     <div class="form_gender">
@@ -33,14 +33,14 @@
 	
     <div class="form_uni">
       <label for="exampleInputID" class="la_uni">학교</label>
-      <input type="text" class="ip_uni" id="exampleInputPassword1" placeholder="학교를 입력하세요">
-      <button type="button" class="check_uni">학교검색</button>
+      <input type="text" class="ip_uni" id="exampleInputPassword1" placeholder="학교를 입력하세요" onclick="school_find()">
+      <button type="button" class="check_uni" onclick="school_find()">학교검색</button>
     </div>
     
     <div class="form_class">
       <label for="exampleInputPassword1" class="la_class">학과</label>
       <input type="text" class="ip_class" id="exampleInputPassword1" placeholder="학과를 입력하세요">
-       <button type="button" type="button"class="check_class">학과검색</button>
+       <button type="button" type="button"class="check_class" onclick="class_find()">학과검색</button>
     </div>
     
 
@@ -147,11 +147,33 @@
 
 </div>
 
+
+
+
 <script type="text/javascript">
 
 function join(){
 	alert("감사합니다. 신청되셨습니다! \n확인 후 신청승인이 진행됩니다.");
 	location.href = "/shy/listenerlist";
+}
+
+
+function school_find(){
+	let link = "http://localhost:9090/listener/findschool"
+	var w = 500;
+	var h = 660;
+	var x = (screen.width - w) /2;
+	var y = (screen.height - h) / 2;
+	window.open(link,"",'left='+x+',top='+y+',width='+w+',height='+h);
+}
+
+function class_find(){
+	let link = "http://localhost:9090/listener/findclass"
+	var w = 500;
+	var h = 660;
+	var x = (screen.width - w) /2;
+	var y = (screen.height - h) / 2;
+	window.open(link,"",'left='+x+',top='+y+',width='+w+',height='+h);
 }
 
 </script>

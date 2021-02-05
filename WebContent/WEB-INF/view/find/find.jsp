@@ -19,7 +19,7 @@
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
+     <a class="navbar-brand" href="/index" style="font-style: italic">Shytalker</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -51,7 +51,11 @@
           		  <a class="nav-link" href="/shy/join">회원가입</a>
          		 </li>
          	 </c:when>
+<<<<<<< HEAD
          	 <c:otherwise>        		
+=======
+         	 <c:otherwise>       		
+>>>>>>> e47105436687321abef1d4fb2b15b7c955216e14
          		 <li class="nav-item">
            			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
          		 </li>
@@ -78,16 +82,24 @@
       </li>
       <li>
       	<form action="${context}/shy/find" method="post" >
-     	 <input type="search" class="search_lis">
-     	 <button type="button" class="search_btn"><i class="fas fa-search"></i></button>
+     	 <input type="search" class="search_lis" name="searchlis">
+     	 <button type="submit" class="search_btn"><i class="fas fa-search"></i></button>
       	</form>
-      </li>
-      
+      </li>  
     </ol>
-    
-	<div>'${searchlist}' 에 대한 검색 결과 입니다.</div>
 	
-	<form action="${context}/shy/find/select">
+	<% 
+		String name = "";
+		if(request.getParameter("searchlis") == null){
+			name = "";
+		}else{
+			name = "'"+request.getParameter("searchlis")+"'"+"에 대한 검색 결과 입니다.";
+		}
+	%>
+    
+	<div><%=name%></div>
+	
+	<form action="${context}/shy/find">
 		
 		<div class="check_info">
 			<pre> *원하시는 항목을 선택하여 주세요. (중복선택 가능)</pre>
@@ -98,9 +110,9 @@
 			<div class="sector_lis">상담사 유형</div>
 			<div class="box_list">
 			 	<ul class="sector_li">
-			 		<li><input type="checkbox" name="job" value="expert">전문가</li>
-			 		<li><input type="checkbox" name="job" value="doctor">의사</li>
-			 		<li><input type="checkbox" name="job" value="student">대학생</li>
+			 		<li><input type="checkbox" name="job" value="전문의">"전문의"</li>
+			 		<li><input type="checkbox" name="job" value="의사">의사</li>
+			 		<li><input type="checkbox" name="job" value="대학생">대학생</li>
 			 	</ul>
 			</div>
 		</div>
