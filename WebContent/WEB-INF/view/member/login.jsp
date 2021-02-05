@@ -115,7 +115,7 @@
           <button class="btn btn-primary" id="sendMessageButton" onclick="login()">로그인</button>
         	<hr>
         	<div style="text-align: right">
-	        	<label>아직 회원이 아니신가요? |&nbsp;&nbsp;<a href="/member/join"><small>회원가입 바로가기</small></a></label>
+	        	<label>아직 회원이 아니신가요? |&nbsp;&nbsp;<a href="/shy/join"><small>회원가입 바로가기</small></a></label>
 	        </div>
         </form>
       </div>
