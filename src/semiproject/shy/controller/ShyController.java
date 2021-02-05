@@ -80,6 +80,7 @@ public class ShyController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
 		.forward(request, response);
 	}
+
 	
 	
 	private void board(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

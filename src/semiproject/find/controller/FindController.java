@@ -32,7 +32,10 @@ public class FindController extends HttpServlet {
 		
 		String[] uriArr = request.getRequestURI().split("/");
 		switch(uriArr[uriArr.length-1]) {
-
+		case "findlis" : findLis(request, response); 
+			break;	
+		case "search" : search(request, response); 
+			break;	
 		default : response.setStatus(404);
 		}
 	
@@ -46,17 +49,23 @@ public class FindController extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void findLis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String searchLis = request.getParameter("search");
+		request.setAttribute("searchlist", searchLis);
 
-		 
-	
+		 request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
+		 .forward(request, response);
 		
 	}
 	
-	private void select(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	
+		String searchLis = request.getParameter("search");
+		request.setAttribute("searchlist", searchLis);
+
+		 request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
+		 .forward(request, response);
 		
 	}
 }

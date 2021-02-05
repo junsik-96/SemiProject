@@ -33,18 +33,23 @@
 }
 
 .ip_uni, .ip_class, .ip_lic
-,.ip_name, .ip_gender, .ip_phone, .ip_ads
+, .ip_gender, .ip_phone, .ip_ads
 , .ip_phone_check,.ip_sector, .ip_job, .ip_job_do{
 	width:450px;
 	height: 40px;
 }
 
-.form_lic, .form_class, .form_name
+.ip_pic{
+	display: inline;
+}
+
+.form_lic, .form_class, .form_pic
 , .form_sector, .form_gender, .form_uni, .form_phone_check
 ,.form_ads, .form_job{
 	margin-bottom: 3%; 
 	float: left;
 }
+
 
 .form_phone{
 	float: left;
@@ -64,8 +69,8 @@
 	margin-bottom: 2%; 
 }
 
-.la_uni, .la_class, .la_pw_re, .la_lic
-, .la_name, .la_sector, .la_gender, .la_phone, .la_ads
+.la_uni, .la_class, .la_pw_re, .la_lic ,.la_pic
+, .la_sector, .la_gender, .la_phone, .la_ads
 , .la_phone_check, .la_job, .la_job_do{
 	width: 150px;
 	height:32px;
@@ -165,3 +170,4 @@
 	height: 38px;
 	
 }
+

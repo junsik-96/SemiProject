@@ -113,7 +113,7 @@
 	        </h6>
 	        <br>
 	        <a class="btn btn-primary" data-toggle="modal" href="#registerModal">회원가입</a>
-	        <button class="btn_before" type="button" onclick="location.href='/member/before'" 
+	        <button class="btn_before" type="button" onclick="location.href='/listener/before'" 
 	        style="width:439.5px; height: 38px; margin-top: 2%; border: none;">상담사 신청</button>
 	        <hr>
 	        <div style="text-align: right">

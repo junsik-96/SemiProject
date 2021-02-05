@@ -5,7 +5,7 @@
 <body>
 
 
-
+	<form id="check_info" name="Join" action="/listener/listenerjoin" method="post">
 	<div class="agree_top_div"><a class="agree_top" href="/index">shytalker</a></div>
 
 
@@ -13,7 +13,7 @@
 
 	<div class="agree_all">
 	<span class="agree_all_info">
-	<input type="checkbox" id="aa" class="stcheck"  value="all"/>
+	<input type="checkbox" name="selectall" id="aa" class="stcheck" value="selectall" onclick="selectAll(this)"/>
 	<label for="aa"><i class="far fa-check-circle allbtn"></i></label>
 	 귀울임 이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택),<br>
 	 프로모션 정보 수신(선택)에 모두 동의합니다. 
@@ -23,7 +23,7 @@
 
 
     <div class="agree_before">
-    <input type="checkbox" id="bb" class="stcheck"  value="shy"/>
+    <input type="checkbox" name="agree" id="bb" class="stcheck"  value="shy" onclick="checkSelectAll()"/>
 	<label for="bb"><i class="far fa-check-circle"></i></label>
      귀울임 이용약관 동의<small>(필수)</small><br>
       <textarea class="agree_shy" id="exampleTextarea" rows="3">
@@ -64,7 +64,7 @@
     </div>
     
     <div class="agree_before">
-    <input type="checkbox" id="ee" class="stcheck"  value="info"/>
+    <input type="checkbox" name="agree" id="ee" class="stcheck"  value="info" onclick="checkSelectAll()"/>
 	<label for="ee"><i class="far fa-check-circle"></i></label>
      개인정보 수집 및 이용 동의<small>(필수)</small><br>
       <textarea class="agree_info" id="exampleTextarea" rows="3">
@@ -127,7 +127,7 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
     </div>
     
     <div class="agree_before">
-    <input type="checkbox" id="cc" class="stcheck" value="plcae" />
+    <input type="checkbox" name="agree" id="cc" class="stcheck" value="plcae" onclick="checkSelectAll()"/>
 	<label for="cc"><i class="far fa-check-circle"></i></label>
      위치정보 이용약관 동의<small>(선택)</small><br>
       <textarea class="agree_place" id="exampleTextarea" rows="3">
@@ -211,7 +211,7 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
   
     
     <div class="agree_before">
-    <input type="checkbox" id="dd" class="stcheck"  value="promotion"/>
+    <input type="checkbox" name="agree" id="dd" class="stcheck"  value="promotion" onclick="checkSelectAll()"/>
 	<label for="dd"><i class="far fa-check-circle"></i></label>
       프로모션 정보 수신 동의<small>(선택)</small><br>
       <textarea class="agree_pro" id="exampleTextarea" rows="3">
@@ -220,11 +220,12 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
     </div>
     
     <div class="agree_btn_double">
-    	<button class="no_btn" onclick="location.href='/index'">취소</button>
-    	<button class="ok_btn" onclick="location.href='/member/listenerjoin'">확인</button>
+    	<button type="button" class="no_btn" onclick="location.href='/index'">취소</button>
+    	<button type="button" class="ok_btn" >확인</button>
     </div>
     
      </div> 
+     </form>
      
        <footer class="py-5 bg-dark">
   
@@ -242,5 +243,57 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
 	</div>
     
   </footer>
+  
+  <script type="text/javascript"> 
+  
+  
+  /* 약관 전체선택 */
+  	function checkSelectAll(){
+  		
+  		const checkboxes = document.querySelectorAll('input[name="agree"]'); 		
+  		const checked = document.querySelectorAll('input[name="agree"]:checked');  	
+  		const selectAll = document.querySelector('input[name="selectall"]');
+  		if(checkboxes.length === checked.length){
+  			selectAll.checked = true;
+  		}else{
+  			selectAll.checked = false;
+  		}		
+  	}
+  
+  	function selectAll(selectAll){
+  		const checkboxes = document.getElementsByName('agree');  		
+  		checkboxes.forEach((checkbox) => {
+  			checkbox.checked = selectAll.checked
+  		})
+  	}
+
+  	/* 필수 이용약관 동의 */
+  	  $(document).ready(function(){
+  	    
+         $(".ok_btn").click(function(){    
+             if($("#bb").is(":checked") == false){
+                 alert("필수동의 약관에 동의 하셔야 다음 단계로 진행 가능합니다!");
+              /* location.href="/member/before"; */
+                 return;
+             }else if($("#ee").is(":checked") == false){
+                 alert("필수동의 약관에 동의 하셔야 다음 단계로 진행 가능합니다!");
+                 /* location.href="/member/before"; */
+                 return;
+             }else{
+            	/*  location.href="/member/listenerjoin"; */
+                 $("#check_info").submit();
+             }
+         });    
+     }); 
+
+
+
+  	
+  </script>
+  
+  
+  
+  
+  
 </body>
 </html>
