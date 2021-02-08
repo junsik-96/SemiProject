@@ -62,7 +62,7 @@
           		  <a class="nav-link" href="/shy/join">회원가입</a>
          		 </li>
          	 </c:when>
-         	 <c:otherwise>>        		
+         	 <c:otherwise>        		
          		 <li class="nav-item">
            			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
          		 </li>
