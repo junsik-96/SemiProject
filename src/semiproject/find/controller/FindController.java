@@ -32,11 +32,10 @@ public class FindController extends HttpServlet {
 		
 		String[] uriArr = request.getRequestURI().split("/");
 		switch(uriArr[uriArr.length-1]) {
-<<<<<<< HEAD
+
 		case "find" : find(request, response); 
-=======
+			break;
 		case "findlis" : findLis(request, response); 
->>>>>>> e47105436687321abef1d4fb2b15b7c955216e14
 			break;	
 		case "search" : search(request, response); 
 			break;	
@@ -53,29 +52,26 @@ public class FindController extends HttpServlet {
 		doGet(request, response);
 	}
 	
-<<<<<<< HEAD
+
 	private void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
 		.forward(request, response);
 	}
 	
-	private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-=======
+
+
 	private void findLis(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
->>>>>>> e47105436687321abef1d4fb2b15b7c955216e14
+
 		
 		String searchLis = request.getParameter("search");
 		request.setAttribute("searchlist", searchLis);
 
-<<<<<<< HEAD
+
 		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp") 
 		.forward(request,response); 
 		 
 
-		
-	
-=======
 		 request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
 		 .forward(request, response);
 		
@@ -89,7 +85,7 @@ public class FindController extends HttpServlet {
 		 request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
 		 .forward(request, response);
 		
->>>>>>> e47105436687321abef1d4fb2b15b7c955216e14
+
 	}
 
 }

@@ -45,13 +45,7 @@ public class MemberController extends HttpServlet {
 				break;
 			case "join" : join(request,response); //회원가입
 				break;
-<<<<<<< HEAD
 			case "before" : before(request,response);
-				break;
-			case "listenerjoin" : listenerJoin(request,response);
-=======
-			case "join" : join(request,response); //회원가입
->>>>>>> e47105436687321abef1d4fb2b15b7c955216e14
 				break;
 			case "idcheck" : confirmId(request,response);
 				break;
@@ -117,15 +111,12 @@ public class MemberController extends HttpServlet {
 		
 	}
 	
-<<<<<<< HEAD
 
 	private void before(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/member/joinBeforeLis.jsp")
 		.forward(request, response);
 	}
-=======
->>>>>>> e47105436687321abef1d4fb2b15b7c955216e14
 	
 		
 

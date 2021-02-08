@@ -87,7 +87,7 @@
     <div class="container">
       <div class="col-lg-8 mb-4">
         <h3>대나무숲 글쓰기</h3>
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form action="" name="sentMessage" id="contactForm" novalidate>
           <div class="control-group form-group">
             <div class="controls">
               <label>제목:</label>
