@@ -3,6 +3,7 @@ package semiproject.common.code;
 public enum ErrorCode {
 	
 	IM01("회원정보를 입력하는 도중 에러가 발생하였습니다.","/member/join"),
+	IL01("상담사 자격 정보를 입력하는 도중 에러가 발생하였습니다.","/listener/listenerjoin"),
 	SM01("회원정보를 조회하는 도중 에러가 발생하였습니다.","/member/login"),
 	SM02("아이디나 패스워드가 틀렸습니다.","/member/login"),
 	UM01("회원정보 수정 중 에러가 발생하였습니다."),

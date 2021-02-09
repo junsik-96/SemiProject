@@ -174,6 +174,7 @@ public class MemberController extends HttpServlet {
 		Member member = (Member) request.getSession().getAttribute("persistUser");
 		
 		memberService.insertMember(member);
+		memberService.insertListener(member);
 		
 		//회원가입 정보를 삭제
 		request.getSession().removeAttribute("persistUser");
