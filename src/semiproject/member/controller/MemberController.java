@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -40,6 +41,8 @@ public class MemberController extends HttpServlet {
 		
 		switch(uriArr[uriArr.length - 1]) {
 			case "login" : login(request,response); //로그인
+				break;
+			case "KakaoLogin" : kakaoLogin(request,response);
 				break;
 			case "loginimpl" : loginImpl(request, response);
 				break;
@@ -84,6 +87,53 @@ public class MemberController extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/member/login.jsp")
 		.forward(request, response);
+	}
+	
+	private void kakaoLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+        String userId = request.getParameter("id");
+        String password = "123123";
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String birth = request.getParameter("birth");
+        
+        String[] names = name.split("\"");
+        String[] emails = email.split("\"");
+        String[] births = birth.split("\"");
+        
+        //회원이 있는지 검사, 없으면 회원가입부터 진행 후 로그인
+        Member member = memberService.selectMemberById(userId);
+        
+        if(member == null) {
+            //회원가입이 필요
+            Member memberInput = new Member();
+            memberInput.setUserId(userId);
+            memberInput.setPassword(password);
+            memberInput.setName(names[1]);
+            memberInput.setUserType("일반회원");
+            memberInput.setEmail(emails[1]);
+            memberInput.setBirth(births[1]);
+            
+            //회원가입 실행
+            int res = memberService.insertMember(memberInput);
+            
+            if(res > 0) {
+                //로그인
+                Member memberLogin = memberService.memberAuthenticate(userId,password);
+                
+                session = request.getSession();
+                session.setAttribute("user", memberLogin);
+                response.getWriter().append("/");
+            }else {
+                System.out.println("카카오 회원가입 실패");
+            }
+            
+        }else {
+            //있는 회원
+            session.setAttribute("user", member);
+            response.getWriter().append("/");
+        }
 	}
 	
 	private void loginImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
