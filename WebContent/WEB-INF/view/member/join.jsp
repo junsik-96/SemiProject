@@ -54,6 +54,7 @@
         <img src="../../resources/image/login.jpg" style="width: 50%; height: 50%">
     	<div style="width: 48%; height: 50%; padding-left: 2vw; padding-top: 2vw">
 	        <h2>회원가입</h2>
+	        
 	        <br>
 	        <h6>
 	        	오늘 하루는 어떠셨나요?<br><br>

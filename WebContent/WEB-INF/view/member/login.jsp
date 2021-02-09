@@ -16,7 +16,7 @@
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
 <style type="text/css">
-	button{
+	#sendMessageButton{
 		width: 100%;
 	}
 </style>
