@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 
-
 <head>
 
   <meta charset="utf-8">
@@ -49,7 +48,7 @@
                     내 용
                 </td>
                 <td>
-                    ${board.board_content}
+                    ${board.board.content}
                 </td>        
             </tr>
            
@@ -60,7 +59,7 @@
                     <input type="button" value="삭제" >
                     <input type="button" value=답글 >    
                     <input type="button" value="목록" 
-                        onclick="javascript:location.href='boardView?page=${pageNum}'">            
+                        onclick="javascript:location.href='board'">            
                 </td>
             </tr>
         </table>
