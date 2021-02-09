@@ -1,29 +1,43 @@
 package semiproject.listener.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.dao.ListenerDao;
 import semiproject.listener.model.vo.School;
+import semiproject.listener.model.vo.Class;
 
 public class ListenerService {
 
 	private ListenerDao listenerDao = new ListenerDao();
 	JDBCTemplate jdt = JDBCTemplate.getInstance();
 	
-	public School selectListBySchool(String school) {
+	public List<School> selectListBySchool(String school) {
 		
 		Connection conn = jdt.getConnection();
-		School schoolName = null;
+		List<School> schoolList = null;
 		
 		try {
-			schoolName = listenerDao.selectListBySchool(conn, school);
+			schoolList = listenerDao.selectListBySchool(conn, school);
 		}finally {
 			jdt.close(conn);
-		}
+		}	
+		return schoolList;
+	}
+	
+	public List<Class> selectListByClass(String class1) {
 		
+		Connection conn = jdt.getConnection();
+		List<Class> classList = null;
 		
-		return schoolName;
+		try {
+			classList = listenerDao.selectListByClass(conn, class1);
+		}finally {
+			jdt.close(conn);
+		}	
+		return classList;
 	}
 	
 	

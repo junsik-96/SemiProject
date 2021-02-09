@@ -9,6 +9,7 @@ public class Board {
 	private Date regDate;
 	private String title;
 	private String content;
+	private int count;
 	private String field;
 	
 	
@@ -50,11 +51,21 @@ public class Board {
 		this.field = field;
 	}
 	
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 	@Override
 	public String toString() {
-		return "Board [bdIdx=" + bdIdx + ", userId=" + userId + ", title=" + title + ", regDate=" + regDate
-				+ ", content=" + content + ", field=" + field + "]";
+		return "Board [bdIdx=" + bdIdx + ", userId=" + userId + ", regDate=" + regDate + ", title=" + title
+				+ ", content=" + content + ", count=" + count + ", field=" + field + "]";
 	}
+	
+	
 	
 	
 	

@@ -21,6 +21,7 @@
 	</div>
 
 
+
     <div class="agree_before">
     <input type="checkbox" name="agree" id="bb" class="stcheck"  value="shy" onclick="checkSelectAll()"/>
 	<label for="bb"><i class="far fa-check-circle"></i></label>

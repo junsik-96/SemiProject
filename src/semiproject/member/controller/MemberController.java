@@ -41,11 +41,9 @@ public class MemberController extends HttpServlet {
 		switch(uriArr[uriArr.length - 1]) {
 			case "login" : login(request,response); //로그인
 				break;
-			case "loginImpl" : loginImpl(request, response);
+			case "loginimpl" : loginImpl(request, response);
 				break;
 			case "join" : join(request,response); //회원가입
-				break;
-			case "before" : before(request,response);
 				break;
 			case "idcheck" : confirmId(request,response);
 				break;
@@ -58,6 +56,8 @@ public class MemberController extends HttpServlet {
 			case "mypage" : myPage(request,response); //마이페이지
 				break;
 			case "user_modify" : userModify(request,response); //내정보수정
+				break;
+			case "modifyimpl" : userModifyImpl(request,response);
 				break;
 			case "hold" : holdInfo(request,response); //찜목록
 				break;
@@ -111,21 +111,13 @@ public class MemberController extends HttpServlet {
 		
 	}
 	
-
-	private void before(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/member/joinBeforeLis.jsp")
-		.forward(request, response);
-	}
 	
 		
-
 	private void join(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/member/join.jsp")
 		.forward(request, response);
 	}
-	
 
 	private void confirmId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -207,6 +199,28 @@ public class MemberController extends HttpServlet {
 	private void userModify(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/user_modify.jsp")
+		.forward(request, response);
+	}
+	
+	private void userModifyImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		Member member = (Member) request.getSession().getAttribute("user");
+		String name = request.getParameter("name");
+		String concern = request.getParameter("concern");
+		String listType = request.getParameter("listType");
+		String tel = request.getParameter("tel");
+		
+		member.setName(name);
+		member.setConcern(concern);
+		member.setListType(listType);
+		member.setTel(tel);
+		
+		memberService.updateMember(member);
+		
+		request.setAttribute("msg", "회원 정보가 수정되었습니다.");
+		request.setAttribute("url", "/member/mypage");
+		request.getRequestDispatcher("/WEB-INF/view/common/result.jsp")
 		.forward(request, response);
 	}
 	

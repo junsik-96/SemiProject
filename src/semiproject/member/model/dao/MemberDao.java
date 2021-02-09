@@ -136,5 +136,27 @@ public class MemberDao {
 		
 		return res;
 	}
+	
+	public int updateMember(Connection conn, Member member){
+		int res = 0;
+		PreparedStatement pstm = null;
+		
+		try {
+			String query = "update tb_member set name=?, concern=?, list_type=?, tel=? where user_id = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, member.getName());
+			pstm.setString(2, member.getConcern());
+			pstm.setString(3, member.getListType());
+			pstm.setString(4, member.getTel());
+			pstm.setString(5, member.getUserId());
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.UM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+		
+		return res;
+	}
 
 }

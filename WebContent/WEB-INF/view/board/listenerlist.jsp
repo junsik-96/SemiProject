@@ -39,7 +39,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
+                 게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
                <a class="dropdown-item" href="board">대나무숲</a>
@@ -50,22 +50,22 @@
           </li>
           
           <c:choose>
-         	 <c:when test="${empty sessionScope.user}">
-          		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/login">Login</a>
-         		 </li>
-         		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/join">회원가입</a>
-         		 </li>
-         	 </c:when>
-         	 <c:otherwise>        		
-         		 <li class="nav-item">
-           			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
-         		 </li>
-         		  <li class="nav-item">
-           			 <a class="nav-link" href="/shy/logOut">LogOut</a>
-         		 </li>  		  
-         	 </c:otherwise>
+             <c:when test="${empty sessionScope.user}">
+                 <li class="nav-item">
+                  <a class="nav-link" href="/shy/login">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/shy/join">회원가입</a>
+                </li>
+             </c:when>
+             <c:otherwise>              
+                <li class="nav-item">
+                     <a class="nav-link" href="/shy/myPage">마이페이지</a>
+                </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/shy/logOut">LogOut</a>
+                </li>          
+             </c:otherwise>
           </c:choose>
           
         </ul>
@@ -81,26 +81,26 @@
       <li class="breadcrumb-item">
         <a href="/index">Home</a>
       </li>
-      <li class="breadcrumb-item active">상담사 신청목록 	
+      <li class="breadcrumb-item active">상담사 신청목록    
       </li>
     </ol>
     
-    <button type="button" onclick="location.href='/member/join'">상담사 신청 바로가기</button>
+    <button type="button" onclick="location.href='/listener/before'">상담사 신청 바로가기</button>
 
 <footer class="py-5 bg-dark">
   
-	<div class = "shy_info">
+   <div class = "shy_info">
    (주) 귀울임 사업자 정보    
   <div id = "footerInfo">  
-  <br>		 		
-	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
-	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
-	사업자 등록번호 : 123-45-6789<br>
-	통신판매업신고 : 2021-서울강남-01234호<br>
-	전화 : 02-1234-1234<br>
-	email : pclass@khaca.com<br>
+  <br>             
+   (주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
+   대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
+   사업자 등록번호 : 123-45-6789<br>
+   통신판매업신고 : 2021-서울강남-01234호<br>
+   전화 : 02-1234-1234<br>
+   email : pclass@khaca.com<br>
     </div>
-	</div>
+   </div>
     
   </footer>
 

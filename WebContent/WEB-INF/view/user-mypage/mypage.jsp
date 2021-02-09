@@ -17,57 +17,7 @@
   <link href="/resources/css/modern-business.css" rel="stylesheet">
 </head>
 <body>
-	 <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-               <a class="dropdown-item" href="board">대나무숲</a>
-              <a class="dropdown-item" href="notice">공지사항</a>
-            <a class="dropdown-item" href="listenerlist">상담사 신청목록</a>
-              <a class="dropdown-item" href="customerCenter">고객센터</a>
-            </div>
-          </li>
-          
-          <c:choose>
-         	 <c:when test="${empty sessionScope.user}">
-          		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/login">Login</a>
-         		 </li>
-         		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/join">회원가입</a>
-         		 </li>
-         	 </c:when>
-         	 <c:otherwise>>        		
-         		 <li class="nav-item">
-           			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
-         		 </li>
-         		  <li class="nav-item">
-           			 <a class="nav-link" href="/shy/logOut">LogOut</a>
-         		 </li>  		  
-         	 </c:otherwise>
-          </c:choose>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
+	
 <!-- Page Content -->
   <div class="container">
 
@@ -98,14 +48,15 @@
       </div>
       <!-- Content Column -->
       <div class="col-lg-9 mb-4" style="padding-top: 1vw">
-        <h1><b>홍길동</b><small>님의 마이페이지</small></h1>
+        <h1><b>${sessionScope.user.name}</b><small>님의 마이페이지</small></h1>
         <hr>
         <div class="jumbotron">
-        	<h3>아이디 : semi</h3><br>
-        	<h3>이메일 : semi@semi.com</h3><br>
-        	<h3>생년월일 : 1990-01-01</h3><br>
-        	<h3>주고민분야 : 대인관계</h3><br>
-        	<h3>선호 상담사 유형 : 전문상담사</h3>
+        	<h3>아이디 : ${sessionScope.user.userId}</h3><br>
+        	<h3>이메일 : ${sessionScope.user.email}</h3><br>
+        	<h3>연락처 : ${sessionScope.user.tel}</h3><br>
+        	<h3>생년월일 : ${sessionScope.user.birth}</h3><br>
+        	<h3>주고민분야 : ${sessionScope.user.concern}</h3><br>
+        	<h3>선호 상담사 유형 : ${sessionScope.user.listType}</h3>
         </div>
         
       </div>

@@ -30,56 +30,7 @@
 </head>
 <body>
 
- <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-     <a class="navbar-brand" href="/index" style="font-style: italic">Shytalker</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-               <a class="dropdown-item" href="/shy/board">대나무숲</a>
-              <a class="dropdown-item" href="/shy/notice">공지사항</a>
-            <a class="dropdown-item" href="/shy/listenerlist">상담사 신청목록</a>
-              <a class="dropdown-item" href="/shy/customerCenter">고객센터</a>
-            </div>
-          </li>
-          
-          <c:choose>
-         	 <c:when test="${empty sessionScope.user}">
-          		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/login">Login</a>
-         		 </li>
-         		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/join">회원가입</a>
-         		 </li>
-         	 </c:when>
-         	 <c:otherwise>        		
-         		 <li class="nav-item">
-           			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
-         		 </li>
-         		  <li class="nav-item">
-           			 <a class="nav-link" href="/shy/logOut">LogOut</a>
-         		 </li>  		  
-         	 </c:otherwise>
-          </c:choose>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
+ 
 
   <!-- Page Content -->
   <div class="container">
@@ -113,11 +64,11 @@
 	        </h6>
 	        <br>
 	        <a class="btn btn-primary" data-toggle="modal" href="#registerModal">회원가입</a>
-	        <button class="btn_before" type="button" onclick="location.href='/listener/before'" 
-	        style="width:439.5px; height: 38px; margin-top: 2%; border: none;">상담사 신청</button>
+	        <a class="btn btn-primary" data-toggle="modal" style="margin-top: 2%; border: none; background-color: lightgrey; color: black" 
+	        onclick="location.href='/shy/listenerlist'">상담사 신청</a>
 	        <hr>
 	        <div style="text-align: right">
-	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/shy/login"><small>로그인 바로가기</small></a></label>
+	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/member/login"><small>로그인 바로가기</small></a></label>
 	        </div>
 	        
       	</div>
@@ -160,6 +111,7 @@
 							<div class="controls">
 								<label>* 이메일</label>
 								<input type="email" name="email" class="form-control" id="email" required data-validation-required-message="Please enter your email." placeholder="abcde@abcde.abc">
+								<span id="email_confirm" class="valid_info"></span>
 							</div>
 						</div>
 						<div class="control-group form-group">
@@ -184,7 +136,7 @@
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>생년월일</label>
-								<input type="date" class="form-control" id="birth" required data-validation-required-message="Please enter your birthday.">
+								<input type="date" class="form-control" id="birth" name="birth" required data-validation-required-message="Please enter your birthday.">
 							</div>
 						</div>
 						<div class="control-group form-group">
@@ -259,6 +211,11 @@
 								e.preventDefault();
 								pw_confirm.innerHTML = '비밀번호는 숫자,영문자,특수문자 조합의 8글자 이상인 문자열입니다.';
 								pw.value='';
+							}
+							
+							if(!(email.value)){
+								e.preventDefault();
+								email_confirm.innerHTML = '이메일을 입력해주세요.';
 							}
 							
 						});

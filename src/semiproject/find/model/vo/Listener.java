@@ -1,5 +1,7 @@
 package semiproject.find.model.vo;
 
+import java.sql.Date;
+
 public class Listener {
 
 
@@ -15,6 +17,7 @@ public class Listener {
 	private String listIsTrue;
 	private int listLikely;
 	private int listResCnt;
+	private Date listRegDate;
 	
 	public String getListId() {
 		return listId;
@@ -114,12 +117,22 @@ public class Listener {
 		this.listResCnt = listResCnt;
 	}
 
+	
+	
+	public Date getListRegDate() {
+		return listRegDate;
+	}
+
+	public void setListRegDate(Date listRegDate) {
+		this.listRegDate = listRegDate;
+	}
+
 	@Override
 	public String toString() {
 		return "Listener [listId=" + listId + ", listNum=" + listNum + ", listGen=" + listGen + ", listEmail="
 				+ listEmail + ", listPro=" + listPro + ", listField=" + listField + ", listType=" + listType
 				+ ", listName=" + listName + ", listAmt=" + listAmt + ", listIsTrue=" + listIsTrue + ", listLikely="
-				+ listLikely + ", listResCnt=" + listResCnt + "]";
+				+ listLikely + ", listResCnt=" + listResCnt + ", listRegDate=" + listRegDate + "]";
 	}
 
 	

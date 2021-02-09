@@ -40,57 +40,7 @@
 <body>
 
 	
-  <!-- 상단 고정 바  -->
- <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="board">대나무숲</a>
-              <a class="dropdown-item" href="notice">공지사항</a>
-             <a class="dropdown-item" href="listenerlist">상담사 신청목록</a>
-              <a class="dropdown-item" href="customerCenter">고객센터</a>
-            </div>
-          </li>
-          
-          <c:choose>
-         	 <c:when test="${empty sessionScope.user}">
-          		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/login">Login</a>
-         		 </li>
-         		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/join">회원가입</a>
-         		 </li>
-         	 </c:when>
-         	 <c:otherwise>>        		
-         		 <li class="nav-item">
-           			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
-         		 </li>
-         		  <li class="nav-item">
-           			 <a class="nav-link" href="/shy/logOut">LogOut</a>
-         		 </li>  		  
-         	 </c:otherwise>
-          </c:choose>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
+ 
 
   <!-- Page Content -->
   <div class="container">
@@ -104,7 +54,7 @@
       <li class="breadcrumb-item">
         <a href="index">Home</a>
       </li>
-       <li class="breadcrumb-item active"><a href="/shy/myPageMain">상담사 마이페이지</a></li>
+       <li class="breadcrumb-item active"><a href="/shy/myPageMain">마이페이지</a></li>
     </ol>
 
 	<div class="list-main">
@@ -119,7 +69,7 @@
 		<a class="go-to-resConfirm" href="/shy/resConfirm">
 			<span style="color:navy"><i class="fas fa-clipboard-list">  예약스케줄 관리</i></span>
 		</a><br><br>
-		<a class="go-to-reviews" href="/shy/reviews">
+		<a class="go-to-reviews" href="/shy/listMypageReview">
 		<span style="color:navy"><i class="fas fa-address-card">  평가내역</i></span>
 		</a><br><br>
 	</div>

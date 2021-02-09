@@ -1,6 +1,9 @@
 package semiproject.listener.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import semiproject.listener.model.service.ListenerService;
 import semiproject.listener.model.vo.School;
+import semiproject.listener.model.vo.Class;
 
 /**
  * Servlet implementation class ListenerController
@@ -41,6 +45,8 @@ public class ListenerController extends HttpServlet {
 			break;
 		case "findschool" : findSchool(request,response);
 			break;
+		case "findclass" : findClass(request,response);
+			break;
 		case "couns" : couns(request,response);
 			break;
 		case "mypage" : mypage(request,response);
@@ -72,6 +78,10 @@ public class ListenerController extends HttpServlet {
 	
 	private void listenerJoin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		String school = request.getParameter("choose");
+		System.out.println(school);
+				
 		request.getRequestDispatcher("/WEB-INF/view/listener/listenerJoin.jsp")
 		.forward(request, response);
 	}
@@ -80,10 +90,23 @@ public class ListenerController extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String schoolName = request.getParameter("school");
-		School school = listenerService.selectListBySchool(schoolName);
-		System.out.println(school);
-		
+		List<School> schoolList = null;
+		schoolList = listenerService.selectListBySchool(schoolName);
+		System.out.println(schoolList);
+		request.setAttribute("uniList", schoolList);
 		request.getRequestDispatcher("/WEB-INF/view/listener/findSchool.jsp")
+		.forward(request, response);
+	}
+	
+	private void findClass(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		String className = request.getParameter("class");
+		List<Class> classList = null;
+		classList = listenerService.selectListByClass(className);
+		request.setAttribute("claList", classList);
+		
+		request.getRequestDispatcher("/WEB-INF/view/listener/findClass.jsp")
 		.forward(request, response);
 	}
 	
