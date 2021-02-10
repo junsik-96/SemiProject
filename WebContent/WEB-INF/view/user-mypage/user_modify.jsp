@@ -15,57 +15,15 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
+  <style type="text/css">
+  	.sub{
+  		height: 3vh;
+  		background-color: gray;
+  	}
+  </style>
 </head>
 <body>
-	 <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-               <a class="dropdown-item" href="board">대나무숲</a>
-              <a class="dropdown-item" href="notice">공지사항</a>
-              <a class="dropdown-item" href="customerCenter">고객센터</a>
-            </div>
-          </li>
-          
-          <c:choose>
-         	 <c:when test="${empty sessionScope.user}">
-          		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/login">Login</a>
-         		 </li>
-         		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/join">회원가입</a>
-         		 </li>
-         	 </c:when>
-         	 <c:otherwise>>        		
-         		 <li class="nav-item">
-           			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
-         		 </li>
-         		  <li class="nav-item">
-           			 <a class="nav-link" href="/shy/logOut">LogOut</a>
-         		 </li>  		  
-         	 </c:otherwise>
-          </c:choose>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
+	 
   
 <!-- Page Content -->
   <div class="container">
@@ -104,58 +62,74 @@
         <hr>
         <div class="row">
     	<div style="width: 70%; height: 70%; padding-left: 2vw; padding-top: 1vw; padding-bottom: 1vw">
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form action="/member/modifyimpl" method="POST" id="user_modify" name="sentMessage" id="contactForm" novalidate>
           <div class="control-group form-group">
             <div class="controls">
-              <label>아이디</label>
-              <input type="text" class="form-control" id="id" required data-validation-required-message="Please enter your id." placeholder="변경 전 아이디">
+              <label>아이디<br></label>
+            </div>
+            <div class="col-lg-9 mb-4">
+            	<h5><b>${sessionScope.user.userId}</b></h5>
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>이름</label>
-              <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name." placeholder="변경 전 이름">
+              <input type="text" class="form-control" id="name" name="name" required data-validation-required-message="Please enter your name." placeholder="${sessionScope.user.name}">
               <p class="help-block"></p>
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
-              <label>이메일 <br><b>semi@semi.com</b></label>
+              <label>이메일</label>
+            </div>
+            <div class="col-lg-9 mb-4">
+            	<h5><b>${sessionScope.user.email}</b></h5>
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
-              <label>생년월일 <br><b>1990-01-01</b></label>
+              <label>전화번호</label>
+              <input type="tel" class="form-control" id="tel" name="tel" required data-validation-required-message="Please enter your phone number." placeholder="${sessionScope.user.tel}">
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>생년월일 <br></label>
+            </div>
+            <div class="col-lg-9 mb-4">
+            	<h5><b>${sessionScope.user.birth}</b></h5>
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>주 고민분야</label>
 	             <select name="concern" class="form-control">
-	             	<option value="선택안함" selected>선택안함</option>
-	                <option value="우울/불안">우울/불안</option>
-	                <option value="가족/부부">가족/부부</option>
-	                <option value="산후/육아">산후/육아</option>
-	                <option value="대인관계">대인관계</option>
-	                <option value="기타">기타</option>
+	             	<optgroup label="선택된 보기 : ${sessionScope.user.concern}">
+	                	<option value="우울/불안">우울/불안</option>
+	                	<option value="가족/부부">가족/부부</option>
+	                	<option value="산후/육아">산후/육아</option>
+	                	<option value="대인관계">대인관계</option>
+	                	<option value="기타">기타</option>
+	                </optgroup>
 	             </select>
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>선호 상담사 유형</label>
-              	<select name="ingredient" class="form-control">
-                	<option value="선택안함" selected>선택안함</option>
-                	<option value="전문상담사">전문상담사</option>
-                	<option value="의사">의사</option>
-                	<option value="관련전공자">관련전공자</option>
+              	<select name="listType" class="form-control">
+              		<optgroup label="선택된 보기 : ${sessionScope.user.listType}">
+                		<option value="전문상담사">전문상담사</option>
+                		<option value="의사">의사</option>
+                		<option value="관련전공자">관련전공자</option>
+                	</optgroup>
           		</select>
             </div>
           </div>
           <div id="success"></div>
           <!-- For success/fail messages -->
           <br>
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">수정하기</button>
+          <button type="submit" class="btn btn-primary">수정하기</button>
         </form>
       </div>
       </div>

@@ -13,58 +13,10 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
-  <link href="/resources/css/agree.css" rel="stylesheet">
+
 </head>
 <body>
-	
-  <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/find">상담사 찾기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="board">대나무숲</a>
-              <a class="dropdown-item" href="notice">공지사항</a>
-               <a class="dropdown-item" href="customerCenter">고객센터</a>
-            </div>
-          </li>
-          <c:choose>
-         	 <c:when test="${empty sessionScope.user}">
-          		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/login">Login</a>
-         		 </li>
-         		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/join">회원가입</a>
-         		 </li>
-         	 </c:when>
-         	 <c:otherwise>        		
-         		 <li class="nav-item">
-           			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
-         		 </li>
-         		  <li class="nav-item">
-           			 <a class="nav-link" href="/shy/logOut">LogOut</a>
-         		 </li>  		  
-         	 </c:otherwise>
-          </c:choose>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
+  
 
 	 <h1 class="mt-4 mb-3">About
       <small>Listener</small>
@@ -77,18 +29,25 @@
       <li class="breadcrumb-item active">상담사 찾기   	
       </li>
       <li>
-      	<form action="${context}/find/search">
-     	 <input type="search" class="search_lis" name="search">
-     	 <button class="search_btn"><i class="fas fa-search"></i></button>
+      	<form action="${context}/shy/find" method="post" >
+     	 <input type="search" class="search_lis" name="searchlis">
+     	 <button type="submit" class="search_btn"><i class="fas fa-search"></i></button>
       	</form>
-      </li>
-      
+      </li>  
     </ol>
 	
+	<% 
+		String name = "";
+		if(request.getParameter("searchlis") == null){
+			name = "";
+		}else{
+			name = "'"+request.getParameter("searchlis")+"'"+"에 대한 검색 결과 입니다.";
+		}
+	%>
+    
+	<div><%=name%></div>
 	
-	<div>'${searchlist}' 에 대한 검색 결과 입니다.</div>
-	
-	<form action="${context}/find/search">
+	<form action="${context}/shy/find">
 		
 		<div class="check_info">
 			<pre> *원하시는 항목을 선택하여 주세요. (중복선택 가능)</pre>
@@ -99,9 +58,9 @@
 			<div class="sector_lis">상담사 유형</div>
 			<div class="box_list">
 			 	<ul class="sector_li">
-			 		<li><input type="checkbox" name="job" value="expert">전문가</li>
-			 		<li><input type="checkbox" name="job" value="doctor">의사</li>
-			 		<li><input type="checkbox" name="job" value="student">대학생</li>
+			 		<li><input type="checkbox" name="job" value="전문의">"전문의"</li>
+			 		<li><input type="checkbox" name="job" value="의사">의사</li>
+			 		<li><input type="checkbox" name="job" value="대학생">대학생</li>
 			 	</ul>
 			</div>
 		</div>
@@ -264,7 +223,6 @@
         </div>
       </div>
     </div>
- 	
 	
 	<!--  page 이동 -->
  	<div>
@@ -297,17 +255,20 @@
 
  
   <footer class="py-5 bg-dark">
-   <div class="container_footer">
-   (주) 귀울임 사업자 정보 
-  <pre id = "footerInfo">  		 		
-(주) 귀울임 | 서울시 강남구 강남스타일로 123-4
-대표 : 홍길동 | 개인정보보호책임 : 황진이
-사업자 등록번호 : 123-45-6789
-통신판매업신고 : 2021-서울강남-01234호
-전화 : 02-1234-1234
-email : pclass@khaca.com
-    </pre>
+  
+	<div class = "shy_info">
+   (주) 귀울임 사업자 정보    
+  <div id = "footerInfo">  
+  <br>		 		
+	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
+	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
+	사업자 등록번호 : 123-45-6789<br>
+	통신판매업신고 : 2021-서울강남-01234호<br>
+	전화 : 02-1234-1234<br>
+	email : pclass@khaca.com<br>
     </div>
+	</div>
+    
   </footer>
 
   <!-- Bootstrap core JavaScript -->

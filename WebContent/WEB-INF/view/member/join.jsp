@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <link rel="stylesheet" href="/resources/css/joinlis.css">
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 <head>
 
@@ -19,59 +20,17 @@
 	.btn{
 		width: 100%;
 	}
+	
+	.valid_info{
+		display: block;
+		color: red;
+		font-size: 0.5vw;
+	}
 </style>
 </head>
 <body>
 
- <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-               <a class="dropdown-item" href="board">대나무숲</a>
-              <a class="dropdown-item" href="notice">공지사항</a>
-              <a class="dropdown-item" href="customerCenter">고객센터</a>
-            </div>
-          </li>
-          
-          <c:choose>
-         	 <c:when test="${empty sessionScope.user}">
-          		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/login">Login</a>
-         		 </li>
-         		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/join">회원가입</a>
-         		 </li>
-         	 </c:when>
-         	 <c:otherwise>        		
-         		 <li class="nav-item">
-           			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
-         		 </li>
-         		  <li class="nav-item">
-           			 <a class="nav-link" href="/shy/logOut">LogOut</a>
-         		 </li>  		  
-         	 </c:otherwise>
-          </c:choose>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
+ 
 
   <!-- Page Content -->
   <div class="container">
@@ -83,7 +42,7 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index">Home</a>
+        <a href="/index">Home</a>
       </li>
       <li class="breadcrumb-item active">Join</li>
     </ol>
@@ -105,9 +64,11 @@
 	        </h6>
 	        <br>
 	        <a class="btn btn-primary" data-toggle="modal" href="#registerModal">회원가입</a>
+	        <a class="btn btn-primary" data-toggle="modal" style="margin-top: 2%; border: none; background-color: lightgrey; color: black" 
+	        onclick="location.href='/shy/listenerlist'">상담사 신청</a>
 	        <hr>
 	        <div style="text-align: right">
-	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/shy/login"><small>로그인 바로가기</small></a></label>
+	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/member/login"><small>로그인 바로가기</small></a></label>
 	        </div>
 	        
       	</div>
@@ -129,36 +90,53 @@
 					<div style="text-align: right; color: red">
 						<small>* 는 필수 입력 항목입니다.</small>
 					</div>
-					<form name="sentMessage" id="contactForm" novalidate>
+					<form action="${context}/member/mailauth" method="post" id="frm_join" name="sentMessage" id="contactForm" novalidate>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>* 아이디</label>
-								<input type="text" class="form-control" id="id" required data-validation-required-message="Please enter your id." placeholder="아이디를 입력하세요.">
+								<input type="text" name="id" class="form-control" id="id" required data-validation-required-message="Please enter your id." placeholder="아이디를 입력하세요.">
+								<button type="button" class="btn" onclick="idCheck()">check</button>
+								<span class="valid_info" id="id_check"></span>
 								<p class="help-block"></p>
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>* 비밀번호</label>
-								<input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password." placeholder="비밀번호를 입력하세요.">
+								<input type="password" name="pw" class="form-control" id="password" required data-validation-required-message="Please enter your password." placeholder="비밀번호를 입력하세요.">
+								<span id="pw_confirm" class="valid_info"></span>
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>* 이메일</label>
-								<input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email." placeholder="abcde@abcde.abc">
+								<input type="email" name="email" class="form-control" id="email" required data-validation-required-message="Please enter your email." placeholder="abcde@abcde.abc">
+								<span id="email_confirm" class="valid_info"></span>
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>* 이름</label>
-								<input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name." placeholder="이름을 입력하세요.">
+								<input type="text" name="name" class="form-control" id="name" required data-validation-required-message="Please enter your name." placeholder="이름을 입력하세요.">
+							</div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>* 전화번호</label>
+								<input type="tel" name="tel" class="form-control" id="tel" required data-validation-required-message="Please enter your phone number." placeholder="연락처를 입력하세요.">
+							</div>
+						</div>
+						<div class="control-group form-group">
+							<div class="controls">
+								<label>* 회원유형</label><br>
+								<input type="radio" name="userType" value="상담사">&nbsp;&nbsp;&nbsp;상담사<br>
+								<input type="radio" name="userType" value="일반회원">&nbsp;&nbsp;&nbsp;일반회원
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>생년월일</label>
-								<input type="date" class="form-control" id="birth" required data-validation-required-message="Please enter your birthday.">
+								<input type="date" class="form-control" id="birth" name="birth" required data-validation-required-message="Please enter your birthday.">
 							</div>
 						</div>
 						<div class="control-group form-group">
@@ -177,7 +155,7 @@
 						<div class="control-group form-group">
 							<div class="controls">
 								<label>선호 상담사 유형</label>
-                  				<select name="ingredient" class="form-control">
+                  				<select name="listType" class="form-control">
 				                    <option value="선택안함" selected>선택안함</option>
 				                    <option value="전문상담사">전문상담사</option>
 				                    <option value="의사">의사</option>
@@ -189,6 +167,60 @@
 	                	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 	                	<button type="submit" class="btn btn-primary">등록하기</button>
 	              	</div>
+	              	
+	              	<script type="text/javascript">
+						let idCheckFlg = false;
+						
+						let idCheck = () => {
+							//사용자가 입력한 아이디
+							//요소의 아이디 속성이 있을 경우 해당 엘리먼트를 가져다가 사용할 수 있다.
+							let userId = id.value;
+							
+							if(userId){
+								fetch("/member/idcheck?userId=" + userId,{
+									method : "GET"
+								}).then(response => response.text())
+								.then(text => {
+									if(text == 'success'){
+										idCheckFlg = true;
+										id_check.innerHTML = '사용 가능한 아이디 입니다.';
+									}else{
+										idCheckFlg = false;
+										id_check.innerHTML = '사용 불가능한 아이디 입니다.';
+										id.value="";
+									}
+								})
+							}else{
+								alert("아이디를 입력하지 않으셨습니다.");
+							}
+						}
+						
+						document.querySelector('#frm_join').addEventListener('submit',(e)=>{
+							
+							let password = pw.value;
+							let regExp = /^(?!.*[ㄱ-힣])(?=.*\W)(?=.*\d)(?=.*[a-zA-Z])(?=.{8,})/;
+							
+							if(!idCheckFlg){
+								e.preventDefault();
+								alert("아이디 중복 검사를 하지 않으셨습니다.");
+								id.focus();
+							}
+							
+							if(!(regExp.test(password))){
+								//form의 데이터 전송을 막음
+								e.preventDefault();
+								pw_confirm.innerHTML = '비밀번호는 숫자,영문자,특수문자 조합의 8글자 이상인 문자열입니다.';
+								pw.value='';
+							}
+							
+							if(!(email.value)){
+								e.preventDefault();
+								email_confirm.innerHTML = '이메일을 입력해주세요.';
+							}
+							
+						});
+					</script>
+		
 				</form>
 				</div>
         	</div>
@@ -197,17 +229,20 @@
 
    <!-- Footer -->
   <footer class="py-5 bg-dark">
-   <div class="container_footer">
-   (주) 귀울임 사업자 정보 
-  <pre id = "footerInfo">  		 		
-	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4
-	대표 : 홍길동 | 개인정보보호책임 : 황진이
-	사업자 등록번호 : 123-45-6789
-	통신판매업신고 : 2021-서울강남-01234호
-	전화 : 02-1234-1234
-	email : pclass@khaca.com
-    </pre>
+  
+	<div class = "shy_info">
+   (주) 귀울임 사업자 정보    
+  <div id = "footerInfo">  
+  <br>		 		
+	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
+	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
+	사업자 등록번호 : 123-45-6789<br>
+	통신판매업신고 : 2021-서울강남-01234호<br>
+	전화 : 02-1234-1234<br>
+	email : pclass@khaca.com<br>
     </div>
+	</div>
+    
   </footer>
 
   <!-- Bootstrap core JavaScript -->

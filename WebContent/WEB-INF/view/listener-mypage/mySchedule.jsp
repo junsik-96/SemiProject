@@ -13,11 +13,13 @@
   <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
+  <!-- 달력 -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
   <link href='/resources/fullCalendar/lib/main.css' rel='stylesheet' />
-    <script src='/resources/fullCalendar/lib/main.js'></script>
-    <script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.5.1/">
+  <script src='/resources/fullCalendar/lib/main.js'></script>
+  
+  <script type="text/javascript">
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -28,6 +30,7 @@
       });
 
     </script>
+    
     <style type="text/css">
     	.fc-col-header-cell-cushion {
     		color: black;
@@ -40,62 +43,11 @@
     
     
     </style>
-
 </head>
 <body>
 
 	
-  <!-- 상단 고정 바  -->
-    <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-     <a class="navbar-brand" href="index" style="font-style: italic">Shytalker</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              	게시판
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="board">대나무숲</a>
-              <a class="dropdown-item" href="notice">공지사항</a>
-              <a class="dropdown-item" href="customerCenter">고객센터</a>
-            </div>
-          </li>
-          
-          <c:choose>
-         	 <c:when test="${empty sessionScope.user}">
-          		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/login">Login</a>
-         		 </li>
-         		 <li class="nav-item">
-          		  <a class="nav-link" href="/shy/join">회원가입</a>
-         		 </li>
-         	 </c:when>
-         	 <c:otherwise>>        		
-         		 <li class="nav-item">
-           			 <a class="nav-link" href="/shy/myPage">마이페이지</a>
-         		 </li>
-         		  <li class="nav-item">
-           			 <a class="nav-link" href="/shy/logOut">LogOut</a>
-         		 </li>  		  
-         	 </c:otherwise>
-          </c:choose>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
+ 
 
   <!-- Page Content -->
   <div class="container">
@@ -116,27 +68,36 @@
    		
    		<div  id="calendar"> </div>
    		
+   		<script>
+   		
+   				var calendar = new FullCalendar.Calendar(calendarEl, {
+   					
+   				events: [
+   				
+   					var reservation = CalendarService.selectResDetail;
+   				if(reservation.length > 0){
+   					if(resListId == ${sessionId}) {
+   						for(var i = 0; i < reservation.length; i++){
+   							test.push({
+   								title: '[회원]'+reservation[i].resUserId
+   								,start: reservation[i].resDate
+   								,color: '#FF5E00'
+   								
+   							})
+   						}
+   				
+   					}
+   				}
+   				
+   				]
+   				
+   				})
+   			
+   		</script>
+   		
 		<br>
 		<br>
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

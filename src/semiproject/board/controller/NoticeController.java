@@ -27,7 +27,7 @@ public class NoticeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("WEB-INF/view/board/notice.jsp")
+		request.getRequestDispatcher("WEB-INF/view/notice/notice.jsp")
 		.forward(request, response);
 	}
 
