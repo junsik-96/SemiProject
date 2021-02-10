@@ -11,28 +11,9 @@ import semiproject.review.model.vo.Review;
 
 
 public class ReviewService {
-	JDBCTemplate jdt = JDBCTemplate.getInstance();
+	
 	ReviewDao reviewDao = new ReviewDao();
-	
-	// 후기 등록
-	public int insertReview(Review review) {
-		Connection conn = jdt.getConnection();
-		int res= 0;
-		
-		try {
-			 res = reviewDao.insertReview(conn, review);
-				
-				jdt.commit(conn);
-			}catch(DataAccessException e) {
-				
-				jdt.rollback(conn);
-				throw new ToAlertException(e.error);
-			}finally {
-				jdt.close(conn);
-			}
-			return res;
-		}
-	
+	JDBCTemplate jdt = JDBCTemplate.getInstance();
 	
 	// 후기 리스트
 	public ArrayList<Review> selectReviewList(){
@@ -42,6 +23,25 @@ public class ReviewService {
 		return reviewList;
 	}
 	
+	// 후기등록
+	public int insertReview(Review review) {
+		Connection conn = jdt.getConnection();
+		int res = 0;
+		
+		try {
+			res = reviewDao.insertReview(conn, review);
+			jdt.commit(conn);
+			
+		}catch(DataAccessException e) {
+			//Dao에서 SQLException이 발생할 경우 rollback처리
+			jdt.rollback(conn);
+			throw new ToAlertException(e.error);
+		}finally {
+			jdt.close(conn);
+		}
+		
+		return res;
+	}
 	
 	// 후기삭제
 	public int deleteReview(String rvUserId){
@@ -49,7 +49,7 @@ public class ReviewService {
 		
 		int res = 0;
 		try {
-			res = reviewDao.deleteReview(conn, rvUserId);
+			res = reviewDao.reviewDelete(conn, rvUserId);
 			jdt.commit(conn);
 		} catch (DataAccessException e) {
 			jdt.rollback(conn);

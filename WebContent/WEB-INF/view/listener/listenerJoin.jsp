@@ -9,7 +9,7 @@
 <div class="container_join">
 
 <div class="basic_lis">
-<form name="parent_form" id="lis_join">
+<form action="${context}/listener/listenerjoinimpl" method="post" name="parent_form" id="lis_join">
   <fieldset>
     <legend class="request_lis">상담사 신청(자격 인증)</legend>
 	<div>
@@ -20,9 +20,18 @@
       <label for="exampleInputPassword1" class="la_gender">성별</label>
       <select class="ip_gender" id="exampleSelect1" name="list_gen">
         <option>성별</option>
-        <option value="man">남자</option>
-        <option value="woman">여자</option>
-        <option value="no">선택안함</option>
+        <option value="남자">남자</option>
+        <option value="여자">여자</option>
+      </select>
+    </div>
+    
+    <div class="form_gender">
+      <label for="exampleInputPassword1" class="la_gender">유형</label>
+      <select class="ip_gender" id="list_type" name="list_type">
+        <option>유형</option>
+        <option value="전문가">전문가</option>
+        <option value="의사">의사</option>
+        <option value="대학생">대학생</option>
       </select>
     </div>
 	
@@ -52,7 +61,7 @@
     <div class="form_sector" id="add_field">
       <label for="exampleInputPassword1" class="la_sector">주 분야<br></label>
 	    
-       <select class="ip_sector" id="sel_field">
+       <select class="ip_sector" id="sel_field" name="lis_field">
         <option value="우울/불안">우울/불안</option>
         <option value="가족/부부">가족/부부</option>
         <option value="산후/육아">산후/육아</option>
@@ -70,12 +79,12 @@
       <label for="exampleInputPassword1" class="la_job">경력사항</label>
       <input type="text" name="com_name" class="ip_job" id="com_name" placeholder="직장 명">
       <label for="exampleInputPassword1" class="la_job_do"></label>
-      <input type="text" name="job_name" class="ip_job_do" id="job_name" placeholder="경력 내용">
+      <input type="text" name="com_name" class="ip_job_do" id="job_name" placeholder="경력 내용">
 	 
       <label for="exampleInputPassword1" class="la_job_do"></label>
-	  <input type="text" class="ip_job_do_y1" id="exampleInputPassword1" placeholder="년(4자)">
+	  <input type="text" name="com_name" class="ip_job_do_y1" id="exampleInputPassword1" placeholder="년(4자)">
 	 
-	  <select class="job_date1" id="exampleSelect1">
+	  <select class="job_date1" id="exampleSelect1" name="com_name">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -93,9 +102,9 @@
       
       <label for="exampleInputPassword1" class="la_job_do_middle" style="transform:translate(-10%,30%);"> ~ </label>
       
-       <input type="text" class="ip_job_do_y2" id="exampleInputPassword1" placeholder="년(4자)">
+       <input type="text" name="com_name" class="ip_job_do_y2" id="exampleInputPassword1" placeholder="년(4자)">
         
-      <select class="job_date2" id="exampleSelect1">
+      <select class="job_date2" id="exampleSelect1" name="com_name">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -130,7 +139,7 @@
 	    
 	  
 	
-    <button type="button" onclick="join()" class="req_btn">신청하기</button>
+    <button type="submit" onclick="join()" class="req_btn">신청하기</button>
   </fieldset>
 </form>
 </div>
@@ -156,9 +165,9 @@ function join(){
 		alert("상담사님의 주 분야를 선택해주세요!");
 		choose_school.focus();
 	}else{
-		parent_form.submit();
+		/* parent_form.submit(); */
 		alert("감사합니다. 상담사 신청이 완료되었습니다!! \n확인 후 신청승인이 진행됩니다.");
-		location.href = "/shy/listenerlist";
+		/* location.href = "/shy/listenerlist"; */
 	}
 	
 }

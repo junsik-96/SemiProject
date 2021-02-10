@@ -1,7 +1,6 @@
 package semiproject.listener.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,9 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import semiproject.find.model.vo.Listener;
 import semiproject.listener.model.service.ListenerService;
-import semiproject.listener.model.vo.School;
 import semiproject.listener.model.vo.Class;
+import semiproject.listener.model.vo.School;
+import semiproject.member.model.vo.Member;
 
 /**
  * Servlet implementation class ListenerController
@@ -42,6 +43,8 @@ public class ListenerController extends HttpServlet {
 		case "before" : before(request,response);
 			break;
 		case "listenerjoin" : listenerJoin(request,response);
+			break;
+		case "listenerjoinimpl" : listenerJoinImpl(request,response);
 			break;
 		case "findschool" : findSchool(request,response);
 			break;
@@ -79,10 +82,37 @@ public class ListenerController extends HttpServlet {
 	private void listenerJoin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String school = request.getParameter("choose");
-		System.out.println(school);
-				
 		request.getRequestDispatcher("/WEB-INF/view/listener/listenerJoin.jsp")
+		.forward(request, response);
+	}
+	
+	private void listenerJoinImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String listGen = request.getParameter("list_gen");
+		String listType = request.getParameter("list_type");
+		String listSchool = request.getParameter("choose_school");
+		String listClass = request.getParameter("choose_class");
+		String listLicense = request.getParameter("list_licen");
+		String listField = request.getParameter("lis_field");
+		String listJob = request.getParameter("com_name");
+		/* String listId = member.getUserId(); */
+		
+		Listener listener = new Listener();
+		
+		listener.setListGen(listGen);
+		listener.setType(listType);
+		listener.setListSchool(listSchool);
+		listener.setListClass(listClass);
+		listener.setListLicense(listLicense);
+		listener.setListField(listField);
+		listener.setListJob(listJob);
+	
+		System.out.println(listener.toString());
+		
+		listenerService.updateListener(listener);
+		request.setAttribute("url", "/index");
+		
+		request.getRequestDispatcher("/WEB-INF/view/common/result.jsp")
 		.forward(request, response);
 	}
 	

@@ -23,8 +23,14 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 		
 		
 		try {
-			String sql = "select * from (select LIST_PRO,LIST_FIELD,LIST_TYPE,LIST_NAME,\r\n"
-					+ "LIST_RES_CNT, rank() over(order by LIST_RES_CNT desc) as res from tb_listener) where res = ?";
+			String sql = "select \r\n"
+					+ "* \r\n"
+					+ "from (\r\n"
+					+ "select LIST_PRO,LIST_FIELD,TYPE,NAME,list_res_cnt, rank() over(order by list_res_cnt desc) as res     \r\n"
+					+ " from \r\n"
+					+ " tb_listener l inner join tb_member m on(l.list_id = m.user_id)\r\n"
+					+ " )\r\n"
+					+ "where res = ?";
 			pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, ranking);
 			rset = pstm.executeQuery();
@@ -33,7 +39,7 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 				listener = new Listener();
 				listener.setListPro(rset.getString(1));
 				listener.setListField(rset.getString(2));
-				listener.setListType(rset.getString(3));
+				listener.setType(rset.getString(3));
 				listener.setListName(rset.getString(4)); 
 				listener.setListResCnt(rset.getInt(5));
 			}
@@ -56,8 +62,14 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 			
 			
 			try {
-				String sql = "select * from (select LIST_PRO,LIST_FIELD,LIST_TYPE,LIST_NAME,\r\n"
-						+ "LIST_LIKELY, rank() over(order by LIST_LIKELY desc) as likely from tb_listener) where likely = ?";
+				String sql = "select \r\n"
+						+ "* \r\n"
+						+ "from (\r\n"
+						+ "select LIST_PRO,LIST_FIELD,TYPE,NAME,list_likely, rank() over(order by list_likely desc) as res     \r\n"
+						+ " from \r\n"
+						+ " tb_listener l inner join tb_member m on(l.list_id = m.user_id)\r\n"
+						+ " )\r\n"
+						+ "where res = ?";
 				pstm = conn.prepareStatement(sql);
 				pstm.setInt(1, ranking);
 				rset = pstm.executeQuery();
@@ -66,7 +78,7 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 					listener = new Listener();
 					listener.setListPro(rset.getString(1));
 					listener.setListField(rset.getString(2));
-					listener.setListType(rset.getString(3));
+					listener.setType(rset.getString(3));
 					listener.setListName(rset.getString(4)); 
 					listener.setListLikely(rset.getInt(5)); 
 				}
@@ -89,8 +101,12 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 			
 			
 			try {
-				String sql = "select * from (select LIST_PRO,LIST_FIELD,LIST_TYPE,LIST_NAME,\r\n"
-						+ "LIST_REGDATE, rank() over(order by LIST_REGDATE desc) as reg from tb_listener) where reg = ?";
+				String sql = "select * from (select LIST_PRO,LIST_FIELD,TYPE,NAME,\r\n"
+						+ "LIST_REGDATE, rank() over(order by LIST_REGDATE desc) as reg"
+						+ " from \r\n"
+						+ " tb_listener l inner join tb_member m on(l.list_id = m.user_id)\r\n"
+						+ " )\r\n"
+						+ "where reg = ?";
 				pstm = conn.prepareStatement(sql);
 				pstm.setInt(1, ranking);
 				rset = pstm.executeQuery();
@@ -99,7 +115,7 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 					listener = new Listener();
 					listener.setListPro(rset.getString(1));
 					listener.setListField(rset.getString(2));
-					listener.setListType(rset.getString(3));
+					listener.setType(rset.getString(3));
 					listener.setListName(rset.getString(4)); 
 					listener.setListRegDate(rset.getDate(5));
 				}

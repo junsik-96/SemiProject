@@ -16,89 +16,84 @@ public class ReviewDao {
 	
 	JDBCTemplate jdt = JDBCTemplate.getInstance();
 	private PreparedStatement pstm;
-	private ResultSet rs;
-	private Connection conn;
 	
-	// 현재시간 가져오기
-	public String getDate() {
-		String SQL = "SELECT NOW()";
-		 try{
-			pstm = conn.prepareStatement(SQL);
-			rs = pstm.executeQuery();
-			if (rs.next()) {
-				return rs.getString(1);
-			}
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
+	// 리뷰 리스트
+	public ArrayList<Review> selectReviewList(Connection conn){
 		
-		}
-	
-		// 다음 글 가져오기
-		public int getNext() {
-			String SQL = "SELECT rv_idx from tb_review order by rv_idx desc";
-			 try{
-				pstm = conn.prepareStatement(SQL);
-				rs = pstm.executeQuery();
-				if (rs.next()) {
-					return rs.getInt(1) + 1;
-				}
-				return 1; // 첫번째 게시물인 경우
-				
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-			return -1; // db오류	
-		}
-	
-	
-	// 댓글 등록	
-	public int insertReview(Connection conn, Review review) {
+		ArrayList<Review> reviewList = new ArrayList<Review>();
+		pstm = null;
+		ResultSet rset = null;
 		
-		int res = 0;
-		String SQL = "insert into tb_review values (?,?,?,?,?,?)";
-		 try{
-			pstm = conn.prepareStatement(SQL);
-			pstm.setInt(1, getNext());
-			pstm.setString(2, review.getRvListId());
-			pstm.setDate(3, review.getRvResDate());
-			pstm.setString(4, review.getReview());
-			pstm.setString(5, review.getRvUserId());
-			pstm.setString(6, review.getRating());
+		try {
+			String query = "select * from tb_review";
+			pstm = conn.prepareStatement(query);
+			rset = pstm.executeQuery();
 			
-			res = pstm.executeUpdate();
-			
-		}catch (Exception e) {
-			throw new DataAccessException(ErrorCode.AUTH01,e);
+			while(rset.next()) {
+				Review review = new Review();
+				review.setRvIdx(rset.getInt("rv_idx"));
+				review.setRvListId(rset.getString("rv_list_id"));
+				review.setRvResDate(rset.getDate("rv_res_date"));
+				review.setReview(rset.getString("review"));
+				review.setRvUserId(rset.getString("rv_user_id"));
+				review.setRating(rset.getString("rating"));
+				reviewList.add(review);
+			}
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.SM02,e);
 		}finally {
-			jdt.close(pstm);
+			jdt.close(rset,pstm);
 		}
-		return res;
+		
+		return reviewList;
 	}
 	
 	
-	// 시퀀스를 가져온다. (리뷰 글번호)
-	public int getSeq(Connection conn) {
-		int result = 1;
+	// 후기 등록 메소드
+	public int insertReview(Connection conn, Review review) {
+		int res = 0;
+		pstm = null;
+		
 		try {
-			// 시퀀스 값을 가져온다. (DUAL : 시퀀스 값을 가져오기위한 임시 테이블)
-            StringBuffer sql = new StringBuffer();
-            sql.append("SELECT rv_idx.NEXTVAL FROM DUAL");
- 
-            pstm = conn.prepareStatement(sql.toString());
-            rs = pstm.executeQuery(); // 쿼리 실행
- 
-            if (rs.next())    
-            	result = rs.getInt(1);
- 
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
-        }
-        jdt.close(pstm);
-        return result;
-    } 
+			String sql = "insert into tb_review(rv_list_id, review, rv_user_id, rating)"
+					+ " values (?,?,?,?)";
+			
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, review.getRvListId());
+			pstm.setString(2, review.getReview());
+			pstm.setString(3, review.getRvUserId());
+			pstm.setString(4, review.getRating());
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.AUTH01, e);
+		}finally {
+			jdt.close(pstm);
+		}
+		
+		return res;
+	}
+	
+	// 후기 삭제 메소드
+	public int reviewDelete (Connection conn, String rvUserId ) {
+		pstm = null;
+		int res = 0;
+		
+		try {
+			String sql = "delete from tb_review where rv_user_id= ? ";
+			
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1,rvUserId);
+			res = pstm.executeUpdate();
+			
+		}catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.AUTH01, e);
+		}finally {
+			jdt.close(pstm);
+		}
+		
+		return res;
+	}
 	
 	// 리뷰 디테일
 	public Review selectReviewDetail(Connection conn, String rvListIdx) {
@@ -130,57 +125,6 @@ public class ReviewDao {
 		}
 		
 		return review;
-	}
-	
-	// 리뷰 삭제
-	public int deleteReview(Connection conn, String rvUserId){
-		int res = 0;
-		PreparedStatement pstm = null;
-		
-		try {
-			String query = "delete from tb_review where rv_user_id = ?";
-			pstm = conn.prepareStatement(query);
-			pstm.setString(1, rvUserId);
-			res = pstm.executeUpdate();
-		} catch (SQLException e) {
-			throw new DataAccessException(ErrorCode.SM02,e);
-		}finally {
-			jdt.close(pstm);
-		}
-		
-		return res;
-	}
-	
-		// 리뷰 리스트
-		public ArrayList<Review> selectReviewList(Connection conn){
-		
-		ArrayList<Review> reviewList = new ArrayList<Review>();
-		PreparedStatement pstm = null;
-		ResultSet rset = null;
-		
-		try {
-			String query = "select * from tb_review";
-			pstm = conn.prepareStatement(query);
-			rset = pstm.executeQuery();
-			
-			while(rset.next()) {
-				Review review = new Review();
-				review.setRvIdx(rset.getInt("rv_idx"));
-				review.setRvListId(rset.getString("rv_list_id"));
-				review.setRvUserId(rset.getString("rv_user_id"));
-				review.setReview(rset.getString("review"));
-				review.setRvResDate(rset.getDate("rv_res_date"));
-				review.setRating(rset.getString("rating"));
-				
-				reviewList.add(review);
-			}
-		} catch (SQLException e) {
-			throw new DataAccessException(ErrorCode.SM01,e);
-		}finally {
-			jdt.close(rset,pstm);
-		}
-		
-		return reviewList;
 	}
 		
 		

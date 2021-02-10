@@ -13,7 +13,7 @@
   <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- 달력 -->
+  <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
   <link href='/resources/fullCalendar/lib/main.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.5.1/">
@@ -98,6 +98,24 @@
 		<br>
 		<br>
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

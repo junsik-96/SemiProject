@@ -16,8 +16,12 @@
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
 <style type="text/css">
-	button{
+	#sendMessageButton{
 		width: 100%;
+	}
+	
+	#kakao-login-btn{
+		width: 40%;
 	}
 </style>
 </head>
@@ -64,31 +68,74 @@
           <div id="success"></div>
           <!-- For success/fail messages -->
           <button class="btn btn-primary" id="sendMessageButton" onclick="login()">로그인</button>
-          <div style="text-align: right; margin-top: 10px">
+   			<div style="text-align: right; margin-top: 15px">
+   			 <a id="kakao-login-btn"></a>
+   			</div>
+          
+          <!-- <div style="text-align: right; margin-top: 10px">
           	<a href="javascript:kakaoLogin();">
           		<img src="/resources/image/kakao_login.png" style="width: 40%"/>
           	</a>
-          </div>
+          </div> -->
 
 		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 		<script>
-			window.Kakao.init("076fa3171672ea666f41331140c62e47");
+		    Kakao.init('076fa3171672ea666f41331140c62e47');
+		    
+		    Kakao.Auth.createLoginButton({
+		      container: '#kakao-login-btn',
+		      success: function(authObj) {
+		          
+		          Kakao.API.request({
+		              url: '/v2/user/me',
+		              success: function(res){
+		            	  console.log(res);
+		                  console.log(res.id);
+		                  console.log(res.kakao_account);
+		                  console.log(JSON.stringify(res.properties.nickname));
+		                  console.log(JSON.stringify(res.kakao_account.email));
+		                  console.log(JSON.stringify(res.kakao_account.birthday));
+		                 $.ajax({
+		                    url:"<%=request.getContextPath()%>/member/KakaoLogin",
+		                    data:{
+		                    	"id":res.id, 
+		                    	"name":JSON.stringify(res.properties.nickname), 
+		                    	"email":JSON.stringify(res.kakao_account.email), 
+		                    	"birth":JSON.stringify(res.kakao_account.birthday)},
+		                    Type:"post",
+		                    success:function(data){
+		                       <%-- location.href="<%=request.getContextPath()%>/member/mypage"; --%>
+		                    }
+		                    
+		                 });
+		              },
+		              fail: function(error){
+		                  alert(JSON.stringify(error));
+		              }
+		          });
+		        
+		      },
+		      fail: function(err) {
+		         alert(JSON.stringify(err));
+		      }
+		    });
+			//window.Kakao.init("076fa3171672ea666f41331140c62e47");
 			
-			function kakaoLogin() {
-				window.Kakao.Auth.login({
-					scope: 'profile, account_email, birthday',
-					success: function(authObj) {
-						console.log(authObj);
-						window.Kakao.API.request({
-							url: '/v2/user/me',
-							success: res => {
-								const kakao_account = res.kakao_account;
-								console.log(kakao_account);
-							}
-						});
-					}
-				});
-			}
+			//function kakaoLogin() {
+			//	window.Kakao.Auth.login({
+			//		scope: 'profile, account_email, birthday',
+			//		success: function(authObj) {
+			//			console.log(authObj);
+			//			window.Kakao.API.request({
+			//				url: '/v2/user/me',
+			//				success: res => {
+			//					const kakao_account = res.kakao_account;
+			//					console.log(kakao_account);
+			//				}
+			//			});
+			//		}
+			//	});
+			//}
 			</script>
         	<hr>
         	<div style="text-align: right">

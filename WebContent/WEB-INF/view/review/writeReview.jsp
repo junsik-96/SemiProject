@@ -34,7 +34,7 @@
  action="reviewWriteAction.jsp">
  
     <div class="text">
-    <input type="text" name="reviewUser"><br>
+    <input type="text" name="reviewUser">${sessionScope.user}<br>
     <textarea id="writeReview" class="write-review" name="wrReview" 
 					style="width:400px; height:200px; overflow:auto;" required="required"></textarea>
 					

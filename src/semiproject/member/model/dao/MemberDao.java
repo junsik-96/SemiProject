@@ -137,6 +137,22 @@ public class MemberDao {
 		return res;
 	}
 	
+	public int insertListener(Connection conn, Member member) {
+		int res = 0;
+		PreparedStatement pstm = null;
+		try {
+			String query = "insert into tb_listener(list_id) values(?)";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, member.getUserId());
+			res = pstm.executeUpdate();
+	}catch (SQLException e) {
+		throw new DataAccessException(ErrorCode.IM01,e);
+	}finally {
+		jdt.close(pstm);
+	}
+		return res;
+	}
+	
 	public int updateMember(Connection conn, Member member){
 		int res = 0;
 		PreparedStatement pstm = null;

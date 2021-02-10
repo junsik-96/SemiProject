@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 
-
 <head>
 
   <meta charset="utf-8">

@@ -10,6 +10,7 @@ import java.util.List;
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
+import semiproject.find.model.vo.Listener;
 import semiproject.listener.model.vo.School;
 import semiproject.listener.model.vo.Class;
 
@@ -71,6 +72,34 @@ public class ListenerDao {
 		} 
 	
 		return classlList;
+	}
+	
+	public int updateListener(Connection conn, Listener listener) {
+		int res = 0;
+		PreparedStatement pstm = null;
+		
+		
+		try {
+			String query = "update tb_listener set LIST_GEN = ?, TYPE = ?, LIST_SCHOOL = ?, LIST_CLASS = ?, LIST_LICENSE = ?,LIST_FIELD = ?, LIST_JOB = ?  where LIST_ID = 'jun12345'";
+					
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, listener.getListGen());
+			pstm.setString(2, listener.getType());
+			pstm.setString(3, listener.getListSchool());
+			pstm.setString(4, listener.getListClass());
+			pstm.setString(5, listener.getListLicense());
+			pstm.setString(6, listener.getListField());
+			pstm.setString(7, listener.getListJob());
+			/* pstm.setString(8, listener.getListId()); */
+			res = pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IL01, e);
+		}finally {
+			jdt.close(pstm);
+		}
+		
+		return res;
 	}
 	
 }
