@@ -104,7 +104,7 @@
 		                    	"birth":JSON.stringify(res.kakao_account.birthday)},
 		                    Type:"post",
 		                    success:function(data){
-		                       <%-- location.href="<%=request.getContextPath()%>/member/mypage"; --%>
+		                       location.href="<%=request.getContextPath()%>/index";
 		                    }
 		                    
 		                 });

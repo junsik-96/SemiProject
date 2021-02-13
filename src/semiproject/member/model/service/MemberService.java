@@ -32,6 +32,19 @@ public class MemberService {
 		return member;
 	}
 	
+	public Member kmemberAuthenticate(String userId){	
+		Connection conn = jdt.getConnection();
+		
+		Member member = null;
+		
+		try {
+			member = memberDao.kmemberAuthenticate(conn, userId);
+		} finally {
+			jdt.close(conn);
+		}
+		return member;
+	}
+	
 	public Member selectMemberById(String userId){	
 		Connection conn = jdt.getConnection();
 		
