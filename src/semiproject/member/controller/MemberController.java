@@ -17,6 +17,7 @@ import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.service.MemberService;
 import semiproject.member.model.service.MypageService;
 import semiproject.member.model.vo.Member;
+import semiproject.reservation.model.vo.Reservation;
 
 /**
  * Servlet implementation class memberController
@@ -303,6 +304,14 @@ public class MemberController extends HttpServlet {
 	
 	private void reservationInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String userId = member.getUserId();
+		
+		ArrayList<Reservation> reservationArr = mypageService.selectReservationById(userId);
+		
+		request.setAttribute("reservationArr", reservationArr);
+		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/reservationInfo.jsp")
 		.forward(request, response);
 	}

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.dao.MypageDao;
+import semiproject.reservation.model.vo.Reservation;
 
 
 public class MypageService {
@@ -13,6 +14,7 @@ public class MypageService {
 	MypageDao mypageDao = new MypageDao();
 	JDBCTemplate jdt = JDBCTemplate.getInstance();
 	
+	//찜목록 - userId로 카트에 담긴 listId 배열 반환
 	public ArrayList<Listener> selectListener(String userId) {
 		Connection conn = jdt.getConnection();
 		
@@ -27,6 +29,7 @@ public class MypageService {
 		return listIdArr;
 	}
 	
+	//찜목록 - listId로 해당 상담사 정보 반환
 	public Listener selectListenerById(String listId) {
 		Connection conn = jdt.getConnection();
 		
@@ -39,6 +42,21 @@ public class MypageService {
 		}
 		
 		return listener;
+	}
+	
+	//예약내역
+	public ArrayList<Reservation> selectReservationById(String userId) {
+		Connection conn = jdt.getConnection();
+		
+		ArrayList<Reservation> reservationArr = null;
+		
+		try {
+			reservationArr = mypageDao.selectReservationById(conn, userId);
+		} finally {
+			jdt.close(conn);
+		}
+		
+		return reservationArr;
 	}
 
 }

@@ -68,8 +68,9 @@
         <hr>
         
         <!-- Comments Form -->
+        <c:forEach var="reservation" items="${reservationArr}">
         <div class="card my-4">
-          <h5 class="card-header">결제일 : 2021-02-01</h5>
+          <h5 class="card-header">예약일 : ${reservation.resDate}</h5>
           <div class="card-body">
           	<div style="width: 25%; height: 100%">
 				<img src="/resources/image/listener.jpg" style="width: 100%; height: 100%;">
@@ -85,25 +86,8 @@
 	       	<b>예약일시 : 2021-02-10 13:00:00</b>
 	      	</div>
         </div>
+        </c:forEach>
         
-        <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header">결제일 : 2021-02-01</h5>
-          <div class="card-body">
-          	<div style="width: 25%; height: 100%">
-				<img src="/resources/image/listener.jpg" style="width: 100%; height: 100%;">
-			</div>
-			<div class="card-body-1">
-				<p>상담사 : </p>
-				<p>상담 분야 : </p>
-				<p>상담 링크 : </p>
-				<a href="#" class="btn btn-primary">자세히 보기 &rarr;</a>
-			</div>
-          </div>
-          <div class="card-footer text-muted" style="text-align: right">
-	       	<b>예약일시 : 2021-02-10 13:00:00</b>
-	      	</div>
-        </div>
         
         <!-- Pagination -->
 	    <ul class="pagination justify-content-center mb-4">
