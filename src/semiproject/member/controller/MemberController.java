@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import semiproject.find.model.vo.Listener;
+import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.service.MemberService;
 import semiproject.member.model.service.MypageService;
 import semiproject.member.model.vo.Member;

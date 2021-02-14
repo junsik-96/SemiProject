@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import semiproject.common.template.JDBCTemplate;
-import semiproject.find.model.vo.Listener;
+import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.dao.MypageDao;
 
 
