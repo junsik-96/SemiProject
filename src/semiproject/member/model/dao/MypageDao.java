@@ -36,7 +36,6 @@ public class MypageDao {
 				listener.setListId(rset.getString("list_id"));
 				listIdArr.add(listener);
 			}
-		//SQLException : db와 통신 중에 발생하는 모든 예외를 담당하는 Exception	
 		} catch (SQLException e) {
 			throw new DataAccessException(ErrorCode.SM02,e);
 		} finally {

@@ -287,14 +287,13 @@ public class MemberController extends HttpServlet {
 		
 		listIdArr = mypageService.selectListener(userId);
 		
-		System.out.println(listIdArr.toString());
-		
 		if(listIdArr.size()!=0) {
 			for(int i = 0; i < listIdArr.size(); i++) {
 				listArr.add(mypageService.selectListenerById(listIdArr.get(i).getListId()));
 			}
 		}
-		System.out.println(listArr.toString());
+
+		request.setAttribute("listArr", listArr);
 		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/holdInfo.jsp")
 		.forward(request, response);

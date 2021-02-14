@@ -61,46 +61,27 @@
         <h1>찜 목록</h1>
         <hr>
         <!-- Blog Post -->
-	    <div class="card mb-4">
-	      <div class="card-body">
-	        <div class="row">
-	          <div class="col-lg-6">
-	            <a href="#">
-	              <img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
-	            </a>
-	          </div>
-	          <div class="col-lg-6">
-	            <h2 class="card-title">상담사 이름</h2>
-	            <p class="card-text">상담사 소개다아으아아아ㅏ아앙아아아아아아아ㅏ아아아아아아아아아아ㅏ아아아아아아앙아아</p>
-	            <a href="#" class="btn btn-primary">바로 가기 &rarr;</a>
-	          </div>
-	        </div>
-	      </div>
-	      <div class="card-footer text-muted">
-	       	상담가격 : 50000 / 추천 수 : 10
-	      </div>
-	     </div>
-	      
-	    <!-- Blog Post -->
-	    <div class="card mb-4">
-	      <div class="card-body">
-	        <div class="row">
-	          <div class="col-lg-6">
-	            <a href="#">
-	              <img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
-	            </a>
-	          </div>
-	          <div class="col-lg-6">
-	            <h2 class="card-title">상담사 이름</h2>
-	            <p class="card-text">상담사 소개다아으아아아ㅏ아앙아아아아아아아ㅏ아아아아아아아아아아ㅏ아아아아아아앙아아</p>
-	            <a href="#" class="btn btn-primary">바로 가기 &rarr;</a>
-	          </div>
-	        </div>
-	      </div>
-	      <div class="card-footer text-muted">
-	       	상담가격 : 50000 / 추천 수 : 10
-	      </div>
-	    </div>
+        <c:forEach var="listener" items="${listArr}">
+		    <div class="card mb-4">
+		      <div class="card-body">
+		        <div class="row">
+		          <div class="col-lg-6">
+		            <a href="#">
+		              <img class="img-fluid rounded" src="http://placehold.it/750x300" alt="">
+		            </a>
+		          </div>
+		          <div class="col-lg-6">
+		            <h2 class="card-title">${listener.listId}</h2>
+		            <p class="card-text">${listener.listPro}</p>
+		            <a href="#" class="btn btn-primary">바로 가기 &rarr;</a>
+		          </div>
+		        </div>
+		      </div>
+		      <div class="card-footer text-muted">
+		       	상담가격 : ${listener.listAmt} / 추천 수 : ${listener.listLikely}
+		      </div>
+		     </div>
+	     </c:forEach>
 
         
         <!-- Pagination -->
@@ -112,7 +93,7 @@
 	        <a class="page-link" href="#">Newer &rarr;</a>
 	      </li>
 	    </ul>
-        
+	    
       </div>
     </div>
     <!-- /.row -->   
