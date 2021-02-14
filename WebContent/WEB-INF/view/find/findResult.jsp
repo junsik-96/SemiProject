@@ -36,7 +36,17 @@
       	</form>
       </li>  
     </ol>
-
+	
+	<% 
+		String name = "";
+		if(request.getParameter("searchlis") == null){
+			name = "";
+		}else{
+			name = "'"+request.getParameter("searchlis")+"'"+"에 대한 검색 결과 입니다.";
+		}
+	%>
+    
+	<div><%=name%></div>
 	
 	<form action="${context}/listener/findlist">
 		
@@ -60,8 +70,8 @@
 		<div class="sector_lis">상담사 성별</div>
 		<div class="box_list">
 		 	<ul class="sector_li">
-		 		<li><input type="checkbox" name="gender" value="여자">여성</li>
-		 		<li><input type="checkbox" name="gender" value="남자">남성</li>
+		 		<li><input type="checkbox" id="gender" name="gender" value="여자">여성</li>
+		 		<li><input type="checkbox" id="gender" name="gender" value="남자">남성</li>
 		 	</ul>
 		</div>
 		</div>
@@ -70,11 +80,11 @@
 		<div class="sector_lis">상담사 나이</div>
 		<div class="box_list">
 		 	<ul class="sector_li">
-		 		<li><input type="checkbox" name="age" value="20">20대</li>
-		 		<li><input type="checkbox" name="age" value="30">30대</li>
-		 		<li><input type="checkbox" name="age" value="40">40대</li>
-		 		<li><input type="checkbox" name="age" value="50">50대</li>
-		 		<li><input type="checkbox" name="age" value="60">60대</li>
+		 		<li><input type="checkbox" id="age" name="age" value="20">20대</li>
+		 		<li><input type="checkbox" id="age" name="age" value="30">30대</li>
+		 		<li><input type="checkbox" id="age" name="age" value="40">40대</li>
+		 		<li><input type="checkbox" id="age" name="age" value="50">50대</li>
+		 		<li><input type="checkbox" id="age" name="age" value="60">60대</li>
 		 	</ul>
 		</div>
 		</div>
@@ -98,7 +108,7 @@
 			 		<li><input type="checkbox" name="sector" value="우울/불안">우울/불안</li>
 			 		<li><input type="checkbox" name="sector" value="가족/부부">가족/부부</li>
 			 		<li><input type="checkbox" name="sector" value="산후/육아">산후/육아</li>
-			 		<li><input type="checkbox" name="sector" value="대인관계">대인관계</li>			 		
+			 		<li><input type="checkbox" name="sector" value="대인관계">대인관계</li>
 			 		<li><input type="checkbox" name="sector" value="폭력/성폭력">폭력/성폭력</li>
 			 		<li><input type="checkbox" name="sector" value="성적/취업">성적/취업</li>
 			 		<li><input type="checkbox" name="sector" value="건강">건강</li>
@@ -114,22 +124,48 @@
  	
  <div class="find_row" id="result_lis">
       
-      
-		<c:forEach var="i" begin="0" end="${fn:length(all)-1}" step="1">
-			<div class="col-lg-4 col-sm-6 portfolio-item find_result">
-		        <div class="card h-100">
-		          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+
+	<c:choose>
+      		<c:when test="${fn:length(result) > 0}">
+      			<c:forEach var="i" begin="0" end="${fn:length(result)-1}" step="1">
+      			<div class="col-lg-4 col-sm-6 portfolio-item find_result">
+			        <div class="card h-100">
+			          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
 			          <div class="card-body">
-		            	<small class="card-title">
-			               이름 : ${all[i].listName}<br>
-			               번호 : ${all[i].listPhone}
-		            	</small>
+		            <small class="card-title">
+		               이름 : ${result[i].listName}<br>
+		               번호 : ${result[i].listPhone}
+		            </small>
 		            <p class="card-text"></p>
 		          </div>
 		        </div>
-	      </div> 
-      </c:forEach>
+		      </div> 
+		      </c:forEach>
+      		</c:when>
+      		<c:when test="${fn:length(checkLis) > 0}">
+			<c:forEach var="i" begin="0" end="${fn:length(checkLis)-1}" step="1">
+      			<div class="col-lg-4 col-sm-6 portfolio-item find_result">
+			        <div class="card h-100">
+			          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+			          <div class="card-body">
+		            <small class="card-title">
+		               이름 : ${checkLis[i].listName}<br>
+		               번호 : ${checkLis[i].listPhone}<br>
+		           	   가격 : ${checkLis[i].listAmt} 
+		            </small>
+		            <p class="card-text"></p>
+		          </div>
+		        </div>
+		      </div> 
+		      </c:forEach>
+      		</c:when>
+      		<c:otherwise>
+   		
+      		</c:otherwise>
+      	</c:choose>
       	
+    
+  
     </div>
 	
 	<!--  page 이동 -->

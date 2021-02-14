@@ -1,6 +1,7 @@
-package semiproject.find.model.vo;
+package semiproject.listener.model.vo;
 
 import java.sql.Date;
+import java.util.Arrays;
 
 public class Listener {
 
@@ -17,10 +18,12 @@ public class Listener {
 	private Date listRegDate;
 	private String listSchool;
 	private String listClass;
-	private String listLicense;
-	private String listJob;
+	private String[] listLicense;
+	private String[] listJob;
 	private String listName;
-	
+	private String listPhone;
+	private String listEmail;
+	private Date listBirth;
 	
 	
 	public String getListName() {
@@ -101,26 +104,51 @@ public class Listener {
 	public void setListClass(String listClass) {
 		this.listClass = listClass;
 	}
-	public String getListLicense() {
+	public String[] getListLicense() {
 		return listLicense;
 	}
-	public void setListLicense(String listLicense) {
+	public void setListLicense(String[] listLicense) {
 		this.listLicense = listLicense;
 	}
-	public String getListJob() {
+	public String[] getListJob() {
 		return listJob;
 	}
-	public void setListJob(String listJob) {
+	public void setListJob(String[] listJob) {
 		this.listJob = listJob;
+	}
+	
+	
+	public String getListPhone() {
+		return listPhone;
+	}
+	public void setListPhone(String listPhone) {
+		this.listPhone = listPhone;
+	}
+	public String getListEmail() {
+		return listEmail;
+	}
+	public void setListEmail(String listEmail) {
+		this.listEmail = listEmail;
+	}
+	public Date getListBirth() {
+		return listBirth;
+	}
+	public void setListBirth(Date listBirth) {
+		this.listBirth = listBirth;
 	}
 	@Override
 	public String toString() {
 		return "Listener [listId=" + listId + ", listGen=" + listGen + ", listPro=" + listPro + ", listField="
 				+ listField + ", type=" + type + ", listAmt=" + listAmt + ", listIsTrue=" + listIsTrue + ", listLikely="
 				+ listLikely + ", listResCnt=" + listResCnt + ", listRegDate=" + listRegDate + ", listSchool="
-				+ listSchool + ", listClass=" + listClass + ", listLicense=" + listLicense + ", listJob=" + listJob
-				+ ", listName=" + listName + "]";
+				+ listSchool + ", listClass=" + listClass + ", listLicense=" + Arrays.toString(listLicense)
+				+ ", listJob=" + Arrays.toString(listJob) + ", listName=" + listName + ", listPhone=" + listPhone
+				+ ", listEmail=" + listEmail + ", listBirth=" + listBirth + "]";
 	}
+	
+	
+	
+	
 
 	
 	

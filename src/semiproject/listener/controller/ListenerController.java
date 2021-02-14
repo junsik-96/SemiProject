@@ -1,6 +1,7 @@
 package semiproject.listener.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import semiproject.find.model.vo.Listener;
+import semiproject.listener.model.vo.Listener;
 import semiproject.listener.model.service.ListenerService;
 import semiproject.listener.model.vo.Class;
+import semiproject.listener.model.vo.FindListener;
 import semiproject.listener.model.vo.School;
 import semiproject.member.model.vo.Member;
 
@@ -37,6 +40,8 @@ public class ListenerController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
+		
 		String[] uriArr = request.getRequestURI().split("/");
 		
 		switch(uriArr[uriArr.length - 1]) {
@@ -49,6 +54,12 @@ public class ListenerController extends HttpServlet {
 		case "findschool" : findSchool(request,response);
 			break;
 		case "findclass" : findClass(request,response);
+			break;
+		case "all" : all(request,response);
+			break;
+		case "search" : search(request,response);
+			break;
+		case "findlist" : findCheck(request,response);
 			break;
 		case "couns" : couns(request,response);
 			break;
@@ -88,15 +99,19 @@ public class ListenerController extends HttpServlet {
 	
 	private void listenerJoinImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		Member member = new Member();
+		
 		String listGen = request.getParameter("list_gen");
 		String listType = request.getParameter("list_type");
 		String listSchool = request.getParameter("choose_school");
 		String listClass = request.getParameter("choose_class");
-		String listLicense = request.getParameter("list_licen");
+		String[] listLicense = request.getParameterValues("list_licen");
 		String listField = request.getParameter("lis_field");
-		String listJob = request.getParameter("com_name");
-		/* String listId = member.getUserId(); */
-		
+		String[] listJob = request.getParameterValues("list_job");
+		String listId = (String) session.getAttribute("listId");
+
+	
 		Listener listener = new Listener();
 		
 		listener.setListGen(listGen);
@@ -106,8 +121,10 @@ public class ListenerController extends HttpServlet {
 		listener.setListLicense(listLicense);
 		listener.setListField(listField);
 		listener.setListJob(listJob);
+		listener.setListId(listId);
 	
 		System.out.println(listener.toString());
+		System.out.println(Arrays.toString(listLicense));
 		
 		listenerService.updateListener(listener);
 		request.setAttribute("url", "/index");
@@ -137,6 +154,66 @@ public class ListenerController extends HttpServlet {
 		request.setAttribute("claList", classList);
 		
 		request.getRequestDispatcher("/WEB-INF/view/listener/findClass.jsp")
+		.forward(request, response);
+	}
+	
+	private void all(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<Listener> resultAll = listenerService.selectListenerAll();
+		request.setAttribute("all", resultAll); 
+
+		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
+		.forward(request, response);
+	}
+	
+	private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String listWho = request.getParameter("searchlis");
+		
+		List<Listener> resultLis = listenerService.selectListenerBySearch(listWho);
+		request.setAttribute("result", resultLis);
+		
+		System.out.println(resultLis.toString());
+
+		
+		request.getRequestDispatcher("/WEB-INF/view/find/findResult.jsp")
+		.forward(request, response);
+	}
+	
+	private void findCheck(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String[] lisType = request.getParameterValues("job");
+		String[] lisGen = request.getParameterValues("gender");
+		String[] lisField = request.getParameterValues("sector");
+		
+		String[] age = request.getParameterValues("age");
+		String[] price = request.getParameterValues("price");
+		int[] lisAge = new int[age.length];
+		int[] lisPrice = new int[price.length];
+		
+		for(int i=0; i<age.length; i++) {
+			lisAge[i] = Integer.parseInt(age[i]); 
+		}
+		
+		for(int i=0; i<price.length; i++) {
+			lisPrice[i] = Integer.parseInt(price[i]); 
+		}
+		 
+		FindListener findListener = new FindListener();
+		findListener.setListType(lisType);
+		findListener.setListGen(lisGen);
+		findListener.setListField(lisField); 
+		findListener.setListAge(lisAge);
+		findListener.setListPrice(lisPrice);
+		
+		
+		
+		System.out.println(Arrays.toString(lisType));
+		
+		List<Listener> CheckLis = listenerService.selectListenerByCheck(findListener);
+		request.setAttribute("checkLis", CheckLis);  
+		System.out.println(CheckLis); 
+		request.getRequestDispatcher("/WEB-INF/view/find/findResult.jsp")
 		.forward(request, response);
 	}
 	

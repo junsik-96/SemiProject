@@ -79,9 +79,9 @@
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-        <h5 class="card-header"> '${rank1[0].listName}'<small>(${rank1[0].type})</small>
+        <h6 class="card-header"> '${rank1[0].listName}'<small>(${rank1[0].type})</small>
         	<div style="float: right;"><small>예약 수 : ${rank1[0].listResCnt}</small></div>
-        </h5>
+        </h6>
         
           <div class="card-body">
           <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
@@ -99,9 +99,9 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rank2[0].listName}'<small>(${rank2[0].type})</small>
+          <h6 class="card-header">'${rank2[0].listName}'<small>(${rank2[0].type})</small>
           <div style="float: right;"><small>예약 수 :${rank2[0].listResCnt}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>
@@ -117,9 +117,9 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rank3[0].listName}'<small>(${rank3[0].type})</small>
+          <h6 class="card-header">'${rank3[0].listName}'<small>(${rank3[0].type})</small>
           <div style="float: right;"><small>예약 수 : ${rank3[0].listResCnt}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>
@@ -135,9 +135,9 @@
       </div>
           <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rank4[0].listName}'<small>(${rank4[0].type})</small>
+          <h6 class="card-header">'${rank4[0].listName}'<small>(${rank4[0].type})</small>
           <div style="float: right;"><small>예약 수 : ${rank4[0].listResCnt}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>
@@ -152,14 +152,16 @@
         </div>
       </div>      
     </div>
+    <hr>
+    <br><br>
    
     <div id="month_reco">추천수 상담사 랭킹</div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-        <h5 class="card-header"> '${rankLike1[0].listName}'<small>(${rankLike1[0].type})</small>
+        <h6 class="card-header"> '${rankLike1[0].listName}'<small>(${rankLike1[0].type})</small>
         	<div style="float: right;"><small>추천 수 : ${rankLike1[0].listLikely}</small></div>
-        </h5>
+        </h6>
         
           <div class="card-body">
           <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
@@ -177,9 +179,9 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rankLike2[0].listName}'<small>(${rankLike2[0].type})</small>
+          <h6 class="card-header">'${rankLike2[0].listName}'<small>(${rankLike2[0].type})</small>
           <div style="float: right;"><small>추천 수 : ${rankLike2[0].listLikely}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>
@@ -195,9 +197,9 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rankLike3[0].listName}'<small>(${rankLike3[0].type})</small>
+          <h6 class="card-header">'${rankLike3[0].listName}'<small>(${rankLike3[0].type})</small>
           <div style="float: right;"><small>추천 수 : ${rankLike3[0].listLikely}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>
@@ -213,9 +215,9 @@
       </div>
           <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rankLike4[0].listName}'<small>(${rankLike4[0].type})</small>
+          <h6 class="card-header">'${rankLike4[0].listName}'<small>(${rankLike4[0].type})</small>
           <div style="float: right;"><small>추천 수 : ${rankLike4[0].listLikely}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>
@@ -230,19 +232,21 @@
         </div>
       </div>      
     </div>
+    <hr>
+    <br><br>
 
-	
+<!-- 	
 	<br><br><br><br>
     <h4>상담사 추천 -> 누르면 개인페이지 이동</h4>
-    <br><br><br><br>
+    <br><br><br><br> -->
 
    <div id="month_recently">신규 상담사(최신순 3명)</div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-        <h5 class="card-header"> '${rankReg1[0].listName}'<small>(${rankReg1[0].type})</small>
+        <h6 class="card-header"> '${rankReg1[0].listName}'<small>(${rankReg1[0].type})</small>
         	<div style="float: right;"><small>등록일 : ${rankReg1[0].listRegDate}</small></div>
-        </h5>
+        </h6>
         
           <div class="card-body">
           <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
@@ -260,9 +264,9 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rankReg2[0].listName}'<small>(${rankReg2[0].type})</small>
+          <h6 class="card-header">'${rankReg2[0].listName}'<small>(${rankReg2[0].type})</small>
           <div style="float: right;"><small>등록일 : ${rankReg2[0].listRegDate}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>
@@ -278,9 +282,9 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rankReg3[0].listName}'<small>(${rankReg3[0].type})</small>
+          <h6 class="card-header">'${rankReg3[0].listName}'<small>(${rankReg3[0].type})</small>
           <div style="float: right;"><small>등록일 : ${rankReg3[0].listRegDate}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>
@@ -296,9 +300,9 @@
       </div>
        <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rankReg4[0].listName}'<small>(${rankReg4[0].type})</small>
+          <h6 class="card-header">'${rankReg4[0].listName}'<small>(${rankReg4[0].type})</small>
           <div style="float: right;"><small>등록일 : ${rankReg4[0].listRegDate}</small></div>
-          </h5>
+          </h6>
           <div class="card-body">
             <p class="card-text">
             <small>

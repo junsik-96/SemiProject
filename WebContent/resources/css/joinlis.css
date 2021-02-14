@@ -43,6 +43,10 @@
    display: inline;
 }
 
+.form_job{
+	width: 638.78px;
+}
+
 .form_lic, .form_class, .form_pic
 , .form_sector, .form_gender, .form_uni, .form_phone_check
 ,.form_ads, .form_job{
@@ -57,6 +61,7 @@
 }
 
 .form_job{
+   float: left;
    margin-top: 3%;
 }
 
@@ -65,9 +70,10 @@
 }
 
 .form_job >*{
-   float: left;
+   float: left !important;
    margin-bottom: 2%; 
 }
+
 
 .la_uni, .la_class, .la_pw_re, .la_lic ,.la_pic
 , .la_sector, .la_gender, .la_phone, .la_ads
@@ -86,6 +92,7 @@
    border-top-left-radius: 5px;
    border-top-right-radius: 5px;
 }
+
 
 .plus_lic, .del_lic
 ,.plus_sec, .del_sec
@@ -119,7 +126,7 @@
 }
 
 .plus_job{
-   transform:translateX(-15%);
+   transform:translate(20%,15%);
 }
 
 .check_uni:active, .check_class:active ,
@@ -163,8 +170,8 @@
    margin-left: 1%;
 }
 
-.la_job, .la_job_do{
-   margin-right: 0.3%;
+.ip_job{
+	margin-left: 0.5%;
 }
 
 .btn_before{

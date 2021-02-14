@@ -42,6 +42,10 @@
   box-sizing: border-box;
 }
 
+.find_row{
+  min-height: 100px !important;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -69,6 +73,7 @@ ul{
   flex-wrap: wrap;
   margin-right: 50px;
   margin-left: 50px;
+  min-height: 100px !important;
 }
 
 .check_info{
@@ -123,7 +128,7 @@ ul{
 .btn_search_lis{
 	background-color:lightgrey;
 	border:none;
-	margin-top:1%;
+	margin-top:10px;
 	margin-bottom: 1%;
 	margin-left : 1%;
 }
@@ -132,7 +137,7 @@ ul{
 	background-color:lightgrey;
 	border:none;
 	margin-bottom: 1%;
-	margin-top:1%;
+	margin-top:10px;
 	margin-left: 10%;
 }
 
@@ -3582,8 +3587,8 @@ input[type="button"].btn-block {
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #16181b;
-  text-decoration: none;
+  color: #16181b ;
+  text-decoration: underline !important;
   background-color: #f8f9fa;
 }
 

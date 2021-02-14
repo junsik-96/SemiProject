@@ -34,8 +34,9 @@
       <li class="breadcrumb-item active">상담사 신청목록    
       </li>
     </ol>
-    
-    <button type="button" onclick="location.href='/listener/before'">상담사 신청 바로가기</button>
+  
+   	<button type="button" onclick="location.href='/listener/before'">상담사 신청 바로가기</button>
+
 
 <footer class="py-5 bg-dark">
   

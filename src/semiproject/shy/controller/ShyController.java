@@ -30,8 +30,6 @@ public class ShyController extends HttpServlet {
 		
 		String[] uriArr = request.getRequestURI().split("/");
 		switch(uriArr[uriArr.length-1]) {
-		case "find" : find(request, response); 
-			break;
 		case "board" : board(request, response); 
 			break;
 		case "boardList" : boardList(request, response); 
@@ -83,13 +81,6 @@ public class ShyController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	private void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
-		.forward(request, response);
-	}
-
 	
 	private void boardList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
