@@ -66,7 +66,7 @@
 	        <br>
 	        <a class="btn btn-primary" data-toggle="modal" href="#registerModal">회원가입</a>
 	        <a class="btn btn-primary" data-toggle="modal" style="margin-top: 2%; border: none; background-color: lightgrey; color: black" 
-	        onclick="location.href='/shy/listenerlist'">상담사 신청</a>
+	        onclick="lisAlert()">상담사 신청</a>
 	        <hr>
 	        <div style="text-align: right">
 	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/member/login"><small>로그인 바로가기</small></a></label>
@@ -148,9 +148,9 @@
 								<label>선호 상담사 유형</label>
                   				<select name="listType" class="form-control">
 				                    <option value="선택안함" selected>선택안함</option>
-				                    <option value="전문상담사">전문상담사</option>
+				                    <option value="전문가">전문상담사</option>
 				                    <option value="의사">의사</option>
-				                    <option value="관련전공자">관련전공자</option>
+				                    <option value="대학생">관련전공자</option>
                   				</select>
 							</div>
 							
@@ -233,6 +233,15 @@
 	</div>
     
   </footer>
+  
+  <script type="text/javascript">
+  
+  	function lisAlert(){
+  		alert("회원가입/로그인 후 \n게시판 - '상담사 신청' 메뉴를 통해 이용해주세요."+
+  				"\n!!! 회원가입시 회원유형 → '상담사' 로 가입바랍니다.");
+  	}
+  
+  </script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/resources/vendor/jquery/jquery.min.js"></script>

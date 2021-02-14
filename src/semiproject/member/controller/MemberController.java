@@ -157,7 +157,9 @@ public class MemberController extends HttpServlet {
 			//session에 회원 정보를 저장
 			request.getSession().setAttribute("user", member);
 			request.getSession().setAttribute("listId", member.getUserId());
-			request.getSession().setAttribute("userType", member.getUserType()); 
+			request.getSession().setAttribute("userType", member.getUserType());
+			request.getSession().setAttribute("listType", member.getListType());
+			request.getSession().setAttribute("concern", member.getConcern());
 			response.getWriter().print("success");
 		}else {
 			response.getWriter().print("fail");

@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.vo.Listener;
+import semiproject.member.model.vo.Member;
 
 public class IndexDao {
 
@@ -129,6 +132,42 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 			return listener;
 		}
 	
+		public List<Listener> selectLisByComm(Connection conn, Listener listener){
+			Listener alistener = null;
+			PreparedStatement pstm = null;
+			ResultSet rset = null;
+			List<Listener> commListener = new ArrayList<Listener>();
 		
+			
+			try {
+				String query = "select * from "
+						+ "tb_listener l inner join tb_member m "
+						+ "on(l.list_id = m.user_id) where "
+						+ "list_field = ? or type = ? "
+						+ "order by list_likely desc";
+				pstm = conn.prepareStatement(query);
+				pstm.setString(1, listener.getListField());
+				pstm.setString(2, listener.getType());
+				rset = pstm.executeQuery();
+				
+				while(rset.next()) {
+					listener = new Listener();
+					listener.setListName(rset.getString("name"));
+					listener.setListGen(rset.getString("list_gen"));
+					listener.setListField(rset.getString("list_field"));
+					listener.setType(rset.getString("type"));
+					listener.setListPhone(rset.getString("tel")); 
+					listener.setListEmail(rset.getString("email"));
+					listener.setListResCnt(rset.getInt("list_res_cnt"));
+					listener.setListLikely(rset.getInt("list_likely"));			
+					
+					commListener.add(listener);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return commListener;
+		}
 	
 }

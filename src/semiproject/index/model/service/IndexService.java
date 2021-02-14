@@ -59,9 +59,20 @@ public class IndexService {
 		}finally {
 			jdt.close(conn);
 		}
-		 
-		
 		return listenerList;
+	}
+	
+	public List<Listener> selectLisByComm(Listener listener){
+		Connection conn = jdt.getConnection();
+		List<Listener> commList = null;
+		
+		try {
+			commList = indexDao.selectLisByComm(conn, listener);
+		}finally {
+			jdt.close(conn);
+		}
+		
+		return commList;
 	}
 	
 }

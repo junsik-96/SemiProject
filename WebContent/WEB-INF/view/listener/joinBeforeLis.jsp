@@ -268,7 +268,7 @@ QR코드 등록 정보:삭제 시점으로부터6개월 보관
   	}
 
   	/* 필수 이용약관 동의 */
-  	  $(document).ready(function(){
+  	 document.addEventListener("DOMContentLoaded",function(){
   	    
          $(".ok_btn").click(function(){    
              if($("#bb").is(":checked") == false){

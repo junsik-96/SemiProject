@@ -1,7 +1,7 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 
 <html lang="en">
@@ -72,8 +72,148 @@
      <pre class="intro" style="color:rgb(138, 43, 226);">
      	Welcome everyone!!
      </pre>
-    
-   
+	
+	
+
+	<c:choose>
+	<c:when test="${sessionScope.userType eq '일반회원'}">
+   <div id="month_reco">상담사 추천</div>
+	<div class="row">
+	<c:choose>
+		<c:when test="${fn:length(comm1)-1 > 3}">
+		<c:forEach var="i" begin="0" end="3" step="1">
+		<div class="col-lg-4 mb-4">
+        <div class="card h-100">
+        <h6 class="card-header"> '${comm1[i].listName}'<small>(${comm1[i].type})</small>
+        	<div style="float: right;"><small>추천 수 : ${comm1[i].listLikely}</small></div>
+        </h6>
+        
+          <div class="card-body">
+          <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
+            <p class="card-text"> 
+            <small>
+            	전문분야 : ${comm1[i].listField} <br>
+            	한줄소개 : ${comm1[i].listPro} 
+            </small>
+           </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+          </div>
+        </div>
+      </div>
+	</c:forEach>
+		</c:when>
+		<c:otherwise>
+		<c:forEach var="i" begin="0" end="${fn:length(comm1)-1}" step="1">
+		<div class="col-lg-4 mb-4">
+        <div class="card h-100">
+        <h6 class="card-header"> '${comm1[i].listName}'<small>(${comm1[i].type})</small>
+        	<div style="float: right;"><small>추천 수 : ${comm1[i].listLikely}</small></div>
+        </h6>
+        
+          <div class="card-body">
+          <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
+            <p class="card-text"> 
+            <small>
+            	전문분야 : ${comm1[i].listField} <br>
+            	한줄소개 : ${comm1[i].listPro} 
+            </small>
+           </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+          </div>
+        </div>
+      </div>
+	</c:forEach>
+		</c:otherwise>
+	</c:choose>
+
+  <%--<div class="col-lg-4 mb-4">
+        <div class="card h-100">
+        <h6 class="card-header"> '${comm1[0].listName}'<small>(${comm1[0].type})</small>
+        	<div style="float: right;"><small>예약 수 : ${comm1[0].listResCnt}</small></div>
+        </h6>
+        
+          <div class="card-body">
+          <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
+            <p class="card-text"> 
+            <small>
+            	전문분야 : ${comm1[0].listField} <br>
+            	한줄소개 : ${comm1[0].listPro} 
+            </small>
+           </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h6 class="card-header">'${comm1[1].listName}'<small>(${comm1[1].type})</small>
+          <div style="float: right;"><small>예약 수 :${comm1[1].listResCnt}</small></div>
+          </h6>
+          <div class="card-body">
+            <p class="card-text">
+            <small>
+           		전문분야 : ${comm1[1].listField} <br>
+            	한줄소개 : ${comm1[1].listPro} 
+            </small>
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h6 class="card-header">'${comm1[2].listName}'<small>(${comm1[0].type})</small>
+          <div style="float: right;"><small>예약 수 : ${comm1[0].listResCnt}</small></div>
+          </h6>
+          <div class="card-body">
+            <p class="card-text">
+            <small>
+       		    전문분야 : ${comm1[0].listField} <br>
+            	한줄소개 : ${comm1[0].listPro} 
+            </small>
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+          </div>
+        </div>
+      </div>
+          <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h6 class="card-header">'${comm1[0].listName}'<small>(${comm1[0].type})</small>
+          <div style="float: right;"><small>예약 수 : ${comm1[0].listResCnt}</small></div>
+          </h6>
+          <div class="card-body">
+            <p class="card-text">
+            <small>
+       		    전문분야 : ${comm1[0].listField} <br>
+            	한줄소개 : ${comm1[0].listPro} 
+            </small>
+            </p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+          </div>
+        </div>
+      </div>    --%>   
+    </div>
+    <hr>
+    <br><br>
+    </c:when>
+       	<c:otherwise>
+       	</c:otherwise>
+    </c:choose>    
+
+
+	
 
  <div id="month_reco">예약수 상담사 랭킹</div>
     <div class="row">
@@ -234,11 +374,6 @@
     </div>
     <hr>
     <br><br>
-
-<!-- 	
-	<br><br><br><br>
-    <h4>상담사 추천 -> 누르면 개인페이지 이동</h4>
-    <br><br><br><br> -->
 
    <div id="month_recently">신규 상담사(최신순 3명)</div>
     <div class="row">
