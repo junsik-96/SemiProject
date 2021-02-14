@@ -46,9 +46,7 @@
   <div class="container">
 
     <!-- 페이지 제목 -->
-    <h1 class="mt-4 mb-3"> $이름
-      <small>상담사님의 마이페이지</small>
-    </h1>
+    <h2 class="mt-4 mb-3"> ${sessionScope.name} 상담사님의 마이페이지 </h2>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">

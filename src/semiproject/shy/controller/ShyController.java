@@ -58,7 +58,7 @@ public class ShyController extends HttpServlet {
 			break;
 		case "gotoForm" : gotoForm(request,response);
 			break;
-		case "reviews" : reviews(request, response);
+		case "listMypageReview" : listMypageReview(request, response);
 			break;	
 		case "counsReview" : counsReview(request, response);
 			break;
@@ -68,6 +68,7 @@ public class ShyController extends HttpServlet {
 			break;
 		case "resConfirm" : resConfirm (request, response);
 			break;
+		case "writeReview" : writeReview (request, response);
 			
 		default : response.setStatus(404);
 		}
@@ -161,9 +162,9 @@ public class ShyController extends HttpServlet {
 		response.sendRedirect("/index");
 	}
 	
-	private void reviews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void listMypageReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/reviews.jsp")
+		request.getRequestDispatcher("/WEB-INF/view/review/listMypageReview.jsp")
 		.forward(request, response);
 	}
 	
@@ -188,6 +189,12 @@ public class ShyController extends HttpServlet {
 	private void mySchedule(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/mySchedule.jsp")
+		.forward(request, response);
+	}
+	
+	private void writeReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/review/writeReview.jsp")
 		.forward(request, response);
 	}
 	

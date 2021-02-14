@@ -48,7 +48,7 @@
                     내 용
                 </td>
                 <td>
-                    ${board.board.content}
+                    ${board.board_content}
                 </td>        
             </tr>
            
@@ -59,7 +59,7 @@
                     <input type="button" value="삭제" >
                     <input type="button" value=답글 >    
                     <input type="button" value="목록" 
-                        onclick="javascript:location.href='board'">            
+                        onclick="javascript:location.href='boardView?page=${pageNum}'">            
                 </td>
             </tr>
         </table>
