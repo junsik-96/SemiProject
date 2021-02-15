@@ -15,9 +15,11 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
+  <link href='/resources/fullCalendar/lib/main.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.5.1/">
-	<script src='/resources/fullCalendar/lib/main.js'></script>
-    <script>
+  <script src='/resources/fullCalendar/lib/main.js'></script>
+  
+  <script type="text/javascript">
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -65,6 +67,33 @@
    	
    		
    		<div  id="calendar"> </div>
+   		
+   		<script>
+   		
+   				var calendar = new FullCalendar.Calendar(calendarEl, {
+   					
+   				events: [
+   				
+   					var reservation = CalendarService.selectResDetail;
+   				if(reservation.length > 0){
+   					if(resListId == ${sessionId}) {
+   						for(var i = 0; i < reservation.length; i++){
+   							test.push({
+   								title: '[회원]'+reservation[i].resUserId
+   								,start: reservation[i].resDate
+   								,color: '#FF5E00'
+   								
+   							})
+   						}
+   				
+   					}
+   				}
+   				
+   				]
+   				
+   				})
+   			
+   		</script>
    		
 		<br>
 		<br>

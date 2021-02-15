@@ -1,6 +1,7 @@
 package semiproject.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -8,11 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.service.MemberService;
+import semiproject.member.model.service.MypageService;
 import semiproject.member.model.vo.Member;
+import semiproject.reservation.model.vo.Reservation;
 
 /**
  * Servlet implementation class memberController
@@ -22,6 +27,7 @@ public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	MemberService memberService = new MemberService();
+	MypageService mypageService = new MypageService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,6 +46,8 @@ public class MemberController extends HttpServlet {
 		
 		switch(uriArr[uriArr.length - 1]) {
 			case "login" : login(request,response); //로그인
+				break;
+			case "KakaoLogin" : kakaoLogin(request,response);
 				break;
 			case "loginimpl" : loginImpl(request, response);
 				break;
@@ -86,6 +94,51 @@ public class MemberController extends HttpServlet {
 		.forward(request, response);
 	}
 	
+	private void kakaoLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+        String userId = request.getParameter("id");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String birth = request.getParameter("birth");
+        
+        String[] names = name.split("\"");
+        String[] emails = email.split("\"");
+        String[] births = birth.split("\"");
+        
+        //회원이 있는지 검사, 없으면 회원가입부터 진행 후 로그인
+        Member member = memberService.selectMemberById(userId);
+        
+        if(member == null) {
+            //회원가입이 필요
+            Member memberInput = new Member();
+            memberInput.setUserId(userId);
+            memberInput.setName(names[1]);
+            memberInput.setUserType("일반회원");
+            memberInput.setEmail(emails[1]);
+            memberInput.setBirth(births[1]);
+            
+            //회원가입 실행
+            int res = memberService.insertMember(memberInput);
+            
+            if(res > 0) {
+                //로그인
+                Member memberLogin = memberService.kmemberAuthenticate(userId);
+                
+                session = request.getSession();
+                session.setAttribute("user", memberLogin);
+                response.getWriter().append("/");
+            }else {
+                System.out.println("카카오 회원가입 실패");
+            }
+            
+        }else {
+            //있는 회원
+            session.setAttribute("user", member);
+            response.getWriter().append("/");
+        }
+	}
+	
 	private void loginImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
@@ -104,6 +157,8 @@ public class MemberController extends HttpServlet {
 		if(member != null) {
 			//session에 회원 정보를 저장
 			request.getSession().setAttribute("user", member);
+			request.getSession().setAttribute("listId", member.getUserId());
+			request.getSession().setAttribute("userType", member.getUserType()); 
 			response.getWriter().print("success");
 		}else {
 			response.getWriter().print("fail");
@@ -139,7 +194,7 @@ public class MemberController extends HttpServlet {
 	private void authenticateEmail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String userId = request.getParameter("id");
-		String password = request.getParameter("pw");
+		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		String name = request.getParameter("name");
 		String tel = request.getParameter("tel");
@@ -174,6 +229,7 @@ public class MemberController extends HttpServlet {
 		Member member = (Member) request.getSession().getAttribute("persistUser");
 		
 		memberService.insertMember(member);
+		memberService.insertListener(member);
 		
 		//회원가입 정보를 삭제
 		request.getSession().removeAttribute("persistUser");
@@ -226,12 +282,36 @@ public class MemberController extends HttpServlet {
 	
 	private void holdInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String userId = member.getUserId();
+		ArrayList<Listener> listIdArr = null;
+		ArrayList<Listener> listArr = new ArrayList<>();
+		
+		listIdArr = mypageService.selectListener(userId);
+		
+		if(listIdArr.size()!=0) {
+			for(int i = 0; i < listIdArr.size(); i++) {
+				listArr.add(mypageService.selectListenerById(listIdArr.get(i).getListId()));
+			}
+		}
+
+		request.setAttribute("listArr", listArr);
+		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/holdInfo.jsp")
 		.forward(request, response);
 	}
 	
 	private void reservationInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String userId = member.getUserId();
+		
+		ArrayList<Reservation> reservationArr = mypageService.selectReservationById(userId);
+		
+		request.setAttribute("reservationArr", reservationArr);
+		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/reservationInfo.jsp")
 		.forward(request, response);
 	}

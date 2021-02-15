@@ -1,11 +1,6 @@
 package semiproject.review.controller;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semiproject.review.model.service.ReviewService;
 import semiproject.review.model.vo.Review;
 
 /**
@@ -56,6 +50,8 @@ public class ReviewController extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	
+	
 	private void listMypageReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/review/listMypageReview.jsp")
@@ -63,8 +59,19 @@ public class ReviewController extends HttpServlet {
 	}
 	
 	private void uploadReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/review/writeReview.jsp")
+		String reviewUser = request.getParameter("reviewUser");
+		String wrReview = request.getParameter("wrReview");
+		String starRating = request.getParameter("starRating");
+		
+		
+		Review review = new Review();
+		review.setRvUserId(reviewUser);
+		review.setReview(wrReview);
+		review.setRating(starRating);
+		
+		request.setAttribute("alertMsg", "리뷰가 등록되었습니다.");
+		
+		request.getRequestDispatcher("/WEB-INF/view/review/listMypageReview.jsp")
 		.forward(request, response);
 	}
 	
@@ -77,3 +84,5 @@ public class ReviewController extends HttpServlet {
 	}
 
 }
+
+

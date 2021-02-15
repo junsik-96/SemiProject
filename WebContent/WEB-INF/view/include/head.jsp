@@ -1,3 +1,6 @@
+<%@page import="java.io.Console"%>
+<%@page import="javax.tools.DocumentationTool.Location"%>
+<%@page import="semiproject.common.exception.ToAlertException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -8,14 +11,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Shytalker</title>
-
+<style type="text/css">
+.dropdown-item:hover{
+  color: #16181b ;
+  text-decoration: underline !important;
+  background-color: #f8f9fa;
+}
+</style>
 <script type="text/javascript" src="/resources/js/common/asyncResponseError.js"></script>
 <script type="text/javascript" src="/resources/js/common/urlEncoder.js"></script>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
- <link href="/resources/css/all.css" rel="stylesheet">
+<link href="/resources/css/all.css" rel="stylesheet">
 <link rel = "stylesheet" href = "/resources/css/modern-business.css">
 <link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap.css">
 <link rel = "stylesheet" href = "/resources/vendor/bootstrap/css/bootstrap.min.css">
@@ -45,7 +54,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/shy/find">상담사 찾기</a>
+            <a class="nav-link" href="/listener/all">상담사 찾기</a>
           </li>          
           <li class="nav-item">
             <a class="nav-link" href="/diary">일기장</a>
@@ -55,13 +64,17 @@
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="/board">대나무숲</a>
-              <a class="dropdown-item" href="/notice">공지사항</a>
-            <a class="dropdown-item" href="/shy/listenerlist">상담사 신청목록</a>
+
+              <a class="dropdown-item" href="/shy/board">대나무숲</a>
+              <a class="dropdown-item" href="/shy/notice">공지사항</a>
+<!--      		  <a class="dropdown-item" href="/shy/listenerlist">상담사 신청</a>           
+ -->              
+             
               <a class="dropdown-item" href="/shy/customerCenter">고객센터</a>
-            </div>
+            </div>          
           </li>
           
+
             <c:choose>
              <c:when test="${empty sessionScope.user}">
                  <li class="nav-item">
@@ -71,19 +84,45 @@
                   <a class="nav-link" href="/member/join">회원가입</a>
                 </li>
              </c:when>
-             <c:otherwise>              
+             <c:otherwise>         
+           		<c:choose>
+       				<c:when test="${sessionScope.userType eq '일반회원'}">
                 <li class="nav-item">
+                <!-- 일반회원 마이페이지로 이동 -->
                      <a class="nav-link" href="/member/mypage">마이페이지</a>
                 </li>
                  <li class="nav-item">
                      <a class="nav-link" href="/member/logout">LogOut</a>
-                </li>          
+                </li>  
+                	</c:when>
+               	<c:otherwise>
+               	<li class="nav-item">
+               		<!-- 상담사 마이페이지로 경로이동 -->
+                     <a class="nav-link" href="/shy/myPageMain">마이페이지</a>
+                </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="/member/logout">LogOut</a>
+                </li>  
+               	</c:otherwise>
+          	  </c:choose>              
              </c:otherwise>
           </c:choose>
+          
           
         </ul>
       </div>
     </div>
   </nav>
+
+<script type="text/javascript">
+
+	function alertMsg(){
+		alert('죄송합니다.'+
+				'\n일반회원 고객님은 이용하실 수 없는 페이지 입니다.' +
+				'\n이전 페이지로 돌아갑니다.');
+		history.forward();
+	}
+
+</script>
 
 </body>

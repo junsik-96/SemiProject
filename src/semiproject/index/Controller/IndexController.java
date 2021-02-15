@@ -32,6 +32,7 @@ public class IndexController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 예약 rank
+		
 		List<Listener> listenerList1 = indexService.selectByResCnt(1);
 		request.setAttribute("rank1", listenerList1);
 		List<Listener> listenerList2 = indexService.selectByResCnt(2);
@@ -71,5 +72,7 @@ public class IndexController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
+	
 
 }

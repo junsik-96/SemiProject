@@ -77,14 +77,16 @@
 							        </tr>
 							    </thead>
 							    <tbody>
-							        <c:forEach var="ReviewList" items="${ArrayList}" varStatus="status">
+							    <c:if test="${requestScope.reviewList != null }">
+							        <c:forEach var="review" items="${requestScope.reviewList}" varStatus="status">
 							            <!-- 평점 기준 별표시 출력 -->
 							            <tr>
-							                <td><c:forEach var="rating" varStatus="status" begin="1" end="${ sessionScope.rating }">★</c:forEach></td>
-							                <td>${ sessionScope.rvUserId }</td>
-							                <td>${ sessionScope.review }</td>
+							                <td><c:forEach var="rating" varStatus="status" begin="1" end="${ review.rating }">★</c:forEach></td>
+							                <td>${ review.rvUserId }</td>
+							                <td>${ review.review }</td>
 							            </tr>
 							        </c:forEach>
+							        </c:if>
 							    </tbody>
 							</table>
                                 </div>
@@ -95,6 +97,9 @@
                             <a href="#!" class="b-b-primary text-primary">리뷰 더 보기</a>
                         </div>
                     </div>
+                    
+                    
+                    
                 </div>
                 <br>
                 <br>
@@ -108,6 +113,40 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+<!-- Footer -->
+  <footer class="py-5 bg-dark">
+   <div class="container_footer">
+   (주) 귀울임 사업자 정보 
+  <pre id = "footerInfo">  		 		
+	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4
+	대표 : 홍길동 | 개인정보보호책임 : 황진이
+	사업자 등록번호 : 123-45-6789
+	통신판매업신고 : 2021-서울강남-01234호
+	전화 : 02-1234-1234
+	email : pclass@khaca.com
+    </pre>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+
+</body>
+</html>
   
   
   

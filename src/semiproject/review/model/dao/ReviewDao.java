@@ -36,7 +36,7 @@ public class ReviewDao {
 				review.setRvResDate(rset.getDate("rv_res_date"));
 				review.setReview(rset.getString("review"));
 				review.setRvUserId(rset.getString("rv_user_id"));
-				review.setRating(rset.getInt("rating"));
+				review.setRating(rset.getString("rating"));
 				reviewList.add(review);
 			}
 		} catch (SQLException e) {
@@ -62,7 +62,7 @@ public class ReviewDao {
 			pstm.setString(1, review.getRvListId());
 			pstm.setString(2, review.getReview());
 			pstm.setString(3, review.getRvUserId());
-			pstm.setInt(4, review.getRating());
+			pstm.setString(4, review.getRating());
 			
 			res = pstm.executeUpdate();
 		} catch (SQLException e) {
@@ -116,7 +116,7 @@ public class ReviewDao {
 				review.setRvResDate(rs.getDate(3));
 				review.setReview(rs.getString(4));
 				review.setRvUserId(rs.getString(5));
-				review.setRating(rs.getInt(6));
+				review.setRating(rs.getString(6));
 			}
 		} catch (SQLException e) {
 			throw new DataAccessException(ErrorCode.AUTH01, e);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 <head>
 
@@ -24,33 +25,23 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index">Home</a>
+        <a href="/index">Home</a>
       </li>
-      <li class="breadcrumb-item active">상담사 찾기   	
+      <li class="breadcrumb-item active">상담사 찾기 	
       </li>
       <li>
-      	<form action="${context}/shy/find" method="post" >
+      	<form action="${context}/listener/search" method="post" >
      	 <input type="search" class="search_lis" name="searchlis">
-     	 <button type="submit" class="search_btn"><i class="fas fa-search"></i></button>
+     	 <button type="button" class="search_btn"><i class="fas fa-search"></i></button>
       	</form>
       </li>  
     </ol>
+
 	
-	<% 
-		String name = "";
-		if(request.getParameter("searchlis") == null){
-			name = "";
-		}else{
-			name = "'"+request.getParameter("searchlis")+"'"+"에 대한 검색 결과 입니다.";
-		}
-	%>
-    
-	<div><%=name%></div>
-	
-	<form action="${context}/shy/find">
+	<form action="${context}/listener/findlist">
 		
 		<div class="check_info">
-			<pre> *원하시는 항목을 선택하여 주세요. (중복선택 가능)</pre>
+			<div style="font-size: 13px;"> *원하시는 항목을 선택하여 주세요. (중복선택 가능)</div>
 		</div>
 		
 		<div class="choose_lis">
@@ -58,7 +49,7 @@
 			<div class="sector_lis">상담사 유형</div>
 			<div class="box_list">
 			 	<ul class="sector_li">
-			 		<li><input type="checkbox" name="job" value="전문의">"전문의"</li>
+			 		<li><input type="checkbox" name="job" value="전문가">전문의</li>
 			 		<li><input type="checkbox" name="job" value="의사">의사</li>
 			 		<li><input type="checkbox" name="job" value="대학생">대학생</li>
 			 	</ul>
@@ -69,9 +60,8 @@
 		<div class="sector_lis">상담사 성별</div>
 		<div class="box_list">
 		 	<ul class="sector_li">
-		 		<li><input type="checkbox" name="sector" value="woman">여성</li>
-		 		<li><input type="checkbox" name="sector" value="man">남성</li>
-		 		<li><input type="checkbox" name="sector" value="both">상관없음</li>
+		 		<li><input type="checkbox" name="gender" value="여자">여성</li>
+		 		<li><input type="checkbox" name="gender" value="남자">남성</li>
 		 	</ul>
 		</div>
 		</div>
@@ -80,11 +70,11 @@
 		<div class="sector_lis">상담사 나이</div>
 		<div class="box_list">
 		 	<ul class="sector_li">
-		 		<li><input type="checkbox" name="sector" value="woman">20대</li>
-		 		<li><input type="checkbox" name="sector" value="man">30대</li>
-		 		<li><input type="checkbox" name="sector" value="both">40대</li>
-		 		<li><input type="checkbox" name="sector" value="both">50대</li>
-		 		<li><input type="checkbox" name="sector" value="both">상관없음</li>
+		 		<li><input type="checkbox" name="age" value="20">20대</li>
+		 		<li><input type="checkbox" name="age" value="30">30대</li>
+		 		<li><input type="checkbox" name="age" value="40">40대</li>
+		 		<li><input type="checkbox" name="age" value="50">50대</li>
+		 		<li><input type="checkbox" name="age" value="60">60대</li>
 		 	</ul>
 		</div>
 		</div>
@@ -93,10 +83,10 @@
 			<div class="sector_lis">가격</div>
 			<div class="box_list">
 			 	<ul class="sector_li">
-			 		<li><input type="checkbox" name="price" value="service">무료</li>
-			 		<li><input type="checkbox" name="price" value="ten">~10,000원</li>
-			 		<li><input type="checkbox" name="price" value="ten_plus">10,000 ~ 30,000원</li>
-			 		<li><input type="checkbox" name="price" value="else">30,000 ~</li>
+			 		<li><input type="checkbox" name="price" value="0">무료</li>
+			 		<li><input type="checkbox" name="price" value="10000">10,000원 미만</li>
+			 		<li><input type="checkbox" name="price" value="30000">30,000원 미만</li>
+			 		<li><input type="checkbox" name="price" value="999999">상관없음</li>
 			 	</ul>
 			</div>
 		</div>
@@ -105,123 +95,41 @@
 			<div class="sector_lis">분야</div>
 			<div class="box_list">
 			 	<ul class="sector_li">
-			 		<li><input type="checkbox" name="sector" value="sad">우울증</li>
-			 		<li><input type="checkbox" name="sector" value="people">인간관계</li>
-			 		<li><input type="checkbox" name="sector" value="family">가족관계</li>
-			 		<li><input type="checkbox" name="sector" value="grade">학교성적</li>
-			 		<li><input type="checkbox" name="sector" value="health">건강</li>
-			 		<li><input type="checkbox" name="sector" value="hit">폭력</li>
-			 		<li><input type="checkbox" name="sector" value="etc">기타</li>
+			 		<li><input type="checkbox" name="sector" value="우울/불안">우울/불안</li>
+			 		<li><input type="checkbox" name="sector" value="가족/부부">가족/부부</li>
+			 		<li><input type="checkbox" name="sector" value="산후/육아">산후/육아</li>
+			 		<li><input type="checkbox" name="sector" value="대인관계">대인관계</li>			 		
+			 		<li><input type="checkbox" name="sector" value="폭력/성폭력">폭력/성폭력</li>
+			 		<li><input type="checkbox" name="sector" value="성적/취업">성적/취업</li>
+			 		<li><input type="checkbox" name="sector" value="건강">건강</li>
+			 		<li><input type="checkbox" name="sector" value="기타">기타</li>
 			 	</ul>
 			</div>
 		</div>
-		
-		</div>
-		
-		<button class="btn_search_clear" style="width: 70px">초기화</button>
-		<button class="btn_search_lis" style="width: 70px">검색</button>
+		</div>	
+		<button type="button" class="btn_search_clear" style="width: 70px" onclick="del()">초기화</button>
+		<button type="submit" class="btn_search_lis" style="width: 70px">검색</button>
  	</form>
  	
- 	 <div class="find_row">
-      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Two</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Three</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
-            <div class="col-lg-4 col-sm-6 portfolio-item find_result">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt?</p>
-          </div>
-        </div>
-      </div>
+ 	
+ <div class="find_row" id="result_lis">
+      
+      
+		<c:forEach var="i" begin="0" end="${fn:length(all)-1}" step="1">
+			<div class="col-lg-4 col-sm-6 portfolio-item find_result">
+		        <div class="card h-100">
+		          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+			          <div class="card-body">
+		            	<small class="card-title">
+			               이름 : ${all[i].listName}<br>
+			               번호 : ${all[i].listPhone}
+		            	</small>
+		            <p class="card-text"></p>
+		          </div>
+		        </div>
+	      </div> 
+      </c:forEach>
+      	
     </div>
 	
 	<!--  page 이동 -->
@@ -270,6 +178,15 @@
 	</div>
     
   </footer>
+
+<script type="text/javascript">
+
+function del(){
+	$("input[type=checkbox]").prop("checked",false);
+}
+
+
+</script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/resources/vendor/jquery/jquery.min.js"></script>

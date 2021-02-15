@@ -32,6 +32,19 @@ public class MemberService {
 		return member;
 	}
 	
+	public Member kmemberAuthenticate(String userId){	
+		Connection conn = jdt.getConnection();
+		
+		Member member = null;
+		
+		try {
+			member = memberDao.kmemberAuthenticate(conn, userId);
+		} finally {
+			jdt.close(conn);
+		}
+		return member;
+	}
+	
 	public Member selectMemberById(String userId){	
 		Connection conn = jdt.getConnection();
 		
@@ -76,6 +89,28 @@ public class MemberService {
 		try {
 			//Dao의 메서드로 생성한 Connection을 주입
 			 res = memberDao.insertMember(conn, member);
+			//Dao에서 아무 문제없이 실행이 끝난다면 commit;
+			jdt.commit(conn);
+		}catch(DataAccessException e) {
+			//Dao에서 SQLException이 발생할 경우 rollback처리
+			jdt.rollback(conn);
+			throw new ToAlertException(e.error);
+		}finally {
+			jdt.close(conn);
+		}
+		
+		return res;
+	}
+	
+	public int insertListener(Member member){
+		//Transaction관리를 Service단에서 처리하기 위해 Connection을 
+		//Service의 메서드에서 생성
+		Connection conn = jdt.getConnection();
+		int res = 0;
+		
+		try {
+			//Dao의 메서드로 생성한 Connection을 주입
+			 res = memberDao.insertListener(conn, member);
 			//Dao에서 아무 문제없이 실행이 끝난다면 commit;
 			jdt.commit(conn);
 		}catch(DataAccessException e) {
