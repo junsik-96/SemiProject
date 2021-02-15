@@ -31,21 +31,8 @@ public class ShyController extends HttpServlet {
 		String[] uriArr = request.getRequestURI().split("/");
 		switch(uriArr[uriArr.length-1]) {
 		case "find" : find(request, response); 
-			break;
-		case "board" : board(request, response); 
-			break;
-		case "boardList" : boardList(request, response); 
-			break;
-		case "diary" : diary(request, response); 
-			break;
-		case "diaryForm" : diaryForm(request, response);
-			break;
-		case "diaryList" : diaryList(request, response); 
-			break;
-		case "notice" : notice(request, response); 
-			break;
-		case "noticeList" : noticeList(request, response); 
-			break;
+			break;	
+		
 		case "listenerlist" : listenerList (request, response);
 			break;
 		case "customerCenter" : customerCenter(request, response); 
@@ -57,8 +44,6 @@ public class ShyController extends HttpServlet {
 		case "mypage" : mypage(request, response); 
 			break;
 		case "index" : index(request, response); 
-			break;
-		case "gotoForm" : gotoForm(request,response);
 			break;
 		case "reviews" : reviews(request, response);
 			break;	
@@ -89,50 +74,9 @@ public class ShyController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/find/find.jsp")
 		.forward(request, response);
 	}
-
-	
-	private void boardList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/board/boardList.jsp")
-		.forward(request, response);
-	}
 	
 	
-	private void board(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/board/boardView.jsp")
-		.forward(request, response);
-	}
 	
-	private void diary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/diary/diary.jsp")
-		.forward(request, response);
-	}
-	
-	private void diaryList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/diary/diaryList.jsp")
-		.forward(request, response);
-	}
-	
-	private void diaryForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/diary/diaryForm.jsp")
-		.forward(request, response);
-	}
-	
-	private void notice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/notice/notice.jsp")
-		.forward(request, response);
-	}
-	
-	private void noticeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/notice/noticeList.jsp")
-		.forward(request, response);
-	}
 	
 	private void listenerList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -201,9 +145,4 @@ public class ShyController extends HttpServlet {
 	}
 	
 	
-	private void gotoForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/board/boardForm.jsp")
-		.forward(request, response);
-	}
 }

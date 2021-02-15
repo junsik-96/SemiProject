@@ -20,11 +20,13 @@
 </head>
 <body>
 
+
+
   
   <div id="wrap" class="container">
     <br><br>
     <div id="board">
-    <h1>대나무 숲</h1>
+    <h1>일기장</h1>
         <table id="detailBoard" width="500"border="3"  bordercolor="lightgray" class="table table-hover">
         
             <tr>
@@ -48,7 +50,7 @@
                     내 용
                 </td>
                 <td>
-                    ${board.board.content}
+                    ${board.board_content}
                 </td>        
             </tr>
            
@@ -59,7 +61,7 @@
                     <input type="button" value="삭제" >
                     <input type="button" value=답글 >    
                     <input type="button" value="목록" 
-                        onclick="javascript:location.href='board'">            
+                        onclick="javascript:location.href='/diary'">            
                 </td>
             </tr>
         </table>

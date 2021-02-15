@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class NoticeController
  */
-@WebServlet("/notice")
+@WebServlet("/notice/*")
 public class NoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,8 +27,13 @@ public class NoticeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("WEB-INF/view/notice/notice.jsp")
-		.forward(request, response);
+		String[] uriArr = request.getRequestURI().split("/");
+		switch(uriArr[uriArr.length-1]) {
+		case "notice" : notice(request, response); 
+			break;
+		case "noticeDetail" : noticeDetail(request, response); 
+			break;
+		}
 	}
 
 	/**
@@ -37,6 +42,18 @@ public class NoticeController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void notice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/notice/notice.jsp")
+		.forward(request, response);
+	}
+	
+	private void noticeDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/notice/noticeDetail.jsp")
+		.forward(request, response);
 	}
 
 }

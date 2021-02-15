@@ -20,29 +20,27 @@
 </head>
 <body>
 
-
-
   
   <div id="wrap" class="container">
     <br><br>
     <div id="board">
-    <h1>일기장</h1>
+    <h1>대나무 숲</h1>
         <table id="detailBoard" width="500"border="3"  bordercolor="lightgray" class="table table-hover">
         
             <tr>
                 <td id="title">작성일</td>
-                <td>${board.regDate}</td>
+                <td>${data.board.regDate}</td>
             </tr>
             <tr>
                 <td id="title">작성자</td>
-                <td>${board.userId}</td>
+                <td>${data.board.userId}</td>
             </tr>
             <tr>
                 <td id="title">
                     제 목
                 </td>
                 <td>
-                    ${board.title}
+                    ${data.board.title}
                 </td>        
             </tr>
             <tr>
@@ -50,7 +48,7 @@
                     내 용
                 </td>
                 <td>
-                    ${board.board_content}
+                    ${data.board.content}
                 </td>        
             </tr>
            
@@ -61,7 +59,7 @@
                     <input type="button" value="삭제" >
                     <input type="button" value=답글 >    
                     <input type="button" value="목록" 
-                        onclick="javascript:location.href='boardView?page=${pageNum}'">            
+                        onclick="javascript:location.href='/board'">            
                 </td>
             </tr>
         </table>

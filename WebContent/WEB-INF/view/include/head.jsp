@@ -48,15 +48,15 @@
             <a class="nav-link" href="/shy/find">상담사 찾기</a>
           </li>          
           <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
+            <a class="nav-link" href="/diary">일기장</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="/shy/board">대나무숲</a>
-              <a class="dropdown-item" href="/shy/notice">공지사항</a>
+              <a class="dropdown-item" href="/board">대나무숲</a>
+              <a class="dropdown-item" href="/notice">공지사항</a>
             <a class="dropdown-item" href="/shy/listenerlist">상담사 신청목록</a>
               <a class="dropdown-item" href="/shy/customerCenter">고객센터</a>
             </div>

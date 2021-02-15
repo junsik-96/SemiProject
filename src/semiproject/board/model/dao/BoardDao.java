@@ -30,7 +30,6 @@ public class BoardDao {
 			pstm.setString(1, board.getUserId());
 			pstm.setString(2, board.getTitle());
 			pstm.setString(3, board.getContent());
-			pstm.setString(4, board.getField());
 			pstm.executeUpdate();
 		} catch (SQLException e) {
 			throw new DataAccessException(ErrorCode.IB01, e);

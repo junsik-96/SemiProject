@@ -37,7 +37,7 @@
       		</tr>	
       	</thead>
       	<tbody>
-      		<tr onclick="location.href='noticeList'">
+      		<tr onclick="location.href='/notice/noticeDetail'">
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
@@ -46,7 +46,7 @@
       			<td class="text-center">155</td>
       		</tr>
       		
-      		<tr onclick="location.href='noticeList'">
+      		<tr onclick="location.href='/notice/noticeDetail'">
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
@@ -55,7 +55,7 @@
       			<td class="text-center">155</td>
       		</tr>
       		
-      		<tr onclick="location.href='noticeList'">
+      		<tr onclick="location.href='/notice/noticeDetail'">
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
