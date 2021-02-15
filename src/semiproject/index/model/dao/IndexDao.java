@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
-import semiproject.find.model.vo.Listener;
+import semiproject.listener.model.vo.Listener;
 
 public class IndexDao {
 

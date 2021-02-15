@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import semiproject.common.template.JDBCTemplate;
-import semiproject.find.model.vo.Listener;
+import semiproject.listener.model.vo.Listener;
 import semiproject.index.model.dao.IndexDao;
 
 public class IndexService {
