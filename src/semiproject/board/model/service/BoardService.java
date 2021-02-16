@@ -28,6 +28,7 @@ public class BoardService {
 		board.setUserId(userId);
 		board.setTitle(boardData.get("title").get(0).toString());
 		board.setContent(boardData.get("content").get(0).toString());
+		board.setField(boardData.get("concern").get(0).toString());
 	
 		try {
 			boardDao.insertBoard(conn, board);
@@ -55,9 +56,8 @@ public class BoardService {
 			commandMap.put("board", board);
 			commandMap.put("fileList", fileList);
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (SQLException e) { 
+			jdt.close(conn);
 		}
 		return commandMap;
 		

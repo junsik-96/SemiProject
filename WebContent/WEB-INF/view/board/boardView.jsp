@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="semiproject.board.model.vo.Board,java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 
+
+<% Board b = (Board)request.getAttribute("board"); %>
 <html lang="en">
 
 <head>
@@ -43,6 +46,9 @@
       	</thead>
      
       	<tbody>
+      	
+      	<% for(int i=0; i<5; i++){ %>
+      		
       		<tr onclick="location.href='board/boardDetail'">
       			<td class="text-center">${data.board.bdIdx}</td>
       			<td class="text-center">${data.board.title}</td>
@@ -52,23 +58,8 @@
       			<td class="text-center">${data.board.count}</td>
       		</tr>
       		
-      		<tr onclick="location.href='board/boardDetail'">
-      			<td class="text-center">1</td>
-      			<td class="text-center">이벤트</td>
-      			<td class="text-center">알려드립니다</td>
-      			<td class="text-center">관리자</td>
-      			<td class="text-center">2021.02.03</td>
-      			<td class="text-center">155</td>
-      		</tr>
       		
-      		<tr onclick="location.href='board/boardDetail'">
-      			<td class="text-center">1</td>
-      			<td class="text-center">이벤트</td>
-      			<td class="text-center">알려드립니다</td>
-      			<td class="text-center">관리자</td>
-      			<td class="text-center">2021.02.03</td>
-      			<td class="text-center">155</td>
-      		</tr>
+      		<% } %>
       	</tbody>
       </table>
       <hr>

@@ -48,8 +48,7 @@ public class BoardController extends HttpServlet {
 			break;
 		case "upload" : uploadBoard(request,response);
 			break;
-		case "detail" : boardDetail(request,response);
-			break;
+		
 		}
 		
 	}
@@ -59,26 +58,9 @@ public class BoardController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		doGet(request, response);
-		
-		HttpSession session = request.getSession();
-		String userId = null;
-		
-		if(session.getAttribute("userId") != null) {
-			userId = (String) session.getAttribute("userId");
-		}
-		
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
-		
-		Board b = new Board();
-		b.setUserId(userId);
-		b.setTitle(title);
-		b.setContent(content);
-		
-		System.out.println(b.toString());		
-		
-		
+	
 	}
 	
 	private void boardView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -87,8 +69,9 @@ public class BoardController extends HttpServlet {
 	}
 	
 	private void boardDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+		String bdIdx = request.getParameter("bdIdx");
+		Map<String,Object> commandMap = boardService.selectBoardDetail(bdIdx);
+		request.setAttribute("data", commandMap);
 		
 		request.getRequestDispatcher("/WEB-INF/view/board/boardDetail.jsp")
 		.forward(request, response);
@@ -104,13 +87,13 @@ public class BoardController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("user");
+		System.out.println(member); 
 		boardService.insertBoard(member.getUserId(), request);
 		
-		request.setAttribute("alertMsg", "게시글 등록이 완료되었습니다.");
+		request.setAttribute("alertMsg", "게시글 등록이 정상적으로 완료되었습니다.");
 		request.setAttribute("url", "/board");
 		request.getRequestDispatcher("/WEB-INF/view/board/boardView.jsp")
 		.forward(request, response);
-		
 	}
 	
 	

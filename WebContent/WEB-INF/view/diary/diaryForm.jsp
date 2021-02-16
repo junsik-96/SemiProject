@@ -36,7 +36,8 @@
     <div class="container">
       <div class="col-lg-8 mb-4">
         <h3>일기 쓰기</h3>
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form action="${context}/diary/upload"  method="post" 
+        	 enctype="multipart/form-data" name="sentMessage" id="contactForm" novalidate>
           <div class="control-group form-group">
             <div class="controls">
               <label>제목:</label>

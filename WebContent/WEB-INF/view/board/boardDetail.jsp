@@ -28,19 +28,29 @@
         <table id="detailBoard" width="500"border="3"  bordercolor="lightgray" class="table table-hover">
         
             <tr>
-                <td id="title">작성일</td>
-                <td>${data.board.regDate}</td>
-            </tr>
-            <tr>
                 <td id="title">작성자</td>
                 <td>${data.board.userId}</td>
             </tr>
             <tr>
+                <td id="title">제목</td>
+                <td>${data.board.title}</td>
+            </tr>
+            <tr>
                 <td id="title">
-                    제 목
+                    작성일
                 </td>
                 <td>
-                    ${data.board.title}
+                    ${data.board.regDate}
+                </td>        
+            </tr>
+            <tr>
+            
+            <tr>
+                <td id="title">
+                  분 야 
+                </td>
+                <td>
+                    ${data.board.field}
                 </td>        
             </tr>
             <tr>
@@ -48,7 +58,7 @@
                     내 용
                 </td>
                 <td>
-                    ${board.board_content}
+                    ${board.board.content}
 
                 </td>        
             </tr>
@@ -60,7 +70,7 @@
                     <input type="button" value="삭제" >
                     <input type="button" value=답글 >    
                     <input type="button" value="목록" 
-                        onclick="javascript:location.href='boardView?page=${pageNum}'">            
+                        onclick="javascript:location.href='/board'">            
 
                 </td>
             </tr>

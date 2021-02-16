@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 import semiproject.board.model.vo.Board;
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
@@ -18,54 +16,29 @@ import semiproject.common.util.file.FileVo;
 public class BoardDao {
 	JDBCTemplate jdt = JDBCTemplate.getInstance();
 	
-	public void insertBoard(Connection conn,Board board) {
+	
+	public void insertBoard(Connection conn,Board board) {	
 		String sql = "insert into tb_board "
-				+ "(bd_idx,user_id,title,content,count,field)"
-				+ "values('b'||sc_board_idx.nextval,?,?,?,?,?)";
-		
+				+ "(bd_idx,user_id,title,content,field) "
+				+ "values(sc_board.nextval,?,?,?,?)";
 		PreparedStatement pstm = null;
-		
 		try {
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1, board.getUserId());
 			pstm.setString(2, board.getTitle());
 			pstm.setString(3, board.getContent());
+			pstm.setString(4, board.getField());
 			pstm.executeUpdate();
+
+			 
 		} catch (SQLException e) {
 			throw new DataAccessException(ErrorCode.IB01, e);
 		}finally {
 			jdt.close(pstm);
 		}
-	}
+	}	
 	
-	public void insertFile(Connection conn, FileVo fileVo) {
-		String typeIdx = "";
-		//1.새로 등록되는 게시글의 파일정보를 저장
-		//typeIdx의 값이 sequence의 currval
-		if(fileVo.getTypeIdx() == null) {
-			typeIdx = "'b'|| sc_board_idx.currval";
-		}else {
-			typeIdx = "'" + fileVo.getTypeIdx() + "'";
-		}
-		
-		String sql = "insert into tb_file "
-				+ "(f_idx,type_idx,origin_file_name,rename_file_name,save_path) "
-				+ "values(sc_file_idx.nextval," + typeIdx + ",?,?,?) ";
-		
-		PreparedStatement pstm = null;
-		
-		try {
-			pstm = conn.prepareStatement(sql);
-			pstm.setString(1, fileVo.getOriginFileName());
-			pstm.setString(2, fileVo.getRenameFileName());
-			pstm.setString(3, fileVo.getSavePath());
-			pstm.executeUpdate();
-		} catch (SQLException e) {
-			throw new DataAccessException(ErrorCode.IF01, e);
-		}finally {
-			jdt.close(pstm);
-		}
-	}
+	
 	
 	public Board selectBoardDetail(Connection conn,String bdIdx) throws SQLException{
 		Board board = null;
@@ -96,6 +69,35 @@ public class BoardDao {
 			jdt.close(rs,pstm);
 		}
 		return board;
+	}
+	
+	public void insertFile(Connection conn, FileVo fileVo) {
+		String typeIdx = "";
+		//1.새로 등록되는 게시글의 파일정보를 저장
+		//typeIdx의 값이 sequence의 currval
+		if(fileVo.getTypeIdx() == null) {
+			typeIdx = "'b'|| sc_board_idx.currval";
+		}else {
+			typeIdx = "'" + fileVo.getTypeIdx() + "'";
+		}
+		
+		String sql = "insert into tb_file "
+				+ "(f_idx,type_idx,origin_file_name,rename_file_name,save_path) "
+				+ "values(sc_file_idx.nextval," + typeIdx + ",?,?,?) ";
+		
+		PreparedStatement pstm = null;
+		
+		try {
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, fileVo.getOriginFileName());
+			pstm.setString(2, fileVo.getRenameFileName());
+			pstm.setString(3, fileVo.getSavePath());
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IF01, e);
+		}finally {
+			jdt.close(pstm);
+		}
 	}
 	
 	public List<FileVo> selectFileWithBoard(Connection conn,String bdIdx){

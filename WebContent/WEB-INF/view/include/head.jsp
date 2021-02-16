@@ -65,8 +65,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
 
-              <a class="dropdown-item" href="/shy/board">대나무숲</a>
-              <a class="dropdown-item" href="/shy/notice">공지사항</a>
+              <a class="dropdown-item" href="/board">대나무숲</a>
+              <a class="dropdown-item" href="/notice">공지사항</a>
 <!--      		  <a class="dropdown-item" href="/shy/listenerlist">상담사 신청</a>           
  -->              
              

@@ -6,9 +6,18 @@ public class Diary {
 	
 	private int drIdx;
 	private String userId;
+	private String title;
 	private String content;
 	private Date regDate;
 	
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public int getDrIdx() {
 		return drIdx;
 	}
@@ -33,11 +42,13 @@ public class Diary {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	
 	@Override
 	public String toString() {
-		return "Diary [drIdx=" + drIdx + ", userId=" + userId + ", content=" + content + ", regDate=" + regDate + "]";
+		return "Diary [drIdx=" + drIdx + ", userId=" + userId + ", title=" + title + ", content=" + content
+				+ ", regDate=" + regDate + "]";
 	}
+	
+	
 	
 	
 }
