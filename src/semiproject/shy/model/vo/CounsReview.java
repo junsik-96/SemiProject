@@ -1,4 +1,4 @@
-package semiproject.review.model.vo;
+package semiproject.shy.model.vo;
 
 import java.sql.Date;
 
