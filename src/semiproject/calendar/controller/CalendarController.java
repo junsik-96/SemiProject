@@ -2,8 +2,6 @@ package semiproject.calendar.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import semiproject.calendar.model.vo.Calendar;
-import semiproject.member.model.vo.Member;
-import semiproject.calendar.model.dao.CalendarDao;
 import semiproject.calendar.model.service.CalendarService;
 
 /**
@@ -23,7 +19,9 @@ import semiproject.calendar.model.service.CalendarService;
 @WebServlet("/calendar/*")
 public class CalendarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
+	CalendarService calendarService = new CalendarService();
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -55,12 +53,15 @@ public class CalendarController extends HttpServlet {
 	}
 	
 	private void ResCal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CalendarService calendarService = new CalendarService();
-		String resListId = request.getParameter("resListId");
-
-		List<Calendar> commandMap = calendarService.selectResDetail(resListId);
+		HttpSession session = request.getSession();
+		Calendar calendar = (Calendar)session.getAttribute("user");
 		
-		request.setAttribute("resList", commandMap);
+		String resListId = calendar.getResListId();
+		
+		ArrayList<Calendar> calendarArr = calendarService.selectResDetail(resListId);
+		
+		request.setAttribute("calendarArr", calendarArr);
+		
 		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/mySchedule.jsp")
 		.forward(request, response);
 	}

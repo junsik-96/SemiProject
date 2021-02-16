@@ -123,6 +123,7 @@ public class MemberService {
 		
 		return res;
 	}
+
 	
 	public int updateMember(Member member){
 		Connection conn = jdt.getConnection();

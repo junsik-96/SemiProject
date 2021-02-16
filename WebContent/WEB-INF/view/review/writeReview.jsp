@@ -30,11 +30,10 @@
 <body>
 
 
- <form action="${context}/review/upload" method="post" id="re_upload"
- action="reviewWriteAction.jsp">
+ <form action="${context}/review/upload" method="post" id="re_upload">
  
     <div class="text">
-    <input type="text" name="reviewUser">${sessionScope.user}<br>
+    <input type="text" name="reviewUser">${sessionScope.user.name}<br>
     <textarea id="writeReview" class="write-review" name="wrReview" 
 					style="width:400px; height:200px; overflow:auto;" required="required"></textarea>
 					
@@ -63,7 +62,7 @@
     	
     
     <!-- 리뷰작성자만 수정,삭제 가능 
-    <c:if test="${data.review.rvUserId == sessionScope.sessionID }">
+    <c:if test="${data.review.rvUserId} == ${sessionScope.user.id }">
     	<a href="#">수정</a><br>
     	<a href="#">삭제</a>
     </c:if>

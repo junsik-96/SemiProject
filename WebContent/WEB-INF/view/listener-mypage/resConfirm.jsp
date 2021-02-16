@@ -120,86 +120,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach var="board" items="${requestScope.resList}" >
                                     <tr>
                                         <td>
-                                            <div class="chk-option">
-                                                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-label"></span>
-                                                </label>
-                                            </div>
                                             <div class="d-inline-block align-middle">
                                                 
                                                 <div class="d-inline-block">
-                                                    <h6>보라돌이</h6>
+                                                    <h6>${resList.resUserId }</h6>
                                    
                                                 </div>
                                             </div>
                                         </td>
                                         <td>우울증</td>
-                                        <td>Jun, 26</td>
+                                        <td>${resList.resDate}</td>
                                         <td class="text-right"><label class="badge badge-light-danger">완료</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="chk-option">
-                                                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-label"></span>
-                                                </label>
-                                            </div>
-                                            <div class="d-inline-block align-middle">
-                                               
-                                                <div class="d-inline-block">
-                                                    <h6>뚜비</h6>
-                                                    
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>왕따고민</td>
-                                        <td>March, 31</td>
-                                        <td class="text-right"><label class="badge badge-light-primary">2차</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="chk-option">
-                                                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-label"></span>
-                                                </label>
-                                            </div>
-                                            <div class="d-inline-block align-middle">
-                                                
-                                                <div class="d-inline-block">
-                                                    <h6>나나</h6>
-                                                    
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>공황장애</td>
-                                        <td>Aug, 02</td>
-                                        <td class="text-right"><label class="badge badge-light-success">1차</label></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="chk-option">
-                                                <label class="check-task custom-control custom-checkbox d-flex justify-content-center done-task">
-                                                    <input type="checkbox" class="custom-control-input">
-                                                    <span class="custom-control-label"></span>
-                                                </label>
-                                            </div>
-                                            <div class="d-inline-block align-middle">
-                                               
-                                                <div class="d-inline-block">
-                                                    <h6>나고민</h6>
-                                                    
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>대인기피증</td>
-                                        <td>Sep, 22</td>
-                                        <td class="text-right"><label class="badge badge-light-primary">2차</label></td>
-                                    </tr>
+                                    </tr>             
+                                   </c:forEach>
+                                                         
                                 </tbody>
                             </table>
                         </div>

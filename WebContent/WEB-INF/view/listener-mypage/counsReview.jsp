@@ -71,56 +71,32 @@
     
     <!-- 담당맡은 상담 리스트들 -->
     <div class="row">
+    	
+    	<c:forEach var="cons-reviews" items="${requestScope.counsList}" varStatus="status">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h4 class="card-header">김뚠뚠</h4>
+          <h4 class="card-header"> ${counsList.counsUserId} </h4>
           <div class="card-body">
-            <p class="card-text">상담내용 상담내용</p>
+            <p class="card-text"> ${counsList.counsReview}</p>
           </div>
           <div class="card-footer">
             <a href="#" class="btn btn-primary">더 보기</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">나괴롭</h4>
-          <div class="card-body">
-            <p class="card-text">고민고민 하지마 .</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">더 보기</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">고민중</h4>
-          <div class="card-body">
-            <p class="card-text">상담상담 내용내용</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">더 보기</a>
-          </div>
-        </div>
-      </div>
+      </c:forEach>
+      
     </div>
     
-    <li id="li-search">
-        	<div id="div-Page">
-                   <div>◀</div>
-                       <div><b>1</b></div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>▶</div>
-                </div>
-            </li>
-
+    <ul class="pagination" style="justify-content:center;">
+    	<li class="page-item"><a class="page-link" href="#">이전</a></li>
+    	<li class="page-item"><a class="page-link" href="#">1</a></li>
+    	<li class="page-item"><a class="page-link" href="#">2</a></li>
+    	<li class="page-item"><a class="page-link" href="#">3</a></li>
+   		<li class="page-item"><a class="page-link" href="#">다음</a></li>
+  </ul><br>
             <!-- 검색 폼 영역 -->
-            <li id="li-search">
-                <div>
+            <div id="li-search">
                     <select id='search-option' >
                         <option value='A'>내담자+제목</option>
                         <option value='T'>제목</option>
@@ -128,8 +104,8 @@
                     </select>
                     <input id='txt-KeyWord' />
                     <input type='button' value='검색'/>
-                </div>
-                </li><br>
+                
+                </div><br>
     
     
     

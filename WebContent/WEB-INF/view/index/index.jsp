@@ -68,9 +68,9 @@
     </div>
   </header>
   
-	<div class="my-4" style="color:rgb(138, 43, 226);">당신 목소리에, 귀울임</div>
+   <div class="my-4" style="color:rgb(138, 43, 226);">당신 목소리에, 귀울임</div>
      <pre class="intro" style="color:rgb(138, 43, 226);">
-     	Welcome everyone!!
+        Welcome everyone!!
      </pre>
     
    
@@ -79,16 +79,16 @@
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-        <h6 class="card-header"> '${rank1[0].listName}'<small>(${rank1[0].type})</small>
-        	<div style="float: right;"><small>예약 수 : ${rank1[0].listResCnt}</small></div>
-        </h6>
+        <h5 class="card-header"> '${rank1[0].listName}'<small>(${rank1[0].type})</small>
+           <div style="float: right;"><small>예약 수 : ${rank1[0].listResCnt}</small></div>
+        </h5>
         
           <div class="card-body">
           <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
             <p class="card-text"> 
             <small>
-            	전문분야 : ${rank1[0].listField} <br>
-            	한줄소개 : ${rank1[0].listPro} 
+               전문분야 : ${rank1[0].listField} <br>
+               한줄소개 : ${rank1[0].listPro} 
             </small>
            </p>
           </div>
@@ -99,14 +99,14 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rank2[0].listName}'<small>(${rank2[0].type})</small>
+          <h5 class="card-header">'${rank2[0].listName}'<small>(${rank2[0].type})</small>
           <div style="float: right;"><small>예약 수 :${rank2[0].listResCnt}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-           		전문분야 : ${rank2[0].listField} <br>
-            	한줄소개 : ${rank2[0].listPro} 
+                 전문분야 : ${rank2[0].listField} <br>
+               한줄소개 : ${rank2[0].listPro} 
             </small>
             </p>
           </div>
@@ -117,14 +117,14 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rank3[0].listName}'<small>(${rank3[0].type})</small>
+          <h5 class="card-header">'${rank3[0].listName}'<small>(${rank3[0].type})</small>
           <div style="float: right;"><small>예약 수 : ${rank3[0].listResCnt}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-       		    전문분야 : ${rank3[0].listField} <br>
-            	한줄소개 : ${rank3[0].listPro} 
+                 전문분야 : ${rank3[0].listField} <br>
+               한줄소개 : ${rank3[0].listPro} 
             </small>
             </p>
           </div>
@@ -135,14 +135,14 @@
       </div>
           <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rank4[0].listName}'<small>(${rank4[0].type})</small>
+          <h5 class="card-header">'${rank4[0].listName}'<small>(${rank4[0].type})</small>
           <div style="float: right;"><small>예약 수 : ${rank4[0].listResCnt}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-       		    전문분야 : ${rank4[0].listField} <br>
-            	한줄소개 : ${rank4[0].listPro} 
+                 전문분야 : ${rank4[0].listField} <br>
+               한줄소개 : ${rank4[0].listPro} 
             </small>
             </p>
           </div>
@@ -152,23 +152,21 @@
         </div>
       </div>      
     </div>
-    <hr>
-    <br><br>
    
     <div id="month_reco">추천수 상담사 랭킹</div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-        <h6 class="card-header"> '${rankLike1[0].listName}'<small>(${rankLike1[0].type})</small>
-        	<div style="float: right;"><small>추천 수 : ${rankLike1[0].listLikely}</small></div>
-        </h6>
+        <h5 class="card-header"> '${rankLike1[0].listName}'<small>(${rankLike1[0].type})</small>
+           <div style="float: right;"><small>추천 수 : ${rankLike1[0].listLikely}</small></div>
+        </h5>
         
           <div class="card-body">
           <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
             <p class="card-text"> 
             <small>
-            	전문분야 : ${rankLike1[0].listField} <br>
-            	한줄소개 : ${rankLike1[0].listPro} 
+               전문분야 : ${rankLike1[0].listField} <br>
+               한줄소개 : ${rankLike1[0].listPro} 
             </small>
            </p>
           </div>
@@ -179,14 +177,14 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rankLike2[0].listName}'<small>(${rankLike2[0].type})</small>
+          <h5 class="card-header">'${rankLike2[0].listName}'<small>(${rankLike2[0].type})</small>
           <div style="float: right;"><small>추천 수 : ${rankLike2[0].listLikely}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-           		전문분야 : ${rankLike2[0].listField} <br>
-            	한줄소개 : ${rankLike2[0].listPro} 
+                 전문분야 : ${rankLike2[0].listField} <br>
+               한줄소개 : ${rankLike2[0].listPro} 
             </small>
             </p>
           </div>
@@ -197,14 +195,14 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rankLike3[0].listName}'<small>(${rankLike3[0].type})</small>
+          <h5 class="card-header">'${rankLike3[0].listName}'<small>(${rankLike3[0].type})</small>
           <div style="float: right;"><small>추천 수 : ${rankLike3[0].listLikely}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-       		    전문분야 : ${rankLike3[0].listField} <br>
-            	한줄소개 : ${rankLike3[0].listPro} 
+                 전문분야 : ${rankLike3[0].listField} <br>
+               한줄소개 : ${rankLike3[0].listPro} 
             </small>
             </p>
           </div>
@@ -215,14 +213,14 @@
       </div>
           <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rankLike4[0].listName}'<small>(${rankLike4[0].type})</small>
+          <h5 class="card-header">'${rankLike4[0].listName}'<small>(${rankLike4[0].type})</small>
           <div style="float: right;"><small>추천 수 : ${rankLike4[0].listLikely}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-       		    전문분야 : ${rankLike4[0].listField} <br>
-            	한줄소개 : ${rankLike4[0].listPro} 
+                 전문분야 : ${rankLike4[0].listField} <br>
+               한줄소개 : ${rankLike4[0].listPro} 
             </small>
             </p>
           </div>
@@ -232,28 +230,26 @@
         </div>
       </div>      
     </div>
-    <hr>
-    <br><br>
 
-<!-- 	
-	<br><br><br><br>
+   
+   <br><br><br><br>
     <h4>상담사 추천 -> 누르면 개인페이지 이동</h4>
-    <br><br><br><br> -->
+    <br><br><br><br>
 
    <div id="month_recently">신규 상담사(최신순 3명)</div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-        <h6 class="card-header"> '${rankReg1[0].listName}'<small>(${rankReg1[0].type})</small>
-        	<div style="float: right;"><small>등록일 : ${rankReg1[0].listRegDate}</small></div>
-        </h6>
+        <h5 class="card-header"> '${rankReg1[0].listName}'<small>(${rankReg1[0].type})</small>
+           <div style="float: right;"><small>등록일 : ${rankReg1[0].listRegDate}</small></div>
+        </h5>
         
           <div class="card-body">
           <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
             <p class="card-text"> 
             <small>
-            	전문분야 : ${rankReg1[0].listField} <br>
-            	한줄소개 : ${rankReg1[0].listPro} 
+               전문분야 : ${rankReg1[0].listField} <br>
+               한줄소개 : ${rankReg1[0].listPro} 
             </small>
            </p>
           </div>
@@ -264,14 +260,14 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rankReg2[0].listName}'<small>(${rankReg2[0].type})</small>
+          <h5 class="card-header">'${rankReg2[0].listName}'<small>(${rankReg2[0].type})</small>
           <div style="float: right;"><small>등록일 : ${rankReg2[0].listRegDate}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-           		전문분야 : ${rankReg2[0].listField} <br>
-            	한줄소개 : ${rankReg2[0].listPro} 
+                 전문분야 : ${rankReg2[0].listField} <br>
+               한줄소개 : ${rankReg2[0].listPro} 
             </small>
             </p>
           </div>
@@ -282,14 +278,14 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rankReg3[0].listName}'<small>(${rankReg3[0].type})</small>
+          <h5 class="card-header">'${rankReg3[0].listName}'<small>(${rankReg3[0].type})</small>
           <div style="float: right;"><small>등록일 : ${rankReg3[0].listRegDate}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-       		    전문분야 : ${rankReg3[0].listField} <br>
-            	한줄소개 : ${rankReg3[0].listPro} 
+                 전문분야 : ${rankReg3[0].listField} <br>
+               한줄소개 : ${rankReg3[0].listPro} 
             </small>
             </p>
           </div>
@@ -300,14 +296,14 @@
       </div>
        <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h6 class="card-header">'${rankReg4[0].listName}'<small>(${rankReg4[0].type})</small>
+          <h5 class="card-header">'${rankReg4[0].listName}'<small>(${rankReg4[0].type})</small>
           <div style="float: right;"><small>등록일 : ${rankReg4[0].listRegDate}</small></div>
-          </h6>
+          </h5>
           <div class="card-body">
             <p class="card-text">
             <small>
-       		    전문분야 : ${rankReg4[0].listField} <br>
-            	한줄소개 : ${rankReg4[0].listPro} 
+                 전문분야 : ${rankReg4[0].listField} <br>
+               한줄소개 : ${rankReg4[0].listPro} 
             </small>
             </p>
           </div>
@@ -336,18 +332,18 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
   
-	<div class = "shy_info">
+   <div class = "shy_info">
    (주) 귀울임 사업자 정보    
   <div id = "footerInfo">  
-  <br>		 		
-	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
-	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
-	사업자 등록번호 : 123-45-6789<br>
-	통신판매업신고 : 2021-서울강남-01234호<br>
-	전화 : 02-1234-1234<br>
-	email : pclass@khaca.com<br>
+  <br>             
+   (주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
+   대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
+   사업자 등록번호 : 123-45-6789<br>
+   통신판매업신고 : 2021-서울강남-01234호<br>
+   전화 : 02-1234-1234<br>
+   email : pclass@khaca.com<br>
     </div>
-	</div>
+   </div>
     
   </footer>
 
@@ -355,6 +351,6 @@
   <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-	
+   
 </body>
 </html>
