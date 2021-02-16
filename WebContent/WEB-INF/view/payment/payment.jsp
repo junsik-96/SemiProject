@@ -71,15 +71,14 @@
 <h4 style="text-align: center;">결제 금액 : ${payById.listAmt}</h4>
 <h4 style="text-align: center;">예약 날자 : ${param.day}</h4>
 <h4 style="text-align: center;">예약 시간 : ${param.time}</h4>
-<p style="text-align: center;">결제정보 담아오기</p>
 <br /><br /><br /><br /><br /></div>
 </div>
 <!-- /.row --><hr />
-<div class="cart" style="text-aligan: left;">
+<!-- <!-- <div class="cart" style="text-aligan: left;">
 <h2 class="total">Total</h2>
 </div>
 <p>&nbsp;</p>
-<div class="cart" style="text-align: center;"><label class="won">₩</label></div>
+<div class="cart" style="text-align: center;"><label class="won">₩</label></div> --> -->
 <p><br /><br /></p>
 <div class="pay" style="text-align: right;"><button id="sendMessageButton" class="btnnn" type="submit" onclick="pay();">결제하기</button></div>
 <p><br /><br /></p>
@@ -102,35 +101,7 @@
     </div>
   </footer>
   
- <script type="text/javascript">
- 
 
- 
- 
-	function pay(){
-		 IMP.init("imp60257625");
-		 
-		 IMP.request_pay({
-			    pg: "html5_inicis",
-			    pay_method: "card",
-			    /* 비동기로 유니크값 만들기 */
-			    merchant_uid: 'merchant_'+ new Date().getTime(),
-			    name: "${payById.listName} 상담",
-			    amount: ${payById.listAmt},
-			    buyer_email: "12",
-			    buyer_name: "${sessionScope.user.name}",
-			    buyer_tel: "12"
-			  }, function (rsp) {
-			    if (rsp.success) { 
-			    	// 결제정보를 뿌리기 위한 키값
-					alert(rsp.imp_uid);
-			    } else {
-
-			    }
-			  }); 
-	}
- 
- </script>
   
 
    <!-- Bootstrap core JavaScript -->
