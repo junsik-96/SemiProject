@@ -6,58 +6,24 @@
 
 <div class="agree_top_div"><a class="agree_top" href="/index">shytalker</a></div>
 
-<div class="container_join">
+<div class="container_join" style="min-height: 70%;">
 
 <div class="basic_lis">
-<form action="${context}/listener/listenerjoinimpl" method="post" name="parent_form" id="lis_join">
+<form action="${context}/listener/updateprofileimpl" method="post" name="parent_form" id="lis_join">
   <fieldset>
-    <legend class="request_lis">상담사 신청</legend>
+    <legend class="request_lis">상담사 프로필 수정</legend>
 	<div>
-	<small id="emailHelp" class="form-text text-muted">Welcome~!!</small><br>
 	</div>
-    
-    <div class="form_gender">
-      <label for="exampleInputPassword1" class="la_gender">성별</label>
-      <select class="ip_gender" id="lst_gen" name="list_gen">
-        <option>성별</option>
-        <option value="남자">남자</option>
-        <option value="여자">여자</option>
-      </select>
-    </div>
-    
-    
-    <div class="form_gender">
-      <label for="exampleInputPassword1" class="la_gender">유형</label>
-      <select class="ip_gender" id="list_type" name="list_type">
-        <option>유형</option>
-        <option value="전문가">전문가</option>
-        <option value="의사">의사</option>
-        <option value="대학생">대학생</option>
-      </select>
+	
+	 <div class="form_lic" id="pro">
+      <label for="exampleInputPassword1" class="la_lic" style="transform:translateY(-700%);">자기소개</label>
+     <textarea rows="10" cols="70" placeholder="자신을 소개하는 글을 입력하세요." name="lis_pr"></textarea>
     </div>
 	
-    <div class="form_uni">
-      <label for="exampleInputID" class="la_uni">학교</label>
-      <input type="text" name="choose_school" class="ip_uni" id="choose_school" placeholder="학교를 입력하세요" onclick="school_find();">
-      <button type="button" class="check_uni" onclick="school_find()">학교검색</button>
-    </div>
-    
-    <div class="form_class">
-      <label for="exampleInputPassword1" class="la_class">학과</label>
-      <input type="text" name="choose_class"class="ip_class" id="choose_class" placeholder="학과를 입력하세요" onclick="class_find()">
-       <button type="button" class="check_class" onclick="class_find()">학과검색</button>
-    </div>
-    
-
-    
-     <div class="form_lic" id="add_lic">
-      <label for="exampleInputPassword1" class="la_lic">자격증</label>
-      <input type="text" name="list_licen" class="ip_lic" id="lis_lic" placeholder="자격증을 입력하세요">
-       <button type="button" class="plus_lic" id="plus_btn" onclick="add_license()"> + </button>
-    </div>
-
-
-		
+	 <div class="form_lic" id="price">
+      <label for="exampleInputPassword1" class="la_lic">가격</label>
+      <input type="number" name="price" class="ip_lic" id="lis_lic" placeholder="상담사님과 상담을 진행할 때 필요한 가격을 입력하세요">
+    </div>  
     
     <div class="form_sector" id="add_field">
       <label for="exampleInputPassword1" class="la_sector">주 분야<br></label>
@@ -73,25 +39,32 @@
         <option value="기타">기타</option>
       </select>
 	    </div>
+	 
+	  <div class="form_uni">
+      <label for="exampleInputID" class="la_uni">학교</label>
+      <input type="text" name="choose_school" class="ip_uni" id="choose_school" placeholder="학교를 입력하세요" onclick="school_find();">
+      <button type="button" class="check_uni" onclick="school_find()">학교검색</button>
+    </div>
+    
+    <div class="form_class">
+      <label for="exampleInputPassword1" class="la_class">학과</label>
+      <input type="text" name="choose_class"class="ip_class" id="choose_class" placeholder="학과를 입력하세요" onclick="class_find()">
+       <button type="button" class="check_class" onclick="class_find()">학과검색</button>
+    </div>
 	    
+	  <div class="form_lic" id="add_lic">
+      <label for="exampleInputPassword1" class="la_lic">자격증</label>
+      <input type="text" name="list_licen" class="ip_lic" id="lis_lic" placeholder="자격증을 입력하세요">
+       <button type="button" class="plus_lic" id="plus_btn" onclick="add_license()"> + </button>
+    </div>  
 	    
     <div class="form_job" id="add_job">
       <label for="exampleInputPassword1" class="la_job">경력사항</label>
       <input type="text" name="list_job" class="ip_job" id="com_name" placeholder="경력내용">    
       <button type="button" class="plus_job" id="plus_job" onclick="add_job()"> + </button>
     </div>
-    
-     <div class="form_lic" id="pro">
-      <label for="exampleInputPassword1" class="la_lic" style="transform:translateY(-700%);">자기소개</label>
-     <textarea rows="10" cols="70" placeholder="자신을 소개하는 글을 입력하세요." name="lis_pr"></textarea>
-    </div>
 	
-	 <div class="form_lic" id="price">
-      <label for="exampleInputPassword1" class="la_lic">가격</label>
-      <input type="number" name="price" class="ip_lic" id="lis_lic" placeholder="상담사님과 상담을 진행할 때 필요한 가격을 입력하세요">
-    </div>  
-	
-    <button type="submit" onclick="join()" class="req_btn">신청하기</button>
+    <button type="submit" onclick="join()" class="req_btn">수정하기</button>
   </fieldset>
 </form>
 </div>
@@ -120,7 +93,6 @@ function join(){
 			alert("상담사님의 주 분야를 선택해주세요!");
 			choose_school.focus();
 		}else{
-			alert("감사합니다. 상담사 신청이 완료되었습니다!! \n친절하고 정성스러운 상담으로 많은분들에게 힘이 되어주세요!");
 		}
 		
 	})

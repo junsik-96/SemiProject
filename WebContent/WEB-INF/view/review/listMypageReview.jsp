@@ -20,16 +20,9 @@
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="css/modern-business.css" rel="stylesheet">
-
  <!-- 별점 css -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<link href="/resources/star-rating/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="/resources/star-rating/js/star-rating.js" type="text/javascript"></script>
 
 
 
@@ -71,31 +64,30 @@
                                 <table class="table table-stripped" id="reviews">
 							    <thead>
 							        <tr>
-							            <th>평점</th> <!-- 평점 -->
-							            <th>회원</th>
-							            <th>후기</th>
+							            <th id="review-rate" style="padding-left:40px;">평점</th> <!-- 평점 -->
+							            <th id="review-member" style="padding-right:40px;">회원</th>
+							            <th id="review-review" style="padding-right:50px;">후기</th>
 							        </tr>
 							    </thead>
 							    <tbody>
-							    <c:if test="${requestScope.reviewList != null }">
-							        <c:forEach var="review" items="${requestScope.reviewList}" varStatus="status">
+							    
+							        <c:forEach var="review" items="${reviewArr}">
 							            <!-- 평점 기준 별표시 출력 -->
 							            <tr>
-							                <td><c:forEach var="rating" varStatus="status" begin="1" end="${ review.rating }">★</c:forEach></td>
-							                <td>${ review.rvUserId }</td>
-							                <td>${ review.review }</td>
+							                <td id="star-color" style="color:#F05522;">
+							                <c:forEach var="rating" begin="1" end="${review.rating}"><i class="fas fa-star"></i></c:forEach>
+							                </td>
+							                <td>${review.rvUserId}</td>
+							                <td>${review.review}</td>
 							            </tr>
 							        </c:forEach>
-							        </c:if>
+							        
 							    </tbody>
 							</table>
                                 </div>
                             </div>
                         </div>
                         <br>
-                        <div class="text-right  m-r-20">
-                            <a href="#!" class="b-b-primary text-primary">리뷰 더 보기</a>
-                        </div>
                     </div>
                     
                     
@@ -105,21 +97,6 @@
                 <br>
     			</div>
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

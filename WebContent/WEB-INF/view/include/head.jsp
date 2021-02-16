@@ -70,6 +70,30 @@
 <!--      		  <a class="dropdown-item" href="/shy/listenerlist">상담사 신청</a>           
  -->              
              
+             <c:choose>
+              	<c:when test="${empty sessionScope.user}">
+              	   <a class="dropdown-item" href="/member/login">상담사 신청</a>              	
+              	</c:when>
+              	<c:otherwise>             	
+              		<c:choose>
+              			<c:when test="${sessionScope.userType eq '일반회원'}">
+              				<%-- 일반회원은 이용불가능하게 접근막고 alert 하기 --%>
+              				<a class="dropdown-item" onclick="alertMsg()">상담사 신청</a>
+              			</c:when>
+              			<c:otherwise>
+              	 			<c:choose>
+              					<c:when test="${sessionScope.listTrue eq 'N'}">
+              					   <a class="dropdown-item" href="/listener/before">상담사 신청</a>              					
+              					</c:when>
+              					<c:otherwise>             					
+              					</c:otherwise>
+              				</c:choose>
+<!--                				<a class="dropdown-item" href="/listener/before">상담사 신청</a>              					              				
+ -->               			</c:otherwise>
+              		</c:choose>
+            	</c:otherwise>
+              </c:choose>
+                          
               <a class="dropdown-item" href="/shy/customerCenter">고객센터</a>
             </div>          
           </li>

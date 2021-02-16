@@ -10,6 +10,7 @@ import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.vo.Listener;
 import semiproject.listener.model.dao.ListenerDao;
 import semiproject.listener.model.vo.School;
+import semiproject.member.model.vo.Member;
 import semiproject.listener.model.vo.Class;
 import semiproject.listener.model.vo.FindListener;
 
@@ -97,6 +98,51 @@ public class ListenerService {
 			jdt.close(conn);
 		}
 		return resultList;
+	}
+	
+	public Listener selectLisById(String listId) {
+		Connection conn = jdt.getConnection();
+		Listener listener = new Listener();
+		try {
+			listener = listenerDao.selectListById(conn, listId);
+		}finally {
+			jdt.close(conn);
+		}
+		return listener;
+	}
+	
+	public int updateListInfo(Member member){
+		Connection conn = jdt.getConnection();
+		int res = 0;
+		
+		try {
+			res = listenerDao.updateLisInfo(conn, member);
+			jdt.commit(conn);
+		}catch(DataAccessException e) {
+			jdt.rollback(conn);
+			throw new ToAlertException(e.error);
+		}finally {
+			jdt.close(conn);
+		}
+		
+		return res;
+	}
+	
+	public int updateListProfile(Listener listener){
+		Connection conn = jdt.getConnection();
+		int res = 0;
+		
+		try {
+			res = listenerDao.updateLisProfile(conn, listener);
+			jdt.commit(conn);
+		}catch(DataAccessException e) {
+			jdt.rollback(conn);
+			throw new ToAlertException(e.error);
+		}finally {
+			jdt.close(conn);
+		}
+		
+		return res;
 	}
 	
 }

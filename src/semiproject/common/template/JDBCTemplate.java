@@ -34,7 +34,7 @@ public class JDBCTemplate {
 	
 	public Connection getConnection() {
 		
-		String url = "jdbc:oracle:thin:@jbdb_high?TNS_ADMIN=C:/Users/samsung/CODE/E_SERVLET/Wallet_jbDB";
+		String url = "jdbc:oracle:thin:@jbdb_high?TNS_ADMIN=C:/CODE/E_SERVLET/Wallet_jbDB";
 		String user = "admin";
 		String password = "Wnsqja7310@@";
 		

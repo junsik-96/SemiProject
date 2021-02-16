@@ -1,13 +1,17 @@
 package semiproject.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import semiproject.member.model.vo.Member;
+import semiproject.review.model.service.ReviewService;
 import semiproject.review.model.vo.Review;
 
 /**
@@ -16,6 +20,7 @@ import semiproject.review.model.vo.Review;
 @WebServlet("/review/*")
 public class ReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ReviewService reviewService = new ReviewService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -69,14 +74,26 @@ public class ReviewController extends HttpServlet {
 		review.setReview(wrReview);
 		review.setRating(starRating);
 		
-		request.setAttribute("alertMsg", "리뷰가 등록되었습니다.");
+		reviewService.insertReview(review);
 		
-		request.getRequestDispatcher("/WEB-INF/view/review/listMypageReview.jsp")
+		request.getSession().setAttribute("alertMsg", "리뷰가 등록되었습니다.");
+		
+		request.getRequestDispatcher("/WEB-INF/view/user-mypage/mypage.jsp")
 		.forward(request, response);
 	}
 	
 	
 	private void reviewList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		ReviewService reviewService = new ReviewService();
+		
+		Member member = (Member) session.getAttribute("user");
+		
+		String rvListId = member.getUserId();
+		
+		ArrayList<Review> reviewArr = reviewService.selectReviewList(rvListId);
+		
+		request.setAttribute("reviewArr", reviewArr);
 		
 		request.getRequestDispatcher("/WEB-INF/view/review/listMypageReview.jsp")
 		.forward(request, response);

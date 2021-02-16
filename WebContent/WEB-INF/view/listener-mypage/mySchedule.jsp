@@ -69,29 +69,33 @@
    		<div  id="calendar"> </div>
    		
    		<script>
-   		
-   				var calendar = new FullCalendar.Calendar(calendarEl, {
-   					
-   				events: [
-   				
-   					var reservation = CalendarService.selectResDetail;
-   				if(reservation.length > 0){
-   					if(resListId == ${sessionId}) {
-   						for(var i = 0; i < reservation.length; i++){
-   							test.push({
-   								title: '[회원]'+reservation[i].resUserId
-   								,start: reservation[i].resDate
-   								,color: '#FF5E00'
+   				$(document).ready(function(){
+   					$('#calendar').fullCalendar({
+   						$.ajax({
+   							url : 'CalendarController.jsp',
+   							type: "GET",
+   							success: function (ResCal){
+   								var json = ${calendarArr};
+   								var events = [];
    								
-   							})
-   						}
+   							$.each(json, function (key, item){
+   								var str;
+   								str += "[" + "회원: " + item.resUserId + ", 예약일 : " + item.resDate + " ]"
+   								
+   								events.push({title: str, start: item.resDate, color: '#FF5E00', allDay: true});
+   								
+   							
+   								});
+   							callback(events);
+   							}
+   						});
+   						
    				
-   					}
-   				}
+   					});
+   					});
+   			
    				
-   				]
    				
-   				})
    			
    		</script>
    		
@@ -101,27 +105,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
 
   	</div>
    <!-- Footer -->

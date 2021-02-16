@@ -14,6 +14,7 @@ import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.vo.Listener;
 import semiproject.listener.model.vo.School;
+import semiproject.member.model.vo.Member;
 import semiproject.listener.model.vo.Class;
 import semiproject.listener.model.vo.FindListener;
 
@@ -80,10 +81,13 @@ public class ListenerDao {
 	public int updateListener(Connection conn, Listener listener) {
 		int res = 0;
 		PreparedStatement pstm = null;
-		Array licenArray = null;
 
 		try {
-			String query = "update tb_listener set LIST_GEN = ?, TYPE = ?, LIST_SCHOOL = ?, LIST_CLASS = ?, LIST_LICENSE = ?,LIST_FIELD = ?, LIST_JOB = ?  where LIST_ID = ?";
+			String query = "update tb_listener set LIST_GEN = ?, TYPE = ?, "
+					+ "LIST_SCHOOL = ?, LIST_CLASS = ?, LIST_LICENSE = ?,"
+					+ "LIST_FIELD = ?, LIST_JOB = ?, LIST_IS_TRUE = ?,"
+					+ "list_pro = ?, list_amt = ? "
+					+ " where LIST_ID = ?";
 				
 			pstm = conn.prepareStatement(query);
 			pstm.setString(1, listener.getListGen());
@@ -93,7 +97,10 @@ public class ListenerDao {
 			pstm.setString(5, Arrays.toString(listener.getListLicense()));
 			pstm.setString(6, listener.getListField());
 			pstm.setString(7, Arrays.toString(listener.getListJob()));
-			pstm.setString(8, listener.getListId());
+			pstm.setString(8, listener.getListIsTrue());
+			pstm.setString(9, listener.getListPro());
+			pstm.setInt(10, listener.getListAmt());
+			pstm.setString(11, listener.getListId());
 			
 			res = pstm.executeUpdate();
 
@@ -142,6 +149,8 @@ public class ListenerDao {
 				listener.setListEmail(rset.getString("email"));
 				listener.setListResCnt(rset.getInt("list_res_cnt"));
 				listener.setListLikely(rset.getInt("list_likely"));			
+				listener.setListId(rset.getString("list_id"));
+				listener.setListAmt(rset.getInt("list_amt"));
 				
 				listenerList.add(listener);
 			}
@@ -191,6 +200,8 @@ public class ListenerDao {
 									flistener.setListResCnt(rset.getInt("list_res_cnt"));
 									flistener.setListLikely(rset.getInt("list_likely"));
 									flistener.setListAmt(rset.getInt("list_amt"));
+									flistener.setListId(rset.getString("list_id"));
+									flistener.setListAmt(rset.getInt("list_amt"));
 									
 									listenerList.add(flistener);
 								}	
@@ -232,7 +243,11 @@ public class ListenerDao {
 				listener.setListPhone(rset.getString("tel")); 
 				listener.setListEmail(rset.getString("email"));
 				listener.setListResCnt(rset.getInt("list_res_cnt"));
-				listener.setListLikely(rset.getInt("list_likely"));			
+				listener.setListLikely(rset.getInt("list_likely"));	
+				listener.setListId(rset.getString("list_id"));
+				listener.setListAmt(rset.getInt("list_amt"));
+				listener.setListPro(rset.getString("list_pro"));
+
 				
 				listenerList.add(listener);
 			}
@@ -244,6 +259,91 @@ public class ListenerDao {
 		}
 		
 		return listenerList;
+	}
+	
+	public Listener selectListById(Connection conn, String lisId) {
+		
+		Listener listener = null;
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+		
+		try {
+			String query = "select * from tb_listener l inner join tb_member m "
+					+ "on(l.list_id = m.user_id) where list_id = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, lisId);
+			rset = pstm.executeQuery();
+			
+			if(rset.next()) {
+				listener = new Listener();
+				listener.setListName(rset.getString("name"));
+				listener.setListGen(rset.getString("list_gen"));
+				listener.setListField(rset.getString("list_field"));
+				listener.setType(rset.getString("type"));
+				listener.setListPhone(rset.getString("tel")); 
+				listener.setListEmail(rset.getString("email"));
+				listener.setListSchool(rset.getString("list_school"));
+				listener.setListClass(rset.getString("list_class"));
+				listener.setListRegDate(rset.getDate("list_regdate"));
+				listener.setListResCnt(rset.getInt("list_res_cnt"));
+				listener.setListLikely(rset.getInt("list_likely"));
+				listener.setListPro(rset.getString("list_pro"));
+				listener.setListAmt(rset.getInt("list_amt"));
+
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return listener;
+	}
+	
+	public int updateLisInfo(Connection conn, Member member) {
+		int res = 0;
+		PreparedStatement pstm = null;
+		
+		try {
+			String query = "update tb_member set name = ?, tel = ? where user_id= ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, member.getName());
+			pstm.setString(2, member.getTel());
+			pstm.setString(3, member.getUserId());
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.UM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+		return res;
+	}
+	
+	public int updateLisProfile(Connection conn, Listener listener) {
+		int res = 0;
+		PreparedStatement pstm = null;
+		
+		
+		try {
+			String query = "update tb_listener set list_pro = ?, list_amt = ?, list_field = ?, list_school = ?, list_class = ?, list_license = ?, list_job = ? where list_id = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, listener.getListPro());
+			pstm.setInt(2, listener.getListAmt());
+			pstm.setString(3, listener.getListField());
+			pstm.setString(4, listener.getListSchool());
+			pstm.setString(5, listener.getListClass());
+			pstm.setString(6, Arrays.toString(listener.getListLicense()));
+			pstm.setString(7, Arrays.toString(listener.getListJob()));
+			pstm.setString(8, listener.getListId());
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.UM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+		return res;
+	
 	}
 	
 }

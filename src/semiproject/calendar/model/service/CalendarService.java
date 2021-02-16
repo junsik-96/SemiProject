@@ -2,7 +2,6 @@ package semiproject.calendar.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
 
 import semiproject.calendar.model.dao.CalendarDao;
 import semiproject.calendar.model.vo.Calendar;
@@ -12,32 +11,21 @@ public class CalendarService {
 
 		JDBCTemplate jdt = JDBCTemplate.getInstance();
 		CalendarDao calendarDao = new CalendarDao();
-
-		// 예약 리스트
-		public ArrayList<Calendar> selectResList(){
+		
+		// 상담사 >> 예약
+		public ArrayList<Calendar> selectResDetail(String resListId){
 			Connection conn = jdt.getConnection();
-			ArrayList<Calendar> resList = calendarDao.selectResList(conn);
 			
-			jdt.close(conn);
-			return resList;
-		}
-		
-		// 예약회원, 상담사 일치 >> 예약
-		public List<Calendar> selectResDetail(String resListId){
-			Connection conn = jdt.getConnection();
-			List<Calendar> resList = calendarDao.selectResDetail(conn, resListId);
+			ArrayList<Calendar> calendarArr = null;
 			
-			jdt.close(conn);
-			return resList;
+			try {
+				calendarArr = calendarDao.selectResDetail(conn, resListId);
+			} finally {
+				jdt.close(conn);
+			}
+			
+			return calendarArr;
 		}
-
-		
-		
-		
-		
-		
-		
-		
 		
 		
 

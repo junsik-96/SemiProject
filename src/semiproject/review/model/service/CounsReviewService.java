@@ -6,30 +6,31 @@ import java.util.ArrayList;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.exception.ToAlertException;
 import semiproject.common.template.JDBCTemplate;
-import semiproject.review.model.dao.ReviewDao;
-import semiproject.review.model.vo.Review;
+import semiproject.review.model.dao.CounsReviewDao;
+import semiproject.review.model.vo.CounsReview;
 
 
-public class ReviewService {
+
+public class CounsReviewService {
 	
-	ReviewDao reviewDao = new ReviewDao();
+	CounsReviewDao counsDao = new CounsReviewDao();
 	JDBCTemplate jdt = JDBCTemplate.getInstance();
 	
 	// 후기 리스트
-	public ArrayList<Review> selectReviewList(String rvListId){
+	public ArrayList<CounsReview> selectCounsList(String counsIdx){
 		Connection conn = jdt.getConnection();
-		ArrayList<Review> reviewArr = reviewDao.selectReviewList(conn, rvListId);
+		ArrayList<CounsReview> counsList = counsDao.selectCounsList(conn);
 		jdt.close(conn);
-		return reviewArr;
+		return counsList;
 	}
 	
 	// 후기등록
-	public int insertReview(Review review) {
+	public int insertCouns(CounsReview couns) {
 		Connection conn = jdt.getConnection();
 		int res = 0;
 		
 		try {
-			res = reviewDao.insertReview(conn, review);
+			res = counsDao.insertCouns(conn, couns);
 			jdt.commit(conn);
 			
 		}catch(DataAccessException e) {
@@ -44,12 +45,12 @@ public class ReviewService {
 	}
 	
 	// 후기삭제
-	public int deleteReview(String rvUserId){
+	public int deleteCouns(String counsIdx){
 		Connection conn = jdt.getConnection();
 		
 		int res = 0;
 		try {
-			res = reviewDao.reviewDelete(conn, rvUserId);
+			res = counsDao.counsDelete(conn, counsIdx);
 			jdt.commit(conn);
 		} catch (DataAccessException e) {
 			jdt.rollback(conn);
