@@ -70,7 +70,7 @@
 		          	<p>예약 등록일 : <b>${reservation.resDate}</b></p>
 		            <p>상담사 : <b>${reservation.resListId}</b></p>
 					<p>상담 가격 : <b>${reservation.resAmt}</b></p>
-					<a href="#" class="btn btn-primary">상담사 상세 보기 &rarr;</a>
+					<a href="/listener/profile?id=${reservation.resListId}" class="btn btn-primary">상담사 상세 보기 &rarr;</a>
 		          </div>
 		        </div>
 		      </div>
