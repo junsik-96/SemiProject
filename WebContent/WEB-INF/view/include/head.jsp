@@ -57,35 +57,19 @@
             <a class="nav-link" href="/listener/all">상담사 찾기</a>
           </li>          
           <li class="nav-item">
-            <a class="nav-link" href="/shy/diary">일기장</a>
+            <a class="nav-link" href="/diary">일기장</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               	게시판
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
+
               <a class="dropdown-item" href="/shy/board">대나무숲</a>
               <a class="dropdown-item" href="/shy/notice">공지사항</a>
 <!--      		  <a class="dropdown-item" href="/shy/listenerlist">상담사 신청</a>           
  -->              
              
-             <c:choose>
-              	<c:when test="${empty sessionScope.user}">
-              	   <a class="dropdown-item" href="/member/login">상담사 신청</a>              	
-              	</c:when>
-              	<c:otherwise>             	
-              		<c:choose>
-              			<c:when test="${sessionScope.userType eq '일반회원'}">
-              				<%-- 일반회원은 이용불가능하게 접근막고 alert 하기 --%>
-              				<a class="dropdown-item" onclick="alertMsg()">상담사 신청</a>
-              			</c:when>
-              			<c:otherwise>
-              			 	<a class="dropdown-item" href="/shy/listenerlist">상담사 신청</a>
-              			</c:otherwise>
-              		</c:choose>
-            	</c:otherwise>
-              </c:choose>
-                          
               <a class="dropdown-item" href="/shy/customerCenter">고객센터</a>
             </div>          
           </li>
