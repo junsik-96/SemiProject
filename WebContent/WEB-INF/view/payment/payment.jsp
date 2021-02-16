@@ -74,7 +74,7 @@
 <p>&nbsp;</p>
 <div class="cart" style="text-align: center;"><label class="won">₩</label></div>
 <p><br /><br /></p>
-<div class="pay" style="text-align: right;"><button id="sendMessageButton" class="btnnn" type="submit" onclick="location.href='http://localhost:9090/shy/paying'">결제하기</button></div>
+<div class="pay" style="text-align: right;"><button id="sendMessageButton" class="btnnn" type="submit" onclick="location.href='http://localhost:9090/payment/paying'">결제하기</button></div>
 <p><br /><br /></p>
 <p><br /><br /><br /></p>
   
