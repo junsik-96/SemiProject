@@ -64,13 +64,13 @@
         <!-- Comments Form -->
         <c:forEach var="payment" items="${paymentArr}">
         <div class="card mb-4">
-        	<h5 class="card-header" style="margin-left: 0%">[ 결제번호 : ${payment.pm_idx} ]</h5>
+        	<h5 class="card-header" style="margin-left: 0%">[ 결제번호 : ${payment.pmIdx} ]</h5>
 		      <div class="card-body">
 		        <div class="row">
 		          <div class="col-lg-6">
 		          	<p>결제 금액 : <b>${payment.amount}</b></p>
-		            <p>결제 상태 : <b>${payment.pm_state}</b></p>
-					<p>결제일 : <b>${payment.pm_date}</b></p>
+		            <p>결제 상태 : <b>${payment.pmState}</b></p>
+					<p>결제일 : <b>${payment.pmDate}</b></p>
 		          </div>
 		        </div>
 		      </div>

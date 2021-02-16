@@ -149,12 +149,12 @@ public class MypageDao {
 			
 			while(rset.next()) {
 				Payment payment = new Payment();
-				/*
-				 * payment.setRes_idx(rset.getInt("res_idx"));
-				 * payment.setPm_idx(rset.getInt("pm_idx"));
-				 * payment.setPm_state(rset.getString("pm_state"));
-				 * payment.setPm_date(rset.getDate("pm_date"));
-				 */
+				
+				payment.setResIdx(rset.getInt("res_idx"));
+				payment.setPmIdx(rset.getInt("pm_idx"));
+				payment.setPmState(rset.getString("pm_state"));
+				payment.setPmDate(rset.getDate("pm_date"));
+				 
 				payment.setAmount(rset.getInt("amount"));
 				payArr.add(payment);
 			}

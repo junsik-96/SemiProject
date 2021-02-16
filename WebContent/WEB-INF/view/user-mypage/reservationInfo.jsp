@@ -75,7 +75,7 @@
 		        </div>
 		      </div>
 		      <div class="card-footer text-muted" style="text-align: right">
-		       	<b>상담 예정 일/시 : ${reservation.resConsult}</b>
+		       	<b>상담 예정 일/시 : <%-- ${reservation.resConsult} --%></b>
 		      </div>
 		  </div>
         </c:forEach>
