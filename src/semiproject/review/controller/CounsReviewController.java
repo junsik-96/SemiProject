@@ -58,6 +58,7 @@ public class CounsReviewController extends HttpServlet {
 		List<CounsReview> commandMap = counsService.selectCounsList(counsIdx);
 		
 		request.setAttribute("counsList", commandMap);
+		System.out.println(commandMap);
 		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/counsReview.jsp")
 		.forward(request, response);
 	}

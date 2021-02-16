@@ -289,7 +289,7 @@ public class ListenerDao {
 				listener.setListLikely(rset.getInt("list_likely"));
 				listener.setListPro(rset.getString("list_pro"));
 				listener.setListAmt(rset.getInt("list_amt"));
-
+				listener.setListId(rset.getString("list_id"));
 
 			}
 		} catch (SQLException e) {

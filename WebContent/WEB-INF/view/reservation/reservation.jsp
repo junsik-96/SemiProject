@@ -39,12 +39,16 @@
    
 	<br>
 	<br>
-	<p style="text-align: center;">상담사 : <label>상담사 정보 불러오기</label></p>
+	<p style="text-align: center;">상담사 이름 : ${resById.listName}<label></label></p>
+	<p style="text-align: center;">상담 가격 : ${resById.listAmt}<label></label></p>
+	
+<form action="${context}/payment/view?id=${resById.listId}" method="POST">
 <h4 style="text-align: center;">날짜를 선택해주세요.</h4>
 <br>
-<p style="text-align: center;"><input type="date" /> <input type="time" /> 
+<p style="text-align: center;"><input type="date" name="day" /> <input type="time" name="time"/> 
 <br><br>
-<button type="submit" onclick="alert('예약 완료되었습니다')">예약하기</button></p>
+<button type="submit" onclick="reservation()">예약하기</button></p>
+</form>
  	<br>
  	<br>
  	<br>
@@ -57,8 +61,14 @@
   
   
   
+  <script type="text/javascript">
   
+  function reservation(){
+	  alert('예약 완료되었습니다');
+	  location.href="/payment/view?id=${resById.listId}";  
+  }
   
+  </script>
   
   
   

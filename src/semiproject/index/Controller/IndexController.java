@@ -76,7 +76,6 @@ public class IndexController extends HttpServlet {
 		request.setAttribute("comm1", listComm1);
 		System.out.println("asd :" + listener);
 		System.out.println("id : " + listId);
-		
 		request.getRequestDispatcher("/WEB-INF/view/index/index.jsp")
 		.forward(request, response); 
 

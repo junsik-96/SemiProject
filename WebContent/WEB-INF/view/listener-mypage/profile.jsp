@@ -27,7 +27,7 @@
 예약 수 : ${listById.listResCnt} <br>
 상담가격 : ${listById.listAmt} <br>
 자기소개 : ${listById.listPro}<br>
-<a href="#" class="btn btn-primary" style="margin-top: 5%;">결제하러 가기</a>
+<a href="/reservation/view?id=${listById.listId}" class="btn btn-primary" style="margin-top: 5%;">예약하기</a>
 
 </div>
 
