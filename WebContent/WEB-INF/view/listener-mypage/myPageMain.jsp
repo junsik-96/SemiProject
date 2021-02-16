@@ -46,14 +46,20 @@
   <div class="container">
 
     <!-- 페이지 제목 -->
-    <h2 class="mt-4 mb-3"> ${sessionScope.user.name} 상담사님의 마이페이지 </h2>
+    <h1 class="mt-4 mb-3">MyPage
+      <small></small>
+    </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index">Home</a>
       </li>
-       <li class="breadcrumb-item active"><a href="/shy/myPageMain">마이페이지</a></li>
+       <li class="breadcrumb-item active">Mypage</li>
+
     </ol>
+    
+    <h3><b>${sessionScope.user.name}</b><small>님의 마이페이지</small></h3>
+    <hr>
 
 	<div class="list-main">
  	
@@ -65,10 +71,10 @@
 			<span style="color:navy"><i class="fas fa-calendar-alt">  나의 예약스케줄</i></span>
 		</a><br><br>
 		<a class="go-to-resConfirm" href="/shy/resConfirm">
-			<span style="color:navy"><i class="fas fa-clipboard-list">  예약스케줄 관리</i></span>
+			<span style="color:navy"><i class="fas fa-clipboard-list">  예약 내역</i></span>
 		</a><br><br>
 		<a class="go-to-reviews" href="/shy/listMypageReview">
-		<span style="color:navy"><i class="fas fa-address-card">  평가내역</i></span>
+		<span style="color:navy"><i class="fas fa-address-card">  평가 내역</i></span>
 		</a><br><br>
 		<a class="go-to-reviews" href="/listener/updateintroduce">
 		<span style="color:navy"><i class="fas fa-address-card">  정보 수정</i></span>

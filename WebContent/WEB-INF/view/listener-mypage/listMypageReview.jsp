@@ -36,21 +36,23 @@
   <!-- Page Content -->
   <div class="container">
   
-  <h1 class="mt-4 mb-3">상담사
-      <small>평가내역</small>
+  <h1 class="mt-4 mb-3">평가내역
+      <small></small>
     </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index">Home</a>
       </li>
-       <li class="breadcrumb-item active"><a href="/shy/myPageMain">상담사 마이페이지</a></li>
+       <li class="breadcrumb-item active"><a href="/shy/myPageMain">Mypage</a></li>
+       <li class="breadcrumb-item active">평가내역</li>
     </ol>
+    
+    <h3><b>${sessionScope.user.name}</b><small>님의 평가내역</small></h3>
+    <hr>
 
      <!-- review start -->
-            <div class="col-lg-8 col-md-12">
-                <div class="card table-card review-card" style="width: 800px;
-    		margin-left: 20%;">
+                <div style="width: 100%;">
                     <div class="card-header borderless ">
                         <h5>평가 후기</h5>
                     </div>
@@ -71,7 +73,7 @@
 							    </thead>
 							    <tbody>
 							    
-							        <c:forEach var="review" items="${reviewArr}">
+							        <c:forEach var="review" items="${reviewList}">
 							            <!-- 평점 기준 별표시 출력 -->
 							            <tr>
 							                <td id="star-color" style="color:#F05522;">
@@ -101,7 +103,6 @@
   
   
   
-</div>
 <!-- Footer -->
   <footer class="py-5 bg-dark">
    <div class="container_footer">

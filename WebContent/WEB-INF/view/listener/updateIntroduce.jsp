@@ -2,8 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 <body>
-     <div class="col-lg-9 mb-4" style="padding-top: 1vw; min-height: 700px;">
-        <h1>내 정보 수정</h1>
+
+	  <div class="container">
+
+    <!-- 페이지 제목 -->
+    <h1 class="mt-4 mb-3">MyPage
+      <small></small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index">Home</a>
+      </li>
+       <li class="breadcrumb-item active"><a href="/shy/myPageMain">Mypage</a></li>
+		<li class="breadcrumb-item active">내정보수정</li>
+    </ol>
+    
+    <h3>내 정보 수정</h3>
         <hr>
         <div class="row">
     	<div style="width: 70%; height: 70%; padding-left: 2vw; padding-top: 1vw; padding-bottom: 1vw">
@@ -54,7 +69,7 @@
       </div>
       </div>
     </div>
-
+   
 
 
 

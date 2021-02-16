@@ -10,6 +10,8 @@ import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.vo.Listener;
+import semiproject.member.model.vo.Cart;
+import semiproject.member.model.vo.Likey;
 import semiproject.payment.model.vo.Payment;
 import semiproject.reservation.model.vo.Reservation;
 
@@ -169,5 +171,91 @@ public class MypageDao {
 		
 	}
 
+	
+	//찜목록 추가
+	public int insertHold(Connection conn, Cart cart){
+		
+		int res = 0;
+		PreparedStatement pstm = null;
+		
+		try {
+			//같은 회원이 같은 상담사를 찜하면 데이터베이스에 추가 되지 않도록 해야함
+			String query = "insert into tb_cart(cart_idx, user_id, list_id) "
+					+"values(sc_cart.nextval,?,?)";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, cart.getUserId());
+			pstm.setString(2, cart.getListId());
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+		
+		return res;
+	}
+	
+	//찜목록 추가
+	public int DeleteHold(Connection conn, Cart cart){
+		
+		int res = 0;
+		PreparedStatement pstm = null;
+		
+		try {
+			String query = "Delete from tb_cart where user_id = ? and list_id = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, cart.getUserId());
+			pstm.setString(2, cart.getListId());
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+		
+		return res;
+	}
+	
+	//상담사 추천
+	public int likey(Connection conn, Likey likey){
+		
+		int res = 0;
+		PreparedStatement pstm = null;
+		
+		try {
+			String query = "insert into tb_likey(like_idx, user_id, list_id) values(sc_likey.nextval,?,?)";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, likey.getUserId());
+			pstm.setString(2, likey.getListId());
+			
+			res = pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+		
+		return res;
+	}
+	
+	public void addLikey(Connection conn, String listId){
+		
+		PreparedStatement pstm = null;
+		
+		try {
+			String query = "update tb_listener set list_res_cnt = list_res_cnt + 1 where list_id = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, listId);
+			
+			pstm.executeUpdate();
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+
+	}
 	
 }
