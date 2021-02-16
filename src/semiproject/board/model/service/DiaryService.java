@@ -1,6 +1,8 @@
 package semiproject.board.model.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import semiproject.board.model.dao.DiaryDao;
 import semiproject.board.model.vo.Diary;
+import semiproject.board.model.vo.Notice;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.exception.ToAlertException;
 import semiproject.common.template.JDBCTemplate;
@@ -43,4 +46,30 @@ public class DiaryService {
 			jdt.close(conn);
 		}
 	}
+	
+	public List<Diary> selectDiaryList(String userId){
+		
+		Connection conn = jdt.getConnection();
+		List<Diary> dList = null;
+		try {
+			dList  = diaryDao.selectDiaryList(conn, userId);
+		} finally {
+			jdt.close(conn);
+		}
+		return dList;		
+	}
+	
+	public Diary selectByIdx(int idx) {
+		Connection conn = jdt.getConnection();
+		Diary diary = new Diary();
+		try {
+			diary = diaryDao.selectByIdx(conn, idx);
+		}finally {
+			jdt.close(conn);
+		}
+		return diary;
+	}
+	
+	
+
 }

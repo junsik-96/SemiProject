@@ -20,35 +20,27 @@
 <body>
  
   
-  <div id="wrap" class="container">
+  <div id="wrap" class="container" style="min-height: 600px;">
     <br><br>
     <div id="board">
     <h1>공지사항</h1>
         <table id="detailBoard" width="500"border="3"  bordercolor="lightgray" class="table table-hover">
         
             <tr>
-                <td id="title">작성일</td>
-                <td>${board.regDate}</td>
+                <td id="title">작성일 : ${nDetail.regDate}</td>
             </tr>
+
             <tr>
-                <td id="title">작성자</td>
-                <td>${board.userId}</td>
+                <td id="title">
+                    제 목 : ${nDetail.title}
+                </td>
+       
             </tr>
             <tr>
                 <td id="title">
-                    제 목
-                </td>
-                <td>
-                    ${board.title}
-                </td>        
-            </tr>
-            <tr>
-                <td id="title">
-                    내 용
-                </td>
-                <td>
-                    ${board.board_content}
-                </td>        
+                    내 용 <hr>
+          ${nDetail.content}
+                </td>      
             </tr>
        
         </table>

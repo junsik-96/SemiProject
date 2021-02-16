@@ -52,7 +52,7 @@ public class ReservationController extends HttpServlet {
 	}
 
 	private void gotoView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/view/reservation/reservation3.jsp")
+		request.getRequestDispatcher("/WEB-INF/view/reservation/reservation.jsp")
 		.forward(request, response);
 	}
 	

@@ -21,46 +21,38 @@
 <body>
 
   
-  <div id="wrap" class="container">
+  <div id="wrap" class="container" style="min-height: 600px;">
     <br><br>
     <div id="board">
     <h1>대나무 숲</h1>
         <table id="detailBoard" width="500"border="3"  bordercolor="lightgray" class="table table-hover">
         
             <tr>
-                <td id="title">작성자</td>
-                <td>${data.board.userId}</td>
+                <td id="title">작성자 : ${bDetail.userId}</td>
+                
             </tr>
             <tr>
-                <td id="title">제목</td>
-                <td>${data.board.title}</td>
+                <td id="title">제목 : ${bDetail.title}</td>
             </tr>
             <tr>
                 <td id="title">
-                    작성일
+                   	 작성일 :  ${bDetail.regDate}
                 </td>
-                <td>
-                    ${data.board.regDate}
-                </td>        
+       
             </tr>
             <tr>
             
             <tr>
                 <td id="title">
-                  분 야 
+                  분 야  :  ${bDetail.field}
                 </td>
-                <td>
-                    ${data.board.field}
-                </td>        
+      
             </tr>
             <tr>
                 <td id="title">
-                    내 용
+                    내 용 :   ${bDetail.content}
                 </td>
-                <td>
-                    ${board.board.content}
-
-                </td>        
+       
             </tr>
            
     

@@ -57,7 +57,15 @@
             <a class="nav-link" href="/listener/all">상담사 찾기</a>
           </li>          
           <li class="nav-item">
-            <a class="nav-link" href="/diary">일기장</a>
+          <c:choose>
+          	<c:when test="${empty sessionScope.user}">
+          	<a class="nav-link" href="/member/login" onclick ="aleryDiary()" >일기장</a>
+          	</c:when>
+          	<c:otherwise>
+          	<a class="nav-link" href="/diary">일기장</a>
+          	</c:otherwise>
+          </c:choose>
+            
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -145,6 +153,10 @@
 				'\n일반회원 고객님은 이용하실 수 없는 페이지 입니다.' +
 				'\n이전 페이지로 돌아갑니다.');
 		history.forward();
+	}
+	
+	function aleryDiary(){
+		alert('로그인 후 이용가능합니다.\n로그인 페이지로 이동합니다.');
 	}
 
 </script>
