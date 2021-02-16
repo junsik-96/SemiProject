@@ -19,14 +19,7 @@
 	.btn{
 		width: 100%;
 	}
-	
-	.card-body{
-		display: flex;
-	}
-	
-	.card-body-1{
-		padding: 20px 20px 20px 20px;
-	}
+
 </style>
 </head>
 <body>
@@ -69,35 +62,20 @@
         <hr>
         
         <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header">결제일 : 2021-02-02</h5>
-          <div class="card-body">
-          	<div style="width: 25%; height: 100%">
-				<img src="/resources/image/listener.jpg" style="width: 100%; height: 100%;">
-			</div>
-			<div class="card-body-1">
-				<p>상담사 : </p>
-				<p>결제 수단 : </p>
-				<p>결제 금액 : </p>
-				<p>결제 상태 : </p>
-			</div>
-          </div>
-        </div>
-        
-        <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header">결제일 : 2021-02-01</h5>
-          <div class="card-body">
-          	<div style="width: 25%; height: 100%">
-				<img src="/resources/image/listener.jpg" style="width: 100%; height: 100%;">
-			</div>
-			<div class="card-body-1">
-				<p>상담사 : </p>
-				<p>결제 수단 : </p>
-				<p>결제 금액 : </p>
-			</div>
-          </div>
-        </div>
+        <c:forEach var="payment" items="${paymentArr}">
+        <div class="card mb-4">
+        	<h5 class="card-header" style="margin-left: 0%">[ 결제번호 : ${payment.pm_idx} ]</h5>
+		      <div class="card-body">
+		        <div class="row">
+		          <div class="col-lg-6">
+		          	<p>결제 금액 : <b>${payment.amount}</b></p>
+		            <p>결제 상태 : <b>${payment.pm_state}</b></p>
+					<p>결제일 : <b>${payment.pm_date}</b></p>
+		          </div>
+		        </div>
+		      </div>
+		  </div>
+        </c:forEach>
         
         <!-- Pagination -->
 	    <ul class="pagination justify-content-center mb-4">
