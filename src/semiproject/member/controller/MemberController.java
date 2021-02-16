@@ -17,6 +17,8 @@ import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.service.MemberService;
 import semiproject.member.model.service.MypageService;
 import semiproject.member.model.vo.Member;
+import semiproject.payment.model.vo.Payment;
+import semiproject.reservation.model.vo.Reservation;
 
 /**
  * Servlet implementation class memberController
@@ -46,7 +48,7 @@ public class MemberController extends HttpServlet {
 		switch(uriArr[uriArr.length - 1]) {
 			case "login" : login(request,response); //로그인
 				break;
-			case "KakaoLogin" : kakaoLogin(request,response);
+			case "KakaoLogin" : kakaoLogin(request,response); //카카오 로그인
 				break;
 			case "loginimpl" : loginImpl(request, response);
 				break;
@@ -310,12 +312,37 @@ public class MemberController extends HttpServlet {
 	
 	private void reservationInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String userId = member.getUserId();
+		
+		ArrayList<Reservation> reservationArr = mypageService.selectReservationById(userId);
+
+		request.setAttribute("reservationArr", reservationArr);
+		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/reservationInfo.jsp")
 		.forward(request, response);
 	}
 	
 	private void paymentInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String userId = member.getUserId();
+		
+		ArrayList<Reservation> reservationArr = mypageService.selectReservationById(userId);
+		ArrayList<Payment> paymentArr = new ArrayList<>();
+		
+		if(reservationArr.size()!=0) {
+			for(int i = 0; i < reservationArr.size(); i++) {
+				for(int j = 0; j < mypageService.selectPayment(reservationArr.get(i).getResIdx()).size(); j++) {
+					paymentArr.add(mypageService.selectPayment(reservationArr.get(i).getResIdx()).get(j));
+				}
+			}
+		}
+
+		request.setAttribute("paymentArr", paymentArr);
+		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/paymentInfo.jsp")
 		.forward(request, response);
 	}

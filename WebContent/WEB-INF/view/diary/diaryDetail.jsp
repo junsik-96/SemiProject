@@ -61,7 +61,7 @@
                     <input type="button" value="삭제" >
                     <input type="button" value=답글 >    
                     <input type="button" value="목록" 
-                        onclick="javascript:location.href='boardView?page=${pageNum}'">            
+                        onclick="javascript:location.href='/diary'">            
                 </td>
             </tr>
         </table>

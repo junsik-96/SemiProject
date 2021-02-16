@@ -19,14 +19,7 @@
 	.btn{
 		width: 100%;
 	}
-	
-	.card-body{
-		display: flex;
-	}
-	
-	.card-body-1{
-		padding: 20px 20px 20px 20px;
-	}
+
 </style>
 </head>
 <body>
@@ -68,42 +61,25 @@
         <hr>
         
         <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header">결제일 : 2021-02-01</h5>
-          <div class="card-body">
-          	<div style="width: 25%; height: 100%">
-				<img src="/resources/image/listener.jpg" style="width: 100%; height: 100%;">
-			</div>
-			<div class="card-body-1">
-				<p>상담사 : </p>
-				<p>상담 분야 : </p>
-				<p>상담 링크 : </p>
-				<a href="#" class="btn btn-primary">자세히 보기 &rarr;</a>
-			</div>
-          </div>
-          <div class="card-footer text-muted" style="text-align: right">
-	       	<b>예약일시 : 2021-02-10 13:00:00</b>
-	      	</div>
-        </div>
+        <c:forEach var="reservation" items="${reservationArr}">
+        <div class="card mb-4">
+        	<h5 class="card-header" style="margin-left: 0%">[ 예약번호 : ${reservation.resIdx} ]</h5>
+		      <div class="card-body">
+		        <div class="row">
+		          <div class="col-lg-6">
+		          	<p>예약 등록일 : <b>${reservation.resDate}</b></p>
+		            <p>상담사 : <b>${reservation.resListId}</b></p>
+					<p>상담 가격 : <b>${reservation.resAmt}</b></p>
+					<a href="#" class="btn btn-primary">상담사 상세 보기 &rarr;</a>
+		          </div>
+		        </div>
+		      </div>
+		      <div class="card-footer text-muted" style="text-align: right">
+		       	<b>상담 예정 일/시 : ${reservation.resConsult}</b>
+		      </div>
+		  </div>
+        </c:forEach>
         
-        <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header">결제일 : 2021-02-01</h5>
-          <div class="card-body">
-          	<div style="width: 25%; height: 100%">
-				<img src="/resources/image/listener.jpg" style="width: 100%; height: 100%;">
-			</div>
-			<div class="card-body-1">
-				<p>상담사 : </p>
-				<p>상담 분야 : </p>
-				<p>상담 링크 : </p>
-				<a href="#" class="btn btn-primary">자세히 보기 &rarr;</a>
-			</div>
-          </div>
-          <div class="card-footer text-muted" style="text-align: right">
-	       	<b>예약일시 : 2021-02-10 13:00:00</b>
-	      	</div>
-        </div>
         
         <!-- Pagination -->
 	    <ul class="pagination justify-content-center mb-4">

@@ -29,18 +29,18 @@
         
             <tr>
                 <td id="title">작성일</td>
-                <td>${board.regDate}</td>
+                <td>${data.board.regDate}</td>
             </tr>
             <tr>
                 <td id="title">작성자</td>
-                <td>${board.userId}</td>
+                <td>${data.board.userId}</td>
             </tr>
             <tr>
                 <td id="title">
                     제 목
                 </td>
                 <td>
-                    ${board.title}
+                    ${data.board.title}
                 </td>        
             </tr>
             <tr>
@@ -49,6 +49,7 @@
                 </td>
                 <td>
                     ${board.board_content}
+
                 </td>        
             </tr>
            
@@ -60,6 +61,7 @@
                     <input type="button" value=답글 >    
                     <input type="button" value="목록" 
                         onclick="javascript:location.href='boardView?page=${pageNum}'">            
+
                 </td>
             </tr>
         </table>

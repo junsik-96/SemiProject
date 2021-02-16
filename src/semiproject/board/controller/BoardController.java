@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import semiproject.board.model.service.BoardService;
+import semiproject.board.model.vo.Board;
 import semiproject.member.model.vo.Member;
 
 
@@ -37,9 +40,11 @@ public class BoardController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String[] uriArr = request.getRequestURI().split("/");
 		switch(uriArr[uriArr.length-1]) {
-		case "gotoView" : gotoView(request,response);
+		case "board" : boardView(request,response);
 			break;
-		case "gotoForm" : gotoForm(request,response);
+		case "boardForm" : boardForm(request,response);
+			break;
+		case "boardDetail" : boardDetail(request, response); 
 			break;
 		case "upload" : uploadBoard(request,response);
 			break;
@@ -55,14 +60,41 @@ public class BoardController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
+		HttpSession session = request.getSession();
+		String userId = null;
+		
+		if(session.getAttribute("userId") != null) {
+			userId = (String) session.getAttribute("userId");
+		}
+		
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		Board b = new Board();
+		b.setUserId(userId);
+		b.setTitle(title);
+		b.setContent(content);
+		
+		System.out.println(b.toString());		
+		
+		
 	}
 	
-	private void gotoView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void boardView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/view/board/boardView.jsp")
 		.forward(request, response);
 	}
 	
-	private void gotoForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void boardDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		
+		request.getRequestDispatcher("/WEB-INF/view/board/boardDetail.jsp")
+		.forward(request, response);
+	}
+	
+	private void boardForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/board/boardForm.jsp")
 		.forward(request, response);
@@ -81,15 +113,7 @@ public class BoardController extends HttpServlet {
 		
 	}
 	
-	private void boardDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String bdIdx = request.getParameter("bdIdx");
-		Map<String,Object> commandMap = boardService.selectBoardDetail(bdIdx);
-		request.setAttribute("data", commandMap);
-		
-		request.getRequestDispatcher("/WEB-INF/view/board/boardView.jsp")
-		.forward(request, response);
-	}
+	
 	
 
 

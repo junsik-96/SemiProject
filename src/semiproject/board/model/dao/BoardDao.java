@@ -30,7 +30,6 @@ public class BoardDao {
 			pstm.setString(1, board.getUserId());
 			pstm.setString(2, board.getTitle());
 			pstm.setString(3, board.getContent());
-			pstm.setString(4, board.getField());
 			pstm.executeUpdate();
 		} catch (SQLException e) {
 			throw new DataAccessException(ErrorCode.IB01, e);
@@ -73,7 +72,7 @@ public class BoardDao {
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		String sql = "select "
-				+ "bd_idx,user_id,reg_date,title,content "
+				+ "bd_idx,user_id,reg_date,title,content,count,field "
 				+ "from tb_board "
 				+ "where bd_idx = ? ";
 		pstm = conn.prepareStatement(sql);
@@ -88,7 +87,8 @@ public class BoardDao {
 				board.setRegDate(rs.getDate(3));
 				board.setTitle(rs.getString(4));
 				board.setContent(rs.getString(5));
-				board.setField(rs.getString(6));
+				board.setCount(rs.getInt(6));
+				board.setField(rs.getString(7));
 			}
 		} catch (SQLException e) {
 			throw new DataAccessException(ErrorCode.SB01, e);
