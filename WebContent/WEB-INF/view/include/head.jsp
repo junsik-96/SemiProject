@@ -40,14 +40,45 @@
 <script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
+<style type="text/css">
+		
+		.logo {
+			width: 23px;
+			height: 25px;
+			-webkit-filter: opacity(.5) drop-shadow(0 0 0 white);
+			filter: opacity(.5) drop-shadow(0 0 0 white);
+		}
+		
+		.bg-dark {
+   			background-color: #482C5D!important;
+		}
+		
+		body {
+			padding-right: 10%;
+			padding-left: 10%;
+		}
+		
+		
+		
+		
+		
+
+
+
+
+
+
+
+</style>
 
 </head>
 
 <body>
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" style="background-color: #482C5D!important;">
     <div class="container">
-     <a class="navbar-brand" href="/index" style="font-style: italic">Shytalker</a>
+     <a class="navbar-brand" href="/index" style="font-style: italic">
+     		<img class="logo" src="/resources/image/logo.png">  ShyTalker</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

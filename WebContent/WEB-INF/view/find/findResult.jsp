@@ -14,6 +14,25 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
+  <style type="text/css">
+  		.sector_lis {
+  			background-color: #FDCB27;
+  		}
+  		.btn_search_clear {
+  			background-color: #482C5D;
+  			color: white;
+  		}
+  		.btn_search_lis {
+  			background-color: #482C5D;
+  			color: white;
+  		}
+  		.page-link{
+  			color: #2f4f4f;
+  		}
+  	
+  
+  </style>
+  
 
 </head>
 <body>
@@ -156,7 +175,7 @@
 		           	   가격 : ${checkLis[i].listAmt} 
 		            </small>
 		            <hr>
-		            <a href = "/listener/profile?id=${checkLis[i].listId}" style="color:rgb(138, 43, 226)";>상담사 상세보기</a>
+		            <a href = "/listener/profile?id=${checkLis[i].listId}" style="color:#482C5D; float: right";>상담사 상세보기</a>
 		            <p class="card-text"></p>
 		          </div>
 		        </div>
@@ -202,11 +221,12 @@
 
 
  
-  <footer class="py-5 bg-dark">
+ <!-- Footer -->
+  <footer class="py-5 bg-dark" style="background-color: #482C5D!important;">
   
 	<div class = "shy_info">
    (주) 귀울임 사업자 정보    
-  <div id = "footerInfo">  
+  <div id = "footerInfo" style="font-size: 0.8rem;">  
   <br>		 		
 	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
 	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>

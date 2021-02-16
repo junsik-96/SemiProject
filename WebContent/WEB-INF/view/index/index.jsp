@@ -20,13 +20,52 @@
 
   <!-- Custom styles for this template -->
   <link href="/resources/css/modern-business.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap" rel="stylesheet">
+ 
+	<style type="text/css">
+  		.line-h2 {
+  			color: #2f4f4f;
+  			font-family: 'Nanum Gothic', sans-serif, bold;
+  			font-size: 3rem;
+  			
+  		}
+  		
+  		.line-p {
+  			color: #2f4f4f;
+  			font-family: 'Nanum Gothic', sans-serif;
+  		}
+  		
+  		.month-top {
+  			font-weight: bold; 
+  			font-size: 1.5rem; 
+  			color: #2f4f4f;
+  		}
+  		
+  		.col-lg-4{
+			min-width: 300px;
+		}
+		
+		.btn {
+			font-size: 0.8rem;
+			background-color: #482C5D;
+			border-color: #482C5D;
+			float: right;
+		}
+		
+		
+  		
+  		
+  		
+
+  </style>
 
 </head>
 
 <body>
 
 
-  
+  	<br>
     <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -36,24 +75,38 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>First Slide</h3>
-            <p>This is a description for the first slide.</p>
+        <div class="carousel-item active" style="background-image: url('/resources/image/slide2.jpg')">
+          <div class="carousel-caption d-none d-md-block" style="top:50px; text-align: right;">
+            <h1 class="line-h2">당신의 고민</h1><br>
+            <pre class="line-p">
+            	 코로나 블루, 우울증, 집단 따돌림...
+            	힘들지만 누구에게도 말 못할 고민들에서부터 
+            	   따뜻한 위로가 필요한 당신.
+            	 	 이젠, 혼자 힘들어하지 마세요. 
+            </pre>
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second Slide</h3>
-            <p>This is a description for the second slide.</p>
+        <div class="carousel-item" style="background-image: url('/resources/image/slide4.jpg')">
+          <div class="carousel-caption d-none d-md-block" style="top:50px; text-align: left;">
+            <h1 class="line-h2">이젠, 걱정마세요!</h1><br>
+            <pre class="line-p">
+            	
+            	세상에 사소한 고민은 없어요. 
+            	 어떤 고민이든지 
+            	당신에게 알맞는 상담사를 찾아드립니다. 
+            </pre>
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Third Slide</h3>
-            <p>This is a description for the third slide.</p>
+        <div class="carousel-item" style="background-image: url('/resources/image/slide3.jpg')">
+          <div class="carousel-caption d-none d-md-block" style="top:60px;">
+           <h1 class="line-h2">  당신을 위한 전문가들</h1><br>
+            <pre class="line-p">
+            	 아무나 귀기울이지 않아요.
+            	선뜻 용기내어 가기 힘들었던 병원이나 상담사들이
+            	샤이토커에서 당신의 이야기를 들어드릴게요.
+            </pre>
           </div>
         </div>
       </div>
@@ -68,21 +121,16 @@
     </div>
   </header>
   
-	<div class="my-4" style="color:rgb(138, 43, 226);">당신 목소리에, 귀울임</div>
-     <pre class="intro" style="color:rgb(138, 43, 226);">
-     	Welcome everyone!!
-     	<small>
-   	    Shytalker Always Together With You..
-        Don't Worry & Be Happy !!
-        </small>
-     </pre>
+	<br>
+	<hr>
+	<br><br>
 	
-	
-
+	<div class="body-contents">
 	<c:choose>
 	<c:when test="${sessionScope.userType eq '일반회원'}">
- <div id="month_reco" style="margin-left: 3.5%;"><small style="font-weight: bold;"> '${sessionScope.user.name}' 님을 위한 상담사 추천 *</small></div>
+ <div id="month_reco" style="margin-left: 3.5%;"><small class="month-top"> '${sessionScope.user.name}' 님을 위한 상담사 추천 </small></div>
 	<div class="row">
+	
 	<c:choose>
 		<c:when test="${fn:length(comm1)-1 > 3}">
 		<c:forEach var="i" begin="0" end="3" step="1">
@@ -107,6 +155,7 @@
       </div>
 	</c:forEach>
 		</c:when>
+		
 		<c:otherwise>
 		<c:forEach var="i" begin="0" end="${fn:length(comm1)-1}" step="1">
 		<div class="col-lg-4 mb-4">
@@ -142,7 +191,7 @@
 
 	
 
- <div id="month_reco" style="margin-left: 3.5%;"><small style="font-weight: bold; text-decoration: underline;">예약 수 Top4</small></div>
+ <div id="month_reco" style="margin-left: 3.5%;"><small class="month-top">인기 상담사 Top4</small></div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -222,7 +271,7 @@
     <hr>
     <br><br>
    
- <div id="month_reco" style="margin-left: 3.5%;"><small style="font-weight: bold; text-decoration: underline;">추천 수 Top4</small></div>
+ <div id="month_reco" style="margin-left: 3.5%;"><small class="month-top">추천 상담사 Top4</small></div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -301,7 +350,7 @@
     <hr>
     <br><br>
 
- <div id="month_reco" style="margin-left: 3.5%;"><small style="font-weight: bold; text-decoration: underline;">신규 상담사(최신 4명)</small></div>
+ <div id="month_reco" style="margin-left: 3.5%;"><small class="month-top">새로 등록된 상담사</small></div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -379,29 +428,23 @@
     </div>
 
     <hr>
+	</div>
 
-
-    <div class="row mb-4">
-      <div class="col-md-8">
-      <br>
-        <div style="margin-left: 5%;">
-        <small>
-        Shytalker Always Together With You...<br>
-        Don't Worry! Be Happy!!
-        </small>
-        </div>
-        
-      </div>
-    </div>
 
  
+</body>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+ <!-- Footer -->
+  <footer class="py-5 bg-dark" style="background-color: #482C5D!important;">
   
 	<div class = "shy_info">
    (주) 귀울임 사업자 정보    
-  <div id = "footerInfo">  
+  <div id = "footerInfo" style="font-size: 0.8rem;">  
   <br>		 		
 	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
 	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
@@ -413,11 +456,6 @@
 	</div>
     
   </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 	
-</body>
+
 </html>

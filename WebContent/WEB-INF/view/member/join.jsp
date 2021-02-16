@@ -19,6 +19,7 @@
 <style type="text/css">
 	.btn{
 		width: 100%;
+		
 	}
 	
 	.valid_info{
@@ -166,7 +167,7 @@
     </div>
 
    <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark" style="background-color: #482C5D;">
   
 	<div class = "shy_info">
    (주) 귀울임 사업자 정보    
