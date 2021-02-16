@@ -40,7 +40,7 @@ public class BoardDao {
 	
 	
 	
-	public Board selectBoardDetail(Connection conn,String bdIdx) throws SQLException{
+	public Board selectBoardDetail(Connection conn,int bdIdx) throws SQLException{
 		Board board = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -48,11 +48,17 @@ public class BoardDao {
 				+ "bd_idx,user_id,reg_date,title,content,count,field "
 				+ "from tb_board "
 				+ "where bd_idx = ? ";
+
 		pstm = conn.prepareStatement(sql);
-		pstm.setString(1, bdIdx);
+		pstm.setInt(1, bdIdx);
 		rs = pstm.executeQuery();
+
 		
 		try {
+			pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, bdIdx);
+			rs = pstm.executeQuery();
+			
 			if(rs.next()) {
 				board = new Board();
 				board.setBdIdx(rs.getInt(1));
@@ -100,7 +106,7 @@ public class BoardDao {
 		}
 	}
 	
-	public List<FileVo> selectFileWithBoard(Connection conn,String bdIdx){
+	public List<FileVo> selectFileWithBoard(Connection conn,int bdIdx){
 		List<FileVo> res = null;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
@@ -112,7 +118,7 @@ public class BoardDao {
 		try {
 			res = new ArrayList<FileVo>();
 			pstm = conn.prepareStatement(sql);
-			pstm.setString(1, bdIdx);
+			pstm.setInt(1, bdIdx);
 			rs = pstm.executeQuery();
 			
 			while(rs.next()) {
@@ -133,5 +139,89 @@ public class BoardDao {
 			jdt.close(rs,pstm);
 		}
 		return res;
+	}
+	
+	public void updateBoard(Connection conn, Board board){
+		
+		PreparedStatement pstm = null;
+		
+		try {
+			String query = "update tb_board"
+					+ " set title = ?"
+					+ " , content = ?"
+					+ " where bd_idx = ?";
+			
+			pstm = conn.prepareStatement(query);
+			
+			pstm.setString(1, board.getTitle());
+			pstm.setString(2, board.getContent());
+			pstm.setInt(3, board.getBdIdx());
+			
+			pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.SM01,e);
+		}finally {
+			jdt.close(pstm);
+		}
+	}
+	
+	public List<Board> selectBoardInfo(Connection conn){
+		List<Board> bList = new ArrayList<Board>();
+		Board board = null;
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+		
+		
+		try {
+			String query = "select bd_idx,title,user_id,reg_date,count from tb_board "
+					+ "order by reg_date desc";
+			pstm = conn.prepareStatement(query);
+			rset =  pstm.executeQuery();
+			while(rset.next()) {
+				board = new Board();
+				board.setBdIdx(rset.getInt("bd_idx"));
+				board.setTitle(rset.getString("title")); 
+				board.setUserId(rset.getString("user_id"));
+				board.setRegDate(rset.getDate("reg_date"));
+				board.setCount(rset.getInt("count"));
+				bList.add(board);
+			}
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01, e);
+		}finally {
+			jdt.close(rset,pstm);
+		}
+		return bList;
+		
+	}
+	
+	public Board selectByIdx(Connection conn, int idx) {
+		Board board = null;
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+			
+		try {
+			String query = "select * from tb_board where bd_idx = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setInt(1, idx);
+			rset = pstm.executeQuery();
+			
+			if(rset.next()) {
+				board = new Board();
+				board.setUserId(rset.getString("user_id"));
+				board.setTitle(rset.getString("title")); 
+				board.setRegDate(rset.getDate("reg_date"));
+				board.setField(rset.getString("field")); 
+				board.setContent(rset.getString("content")); 
+			}
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01, e);
+		}finally {
+			jdt.close(rset,pstm);
+		}
+		return board;
 	}
 }

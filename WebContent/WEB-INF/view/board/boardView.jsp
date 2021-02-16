@@ -38,7 +38,6 @@
       		<tr>
       			<th class="text-center">번호</th>
       			<th class="text-center">제목</th>
-      			<th class="text-center">내용</th>
       			<th class="text-center">작성자</th>
       			<th class="text-center">날짜</th>
       			<th class="text-center">조회수</th>
@@ -46,20 +45,18 @@
       	</thead>
      
       	<tbody>
-      	
-      	<% for(int i=0; i<5; i++){ %>
+
+      		<c:forEach var="i" begin="0" end="${fn:length(bInfo)-1}" step="1">
+  		 		<tr onclick="location.href='board/boardDetail?idx=${bInfo[i].bdIdx}'">
+	      			<td class="text-center">${bInfo[i].bdIdx}</td>
+	      			<td class="text-center">${bInfo[i].title}</td>
+	      			<td class="text-center">${bInfo[i].userId}</td>
+	      			<td class="text-center">${bInfo[i].regDate}</td>
+	      			<td class="text-center">${bInfo[i].count}</td>
+      			</tr>
+      		</c:forEach>
+     
       		
-      		<tr onclick="location.href='board/boardDetail'">
-      			<td class="text-center">${data.board.bdIdx}</td>
-      			<td class="text-center">${data.board.title}</td>
-      			<td class="text-center">${data.board.content}</td>
-      			<td class="text-center">${data.board.userId}</td>
-      			<td class="text-center">${data.board.regDate}</td>
-      			<td class="text-center">${data.board.count}</td>
-      		</tr>
-      		
-      		
-      		<% } %>
       	</tbody>
       </table>
       <hr>

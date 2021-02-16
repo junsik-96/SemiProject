@@ -1,11 +1,21 @@
 package semiproject.shy.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import semiproject.calendar.model.service.CalendarService;
+import semiproject.calendar.model.vo.Calendar;
+import semiproject.member.model.vo.Member;
+import semiproject.shy.model.service.CounsMypageService;
+import semiproject.shy.model.vo.CounsReview;
+import semiproject.shy.model.vo.Review;
+
 
 /**
  * Servlet implementation class ShyController
@@ -13,6 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/shy/*")
 public class ShyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	CounsMypageService counsService = new CounsMypageService();
+	CalendarService calService = new CalendarService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -108,18 +120,45 @@ public class ShyController extends HttpServlet {
 	
 	private void listMypageReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/view/review/listMypageReview.jsp")
+		
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String listId = member.getUserId();
+		
+		ArrayList<Review> reviewList = counsService.selectReviewList(listId);
+		
+		request.setAttribute("reviewList", reviewList);
+		
+		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/listMypageReview.jsp")
 		.forward(request, response);
 	}
 	
 	private void resConfirm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String listId = member.getUserId();
+		
+		ArrayList<Calendar> resList = calService.selectResDetail(listId);
+		
+		request.setAttribute("resList", resList);
+		
 		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/resConfirm.jsp")
 		.forward(request, response);
 	}
 	
 	private void counsReview(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String listId = member.getUserId();
+
+		ArrayList<CounsReview> counsList = counsService.selectCounsList(listId);
+		
+		request.setAttribute("counsList", counsList);
+		System.out.println(counsList.toString());
+
 		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/counsReview.jsp")
 		.forward(request, response);
 	}
@@ -132,6 +171,15 @@ public class ShyController extends HttpServlet {
 	
 	private void mySchedule(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String listId = member.getUserId();
+		
+		ArrayList<Calendar> calendarArr = calService.selectResDetail(listId);
+		
+		request.setAttribute("calendarArr", calendarArr);
+		
+		
 		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/mySchedule.jsp")
 		.forward(request, response);
 	}

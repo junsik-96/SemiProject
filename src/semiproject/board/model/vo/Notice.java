@@ -9,6 +9,7 @@ public class Notice {
 	private String content;
 	private int count;
 	private Date regDate;
+	private String title;
 	
 	public int getnIdx() {
 		return nIdx;
@@ -44,14 +45,20 @@ public class Notice {
 	}
 	
 	
-	public Notice(int nIdx, String userId, String content, int count, Date regDate) {
-		super();
-		this.nIdx = nIdx;
-		this.userId = userId;
-		this.content = content;
-		this.count = count;
-		this.regDate = regDate;
+	
+	public String getTitle() {
+		return title;
 	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	@Override
+	public String toString() {
+		return "Notice [nIdx=" + nIdx + ", userId=" + userId + ", content=" + content + ", count=" + count
+				+ ", regDate=" + regDate + ", title=" + title + "]";
+	}
+
+	
 	
 	
 	

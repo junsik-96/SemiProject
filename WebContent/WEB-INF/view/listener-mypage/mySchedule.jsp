@@ -53,15 +53,16 @@
   <div class="container">
 
     <!-- 페이지 제목 -->
-    <h1 class="mt-4 mb-3">상담사
-      <small>예약스케줄 확인</small>
+    <h1 class="mt-4 mb-3">예약스케줄
+      <small></small>
     </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index">Home</a>
       </li>
-       <li class="breadcrumb-item active"><a href="/shy/myPageMain">마이페이지</a></li>
+       <li class="breadcrumb-item active"><a href="/shy/myPageMain">Mypage</a></li>
+       <li class="breadcrumb-item active">예약스케줄</li>
     </ol>
     
    	

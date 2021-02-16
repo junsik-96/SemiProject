@@ -23,7 +23,7 @@
 
 <body>
   
-  <h1>고객센터 페이지</h1>
+  <div style="min-height: 600px;"></div>
   
    <!-- Footer -->
   <footer class="py-5 bg-dark">

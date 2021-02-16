@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import semiproject.calendar.model.dao.CalendarDao;
 import semiproject.calendar.model.vo.Calendar;
 import semiproject.common.template.JDBCTemplate;
+import semiproject.reservation.model.vo.Reservation;
 
 public class CalendarService {
 
@@ -13,18 +14,18 @@ public class CalendarService {
 		CalendarDao calendarDao = new CalendarDao();
 		
 		// 상담사 >> 예약
-		public ArrayList<Calendar> selectResDetail(String resListId){
+		public ArrayList<Calendar> selectResDetail(String listId){
 			Connection conn = jdt.getConnection();
 			
-			ArrayList<Calendar> calendarArr = null;
+			ArrayList<Calendar> resList = null;
 			
 			try {
-				calendarArr = calendarDao.selectResDetail(conn, resListId);
+				resList = calendarDao.selectResDetail(conn, listId);
 			} finally {
 				jdt.close(conn);
 			}
 			
-			return calendarArr;
+			return resList;
 		}
 		
 		

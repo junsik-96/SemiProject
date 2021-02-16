@@ -1,6 +1,7 @@
 package semiproject.board.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -64,14 +65,26 @@ public class BoardController extends HttpServlet {
 	}
 	
 	private void boardView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<Board> bList = null;
+		bList = boardService.selectBoardInfo();
+		System.out.println(bList);
+		request.setAttribute("bInfo", bList);
+		 
 		request.getRequestDispatcher("/WEB-INF/view/board/boardView.jsp")
 		.forward(request, response);
 	}
 	
 	private void boardDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String bdIdx = request.getParameter("bdIdx");
-		Map<String,Object> commandMap = boardService.selectBoardDetail(bdIdx);
-		request.setAttribute("data", commandMap);
+		/*
+		 * String a = request.getParameter("bdIdx"); int bdIdx = Integer.parseInt(a);
+		 * Map<String,Object> commandMap = boardService.selectBoardDetail(bdIdx);
+		 * request.setAttribute("data", commandMap);
+		 */
+		String a = request.getParameter("idx"); 
+		int bdIdx = Integer.parseInt(a);
+		Board board = boardService.selectByIdx(bdIdx);
+		request.setAttribute("bDetail", board); 
 		
 		request.getRequestDispatcher("/WEB-INF/view/board/boardDetail.jsp")
 		.forward(request, response);
@@ -85,13 +98,21 @@ public class BoardController extends HttpServlet {
 	
 	private void uploadBoard(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		Member member = (Member) session.getAttribute("user");
-		System.out.println(member); 
+		
+		  HttpSession session = request.getSession(); 
+		  Member member = (Member) session.getAttribute("user");
+		  System.out.println(member);
 		boardService.insertBoard(member.getUserId(), request);
 		
-		request.setAttribute("alertMsg", "게시글 등록이 정상적으로 완료되었습니다.");
-		request.setAttribute("url", "/board");
+		 request.setAttribute("alertMsg", "게시글 등록이 정상적으로 완료되었습니다.");
+		 request.setAttribute("url", "/board");
+
+		List<Board> bList = null;
+		bList = boardService.selectBoardInfo();
+		System.out.println(bList);
+		request.setAttribute("bInfo", bList);
+		 
+		
 		request.getRequestDispatcher("/WEB-INF/view/board/boardView.jsp")
 		.forward(request, response);
 	}

@@ -10,8 +10,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>게시판</title>
-
   <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,7 +28,7 @@
 
 
 
-	 <h1 class="mt-4 mb-3">Booking</h1>
+	 <h1 class="mt-4 mb-3">Reservation</h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item active">상담 예약취소 
@@ -41,7 +39,8 @@
    
 	<br>
 	<br>
-	<p style="text-align: center;">예약했던 정보 불러오기</p>
+	<p style="text-align: center;">상담사 이름 : ${resById.listName}<label></label></p>
+	<p style="text-align: center;">상담 가격 : ${resById.listAmt}<label></label></p>
 <br>
 <p style="text-align: center;"> 
 <br><br>
@@ -52,6 +51,15 @@
 	<br>
 	
 	
+	
+	<script type="text/javascript">
+  
+  function reservation(){
+	  alert('예약 취소되었습니다');
+	  location.href="/payment/view?id=${resById.listId}";  
+  }
+  
+  </script>
 	
 	
 	

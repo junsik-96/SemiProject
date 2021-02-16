@@ -48,7 +48,7 @@
           </div>
           <div class="controls">
 								<label>주 고민분야</label>
-                  				<select name="concern" class="form-control">
+                  				<select name="field" class="form-control">
                   					<option value="선택안함" selected>선택안함</option>
 				                    <option value="우울/불안">우울/불안</option>
 				                    <option value="가족/부부">가족/부부</option>

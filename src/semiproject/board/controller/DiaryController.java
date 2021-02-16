@@ -1,6 +1,9 @@
 package semiproject.board.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 
 import semiproject.board.model.service.DiaryService;
+import semiproject.board.model.vo.Diary;
+import semiproject.board.model.vo.Notice;
 import semiproject.member.model.vo.Member;
 
 /**
@@ -55,13 +60,25 @@ public class DiaryController extends HttpServlet {
 	}
 	
 	private void diary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute("user");
+		
+		List<Diary> dList = null;
+		dList = diaryService.selectDiaryList(member.getUserId());
+		request.setAttribute("dInfo", dList);
+		
 		request.getRequestDispatcher("/WEB-INF/view/diary/diary.jsp")
 		.forward(request, response);
 	}
 	
 	private void diaryDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String a = request.getParameter("idx"); 
+		int drIdx = Integer.parseInt(a);
+		Diary diary = diaryService.selectByIdx(drIdx);
+		request.setAttribute("dDetail", diary); 
+		
 		request.getRequestDispatcher("/WEB-INF/view/diary/diaryDetail.jsp")
 		.forward(request, response);
 	}
@@ -76,12 +93,18 @@ public class DiaryController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("user");
-		System.out.println(member); 
-		diaryService.insertDiary(member.getUserId(), request);
 		
-		request.setAttribute("alertMsg", "게시글 등록이 정상적으로 완료되었습니다.");
-		request.setAttribute("url", "/diary");
-		request.getRequestDispatcher("/WEB-INF/view/diary/diaryView.jsp")
+		  System.out.println(member); 
+		  diaryService.insertDiary(member.getUserId(),request);
+		  
+		  request.setAttribute("alertMsg", "게시글 등록이 정상적으로 완료되었습니다.");
+		  request.setAttribute("url", "/diary");
+		  
+		  List<Diary> dList = null;
+			dList = diaryService.selectDiaryList(member.getUserId());
+			request.setAttribute("dInfo", dList);
+		 
+		request.getRequestDispatcher("/WEB-INF/view/diary/diary.jsp")
 		.forward(request, response);
 	}
 

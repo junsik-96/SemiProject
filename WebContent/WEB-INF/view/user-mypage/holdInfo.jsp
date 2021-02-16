@@ -73,12 +73,14 @@
 		          <div class="col-lg-6">
 		            <h2 class="card-title">${listener.listId}</h2>
 		            <p class="card-text">${listener.listPro}</p>
-		            <a href="#" class="btn btn-primary">바로 가기 &rarr;</a>
+		            <a href="/listener/profile?id=${listener.listId}" class="btn btn-primary">바로 가기 &rarr;</a>
+		            <a href="/member/holdDelete?listId=${listener.listId}" class="btn btn-primary" style="margin-top: 5%">삭제하기</a>
 		          </div>
 		        </div>
 		      </div>
 		      <div class="card-footer text-muted">
 		       	상담가격 : ${listener.listAmt} / 추천 수 : ${listener.listLikely}
+		       	
 		      </div>
 		     </div>
 	     </c:forEach>
@@ -118,46 +120,6 @@
   <!-- Bootstrap core JavaScript -->
   <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-  <script type="text/javascript">
-		let login = () => {
-			
-			const url = '/member/loginimpl';
-			
-			let params = {};
-			params.id = id.value;
-			params.pw = pw.value;
-			
-			//post방식으로 진행
-			//헤더 설정
-			let headerObj = new Headers();
-			//form태그의 기본 content 타입인 application/x-www-form-urlencoded로
-			//content-type을 맞춰야 서버에서 편하게 getParameter로 사용할 수 있다.
-			//name=value&name=value
-			headerObj.append("content-type","application/x-www-form-urlencoded");
-			fetch(url,{
-				method : "POST",
-				headers : headerObj,
-				body : "data=" + JSON.stringify(params)
-			}).then(response => {
-				//200번대 응답코드라면
-				if(response.ok){
-					return response.text();
-				}else{
-					throw new AsyncResponseError(response.text());
-				}
-			}).then(text => {
-				if(text == 'fail'){
-					document.querySelector('#success').innerHTML = '아이디나 비밀번호를 확인하세요';
-				}else if(text == 'success'){
-					location.href = "/index";
-					//document.querySelector('html').innerHTML = text;
-				}
-			}).catch((error)=>{
-				error.alertMessage();
-			})
-		}
-	</script>
 
 </body>
 </html>

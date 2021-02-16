@@ -62,7 +62,7 @@
 <br>
 
 <p>&nbsp;</p>
-<!-- Intro Content -->
+
 <div class="row">
 <div class="col-lg-6"><img id="i" class="img-fluid rounded mb-4" style="display: block; margin-left: auto; margin-right: auto;" src="http://placehold.it/200x200" alt="" /></div>
 <div class="col-lg-6" style="text-align: center;">
@@ -71,20 +71,22 @@
 <h4 style="text-align: center;">결제 금액 : ${payById.listAmt}</h4>
 <h4 style="text-align: center;">예약 날자 : ${param.day}</h4>
 <h4 style="text-align: center;">예약 시간 : ${param.time}</h4>
-<p style="text-align: center;">결제정보 담아오기</p>
 <br /><br /><br /><br /><br /></div>
 </div>
 <!-- /.row --><hr />
-<div class="cart" style="text-aligan: left;">
+<!-- <!-- <div class="cart" style="text-aligan: left;">
 <h2 class="total">Total</h2>
 </div>
 <p>&nbsp;</p>
-<div class="cart" style="text-align: center;"><label class="won">₩</label></div>
+<<<<<<< HEAD
+<div class="cart" style="text-align: center;"><label class="won">₩</label></div> --> -->
+=======
+<div class="cart" style="text-align: center;"><label class="won">${payById.listAmt}₩</label></div>
+>>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject.git
 <p><br /><br /></p>
 <div class="pay" style="text-align: right;"><button id="sendMessageButton" class="btnnn" type="submit" onclick="pay();">결제하기</button></div>
 <p><br /><br /></p>
 <p><br /><br /><br /></p>
-  
 
 
  <!-- Footer -->
@@ -102,9 +104,9 @@
     </div>
   </footer>
   
- <script type="text/javascript">
- 
 
+<<<<<<< HEAD
+=======
  
  
 	function pay(){
@@ -113,17 +115,17 @@
 		 IMP.request_pay({
 			    pg: "html5_inicis",
 			    pay_method: "card",
-			    /* 비동기로 유니크값 만들기 */
 			    merchant_uid: 'merchant_'+ new Date().getTime(),
 			    name: "${payById.listName} 상담",
-			    amount: ${payById.listAmt},
+			    amount: /* ${payById.listAmt} */ 100,
 			    buyer_email: "12",
 			    buyer_name: "${sessionScope.user.name}",
-			    buyer_tel: "12"
+			    buyer_tel: "${sessionScope.user.tel}"
 			  }, function (rsp) {
 			    if (rsp.success) { 
 			    	// 결제정보를 뿌리기 위한 키값
-					alert(rsp.imp_uid);
+					alert('결제가 완료되었습니다.');
+			    	location.href = '/member/payment?list=${payById.listId}';
 			    } else {
 
 			    }
@@ -131,6 +133,7 @@
 	}
  
  </script>
+>>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject.git
   
 
    <!-- Bootstrap core JavaScript -->

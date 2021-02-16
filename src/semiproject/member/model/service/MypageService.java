@@ -3,9 +3,13 @@ package semiproject.member.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import semiproject.common.exception.DataAccessException;
+import semiproject.common.exception.ToAlertException;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.dao.MypageDao;
+import semiproject.member.model.vo.Cart;
+import semiproject.member.model.vo.Likey;
 import semiproject.payment.model.vo.Payment;
 import semiproject.reservation.model.vo.Reservation;
 
@@ -73,6 +77,75 @@ public class MypageService {
 		}
 		
 		return payArr;
+	}
+	
+	//찜목록 추가
+	public int insertHold(Cart cart) {
+		Connection conn = jdt.getConnection();
+		int res = 0;
+
+		try {
+			 res = mypageDao.insertHold(conn, cart);
+			jdt.commit(conn);
+		}catch(DataAccessException e) {
+			jdt.rollback(conn);
+			throw new ToAlertException(e.error);
+		}finally {
+			jdt.close(conn);
+		}
+		
+		return res;
+	}
+	
+	//찜목록 삭제
+	public int DeleteHold(Cart cart) {
+		Connection conn = jdt.getConnection();
+		int res = 0;
+
+		try {
+			 res = mypageDao.DeleteHold(conn, cart);
+			jdt.commit(conn);
+		}catch(DataAccessException e) {
+			jdt.rollback(conn);
+			throw new ToAlertException(e.error);
+		}finally {
+			jdt.close(conn);
+		}
+		
+		return res;
+	}
+	
+	//추천
+	public int likey(Likey likey) {
+		Connection conn = jdt.getConnection();
+		int res = 0;
+
+		try {
+			 res = mypageDao.likey(conn, likey);
+			jdt.commit(conn);
+		}catch(DataAccessException e) {
+			jdt.rollback(conn);
+			throw new ToAlertException(e.error);
+		}finally {
+			jdt.close(conn);
+		}
+		
+		return res;
+	}
+	
+	public void addLikey(String listId) {
+		Connection conn = jdt.getConnection();
+
+		try {
+			 mypageDao.addLikey(conn, listId);
+			jdt.commit(conn);
+		}catch(DataAccessException e) {
+			jdt.rollback(conn);
+			throw new ToAlertException(e.error);
+		}finally {
+			jdt.close(conn);
+		}
+
 	}
 
 }

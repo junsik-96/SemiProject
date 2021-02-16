@@ -10,15 +10,16 @@ import semiproject.calendar.model.vo.Calendar;
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
+import semiproject.reservation.model.vo.Reservation;
 
 public class CalendarDao {
 
 	JDBCTemplate jdt = JDBCTemplate.getInstance();
 	
 	// 상담사 >> 예약받은리스트 >> 캘린더로
-	public ArrayList<Calendar> selectResDetail(Connection conn, String resListId){
+	public ArrayList<Calendar> selectResDetail(Connection conn, String listId){
 		
-		ArrayList<Calendar> calendarArr = new ArrayList<>();
+		ArrayList<Calendar> resList = new ArrayList<>();
 		PreparedStatement pstm = null;
 		ResultSet rset = null;
 		
@@ -26,7 +27,7 @@ public class CalendarDao {
 			String query = "select * from tb_reservation where res_list_id = ?";
 			
 			pstm = conn.prepareStatement(query);
-			pstm.setString(1, resListId);
+			pstm.setString(1, listId);
 			rset = pstm.executeQuery();
 			
 			while(rset.next()) {
@@ -35,7 +36,7 @@ public class CalendarDao {
 				calendar.setResUserId(rset.getString("res_user_id"));
 				calendar.setResDate(rset.getString("res_date"));
 				
-				calendarArr.add(calendar);
+				resList.add(calendar);
 			}
 		} catch (SQLException e){
 			throw new DataAccessException(ErrorCode.SM01,e);
@@ -43,7 +44,7 @@ public class CalendarDao {
 			jdt.close(rset, pstm);
 		}
 		
-		return calendarArr;
+		return resList;
 	}
 	
 	

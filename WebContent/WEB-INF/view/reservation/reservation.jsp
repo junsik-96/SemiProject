@@ -10,7 +10,6 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>게시판</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +27,7 @@
 
 
 
-	 <h1 class="mt-4 mb-3">Booking</h1>
+	 <h1 class="mt-4 mb-3">Reservation</h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item active">상담 예약하기  	
