@@ -37,21 +37,21 @@
       		</tr>	
       	</thead>
       	<tbody>
-      		<tr onclick="location.href='diaryList'">     			
+      		<tr onclick="location.href='diary/diaryDetail'">     			
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
       			<td class="text-center">2021.02.03</td>     			
       		</tr>
       		
-      		<tr onclick="location.href='diaryList'">
+      		<tr onclick="location.href='diary/diaryDetail'">
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
       			<td class="text-center">2021.02.03</td>
       		</tr>
       		
-      		<tr onclick="location.href='diaryList'">
+      		<tr onclick="location.href='diary/diaryDetail'">
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
@@ -62,7 +62,7 @@
       <hr>
       <br>
 
-      <a style="justify-content:flex-end;" href="/shy/board/diaryForm" onclick='fn_write()' class="btn btn-primary">글쓰기</a>
+      <a style="justify-content:flex-end;" href="/diary/diaryForm" onclick='fn_write()' class="btn btn-primary">글쓰기</a>
 
 <ul class="pagination" style="justify-content:center;">
     <li class="page-item"><a class="page-link" href="#">Previous</a></li>

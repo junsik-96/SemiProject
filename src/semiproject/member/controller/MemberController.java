@@ -17,6 +17,7 @@ import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.service.MemberService;
 import semiproject.member.model.service.MypageService;
 import semiproject.member.model.vo.Member;
+import semiproject.payment.model.vo.Payment;
 import semiproject.reservation.model.vo.Reservation;
 
 /**
@@ -47,7 +48,7 @@ public class MemberController extends HttpServlet {
 		switch(uriArr[uriArr.length - 1]) {
 			case "login" : login(request,response); //로그인
 				break;
-			case "KakaoLogin" : kakaoLogin(request,response);
+			case "KakaoLogin" : kakaoLogin(request,response); //카카오 로그인
 				break;
 			case "loginimpl" : loginImpl(request, response);
 				break;
@@ -153,17 +154,23 @@ public class MemberController extends HttpServlet {
 		String password = (String) jsonMap.get("pw");
 		
 		Member member = memberService.memberAuthenticate(userId, password);
+		Listener listener = memberService.listIsTrueCheck(userId);
+		
+		if(member.getUserType().equals("상담사")) {
+			request.getSession().setAttribute("listTrue", listener.getListIsTrue());	
+		}
 		
 		if(member != null) {
 			//session에 회원 정보를 저장
 			request.getSession().setAttribute("user", member);
 			request.getSession().setAttribute("listId", member.getUserId());
-			request.getSession().setAttribute("userType", member.getUserType()); 
+			request.getSession().setAttribute("userType", member.getUserType());
+			request.getSession().setAttribute("listType", member.getListType());
+			request.getSession().setAttribute("concern", member.getConcern());
 			response.getWriter().print("success");
 		}else {
 			response.getWriter().print("fail");
 		}
-		
 	}
 	
 	
@@ -243,6 +250,7 @@ public class MemberController extends HttpServlet {
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("userType");
 		response.sendRedirect("/index");
 	}
 	
@@ -309,7 +317,7 @@ public class MemberController extends HttpServlet {
 		String userId = member.getUserId();
 		
 		ArrayList<Reservation> reservationArr = mypageService.selectReservationById(userId);
-		
+
 		request.setAttribute("reservationArr", reservationArr);
 		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/reservationInfo.jsp")
@@ -318,6 +326,23 @@ public class MemberController extends HttpServlet {
 	
 	private void paymentInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		String userId = member.getUserId();
+		
+		ArrayList<Reservation> reservationArr = mypageService.selectReservationById(userId);
+		ArrayList<Payment> paymentArr = new ArrayList<>();
+		
+		if(reservationArr.size()!=0) {
+			for(int i = 0; i < reservationArr.size(); i++) {
+				for(int j = 0; j < mypageService.selectPayment(reservationArr.get(i).getResIdx()).size(); j++) {
+					paymentArr.add(mypageService.selectPayment(reservationArr.get(i).getResIdx()).get(j));
+				}
+			}
+		}
+
+		request.setAttribute("paymentArr", paymentArr);
+		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/paymentInfo.jsp")
 		.forward(request, response);
 	}
@@ -327,5 +352,6 @@ public class MemberController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/myBoard.jsp")
 		.forward(request, response);
 	}
-
+	
+	
 }

@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import semiproject.listener.model.vo.Listener;
+import semiproject.member.model.vo.Member;
 import semiproject.index.model.service.IndexService;
 
 /**
@@ -59,6 +61,21 @@ public class IndexController extends HttpServlet {
 		request.setAttribute("rankReg3", listenerListReg3);
 		List<Listener> listenerListReg4 = indexService.selectByRegDate(4);
 		request.setAttribute("rankReg4", listenerListReg4);
+		
+		HttpSession session = request.getSession();
+		String type = (String) session.getAttribute("listType");
+		String concern = (String) session.getAttribute("concern");
+		
+		Listener listener = new Listener();
+		
+		listener.setListField(concern);
+		listener.setType(type);
+		String listId = listener.getListId(); 
+		
+		List<Listener> listComm1 = indexService.selectLisByComm(listener);
+		request.setAttribute("comm1", listComm1);
+		System.out.println("asd :" + listener);
+		System.out.println("id : " + listId);
 		
 		request.getRequestDispatcher("/WEB-INF/view/index/index.jsp")
 		.forward(request, response); 

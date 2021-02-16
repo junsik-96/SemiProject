@@ -10,6 +10,7 @@ import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.vo.Listener;
+import semiproject.payment.model.vo.Payment;
 import semiproject.reservation.model.vo.Reservation;
 
 public class MypageDao {
@@ -99,7 +100,7 @@ public class MypageDao {
 		
 		try {
 			
-			String query = "select * from tb_reservation where user_id = ?";
+			String query = "select * from tb_reservation where res_user_id = ?";
 
 			pstm = conn.prepareStatement(query);
 			
@@ -115,7 +116,7 @@ public class MypageDao {
 				reservation.setResDate(rset.getDate("res_date"));
 				reservation.setResState(rset.getString("res_state"));
 				reservation.setResAmt(rset.getInt("res_amt"));
-				reservation.setResConsult(rset.getDate("res_consult"));
+
 				reservationArr.add(reservation);
 			}
 		//SQLException : db와 통신 중에 발생하는 모든 예외를 담당하는 Exception	
@@ -128,4 +129,42 @@ public class MypageDao {
 		return reservationArr;
 		
 	}
+	
+	//결제 내역
+	public ArrayList<Payment> selectPayment(Connection conn, int resIdx) {
+		
+		ArrayList<Payment> payArr = new ArrayList<>();
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+		
+		try {
+			
+			String query = "select * from tb_payment where res_idx = ?";
+
+			pstm = conn.prepareStatement(query);
+			
+			pstm.setInt(1, resIdx);
+
+			rset = pstm.executeQuery();
+			
+			while(rset.next()) {
+				Payment payment = new Payment();
+				payment.setRes_idx(rset.getInt("res_idx"));
+				payment.setPm_idx(rset.getInt("pm_idx"));
+				payment.setPm_state(rset.getString("pm_state"));
+				payment.setPm_date(rset.getDate("pm_date"));
+				payment.setAmount(rset.getInt("amount"));
+				payArr.add(payment);
+			}
+		//SQLException : db와 통신 중에 발생하는 모든 예외를 담당하는 Exception	
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.SM02,e);
+		} finally {
+			jdt.close(rset, pstm);
+		}
+		
+		return payArr;
+		
+	}
+	
 }

@@ -48,7 +48,7 @@
     
 	<div><%=name%></div>
 	
-	<form action="${context}/listener/findlist">
+	<form id="check_form" action="${context}/listener/findlist">
 		
 		<div class="check_info">
 			<div style="font-size: 13px;"> *원하시는 항목을 선택하여 주세요. (중복선택 가능)</div>
@@ -59,9 +59,9 @@
 			<div class="sector_lis">상담사 유형</div>
 			<div class="box_list">
 			 	<ul class="sector_li">
-			 		<li><input type="checkbox" name="job" value="전문가">전문의</li>
-			 		<li><input type="checkbox" name="job" value="의사">의사</li>
-			 		<li><input type="checkbox" name="job" value="대학생">대학생</li>
+			 		<li><input type="checkbox" id="job1" name="job" value="전문가">전문의</li>
+			 		<li><input type="checkbox" id="job2" name="job" value="의사">의사</li>
+			 		<li><input type="checkbox" id="job3" name="job" value="대학생">대학생</li>			
 			 	</ul>
 			</div>
 		</div>
@@ -70,8 +70,8 @@
 		<div class="sector_lis">상담사 성별</div>
 		<div class="box_list">
 		 	<ul class="sector_li">
-		 		<li><input type="checkbox" id="gender" name="gender" value="여자">여성</li>
-		 		<li><input type="checkbox" id="gender" name="gender" value="남자">남성</li>
+		 		<li><input type="checkbox" id="gender1" name="gender" value="여자">여성</li>
+		 		<li><input type="checkbox" id="gender2" name="gender" value="남자">남성</li>
 		 	</ul>
 		</div>
 		</div>
@@ -80,11 +80,11 @@
 		<div class="sector_lis">상담사 나이</div>
 		<div class="box_list">
 		 	<ul class="sector_li">
-		 		<li><input type="checkbox" id="age" name="age" value="20">20대</li>
-		 		<li><input type="checkbox" id="age" name="age" value="30">30대</li>
-		 		<li><input type="checkbox" id="age" name="age" value="40">40대</li>
-		 		<li><input type="checkbox" id="age" name="age" value="50">50대</li>
-		 		<li><input type="checkbox" id="age" name="age" value="60">60대</li>
+		 		<li><input type="checkbox" id="age1" name="age" value="20">20대</li>
+		 		<li><input type="checkbox" id="age2" name="age" value="30">30대</li>
+		 		<li><input type="checkbox" id="age3" name="age" value="40">40대</li>
+		 		<li><input type="checkbox" id="age4" name="age" value="50">50대</li>
+		 		<li><input type="checkbox" id="age5" name="age" value="60">60대</li>
 		 	</ul>
 		</div>
 		</div>
@@ -93,10 +93,10 @@
 			<div class="sector_lis">가격</div>
 			<div class="box_list">
 			 	<ul class="sector_li">
-			 		<li><input type="checkbox" name="price" value="0">무료</li>
-			 		<li><input type="checkbox" name="price" value="10000">10,000원 미만</li>
-			 		<li><input type="checkbox" name="price" value="30000">30,000원 미만</li>
-			 		<li><input type="checkbox" name="price" value="999999">상관없음</li>
+			 		<li><input type="checkbox" class="price1" id="price_self" name="price" value="0" onclick="priceSelf()">무료</li>
+			 		<li><input type="checkbox" class="price2" id="price" name="price" value="29999" onclick="priceAllCancel()">1 ~ 29,900원</li>
+			 		<!-- <li><input type="checkbox" class="price3" id="price" name="price" value="39999" onclick="priceAllCancel()">20,000 ~ 39,900원</li> -->
+			 		<li><input type="checkbox" class="price4" id="price_all" name="price" value="999999" onclick="priceAll()">상관없음</li>
 			 	</ul>
 			</div>
 		</div>
@@ -105,20 +105,20 @@
 			<div class="sector_lis">분야</div>
 			<div class="box_list">
 			 	<ul class="sector_li">
-			 		<li><input type="checkbox" name="sector" value="우울/불안">우울/불안</li>
-			 		<li><input type="checkbox" name="sector" value="가족/부부">가족/부부</li>
-			 		<li><input type="checkbox" name="sector" value="산후/육아">산후/육아</li>
-			 		<li><input type="checkbox" name="sector" value="대인관계">대인관계</li>
-			 		<li><input type="checkbox" name="sector" value="폭력/성폭력">폭력/성폭력</li>
-			 		<li><input type="checkbox" name="sector" value="성적/취업">성적/취업</li>
-			 		<li><input type="checkbox" name="sector" value="건강">건강</li>
-			 		<li><input type="checkbox" name="sector" value="기타">기타</li>
+			 		<li><input type="checkbox" id="field1" name="sector" value="우울/불안">우울/불안</li>
+			 		<li><input type="checkbox" id="field2" name="sector" value="가족/부부">가족/부부</li>
+			 		<li><input type="checkbox" id="field3" name="sector" value="산후/육아">산후/육아</li>
+			 		<li><input type="checkbox" id="field4" name="sector" value="대인관계">대인관계</li>
+			 		<li><input type="checkbox" id="field5" name="sector" value="폭력/성폭력">폭력/성폭력</li>
+			 		<li><input type="checkbox" id="field6" name="sector" value="성적/취업">성적/취업</li>
+			 		<li><input type="checkbox" id="field7" name="sector" value="건강">건강</li>
+			 		<li><input type="checkbox" id="field8" name="sector" value="기타">기타</li>
 			 	</ul>
 			</div>
 		</div>
 		</div>	
 		<button type="button" class="btn_search_clear" style="width: 70px" onclick="del()">초기화</button>
-		<button type="submit" class="btn_search_lis" style="width: 70px">검색</button>
+		<button type="button" class="btn_search_lis" style="width: 70px">검색</button>
  	</form>
  	
  	
@@ -130,16 +130,18 @@
       			<c:forEach var="i" begin="0" end="${fn:length(result)-1}" step="1">
       			<div class="col-lg-4 col-sm-6 portfolio-item find_result">
 			        <div class="card h-100">
-			          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+			          <img class="card-img-top" src="http://placehold.it/700x400" alt="">
 			          <div class="card-body">
 		            <small class="card-title">
 		               이름 : ${result[i].listName}<br>
 		               번호 : ${result[i].listPhone}
 		            </small>
+		            <hr>
+		            <a href = "/listener/profile?id=${result[i].listId}" style="color:rgb(138, 43, 226)";>상담사 상세보기</a>
 		            <p class="card-text"></p>
 		          </div>
 		        </div>
-		      </div> 
+		      </div>
 		      </c:forEach>
       		</c:when>
       		<c:when test="${fn:length(checkLis) > 0}">
@@ -153,6 +155,8 @@
 		               번호 : ${checkLis[i].listPhone}<br>
 		           	   가격 : ${checkLis[i].listAmt} 
 		            </small>
+		            <hr>
+		            <a href = "/listener/profile?id=${checkLis[i].listId}" style="color:rgb(138, 43, 226)";>상담사 상세보기</a>
 		            <p class="card-text"></p>
 		          </div>
 		        </div>
@@ -222,6 +226,70 @@ function del(){
 }
 
 
+ 	document.addEventListener("DOMContentLoaded",function(){
+	    
+      $(".btn_search_lis").click(function(){    
+   		   if($("#job1").is(":checked") == false &&
+		      $("#job2").is(":checked") == false &&
+			  $("#job3").is(":checked") == false){
+  	              alert("상담을 희망하는 상담사의 유형을 선택해주세요.");
+   	              return;
+   	          }else if($("#gender1").is(":checked") == false &&
+   	        		   $("#gender2").is(":checked") == false){
+   	              alert("상담을 희망하는 상담사의 성별을 선택해주세요.");
+   	              return;
+   	          }else if($("#age1").is(":checked") == false &&
+   	        		   $("#age2").is(":checked") == false &&
+   	        		   $("#age3").is(":checked") == false &&
+   	        	   	   $("#age4").is(":checked") == false &&
+   	        		   $("#age5").is(":checked") == false){
+   	              alert("상담을 희망하는 상담사의 나이를 선택해주세요.");
+   	              return;
+   	          }else if($(".price1").is(":checked") == false &&
+   	        		   $(".price2").is(":checked") == false &&
+   	        		   $(".price3").is(":checked") == false &&
+   	        		   $(".price4").is(":checked") == false ){
+   	              alert("상담 가격을 선택해주세요.");
+   	              return;
+   	          }else if($("#field1").is(":checked") == false &&
+	   	        	   $("#field2").is(":checked") == false &&
+	   	        	   $("#field3").is(":checked") == false &&
+	   	        	   $("#field4").is(":checked") == false &&
+	   	        	   $("#field5").is(":checked") == false &&
+	   	        	   $("#field6").is(":checked") == false &&
+	   	        	   $("#field7").is(":checked") == false &&
+	   	        	   $("#field8").is(":checked") == false ){
+   	              alert("상담을 희망하는 상담사의 분야을 선택해주세요.");
+   	              return;
+   	          }else{
+   	              $("#check_form").submit();
+   	          }       
+      });    
+  }); 
+
+	function priceAll(){
+		if( $('#price_all').is(':checked')){
+			$("input[id=price]").prop("checked",false);
+			$("input[id=price_self]").prop("checked",false);
+		}
+	}
+	
+	function priceSelf(){
+		if( $('#price_self').is(':checked')){
+			$("input[id=price]").prop("checked",false);
+			$("input[id=price_all]").prop("checked",false);
+		}
+	}
+	
+	function priceAllCancel(){
+		if( 
+			$('.price2').is(':checked') ||
+			$('.price3').is(':checked')){
+			$("input[id=price_all]").prop("checked",false);
+			$("input[id=price_self]").prop("checked",false);
+		}
+	}
+	
 </script>
 
   <!-- Bootstrap core JavaScript -->

@@ -71,6 +71,16 @@ public class ListenerController extends HttpServlet {
 			break;
 		case "review" : review(request,response);
 			break;
+		case "profile" : profile(request,response);
+			break;
+		case "updateintroduce" : updateIntroduce(request,response);
+			break;
+		case "updateintroduceimpl" : updateIntroduceImpl(request,response);
+			break;
+		case "updateprofile" : updateProfile(request,response);
+			break;
+		case "updateprofileimpl" : updateProfileImpl(request,response);
+			break;
 		default : response.setStatus(404);
 		}
 		
@@ -110,7 +120,10 @@ public class ListenerController extends HttpServlet {
 		String listField = request.getParameter("lis_field");
 		String[] listJob = request.getParameterValues("list_job");
 		String listId = (String) session.getAttribute("listId");
-
+		String pro = request.getParameter("lis_pr");
+		String price1 = request.getParameter("price");
+		int price = Integer.parseInt(price1);
+		
 	
 		Listener listener = new Listener();
 		
@@ -122,13 +135,17 @@ public class ListenerController extends HttpServlet {
 		listener.setListField(listField);
 		listener.setListJob(listJob);
 		listener.setListId(listId);
+		listener.setListAmt(price);
+		listener.setListPro(pro);
+		listener.setListIsTrue("Y"); 
 	
 		System.out.println(listener.toString());
 		System.out.println(Arrays.toString(listLicense));
 		
 		listenerService.updateListener(listener);
 		request.setAttribute("url", "/index");
-		
+
+		request.getSession().setAttribute("listTrue", listener.getListIsTrue());	
 		request.getRequestDispatcher("/WEB-INF/view/common/result.jsp")
 		.forward(request, response);
 	}
@@ -246,5 +263,75 @@ public class ListenerController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/reviews.jsp")
 		.forward(request, response);
 	}
-
+	
+	private void profile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String listId = request.getParameter("id");
+		Listener listener = listenerService.selectLisById(listId);
+		request.setAttribute("listById", listener);
+		
+		
+		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/profile.jsp")
+		.forward(request, response);
+	}
+	
+	private void updateIntroduce(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/listener/updateIntroduce.jsp")
+		.forward(request, response);
+	}
+	
+	private void updateIntroduceImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Member member = (Member) request.getSession().getAttribute("user");
+		String name = request.getParameter("name");
+		String tel = request.getParameter("tel");
+		member.setName(name);
+		member.setTel(tel);
+		listenerService.updateListInfo(member);
+		request.setAttribute("msg", "회원 정보가 수정되었습니다.");
+		request.setAttribute("url", "/listener/mypage");
+		System.out.println(member);
+		request.getRequestDispatcher("/WEB-INF/view/common/result.jsp")
+		.forward(request, response);
+	}
+	
+	private void updateProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/WEB-INF/view/listener-mypage/updateprofile.jsp")
+		.forward(request, response);
+	}
+	
+	private void updateProfileImpl(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		String listId = (String) session.getAttribute("listId");
+		String pro = request.getParameter("lis_pr");
+		String price1 = request.getParameter("price");
+		int price = Integer.parseInt(price1);
+		String field = request.getParameter("lis_field");
+		String school = request.getParameter("choose_school");
+		String class1 = request.getParameter("choose_class");
+		String[] license = request.getParameterValues("list_licen");
+		String[] job = request.getParameterValues("list_job");
+		
+		Listener listener = new Listener();
+		
+		listener.setListSchool(school);
+		listener.setListClass(class1);
+		listener.setListLicense(license);
+		listener.setListField(field);
+		listener.setListJob(job);
+		listener.setListAmt(price);
+		listener.setListPro(pro);
+		listener.setListId(listId);
+		
+		listenerService.updateListProfile(listener);
+		
+		request.setAttribute("msg", "회원 정보가 수정되었습니다.");
+		request.setAttribute("url", "/listener/mypage");
+		
+		request.getRequestDispatcher("/WEB-INF/view/common/result.jsp")
+		.forward(request, response);
+	}
 }

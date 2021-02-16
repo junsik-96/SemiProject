@@ -70,6 +70,12 @@
 		<a class="go-to-reviews" href="/shy/listMypageReview">
 		<span style="color:navy"><i class="fas fa-address-card">  평가내역</i></span>
 		</a><br><br>
+		<a class="go-to-reviews" href="/listener/updateintroduce">
+		<span style="color:navy"><i class="fas fa-address-card">  정보 수정</i></span>
+		</a><br><br>
+		<a class="go-to-reviews" href="/listener/updateprofile">
+		<span style="color:navy"><i class="fas fa-address-card">  프로필 수정</i></span>
+		</a><br><br>
 	</div>
 	</div>	
 

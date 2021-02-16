@@ -37,33 +37,20 @@
     <div class="container">
       <div class="col-lg-8 mb-4">
         <h3>대나무숲 글쓰기</h3>
-        <form action="${context}/shy/board" method="post" 
+        <form action="${context}/board" method="post" 
         	 enctype="multipart/form-data" name="sentMessage" id="contactForm" novalidate>
           <div class="control-group form-group">
             <div class="controls">
               <label>제목:</label>
-              <input type="text" class="form-control" id="name" required data-validation-required-message="제목을 입력해주세요.">
+              <input type="text" name="title" class="form-control" id="name" required data-validation-required-message="제목을 입력해주세요.">
               <p class="help-block"></p>
             </div>
           </div>
-          <div class="control-group form-group">
-							<div class="controls">
-								<label>주 고민분야</label>
-                  				<select name="concern" class="form-control">
-                  					<option value="선택안함" selected>선택안함</option>
-				                    <option value="우울/불안">우울/불안</option>
-				                    <option value="가족/부부">가족/부부</option>
-				                    <option value="산후/육아">산후/육아</option>
-				                    <option value="대인관계">대인관계</option>
-				                    <option value="기타">기타</option>
-                  				</select>
-							</div>
-						</div>
-						
+          
           <div class="control-group form-group">
             <div class="controls">
               <label>글쓰기:</label>
-              <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="내용을 입력해주세요." maxlength="999" style="resize:none"></textarea>
+              <textarea rows="10" cols="100" name="content" class="form-control" id="message" required data-validation-required-message="내용을 입력해주세요." maxlength="999" style="resize:none"></textarea>
             </div>
           </div>
           <div id="success"></div>

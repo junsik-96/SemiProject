@@ -50,10 +50,11 @@
                     ${board.board_content}
                 </td>        
             </tr>
-           
-    
-           
+       
         </table>
+      
+        <input class="btn btn-primary" type="button" value="목록" onclick="javascript:location.href='/notice'">
+    
     </div>
 </div>    
       

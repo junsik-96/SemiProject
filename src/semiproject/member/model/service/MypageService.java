@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.dao.MypageDao;
+import semiproject.payment.model.vo.Payment;
 import semiproject.reservation.model.vo.Reservation;
 
 
@@ -57,6 +58,21 @@ public class MypageService {
 		}
 		
 		return reservationArr;
+	}
+	
+	//결제내역
+	public ArrayList<Payment> selectPayment(int resIdx) {
+		Connection conn = jdt.getConnection();
+		
+		ArrayList<Payment> payArr = new ArrayList<>();
+		
+		try {
+			payArr = mypageDao.selectPayment(conn, resIdx);
+		} finally {
+			jdt.close(conn);
+		}
+		
+		return payArr;
 	}
 
 }

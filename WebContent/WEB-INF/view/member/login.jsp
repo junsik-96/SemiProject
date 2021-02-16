@@ -45,7 +45,7 @@
     </ol>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="row" style="min-height: 500px;">
       <!-- Map Column -->
         <!-- Embedded Google Map -->
         <img src="../../resources/image/login.jpg" style="width: 50%; height: 50%">

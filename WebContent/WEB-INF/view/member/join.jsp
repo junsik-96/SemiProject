@@ -66,7 +66,7 @@
 	        <br>
 	        <a class="btn btn-primary" data-toggle="modal" href="#registerModal">회원가입</a>
 	        <a class="btn btn-primary" data-toggle="modal" style="margin-top: 2%; border: none; background-color: lightgrey; color: black" 
-	        onclick="location.href='/shy/listenerlist'">상담사 신청</a>
+	        onclick="lisAlert()">상담사 신청</a>
 	        <hr>
 	        <div style="text-align: right">
 	        	<label>이미 회원이신가요? |&nbsp;&nbsp;<a href="/member/login"><small>로그인 바로가기</small></a></label>
@@ -148,9 +148,9 @@
 								<label>선호 상담사 유형</label>
                   				<select name="listType" class="form-control">
 				                    <option value="선택안함" selected>선택안함</option>
-				                    <option value="전문상담사">전문상담사</option>
+				                    <option value="전문가">전문상담사</option>
 				                    <option value="의사">의사</option>
-				                    <option value="관련전공자">관련전공자</option>
+				                    <option value="대학생">관련전공자</option>
                   				</select>
 							</div>
 							
@@ -158,58 +158,7 @@
 	              	<div class="modal-footer">
 	                	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
 	                	<button type="submit" class="btn btn-primary">등록하기</button>
-	                	
-	                	<script type="text/javascript">
-						let idCheckFlg = false;
-						
-						let idCheck = () => {
-							//사용자가 입력한 아이디
-							//요소의 아이디 속성이 있을 경우 해당 엘리먼트를 가져다가 사용할 수 있다.
-							let userId = id.value;
-							
-							if(userId){
-								fetch("/member/idcheck?userId=" + userId,{
-									method : "GET"
-								}).then(response => response.text())
-								.then(text => {
-									if(text == 'success'){
-										idCheckFlg = true;
-										id_check.innerHTML = '사용 가능한 아이디 입니다.';
-									}else{
-										idCheckFlg = false;
-										id_check.innerHTML = '사용 불가능한 아이디 입니다.';
-										id.value="";
-									}
-								})
-							}else{
-								alert("아이디를 입력하지 않으셨습니다.");
-							}
-						}
-						
-						document.querySelector('#frm_join').addEventListener('submit',(e)=>{
-							
-							let password = password.value;
-							let regExp = /^(?!.*[ㄱ-힣])(?=.*\W)(?=.*\d)(?=.*[a-zA-Z])(?=.{8,})/;
-							
-							if(!idCheckFlg){
-								e.preventDefault();
-								alert("아이디 중복 검사를 하지 않으셨습니다.");
-								id.focus();
-							}
-							
-							if(!(regExp.test(password))){
-								//form의 데이터 전송을 막음
-								e.preventDefault();
-								pw_confirm.innerHTML = '비밀번호는 숫자,영문자,특수문자 조합의 8글자 이상인 문자열입니다.';
-								password.value='';
-							}
-							
-						});
-					</script>
 	              	</div>
-	              	
-	              	
-		
 				</form>
 				</div>
         	</div>
@@ -233,10 +182,66 @@
 	</div>
     
   </footer>
+  
+  <script type="text/javascript">
+  
+  	function lisAlert(){
+  		alert("회원가입/로그인 후 \n게시판 - '상담사 신청' 메뉴를 통해 이용해주세요."+
+  				"\n!!! 회원가입시 회원유형 → '상담사' 로 가입바랍니다.");
+  	}
+  
+  </script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+	<script type="text/javascript">
+		let idCheckFlg = false;
+		
+		let idCheck = () => {
+			//사용자가 입력한 아이디
+			//요소의 아이디 속성이 있을 경우 해당 엘리먼트를 가져다가 사용할 수 있다.
+			let userId = id.value;
+			
+			if(userId){
+				fetch("/member/idcheck?userId=" + userId,{
+					method : "GET"
+				}).then(response => response.text())
+				.then(text => {
+					if(text == 'success'){
+						idCheckFlg = true;
+						id_check.innerHTML = '사용 가능한 아이디 입니다.';
+					}else{
+						idCheckFlg = false;
+						id_check.innerHTML = '사용 불가능한 아이디 입니다.';
+						id.value="";
+					}
+				})
+			}else{
+				alert("아이디를 입력하지 않으셨습니다.");
+			}
+		}
+		
+		document.querySelector('#frm_join').addEventListener('submit',(e)=>{
+			
+			let password = password.value;
+			let regExp = /^(?!.*[ㄱ-힣])(?=.*\W)(?=.*\d)(?=.*[a-zA-Z])(?=.{8,})/;
+			
+			if(!idCheckFlg){
+				e.preventDefault();
+				alert("아이디 중복 검사를 하지 않으셨습니다.");
+				id.focus();
+			}
+			
+			if(!(regExp.test(password))){
+				//form의 데이터 전송을 막음
+				e.preventDefault();
+				pw_confirm.innerHTML = '비밀번호는 숫자,영문자,특수문자 조합의 8글자 이상인 문자열입니다.';
+				password.value='';
+			}
+			
+		});
+	</script>
 </body>
 </html>

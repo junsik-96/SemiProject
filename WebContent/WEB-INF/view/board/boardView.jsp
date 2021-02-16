@@ -43,7 +43,7 @@
       	</thead>
      
       	<tbody>
-      		<tr onclick="location.href='boardList'">
+      		<tr onclick="location.href='board/boardDetail'">
       			<td class="text-center">${data.board.bdIdx}</td>
       			<td class="text-center">${data.board.title}</td>
       			<td class="text-center">${data.board.content}</td>
@@ -52,7 +52,7 @@
       			<td class="text-center">${data.board.count}</td>
       		</tr>
       		
-      		<tr onclick="location.href='boardList'">
+      		<tr onclick="location.href='board/boardDetail'">
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
@@ -61,7 +61,7 @@
       			<td class="text-center">155</td>
       		</tr>
       		
-      		<tr onclick="location.href='boardList'">
+      		<tr onclick="location.href='board/boardDetail'">
       			<td class="text-center">1</td>
       			<td class="text-center">이벤트</td>
       			<td class="text-center">알려드립니다</td>
@@ -74,7 +74,7 @@
       <hr>
       <br>
 
-      <a style="justify-content:flex-end;" href="/shy/board/gotoForm" onclick='fn_write()' class="btn btn-primary">글쓰기</a>
+      <a style="justify-content:flex-end;" href="/board/boardForm" onclick='fn_write()' class="btn btn-primary">글쓰기</a>
 
 
   <ul class="pagination" style="justify-content:center;">
