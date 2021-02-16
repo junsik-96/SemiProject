@@ -166,7 +166,7 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rank2[0].listName}'<small>(${rank2[0].type})</small>
+          <h6 class="card-header">'${rank2[0].listName}'<small>(${rank2[0].type})</small>
           <div style="float: right;"><small>예약 수 :${rank2[0].listResCnt}</small></div>
           </h6>
           <div class="card-body">
@@ -184,7 +184,7 @@
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h5 class="card-header">'${rank3[0].listName}'<small>(${rank3[0].type})</small>
+          <h6 class="card-header">'${rank3[0].listName}'<small>(${rank3[0].type})</small>
           <div style="float: right;"><small>예약 수 : ${rank3[0].listResCnt}</small></div>
           </h6>
           <div class="card-body">

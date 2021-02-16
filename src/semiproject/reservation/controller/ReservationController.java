@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.ToAlertException;
+import semiproject.listener.model.service.ListenerService;
+import semiproject.listener.model.vo.Listener;
 
 /**
  * Servlet implementation class listenerController
@@ -52,6 +54,7 @@ public class ReservationController extends HttpServlet {
 	}
 
 	private void gotoView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		request.getRequestDispatcher("/WEB-INF/view/reservation/reservation.jsp")
 		.forward(request, response);
 	}

@@ -22,6 +22,10 @@
 .chk-option{
 	float: left;
 }
+
+.card-header{
+	display: flex;
+}
   
 .table-card {
     .card-body {
@@ -80,35 +84,26 @@
   <div class="container">
 
     <!-- 페이지 제목 -->
-    <h1 class="mt-4 mb-3">상담사
-      <small>예약관리</small>
+    <h1 class="mt-4 mb-3">예약내역
+      <small></small>
     </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index">Home</a>
       </li>
-       <li class="breadcrumb-item active"><a href="/shy/myPageMain">마이페이지</a></li>
+       <li class="breadcrumb-item active"><a href="/shy/myPageMain">Mypage</a></li>
+       <li class="breadcrumb-item active">예약내역</li>
     </ol>
     
+    <h3><b>${sessionScope.user.name}</b><small>님의 예약내역</small></h3>
+    <hr>
+    
      <!-- prject ,team member start -->
-            <div class="col-xl-6 col-md-12">
-                <div class="card table-card">
                     <div class="card-header">
                         <h5>예약자 명단</h5>
-                        <div class="card-header-right" style="float:right">
-                            <div class="btn-group card-option">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="feather icon-more-horizontal"></i>
-                                </button>
-                                <ul class="card-option dropdown-menu">
-                                    <li class="dropdown-item reload-card"><a href="#!"><i class="far fa-edit"></i> edit</a></li>
-                                    <li class="dropdown-item close-card"><a href="#!"><i class="fas fa-trash-alt"></i> remove</a></li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
-                    <div class="card-body p-0">
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
@@ -120,19 +115,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="board" items="${requestScope.resList}" >
+                                <c:forEach var="calendar" items="${resList}" >
                                     <tr>
                                         <td>
                                             <div class="d-inline-block align-middle">
                                                 
                                                 <div class="d-inline-block">
-                                                    <h6>${resList.resUserId }</h6>
+                                                    <h6>${calendar.resUserId }</h6>
                                    
                                                 </div>
                                             </div>
                                         </td>
                                         <td>우울증</td>
-                                        <td>${resList.resDate}</td>
+                                        <td>${calendar.resDate}</td>
                                         <td class="text-right"><label class="badge badge-light-danger">완료</label></td>
                                     </tr>             
                                    </c:forEach>
@@ -142,27 +137,23 @@
                         </div>
                     </div>
                 </div>
-            </div>
             <br>
-            
-                  
- 
-    
-
-  	</div>
    <!-- Footer -->
-  <footer class="py-5 bg-dark">
-   <div class="container_footer">
-   (주) 귀울임 사업자 정보 
-  <pre id = "footerInfo">  		 		
-	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4
-	대표 : 홍길동 | 개인정보보호책임 : 황진이
-	사업자 등록번호 : 123-45-6789
-	통신판매업신고 : 2021-서울강남-01234호
-	전화 : 02-1234-1234
-	email : pclass@khaca.com
-    </pre>
+	  <footer class="py-5 bg-dark">
+  
+	<div class = "shy_info">
+   (주) 귀울임 사업자 정보    
+  <div id = "footerInfo">  
+  <br>		 		
+	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
+	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>
+	사업자 등록번호 : 123-45-6789<br>
+	통신판매업신고 : 2021-서울강남-01234호<br>
+	전화 : 02-1234-1234<br>
+	email : pclass@khaca.com<br>
     </div>
+	</div>
+    
   </footer>
 
   <!-- Bootstrap core JavaScript -->

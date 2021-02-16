@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.ToAlertException;
+import semiproject.listener.model.service.ListenerService;
+import semiproject.listener.model.vo.Listener;
 
 /**
  * Servlet implementation class PaymentController
@@ -50,6 +52,11 @@ public class PaymentController extends HttpServlet {
 	}
 
 	private void gotoView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ListenerService listenerService = new ListenerService();
+		String listId = request.getParameter("id");
+		Listener listener = listenerService.selectLisById(listId);
+		request.setAttribute("payById", listener);
+		
 		request.getRequestDispatcher("/WEB-INF/view/payment/payment.jsp")
 		.forward(request, response);
 	}
