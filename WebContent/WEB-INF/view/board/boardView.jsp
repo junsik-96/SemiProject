@@ -45,6 +45,7 @@
       	</thead>
      
       	<tbody>
+
       		<c:forEach var="i" begin="0" end="${fn:length(bInfo)-1}" step="1">
   		 		<tr onclick="location.href='board/boardDetail?idx=${bInfo[i].bdIdx}'">
 	      			<td class="text-center">${bInfo[i].bdIdx}</td>
@@ -56,7 +57,6 @@
       		</c:forEach>
      
       		
- 
       	</tbody>
       </table>
       <hr>
