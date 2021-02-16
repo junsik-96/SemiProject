@@ -11,7 +11,9 @@ public class PaymentService {
 	JDBCTemplate jdt = JDBCTemplate.getInstance();
 	PaymentDao paymentDao = new PaymentDao();
 	
-	public  {
-		
-	}
+	/*
+	 * public {
+	 * 
+	 * }
+	 */
 }

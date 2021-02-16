@@ -1,50 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
-            
-    
-=======
-        
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject
-    <wb-module deploy-name="semiProject-0.0.1-SNAPSHOT">
-<<<<<<< HEAD
-                        
-        
-=======
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId">
+    <wb-module deploy-name="SemiProject-0.0.1-SNAPSHOT">
                 
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-<<<<<<< HEAD
                         
         
-=======
-                
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                        
+        
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-<<<<<<< HEAD
                         
         
-=======
-                
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject
-        <property name="java-output-path" value="/semiProject/build/classes"/>
-<<<<<<< HEAD
-                        
-        
-=======
-                
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject
+        <property name="java-output-path" value="/SemiProject/build/classes"/>
         <property name="context-root" value="/"/>
-<<<<<<< HEAD
                     
     
-=======
-            
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject
     </wb-module>
-<<<<<<< HEAD
-        
-=======
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject
 
 </project-modules>
