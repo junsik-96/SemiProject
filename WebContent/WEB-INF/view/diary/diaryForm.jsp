@@ -21,19 +21,12 @@
 
 <body>
  
-<%--
-	if(session.getAttribute("userId") == null) {		
-		session.setAttribute("loginMsg", "게시물 작성은<br>로그인이 필요합니다.");
-		response.sendRedirect("/shy/login");
-		return;
-	}
 
---%>
 	  
 <!-- Contact Form -->
     <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
 <div>   
-    <div class="container">
+    <div class="container" style="min-height: 600px;">
       <div class="col-lg-8 mb-4">
         <h3>일기 쓰기</h3>
         <form action="${context}/diary/upload"  method="post" 
@@ -41,7 +34,7 @@
           <div class="control-group form-group">
             <div class="controls">
               <label>제목:</label>
-              <input type="text" class="form-control" id="name" required data-validation-required-message="제목을 입력해주세요.">
+              <input type="text" name="title" class="form-control" id="name" required data-validation-required-message="제목을 입력해주세요.">
               <p class="help-block"></p>
             </div>
           </div>
@@ -50,7 +43,7 @@
           <div class="control-group form-group">
             <div class="controls">
               <label>글쓰기:</label>
-              <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="내용을 입력해주세요." maxlength="999" style="resize:none"></textarea>
+              <textarea rows="10" cols="100" class="form-control" id="message" name="content" required data-validation-required-message="내용을 입력해주세요." maxlength="999" style="resize:none"></textarea>
             </div>
           </div>
           <div id="success"></div>
@@ -61,7 +54,9 @@
     </div>
 </div>
     <!-- /.row -->
+	<script type="text/javascript">
 
+	</script>
  
         
   <!-- Footer -->

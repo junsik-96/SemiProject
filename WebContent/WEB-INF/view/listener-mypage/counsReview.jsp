@@ -58,29 +58,35 @@
   <div class="container" style="min-height: 600px;">
 
     <!-- 페이지 제목 -->
-    <h1 class="mt-4 mb-3">상담사
-      <small>상담내역</small>
+    <h1 class="mt-4 mb-3">상담내역
+      <small></small>
     </h1>
     
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
         <a href="index">Home</a>
       </li>
-      <li class="breadcrumb-item active"><a href="/shy/myPageMain">마이페이지</a></li>
+      <li class="breadcrumb-item active"><a href="/shy/myPageMain">Mypage</a></li>
+      <li class="breadcrumb-item">
+        	상담내역
+      </li>
     </ol>
+    
+    <h3><b>${sessionScope.user.name}</b><small>님의 상담내역</small></h3>
+    <hr>
     
     <!-- 담당맡은 상담 리스트들 -->
     <div class="row">
     	
-    	<c:forEach var="cons-reviews" items="${requestScope.counsList}" varStatus="status">
+    	<c:forEach var="couns" items="${counsList}" varStatus="status">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h4 class="card-header"> ${counsList.counsUserId} </h4>
+          <h4 class="card-header"> ${couns.counsUserId} <small>님</small></h4>
           <div class="card-body">
-            <p class="card-text"> ${counsList.counsReview}</p>
+            <p class="card-text"> ${couns.counsReview}</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">더 보기</a>
+            <p class="card-text"> 상담일 : ${couns.counsDate}</p>
           </div>
         </div>
       </div>

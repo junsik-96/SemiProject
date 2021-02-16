@@ -54,11 +54,7 @@ public class ReservationController extends HttpServlet {
 	}
 
 	private void gotoView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ListenerService listenerService = new ListenerService();
-		String listId = request.getParameter("id");
-		Listener listener = listenerService.selectLisById(listId);
-		request.setAttribute("resById", listener);
-		
+
 		request.getRequestDispatcher("/WEB-INF/view/reservation/reservation.jsp")
 		.forward(request, response);
 	}

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 
 <head>
@@ -22,7 +23,7 @@
 
 
   <!-- 게시물 내용  -->
-<div class="content">   
+<div class="content" style="min-height: 600px;">   
 	<br>
     <h2 class="tit text-center">일기장</h2>
     <br>
@@ -37,26 +38,15 @@
       		</tr>	
       	</thead>
       	<tbody>
-      		<tr onclick="location.href='diary/diaryDetail'">     			
-      			<td class="text-center">1</td>
-      			<td class="text-center">이벤트</td>
-      			<td class="text-center">알려드립니다</td>
-      			<td class="text-center">2021.02.03</td>     			
-      		</tr>
-      		
-      		<tr onclick="location.href='diary/diaryDetail'">
-      			<td class="text-center">1</td>
-      			<td class="text-center">이벤트</td>
-      			<td class="text-center">알려드립니다</td>
-      			<td class="text-center">2021.02.03</td>
-      		</tr>
-      		
-      		<tr onclick="location.href='diary/diaryDetail'">
-      			<td class="text-center">1</td>
-      			<td class="text-center">이벤트</td>
-      			<td class="text-center">알려드립니다</td>
-      			<td class="text-center">2021.02.03</td>
-      		</tr>
+				<c:forEach var="i" begin="0" end="${fn:length(dInfo)-1}" step="1">
+  		 		<tr onclick="location.href='diary/diaryDetail?idx=${dInfo[i].drIdx}'">
+	      			<td class="text-center">${dInfo[i].drIdx}</td>
+	      			<td class="text-center">${dInfo[i].title}</td>
+	      			<td class="text-center">${dInfo[i].content}</td>
+	      			<td class="text-center">${dInfo[i].regDate}</td>
+      			</tr>
+      		</c:forEach>
+
       	</tbody>
       </table>
       <hr>

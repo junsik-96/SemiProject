@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.service.MemberService;
 import semiproject.member.model.service.MypageService;
+import semiproject.member.model.vo.Cart;
+import semiproject.member.model.vo.Likey;
 import semiproject.member.model.vo.Member;
 import semiproject.payment.model.vo.Payment;
 import semiproject.reservation.model.vo.Reservation;
@@ -62,6 +64,8 @@ public class MemberController extends HttpServlet {
 				break;
 			case "logout" : logout(request,response);
 				break;
+			case "likey" : likey(request,response);
+				break;
 			case "mypage" : myPage(request,response); //마이페이지
 				break;
 			case "user_modify" : userModify(request,response); //내정보수정
@@ -69,6 +73,10 @@ public class MemberController extends HttpServlet {
 			case "modifyimpl" : userModifyImpl(request,response);
 				break;
 			case "hold" : holdInfo(request,response); //찜목록
+				break;
+			case "holdAction" : holdAction(request,response);
+				break;
+			case "holdDelete" : holdDelete(request,response);
 				break;
 			case "reservation" : reservationInfo(request,response); //예약내역
 				break;
@@ -254,6 +262,22 @@ public class MemberController extends HttpServlet {
 		response.sendRedirect("/index");
 	}
 	
+	private void likey(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		Likey likey = new Likey();
+		
+		likey.setUserId(member.getUserId());
+		likey.setListId(request.getParameter("listId"));
+		
+		mypageService.likey(likey);
+		
+			mypageService.addLikey(request.getParameter("listId"));
+		
+		response.sendRedirect("/listener/all");
+	}
+	
 	private void myPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/mypage.jsp")
@@ -308,6 +332,34 @@ public class MemberController extends HttpServlet {
 		
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/holdInfo.jsp")
 		.forward(request, response);
+	}
+	
+	private void holdAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		Cart cart = new Cart();
+		
+		cart.setUserId(member.getUserId());
+		cart.setListId(request.getParameter("listId"));
+		
+		mypageService.insertHold(cart);
+		
+		response.sendRedirect("/member/hold");
+	}
+	
+	private void holdDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		Member member = (Member) request.getSession().getAttribute("user");
+		
+		Cart cart = new Cart();
+		
+		cart.setUserId(member.getUserId());
+		cart.setListId(request.getParameter("listId"));
+		
+		mypageService.DeleteHold(cart);
+		
+		response.sendRedirect("/member/hold");
 	}
 	
 	private void reservationInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,4 +1,4 @@
-package semiproject.review.model.dao;
+package semiproject.shy.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,24 +9,26 @@ import java.util.ArrayList;
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
-import semiproject.review.model.vo.CounsReview;
+import semiproject.shy.model.vo.CounsReview;
+import semiproject.shy.model.vo.Review;
 
 
-public class CounsReviewDao {
+public class CounsMypageDao {
 	
 	JDBCTemplate jdt = JDBCTemplate.getInstance();
-	private PreparedStatement pstm;
 	
 	// 상담일지 리스트
-	public ArrayList<CounsReview> selectCounsList(Connection conn){
+	public ArrayList<CounsReview> selectCounsList(Connection conn, String listId){
 		
 		ArrayList<CounsReview> counsList = new ArrayList<CounsReview>();
-		pstm = null;
+		PreparedStatement pstm = null;
 		ResultSet rset = null;
 		
 		try {
-			String query = "select * from tb_couns_review";
+			String query = "select * from tb_couns_review where couns_list_id = ?";
+			
 			pstm = conn.prepareStatement(query);
+			pstm.setString(1, listId);
 			rset = pstm.executeQuery();
 			
 			while(rset.next()) {
@@ -47,11 +49,44 @@ public class CounsReviewDao {
 		return counsList;
 	}
 	
+	// 상담후기
+	public ArrayList<Review> selectReviewList(Connection conn, String listId){
+		
+		ArrayList<Review> reviewList = new ArrayList<>();
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+		
+		try {
+			String query = "select * from tb_review where rv_list_id = ?";
+			
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, listId);
+			rset = pstm.executeQuery();
+			
+			while(rset.next()) {
+				Review review = new Review();
+				review.setRvIdx(rset.getInt("rv_idx"));
+				review.setRvListId(rset.getString("rv_list_id"));
+				review.setRvResDate(rset.getDate("rv_res_date"));
+				review.setReview(rset.getString("review"));
+				review.setRvUserId(rset.getString("rv_user_id"));
+				review.setRating(rset.getString("rating"));
+				reviewList.add(review);
+			}
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.SM02,e);
+		}finally {
+			jdt.close(rset,pstm);
+		}
+		
+		return reviewList;
+	}
+	
 	
 	// 후기 등록 메소드
 	public int insertCouns(Connection conn, CounsReview couns) {
 		int res = 0;
-		pstm = null;
+		PreparedStatement pstm = null;
 		
 		try {
 			String sql = "insert into tb_couns_review(couns_list_id, couns_review, couns_user_id, couns_date)"
@@ -77,7 +112,7 @@ public class CounsReviewDao {
 	
 	// 후기 삭제 메소드
 	public int counsDelete (Connection conn, String counsIdx ) {
-		pstm = null;
+		PreparedStatement pstm = null;
 		int res = 0;
 		
 		try {

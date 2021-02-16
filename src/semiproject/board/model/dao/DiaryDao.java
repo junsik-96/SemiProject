@@ -2,9 +2,14 @@ package semiproject.board.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import semiproject.board.model.vo.Board;
 import semiproject.board.model.vo.Diary;
+import semiproject.board.model.vo.Notice;
 import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
@@ -15,14 +20,15 @@ public class DiaryDao {
 	
 	
 	public void insertDiary(Connection conn,Diary diary) {	
-		String sql = "insert into tb_diary "
-				+ "(dr_idx,user_id,content) "
-				+ "values(sc_diary.nextval,?,?)";
 		PreparedStatement pstm = null;
 		try {
+			String sql = "insert into tb_diary "
+					+ "(dr_idx,user_id,title,content) "
+					+ "values(sc_diary.nextval,?,?,?)";
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1, diary.getUserId());
-			pstm.setString(2, diary.getContent());
+			pstm.setString(2, diary.getTitle());
+			pstm.setString(3, diary.getContent());
 			
 			pstm.executeUpdate();
 
@@ -62,4 +68,67 @@ public class DiaryDao {
 			jdt.close(pstm);
 		}
 	}
+	
+	public List<Diary> selectDiaryList(Connection conn, String userId){
+		List<Diary> dList = new ArrayList<Diary>();
+		Diary diary = null;
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+		
+		
+		try {
+			String query = "select * "
+					+ "from tb_diary "
+					+ "where user_id = ? "
+					+ "order by reg_date desc";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, userId);
+			rset =  pstm.executeQuery();
+			while(rset.next()) {
+				diary = new Diary();
+				diary.setDrIdx(rset.getInt("dr_idx"));
+				diary.setUserId(rset.getString("user_id"));
+				diary.setContent(rset.getString("content"));
+				diary.setRegDate(rset.getDate("reg_date"));
+				diary.setTitle(rset.getString("title"));
+				dList.add(diary);
+			}
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01, e);
+		}finally {
+			jdt.close(rset,pstm);
+		}
+		return dList;
+		
+	}
+	
+	public Diary selectByIdx(Connection conn, int idx) {
+		Diary diary = null;
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+			
+		try {
+			String query = "select * from tb_diary where dr_idx = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setInt(1, idx);
+			rset = pstm.executeQuery();
+			
+			if(rset.next()) {
+				diary = new Diary();
+				diary.setDrIdx(rset.getInt("dr_idx"));
+				diary.setUserId(rset.getString("user_id"));
+				diary.setContent(rset.getString("content"));
+				diary.setRegDate(rset.getDate("reg_date"));
+				diary.setTitle(rset.getString("title"));
+			}
+			
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.IM01, e);
+		}finally {
+			jdt.close(rset,pstm);
+		}
+		return diary;
+	}
+	  
 }
