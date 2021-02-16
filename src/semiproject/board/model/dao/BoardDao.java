@@ -48,11 +48,13 @@ public class BoardDao {
 				+ "bd_idx,user_id,reg_date,title,content,count,field "
 				+ "from tb_board "
 				+ "where bd_idx = ? ";
-		pstm = conn.prepareStatement(sql);
-		pstm.setString(1, bdIdx);
-		rs = pstm.executeQuery();
+		
 		
 		try {
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, bdIdx);
+			rs = pstm.executeQuery();
+			
 			if(rs.next()) {
 				board = new Board();
 				board.setBdIdx(rs.getInt(1));

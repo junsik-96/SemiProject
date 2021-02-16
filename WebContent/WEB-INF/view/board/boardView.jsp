@@ -47,9 +47,9 @@
      
       	<tbody>
       	
-      	<% for(int i=0; i<5; i++){ %>
-      		
-      		<tr onclick="location.href='board/boardDetail'">
+
+      		<%-- <c:forEach var="i" begin="0" end="${fn:length(comm1)-1}" step="1"> --%>
+      			<tr onclick="location.href='board/boardDetail'">
       			<td class="text-center">${data.board.bdIdx}</td>
       			<td class="text-center">${data.board.title}</td>
       			<td class="text-center">${data.board.content}</td>
@@ -57,9 +57,10 @@
       			<td class="text-center">${data.board.regDate}</td>
       			<td class="text-center">${data.board.count}</td>
       		</tr>
+      <%-- 		</c:forEach> --%>
       		
       		
-      		<% } %>
+      		
       	</tbody>
       </table>
       <hr>
