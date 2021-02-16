@@ -10,6 +10,7 @@ import semiproject.common.exception.ToAlertException;
 import semiproject.common.mail.MailSender;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.common.util.http.HttpUtil;
+import semiproject.listener.model.vo.Listener;
 import semiproject.member.model.dao.MemberDao;
 import semiproject.member.model.vo.Member;
 
@@ -139,5 +140,18 @@ public class MemberService {
 		}
 		
 		return res;
+	}
+	
+	public Listener listIsTrueCheck(String listId) {
+		Connection conn = jdt.getConnection();
+		Listener listener = null;
+		
+		try {
+			listener = memberDao.listIsTrueCheck(conn, listId);
+		} finally {
+			jdt.close(conn);
+		}
+		return listener;
+		
 	}
 }

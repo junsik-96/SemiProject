@@ -71,13 +71,17 @@
 	<div class="my-4" style="color:rgb(138, 43, 226);">당신 목소리에, 귀울임</div>
      <pre class="intro" style="color:rgb(138, 43, 226);">
      	Welcome everyone!!
+     	<small>
+   	    Shytalker Always Together With You..
+        Don't Worry & Be Happy !!
+        </small>
      </pre>
 	
 	
 
 	<c:choose>
 	<c:when test="${sessionScope.userType eq '일반회원'}">
-   <div id="month_reco">상담사 추천</div>
+ <div id="month_reco" style="margin-left: 3.5%;"><small style="font-weight: bold;"> '${sessionScope.user.name}' 님을 위한 상담사 추천 *</small></div>
 	<div class="row">
 	<c:choose>
 		<c:when test="${fn:length(comm1)-1 > 3}">
@@ -89,16 +93,15 @@
         </h6>
         
           <div class="card-body">
-          <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
             <p class="card-text"> 
             <small>
             	전문분야 : ${comm1[i].listField} <br>
-            	한줄소개 : ${comm1[i].listPro} 
+            	본인소개 : ${comm1[i].listPro} 
             </small>
            </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${comm1[i].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -113,97 +116,21 @@
         </h6>
         
           <div class="card-body">
-<!--           <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
- -->            <p class="card-text"> 
+           <p class="card-text"> 
             <small>
             	전문분야 : ${comm1[i].listField} <br>
-            	한줄소개 : ${comm1[i].listPro} 
+            	본인소개 : ${comm1[i].listPro} 
             </small>
            </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${comm1[i].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
 	</c:forEach>
 		</c:otherwise>
 	</c:choose>
-
-  <%--<div class="col-lg-4 mb-4">
-        <div class="card h-100">
-        <h6 class="card-header"> '${comm1[0].listName}'<small>(${comm1[0].type})</small>
-        	<div style="float: right;"><small>예약 수 : ${comm1[0].listResCnt}</small></div>
-        </h6>
-        
-          <div class="card-body">
-          <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
-            <p class="card-text"> 
-            <small>
-            	전문분야 : ${comm1[0].listField} <br>
-            	한줄소개 : ${comm1[0].listPro} 
-            </small>
-           </p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h6 class="card-header">'${comm1[1].listName}'<small>(${comm1[1].type})</small>
-          <div style="float: right;"><small>예약 수 :${comm1[1].listResCnt}</small></div>
-          </h6>
-          <div class="card-body">
-            <p class="card-text">
-            <small>
-           		전문분야 : ${comm1[1].listField} <br>
-            	한줄소개 : ${comm1[1].listPro} 
-            </small>
-            </p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h6 class="card-header">'${comm1[2].listName}'<small>(${comm1[0].type})</small>
-          <div style="float: right;"><small>예약 수 : ${comm1[0].listResCnt}</small></div>
-          </h6>
-          <div class="card-body">
-            <p class="card-text">
-            <small>
-       		    전문분야 : ${comm1[0].listField} <br>
-            	한줄소개 : ${comm1[0].listPro} 
-            </small>
-            </p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
-          </div>
-        </div>
-      </div>
-          <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h6 class="card-header">'${comm1[0].listName}'<small>(${comm1[0].type})</small>
-          <div style="float: right;"><small>예약 수 : ${comm1[0].listResCnt}</small></div>
-          </h6>
-          <div class="card-body">
-            <p class="card-text">
-            <small>
-       		    전문분야 : ${comm1[0].listField} <br>
-            	한줄소개 : ${comm1[0].listPro} 
-            </small>
-            </p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
-          </div>
-        </div>
-      </div>    --%>   
     </div>
     <hr>
     <br><br>
@@ -215,7 +142,7 @@
 
 	
 
- <div id="month_reco">예약수 상담사 랭킹</div>
+ <div id="month_reco" style="margin-left: 3.5%;"><small style="font-weight: bold; text-decoration: underline;">예약 수 Top4</small></div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -224,16 +151,16 @@
         </h6>
         
           <div class="card-body">
-          <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
+              <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">          
             <p class="card-text"> 
             <small>
             	전문분야 : ${rank1[0].listField} <br>
-            	한줄소개 : ${rank1[0].listPro} 
+            	본인소개 : ${rank1[0].listPro} 
             </small>
            </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rank1[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -246,12 +173,12 @@
             <p class="card-text">
             <small>
            		전문분야 : ${rank2[0].listField} <br>
-            	한줄소개 : ${rank2[0].listPro} 
+            	본인소개 : ${rank2[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rank2[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -264,12 +191,12 @@
             <p class="card-text">
             <small>
        		    전문분야 : ${rank3[0].listField} <br>
-            	한줄소개 : ${rank3[0].listPro} 
+            	본인소개 : ${rank3[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rank3[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -282,12 +209,12 @@
             <p class="card-text">
             <small>
        		    전문분야 : ${rank4[0].listField} <br>
-            	한줄소개 : ${rank4[0].listPro} 
+            	본인소개 : ${rank4[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rank4[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>      
@@ -295,7 +222,7 @@
     <hr>
     <br><br>
    
-    <div id="month_reco">추천수 상담사 랭킹</div>
+ <div id="month_reco" style="margin-left: 3.5%;"><small style="font-weight: bold; text-decoration: underline;">추천 수 Top4</small></div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -304,16 +231,15 @@
         </h6>
         
           <div class="card-body">
-          <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
             <p class="card-text"> 
             <small>
             	전문분야 : ${rankLike1[0].listField} <br>
-            	한줄소개 : ${rankLike1[0].listPro} 
+            	본인소개 : ${rankLike1[0].listPro} 
             </small>
            </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rankLike1[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -326,12 +252,12 @@
             <p class="card-text">
             <small>
            		전문분야 : ${rankLike2[0].listField} <br>
-            	한줄소개 : ${rankLike2[0].listPro} 
+            	본인소개 : ${rankLike2[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rankLike2[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -344,12 +270,12 @@
             <p class="card-text">
             <small>
        		    전문분야 : ${rankLike3[0].listField} <br>
-            	한줄소개 : ${rankLike3[0].listPro} 
+            	본인소개 : ${rankLike3[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rankLike3[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -362,12 +288,12 @@
             <p class="card-text">
             <small>
        		    전문분야 : ${rankLike4[0].listField} <br>
-            	한줄소개 : ${rankLike4[0].listPro} 
+            	본인소개 : ${rankLike4[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rankLike4[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>      
@@ -375,7 +301,7 @@
     <hr>
     <br><br>
 
-   <div id="month_recently">신규 상담사(최신순 3명)</div>
+ <div id="month_reco" style="margin-left: 3.5%;"><small style="font-weight: bold; text-decoration: underline;">신규 상담사(최신 4명)</small></div>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -384,16 +310,15 @@
         </h6>
         
           <div class="card-body">
-          <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">
             <p class="card-text"> 
             <small>
             	전문분야 : ${rankReg1[0].listField} <br>
-            	한줄소개 : ${rankReg1[0].listPro} 
+            	본인소개 : ${rankReg1[0].listPro} 
             </small>
            </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rankReg1[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -406,12 +331,12 @@
             <p class="card-text">
             <small>
            		전문분야 : ${rankReg2[0].listField} <br>
-            	한줄소개 : ${rankReg2[0].listPro} 
+            	본인소개 : ${rankReg2[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rankReg2[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -424,12 +349,12 @@
             <p class="card-text">
             <small>
        		    전문분야 : ${rankReg3[0].listField} <br>
-            	한줄소개 : ${rankReg3[0].listPro} 
+            	본인소개 : ${rankReg3[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rankReg3[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -441,13 +366,13 @@
           <div class="card-body">
             <p class="card-text">
             <small>
-       		    전문분야 : ${rankReg4[0].listField} <br>
-            	한줄소개 : ${rankReg4[0].listPro} 
+       		    전문분야   : ${rankReg4[0].listField} <br>
+            	본인소개 : ${rankReg4[0].listPro} 
             </small>
             </p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">상담사 상세보기</a>
+            <a href="/listener/profile?id=${rankReg4[0].listId}" class="btn btn-primary">상담사 상세보기</a>
           </div>
         </div>
       </div>
@@ -459,10 +384,13 @@
     <div class="row mb-4">
       <div class="col-md-8">
       <br>
-        <pre style="margin-left: 5%;">!!!</pre>
-      </div>
-      <div class="col-md-4">
-        <a class="btn btn-lg btn-secondary btn-block" href="#" style="transform:translateY(10%);">Call to Action</a>
+        <div style="margin-left: 5%;">
+        <small>
+        Shytalker Always Together With You...<br>
+        Don't Worry! Be Happy!!
+        </small>
+        </div>
+        
       </div>
     </div>
 

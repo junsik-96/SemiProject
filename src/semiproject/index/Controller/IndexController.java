@@ -70,10 +70,12 @@ public class IndexController extends HttpServlet {
 		
 		listener.setListField(concern);
 		listener.setType(type);
+		String listId = listener.getListId(); 
 		
 		List<Listener> listComm1 = indexService.selectLisByComm(listener);
 		request.setAttribute("comm1", listComm1);
 		System.out.println("asd :" + listener);
+		System.out.println("id : " + listId);
 		
 		request.getRequestDispatcher("/WEB-INF/view/index/index.jsp")
 		.forward(request, response); 

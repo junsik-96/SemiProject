@@ -29,7 +29,7 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 			String sql = "select \r\n"
 					+ "* \r\n"
 					+ "from (\r\n"
-					+ "select LIST_PRO,LIST_FIELD,TYPE,NAME,list_res_cnt, rank() over(order by list_res_cnt desc) as res     \r\n"
+					+ "select LIST_PRO,LIST_FIELD,TYPE,NAME,list_id,list_res_cnt, rank() over(order by list_res_cnt desc) as res     \r\n"
 					+ " from \r\n"
 					+ " tb_listener l inner join tb_member m on(l.list_id = m.user_id)\r\n"
 					+ " )\r\n"
@@ -40,11 +40,12 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 			
 			if(rset.next()) {
 				listener = new Listener();
-				listener.setListPro(rset.getString(1));
-				listener.setListField(rset.getString(2));
-				listener.setType(rset.getString(3));
-				listener.setListName(rset.getString(4)); 
-				listener.setListResCnt(rset.getInt(5));
+				listener.setListPro(rset.getString("list_pro"));
+				listener.setListField(rset.getString("list_field"));
+				listener.setType(rset.getString("type"));
+				listener.setListName(rset.getString("name")); 
+				listener.setListResCnt(rset.getInt("list_res_cnt"));
+				listener.setListId(rset.getString("list_id"));
 			}
 			
 		} catch (SQLException e) {
@@ -68,7 +69,7 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 				String sql = "select \r\n"
 						+ "* \r\n"
 						+ "from (\r\n"
-						+ "select LIST_PRO,LIST_FIELD,TYPE,NAME,list_likely, rank() over(order by list_likely desc) as res     \r\n"
+						+ "select LIST_PRO,LIST_FIELD,TYPE,NAME,list_id,list_likely, rank() over(order by list_likely desc) as res     \r\n"
 						+ " from \r\n"
 						+ " tb_listener l inner join tb_member m on(l.list_id = m.user_id)\r\n"
 						+ " )\r\n"
@@ -79,11 +80,12 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 				
 				if(rset.next()) {
 					listener = new Listener();
-					listener.setListPro(rset.getString(1));
-					listener.setListField(rset.getString(2));
-					listener.setType(rset.getString(3));
-					listener.setListName(rset.getString(4)); 
-					listener.setListLikely(rset.getInt(5)); 
+					listener.setListPro(rset.getString("list_pro"));
+					listener.setListField(rset.getString("list_field"));
+					listener.setType(rset.getString("type"));
+					listener.setListName(rset.getString("name"));
+					listener.setListLikely(rset.getInt("list_likely")); 
+					listener.setListId(rset.getString("list_id"));
 				}
 				
 			} catch (SQLException e) {
@@ -104,10 +106,10 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 			
 			
 			try {
-				String sql = "select * from (select LIST_PRO,LIST_FIELD,TYPE,NAME,\r\n"
+				String sql = "select * from (select LIST_PRO,LIST_FIELD,list_id,list_is_true,TYPE,NAME,\r\n"
 						+ "LIST_REGDATE, rank() over(order by LIST_REGDATE desc) as reg"
 						+ " from \r\n"
-						+ " tb_listener l inner join tb_member m on(l.list_id = m.user_id)\r\n"
+						+ " tb_listener l inner join tb_member m on(l.list_id = m.user_id) where list_is_true = 'Y'\r\n"
 						+ " )\r\n"
 						+ "where reg = ?";
 				pstm = conn.prepareStatement(sql);
@@ -116,11 +118,12 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 				
 				if(rset.next()) {
 					listener = new Listener();
-					listener.setListPro(rset.getString(1));
-					listener.setListField(rset.getString(2));
-					listener.setType(rset.getString(3));
-					listener.setListName(rset.getString(4)); 
-					listener.setListRegDate(rset.getDate(5));
+					listener.setListPro(rset.getString("list_pro")); 
+					listener.setListField(rset.getString("list_field"));
+					listener.setType(rset.getString("type"));
+					listener.setListName(rset.getString("name"));
+					listener.setListRegDate(rset.getDate("list_regdate"));
+					listener.setListId(rset.getString("list_id"));
 				}
 				
 			} catch (SQLException e) {
@@ -151,17 +154,19 @@ JDBCTemplate jdt = JDBCTemplate.getInstance();
 				rset = pstm.executeQuery();
 				
 				while(rset.next()) {
-					listener = new Listener();
-					listener.setListName(rset.getString("name"));
-					listener.setListGen(rset.getString("list_gen"));
-					listener.setListField(rset.getString("list_field"));
-					listener.setType(rset.getString("type"));
-					listener.setListPhone(rset.getString("tel")); 
-					listener.setListEmail(rset.getString("email"));
-					listener.setListResCnt(rset.getInt("list_res_cnt"));
-					listener.setListLikely(rset.getInt("list_likely"));			
+					alistener = new Listener();
+					alistener.setListName(rset.getString("name"));
+					alistener.setListGen(rset.getString("list_gen"));
+					alistener.setListField(rset.getString("list_field"));
+					alistener.setType(rset.getString("type"));
+					alistener.setListPhone(rset.getString("tel")); 
+					alistener.setListEmail(rset.getString("email"));
+					alistener.setListResCnt(rset.getInt("list_res_cnt"));
+					alistener.setListLikely(rset.getInt("list_likely"));	
+					alistener.setListId(rset.getString("list_id"));
+					alistener.setListPro(rset.getString("list_pro"));
 					
-					commListener.add(listener);
+					commListener.add(alistener);
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

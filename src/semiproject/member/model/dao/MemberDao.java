@@ -9,6 +9,7 @@ import semiproject.common.code.ErrorCode;
 import semiproject.common.exception.DataAccessException;
 import semiproject.common.template.JDBCTemplate;
 import semiproject.member.model.vo.Member;
+import semiproject.listener.model.vo.Listener;
 
 public class MemberDao {
 	
@@ -216,6 +217,29 @@ public class MemberDao {
 		}
 		
 		return res;
+	}
+	
+	public Listener listIsTrueCheck(Connection conn, String listId) {
+		
+		Listener listener = null;
+		PreparedStatement pstm = null;
+		ResultSet rset = null;
+		
+		try {
+			String query = "select list_is_true from tb_listener where list_id = ?";
+			pstm = conn.prepareStatement(query);
+			pstm.setString(1, listId);
+			rset = pstm.executeQuery();
+			if(rset.next()) {
+				listener = new Listener();
+				listener.setListIsTrue(rset.getString("LIST_IS_TRUE"));
+			}
+		} catch (SQLException e) {
+			throw new DataAccessException(ErrorCode.SL02,e);
+		}finally {
+			jdt.close(rset,pstm);
+		}
+		return listener;
 	}
 
 }

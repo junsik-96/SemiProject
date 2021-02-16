@@ -124,6 +124,8 @@
 			               이름 : ${all[i].listName}<br>
 			               번호 : ${all[i].listPhone}
 		            	</small>
+		            	<hr>
+		            <a href = "/listener/profile?id=${all[i].listId}" style="color:rgb(138, 43, 226);">상담사 상세보기</a>
 		            <p class="card-text"></p>
 		          </div>
 		        </div>

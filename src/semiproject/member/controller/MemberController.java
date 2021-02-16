@@ -152,6 +152,11 @@ public class MemberController extends HttpServlet {
 		String password = (String) jsonMap.get("pw");
 		
 		Member member = memberService.memberAuthenticate(userId, password);
+		Listener listener = memberService.listIsTrueCheck(userId);
+		
+		if(member.getUserType().equals("상담사")) {
+			request.getSession().setAttribute("listTrue", listener.getListIsTrue());	
+		}
 		
 		if(member != null) {
 			//session에 회원 정보를 저장
@@ -164,7 +169,6 @@ public class MemberController extends HttpServlet {
 		}else {
 			response.getWriter().print("fail");
 		}
-		
 	}
 	
 	
@@ -244,6 +248,7 @@ public class MemberController extends HttpServlet {
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.getSession().removeAttribute("user");
+		request.getSession().removeAttribute("userType");
 		response.sendRedirect("/index");
 	}
 	
@@ -320,5 +325,6 @@ public class MemberController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/view/user-mypage/myBoard.jsp")
 		.forward(request, response);
 	}
-
+	
+	
 }

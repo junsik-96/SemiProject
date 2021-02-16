@@ -80,8 +80,15 @@
               				<a class="dropdown-item" onclick="alertMsg()">상담사 신청</a>
               			</c:when>
               			<c:otherwise>
-              			 	<a class="dropdown-item" href="/shy/listenerlist">상담사 신청</a>
-              			</c:otherwise>
+              	 			<c:choose>
+              					<c:when test="${sessionScope.listTrue eq 'N'}">
+              					   <a class="dropdown-item" href="/listener/before">상담사 신청</a>              					
+              					</c:when>
+              					<c:otherwise>             					
+              					</c:otherwise>
+              				</c:choose>
+<!--                				<a class="dropdown-item" href="/listener/before">상담사 신청</a>              					              				
+ -->               			</c:otherwise>
               		</c:choose>
             	</c:otherwise>
               </c:choose>

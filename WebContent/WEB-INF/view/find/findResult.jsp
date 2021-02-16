@@ -130,16 +130,18 @@
       			<c:forEach var="i" begin="0" end="${fn:length(result)-1}" step="1">
       			<div class="col-lg-4 col-sm-6 portfolio-item find_result">
 			        <div class="card h-100">
-			          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+			          <img class="card-img-top" src="http://placehold.it/700x400" alt="">
 			          <div class="card-body">
 		            <small class="card-title">
 		               이름 : ${result[i].listName}<br>
 		               번호 : ${result[i].listPhone}
 		            </small>
+		            <hr>
+		            <a href = "/listener/profile?id=${result[i].listId}" style="color:rgb(138, 43, 226)";>상담사 상세보기</a>
 		            <p class="card-text"></p>
 		          </div>
 		        </div>
-		      </div> 
+		      </div>
 		      </c:forEach>
       		</c:when>
       		<c:when test="${fn:length(checkLis) > 0}">
@@ -153,6 +155,8 @@
 		               번호 : ${checkLis[i].listPhone}<br>
 		           	   가격 : ${checkLis[i].listAmt} 
 		            </small>
+		            <hr>
+		            <a href = "/listener/profile?id=${checkLis[i].listId}" style="color:rgb(138, 43, 226)";>상담사 상세보기</a>
 		            <p class="card-text"></p>
 		          </div>
 		        </div>
