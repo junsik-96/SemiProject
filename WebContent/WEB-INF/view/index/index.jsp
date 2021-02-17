@@ -200,7 +200,6 @@
         </h6>
         
           <div class="card-body">
-              <img src="/resources/image/아무개.jfif" style="width: 100%; height: 60%; object-fit:cover;">          
             <p class="card-text"> 
             <small>
             	전문분야 : ${rank1[0].listField} <br>
