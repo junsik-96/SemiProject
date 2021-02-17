@@ -30,10 +30,11 @@
         <table id="detailBoard" width="500"border="3"  bordercolor="lightgray" class="table table-hover">
         
             <tr>
-                <td id="title">작성일 : ${dDetail.regDate}</td>
+                <td id="title">작성자 : ${dDetail.userId}</td>
             </tr>
             <tr>
-                <td id="title">작성자 : ${dDetail.userId}</td>
+                
+                <td id="title">작성일 : ${dDetail.regDate}</td>
             </tr>
             <tr>
                 <td id="title">
@@ -50,10 +51,10 @@
     
             <tr align="center" valign="middle">
                 <td colspan="5">
-                    <input type="button" value="수정" >
-                    <input type="button" value="삭제" >
-                    <input type="button" value=답글 >    
-                    <input type="button" value="목록" 
+                    <input style="background-color: #482C5D!important;" class="btn btn-primary" type="button" value="수정" >
+                    <input style="background-color: #482C5D!important;" class="btn btn-primary" type="button" value="삭제" >
+                    <input style="background-color: #482C5D!important;" class="btn btn-primary" type="button" value=답글 >    
+                    <input style="background-color: #482C5D!important;" class="btn btn-primary" type="button" value="목록" 
                         onclick="javascript:location.href='/diary'">            
                 </td>
             </tr>

@@ -40,7 +40,7 @@
       			<th class="text-center">제목</th>
       			<th class="text-center">작성자</th>
       			<th class="text-center">날짜</th>
-      			<th class="text-center">조회수</th>
+      			
       		</tr>	
       	</thead>
      
@@ -52,7 +52,7 @@
 	      			<td class="text-center">${bInfo[i].title}</td>
 	      			<td class="text-center">${bInfo[i].userId}</td>
 	      			<td class="text-center">${bInfo[i].regDate}</td>
-	      			<td class="text-center">${bInfo[i].count}</td>
+	      			
       			</tr>
       		</c:forEach>
      

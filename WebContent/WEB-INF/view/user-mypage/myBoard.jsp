@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    
 <%@ include file="/WEB-INF/view/include/head.jsp" %>
 <head>
 
@@ -58,40 +60,22 @@
 		      	<thead>
 		      		<tr>
 		      			<th class="text-center">번호</th>
-		      			<th class="text-center">제목</th>
-		      			<th class="text-center">내용</th>
-		      			<th class="text-center">작성자</th>
-		      			<th class="text-center">날짜</th>
-		      			<th class="text-center">조회수</th>
+      					<th class="text-center">제목</th>
+      					<th class="text-center">작성자</th>
+      					<th class="text-center">날짜</th>
 		      		</tr>	
 		      	</thead>
 		      	<tbody>
-		      		<tr>
-		      			<td class="text-center">1</td>
-		      			<td class="text-center">이벤트</td>
-		      			<td class="text-center">알려드립니다</td>
-		      			<td class="text-center">관리자</td>
-		      			<td class="text-center">2021.02.03</td>
-		      			<td class="text-center">155</td>
-		      		</tr>
-		      		
-		      		<tr>
-		      			<td class="text-center">1</td>
-		      			<td class="text-center">이벤트</td>
-		      			<td class="text-center">알려드립니다</td>
-		      			<td class="text-center">관리자</td>
-		      			<td class="text-center">2021.02.03</td>
-		      			<td class="text-center">155</td>
-		      		</tr>
-		      		
-		      		<tr>
-		      			<td class="text-center">1</td>
-		      			<td class="text-center">이벤트</td>
-		      			<td class="text-center">알려드립니다</td>
-		      			<td class="text-center">관리자</td>
-		      			<td class="text-center">2021.02.03</td>
-		      			<td class="text-center">155</td>
-		      		</tr>
+		      		<c:forEach var="i" begin="0" end="${fn:length(bInfo)}" step="1">
+  		 			<tr onclick="location.href='board/boardDetail?idx=${bInfo[i].bdIdx}'">
+		      			<td class="text-center">${bInfo[i].bdIdx}</td>
+		      			<td class="text-center">${bInfo[i].title}</td>
+		      			<td class="text-center">${bInfo[i].userId}</td>
+		      			<td class="text-center">${bInfo[i].regDate}</td>
+	      			
+      				</tr>
+      		</c:forEach>
+     
 		      	</tbody>
 		      </table>
 		      <hr>

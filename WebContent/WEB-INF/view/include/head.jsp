@@ -140,7 +140,7 @@
             	</c:otherwise>
               </c:choose>
                           
-              <a class="dropdown-item" href="/shy/customerCenter">고객센터</a>
+              
             </div>          
           </li>
           
