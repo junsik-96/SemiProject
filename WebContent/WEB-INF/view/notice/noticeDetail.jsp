@@ -45,7 +45,7 @@
        
         </table>
       
-        <input class="btn btn-primary" type="button" value="목록" onclick="javascript:location.href='/notice'">
+        <input style="background-color: #482C5D!important;" class="btn btn-primary" type="button" value="목록" onclick="javascript:location.href='/notice'">
     
     </div>
 </div>    

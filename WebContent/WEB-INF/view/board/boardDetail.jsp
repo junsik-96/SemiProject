@@ -58,10 +58,10 @@
     
             <tr align="center" valign="middle">
                 <td colspan="5">
-                    <input type="button" value="수정" >
-                    <input type="button" value="삭제" >
-                    <input type="button" value=답글 >    
-                    <input type="button" value="목록" 
+                    <input class="btn btn-primary" style="background-color: #482C5D!important;" type="button" value="수정" >
+                    <input class="btn btn-primary" style="background-color: #482C5D!important;" type="button" value="삭제" >
+                    <input class="btn btn-primary" style="background-color: #482C5D!important;" type="button" value=답글 >    
+                    <input class="btn btn-primary" style="background-color: #482C5D!important;" type="button" value="목록" 
                         onclick="javascript:location.href='/board'">            
 
                 </td>
