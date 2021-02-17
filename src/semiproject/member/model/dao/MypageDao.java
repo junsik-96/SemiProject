@@ -245,7 +245,7 @@ public class MypageDao {
 		PreparedStatement pstm = null;
 		
 		try {
-			String query = "update tb_listener set list_res_cnt = list_res_cnt + 1 where list_id = ?";
+			String query = "update tb_listener set list_likely = list_likely + 1 where list_id = ?";
 			pstm = conn.prepareStatement(query);
 			pstm.setString(1, listId);
 			
