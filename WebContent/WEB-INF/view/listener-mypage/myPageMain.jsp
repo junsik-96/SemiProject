@@ -30,6 +30,7 @@
   			padding: 10px;
   		
   		}
+  		
   
   
   </style>
@@ -62,28 +63,28 @@
     <hr>
 
 	<div class="list-main">
- 	
 	<div class="list-main-body">
 		<a class="go-to-counsReview" href="/shy/counsReview">
-			<span style="color:navy"><i class="fas fa-notes-medical">  상담내역</i></span>
+			<span style="color:navy"><i class="far fa-id-badge">  상담내역</i></span>
 		</a><br><br>
 		<a class="go-to-mySchedule" href="/shy/mySchedule">
-			<span style="color:navy"><i class="fas fa-calendar-alt">  나의 예약스케줄</i></span>
+			<span style="color:navy"><i class="far fa-calendar-alt">  나의 예약스케줄</i></span>
 		</a><br><br>
 		<a class="go-to-resConfirm" href="/shy/resConfirm">
-			<span style="color:navy"><i class="fas fa-clipboard-list">  예약 내역</i></span>
+			<span style="color:navy"><i class="far fa-calendar-alt">  예약 내역</i></span>
 		</a><br><br>
 		<a class="go-to-reviews" href="/shy/listMypageReview">
-		<span style="color:navy"><i class="fas fa-address-card">  평가 내역</i></span>
+		<span style="color:navy"><i class="far fa-hand-pointer">  리뷰 보기</i></span>
 		</a><br><br>
 		<a class="go-to-reviews" href="/listener/updateintroduce">
-		<span style="color:navy"><i class="fas fa-address-card">  정보 수정</i></span>
+		<span style="color:navy"><i class="far fa-user">  내 정보 수정</i></span>
 		</a><br><br>
 		<a class="go-to-reviews" href="/listener/updateprofile">
-		<span style="color:navy"><i class="fas fa-address-card">  프로필 수정</i></span>
+		<span style="color:navy"><i class="far fa-address-card">  프로필 수정</i></span>
 		</a><br><br>
 	</div>
 	</div>	
+		
 
 	
 

@@ -66,11 +66,11 @@
    </div>
 
  <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark" style="background-color: #482C5D!important;">
   
 	<div class = "shy_info">
    (주) 귀울임 사업자 정보    
-  <div id = "footerInfo">  
+  <div id = "footerInfo" style="font-size: 0.8rem;">  
   <br>		 		
 	(주) 귀울임 | 서울시 강남구 강남스타일로 123-4<br>
 	대표 : 홍길동 | 개인정보보호책임 : 황진이<br>

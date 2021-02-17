@@ -40,11 +40,14 @@
 <script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap" rel="stylesheet">
+
 <style type="text/css">
 		
 		.logo {
-			width: 23px;
-			height: 25px;
+			width: 21px;
+			height: 23px;
 			-webkit-filter: opacity(.5) drop-shadow(0 0 0 white);
 			filter: opacity(.5) drop-shadow(0 0 0 white);
 		}
@@ -56,6 +59,7 @@
 		body {
 			padding-right: 10%;
 			padding-left: 10%;
+			font-family: 'Nanum Gothic', sans-serif;
 		}
 		
 		
