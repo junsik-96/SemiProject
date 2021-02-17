@@ -80,9 +80,8 @@
 <p>&nbsp;</p>
 <<<<<<< HEAD
 <div class="cart" style="text-align: center;"><label class="won">₩</label></div> --> -->
-=======
+
 <div class="cart" style="text-align: center;"><label class="won">${payById.listAmt}₩</label></div>
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject.git
 <p><br /><br /></p>
 <div class="pay" style="text-align: right;"><button id="sendMessageButton" class="btnnn" type="submit" onclick="pay();">결제하기</button></div>
 <p><br /><br /></p>
@@ -108,9 +107,7 @@
   </footer>
   
 
-<<<<<<< HEAD
-=======
- 
+ <script type="text/javascript">
  
 	function pay(){
 		 IMP.init("imp60257625");
@@ -136,7 +133,6 @@
 	}
  
  </script>
->>>>>>> branch 'dev' of https://github.com/junsik-96/SemiProject.git
   
 
    <!-- Bootstrap core JavaScript -->

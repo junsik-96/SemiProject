@@ -96,6 +96,9 @@
           	<c:when test="${empty sessionScope.user}">
           	<a class="nav-link" href="/member/login" onclick ="aleryDiary()" >일기장</a>
           	</c:when>
+          	<c:when test="${sessionScope.userType != '일반회원'}">
+          	    <a class="nav-link" href="/index" onclick ="aleryDl()" >일기장</a>          	
+          	</c:when>
           	<c:otherwise>
           	<a class="nav-link" href="/diary">일기장</a>
           	</c:otherwise>
@@ -192,6 +195,10 @@
 	
 	function aleryDiary(){
 		alert('로그인 후 이용가능합니다.\n로그인 페이지로 이동합니다.');
+	}
+	
+	function aleryDl(){
+		alert('상담사 님께서는 이용에 제한됩니다.');
 	}
 
 </script>
